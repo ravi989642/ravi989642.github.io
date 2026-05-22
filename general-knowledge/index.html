@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सामान्य ज्ञान - All Educations Adda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #0f172a;
+            --secondary: #3730a3;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #0f172a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3730a3 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-logo span { font-size: 1.8rem; }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--accent-light);
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Hero / Motivational Section */
+        .hero-section {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,58,138,0.85) 50%, rgba(55,48,163,0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #d97706);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(245,158,11,0); }
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .motivation-quote {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .motivation-quote .author {
+            font-style: normal;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .stat-item .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-light);
+        }
+
+        .stat-item .label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* Sets Section */
+        .sets-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .sets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .set-card {
+            background: white;
+            color: var(--dark);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.4s;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .set-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+
+        .set-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+
+        .set-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(30,58,138,0.4);
+        }
+
+        .set-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .set-card .questions {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .set-card .time {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .start-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #d97706);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .set-card:hover .start-btn {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(245,158,11,0.4);
+        }
+
+        .set-card.locked {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .set-card.locked .set-number {
+            background: #94a3b8;
+        }
+
+        .set-card.locked .start-btn {
+            background: #cbd5e1;
+            color: #64748b;
+        }
+
+        .lock-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: rgba(0,0,0,0.2);
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .progress-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            height: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 50px;
+            width: 20%;
+            transition: width 0.5s;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-stat .value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+        }
+
+        .progress-stat .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.3);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .sets-grid { grid-template-columns: 1fr; }
+            .navbar { flex-direction: column; }
+            .nav-links { justify-content: center; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="https://ravi989642.github.io/" class="nav-logo">
+            <span>🎓</span>
+            <span>All Educations Adda</span>
+        </a>
+        <div class="nav-links">
+            <a href="https://ravi989642.github.io/" class="back-btn">← Back to Home</a>
+            <a href="https://youtube.com/@alleducationsadda" target="_blank">📺 YouTube</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Motivational Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🔥 Haryana Police CET Special</div>
+
+            <h1 class="hero-title">🚔 सामान्य ज्ञान<br>Practice Sets</h1>
+
+            <p class="hero-subtitle">
+                Complete General Knowledge preparation for Haryana Police, CET & Group D exams
+            </p>
+
+            <div class="motivation-quote">
+                "सफलता उन्हीं को मिलती है जो मेहनत में यकीन रखते हैं।<br>
+                हर सवाल एक कदम है आपके सपने की ओर!"
+                <div class="author">— All Educations Adda</div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="number">5</div>
+                    <div class="label">Practice Sets</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">100</div>
+                    <div class="label">Total Questions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">25</div>
+                    <div class="label">Min Total Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">100%</div>
+                    <div class="label">Free Forever</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sets Section -->
+    <section class="sets-section">
+        <div class="section-header">
+            <h2>🎯 Choose Your Practice Set</h2>
+            <p>Each set has 20 questions with timer and instant results</p>
+        </div>
+
+        <div class="sets-grid">
+            <!-- Set 1 - Active -->
+            <a href="set1/" class="set-card">
+                <div class="set-number">1</div>
+                <h3>सामान्य ज्ञान<br>Set 1</h3>
+                <p class="questions">20 Questions</p>
+                <p class="time">⏱️ 5 Minutes</p>
+                <span class="start-btn">▶ Start Quiz</span>
+            </a>
+
+            <!-- Set 2 -->
+            <a href="set2/" class="set-card">
+                <div class="set-number">2</div>
+                <h3>सामान्य ज्ञान<br>Set 2</h3>
+                <p class="questions">20 Questions</p>
+                <p class="time">⏱️ 5 Minutes</p>
+                <span class="start-btn">▶ Start Quiz</span>
+            </a>
+
+            <!-- Set 3 -->
+            <a href="set3/" class="set-card">
+                <div class="set-number">3</div>
+                <h3>सामान्य ज्ञान<br>Set 3</h3>
+                <p class="questions">20 Questions</p>
+                <p class="time">⏱️ 5 Minutes</p>
+                <span class="start-btn">▶ Start Quiz</span>
+            </a>
+
+            <!-- Set 4 -->
+            <a href="set4/" class="set-card">
+                <div class="set-number">4</div>
+                <h3>सामान्य ज्ञान<br>Set 4</h3>
+                <p class="questions">20 Questions</p>
+                <p class="time">⏱️ 5 Minutes</p>
+                <span class="start-btn">▶ Start Quiz</span>
+            </a>
+
+            <!-- Set 5 -->
+            <a href="set5/" class="set-card locked">
+                <span class="lock-icon">🔒</span>
+                <div class="set-number">5</div>
+                <h3>सामान्य ज्ञान<br>Set 5</h3>
+                <p class="questions">20 Questions</p>
+                <p class="time">⏱️ 5 Minutes</p>
+                <span class="start-btn">🔒 Coming Soon</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="progress-section">
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>📊 Your Progress</span>
+                <span>1/5 Sets Completed</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <div class="progress-stats">
+                <div class="progress-stat">
+                    <div class="value">0</div>
+                    <div class="label">Sets Done</div>
+                </div>
+                <div class="progress-stat">
+                    <div class="value">0</div>
+                    <div class="label">Questions Solved</div>
+                </div>
+                <div class="progress-stat">
+                    <div class="value">0%</div>
+                    <div class="label">Accuracy</div>
+                </div>
+                <div class="progress-stat">
+                    <div class="value">0</div>
+                    <div class="label">Best Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>🎓 All Educations Adda | Free Education for Haryana Students</p>
+        <p>🔴 Daily Live Quiz at 7:00 PM on YouTube | 📺 @alleducationsadda</p>
+    </footer>
+
+</body>
+</html>
