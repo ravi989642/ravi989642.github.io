@@ -27,7 +27,6 @@
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
         .navbar {
             background: rgba(0,0,0,0.3);
             backdrop-filter: blur(10px);
@@ -42,314 +41,113 @@
             gap: 1rem;
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
+        .nav-logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 700; }
         .nav-logo span { font-size: 2rem; }
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s;
+            color: white; text-decoration: none; font-weight: 500;
+            padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;
         }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.1);
-            color: var(--accent-light);
-        }
-
+        .nav-links a:hover { background: rgba(255,255,255,0.1); color: var(--accent-light); }
         .nav-cta {
             background: linear-gradient(135deg, var(--accent), #d97706);
-            color: white !important;
-            font-weight: 700 !important;
+            color: white !important; font-weight: 700 !important;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-        }
-
-        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 4rem 2rem 3rem;
-            max-width: 900px;
-            margin: 0 auto;
+            text-align: center; padding: 4rem 2rem 3rem;
+            max-width: 900px; margin: 0 auto;
         }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem; }
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
+        .hero-badges { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
         .hero-badge {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.9rem;
+            font-weight: 600; border: 1px solid rgba(255,255,255,0.2);
         }
+        .live-badge { background: linear-gradient(135deg, #ef4444, #dc2626); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
 
-        .live-badge {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Stats Bar */
         .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            padding: 0 1rem;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+            max-width: 900px; margin: 0 auto 3rem; padding: 0 1rem;
         }
-
         .stat-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border-radius: 16px; padding: 1.5rem; text-align: center;
             border: 1px solid rgba(255,255,255,0.15);
         }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-light); }
+        .stat-label { font-size: 0.85rem; opacity: 0.9; margin-top: 0.25rem; }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-light);
-        }
+        .section-header { text-align: center; padding: 2rem 1rem 1rem; }
+        .section-header h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-header p { opacity: 0.8; font-size: 1.1rem; }
 
-        .stat-label {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin-top: 0.25rem;
-        }
-
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            padding: 2rem 1rem 1rem;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            opacity: 0.8;
-            font-size: 1.1rem;
-        }
-
-        /* Subject Grid */
         .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem 3rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem 3rem;
         }
 
         .subject-card {
-            background: white;
-            color: var(--dark);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
+            background: white; color: var(--dark); border-radius: 16px;
+            padding: 1.5rem; text-decoration: none; transition: all 0.3s;
+            border: 2px solid transparent; position: relative; overflow: hidden;
         }
-
         .subject-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 4px;
             background: linear-gradient(90deg, var(--accent), var(--accent-light));
         }
+        .subject-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-color: var(--accent); }
 
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: var(--accent);
+        .subject-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .subject-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .subject-card p { color: #64748b; font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .sets-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .set-btn {
+            background: #f1f5f9; color: #475569; padding: 0.4rem 0.8rem;
+            border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+            text-decoration: none; transition: all 0.2s;
         }
+        .set-btn:hover { background: var(--primary); color: white; }
+        .set-btn.active { background: linear-gradient(135deg, var(--success), #059669); color: white; }
 
-        .subject-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .subject-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .subject-card p {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .subject-meta {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
+        .subject-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .meta-badge {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            background: #f1f5f9; color: #475569; padding: 0.25rem 0.75rem;
+            border-radius: 50px; font-size: 0.75rem; font-weight: 600;
         }
+        .meta-badge.active { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #065f46; }
+        .meta-badge.soon { background: #fef3c7; color: #92400e; }
 
-        .meta-badge.active {
-            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-            color: #065f46;
-        }
-
-        .meta-badge.soon {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        /* Exam Info Section */
-        .exam-info {
-            background: rgba(0,0,0,0.2);
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-        }
-
+        .exam-info { background: rgba(0,0,0,0.2); padding: 3rem 2rem; margin: 2rem 0; }
         .exam-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem; max-width: 1000px; margin: 0 auto;
         }
-
         .exam-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.15);
         }
+        .exam-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--accent-light); }
+        .exam-card ul { list-style: none; font-size: 0.9rem; }
+        .exam-card ul li { padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .exam-card ul li:last-child { border-bottom: none; }
 
-        .exam-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: var(--accent-light);
-        }
+        .footer { background: rgba(0,0,0,0.3); padding: 3rem 2rem; text-align: center; }
+        .footer-content { max-width: 800px; margin: 0 auto; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-links a { color: white; text-decoration: none; font-size: 1.5rem; transition: transform 0.3s; }
+        .social-links a:hover { transform: translateY(-3px); color: var(--accent-light); }
+        .footer p { opacity: 0.8; margin-bottom: 0.5rem; }
+        .copyright { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6; }
 
-        .exam-card ul {
-            list-style: none;
-            font-size: 0.9rem;
-        }
-
-        .exam-card ul li {
-            padding: 0.35rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .exam-card ul li:last-child {
-            border-bottom: none;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0,0,0,0.3);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
-            color: var(--accent-light);
-        }
-
-        .footer p {
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer .copyright {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
@@ -362,7 +160,6 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-logo">
             <span>🎓</span>
@@ -372,15 +169,14 @@
             <a href="#home">🏠 Home</a>
             <a href="#subjects">📚 Subjects</a>
             <a href="#syllabus">📋 Syllabus</a>
-            <a href="https://ravi989642.github.io/general-knowledge/" class="nav-cta">🚔 Police GK Quiz</a>
+            <a href="general-knowledge/" class="nav-cta">🚔 Police GK Quiz</a>
             <a href="https://youtube.com/@alleducationsadda" target="_blank">📺 YouTube</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>🎓 All Educations Adda</h1>
-        <p>Free Practice Tests for Haryana Government Exams — CET, Police, SSC & More</p>
+        <p>Free Practice Tests for Haryana Government Exams — CET, Police, Group D & More</p>
         <div class="hero-badges">
             <span class="hero-badge live-badge">🔴 Daily 7 PM Live</span>
             <span class="hero-badge">📱 Mobile Friendly</span>
@@ -389,14 +185,13 @@
         </div>
     </section>
 
-    <!-- Stats Bar -->
     <div class="stats-bar">
         <div class="stat-card">
-            <div class="stat-number">20+</div>
+            <div class="stat-number">50+</div>
             <div class="stat-label">Quiz Sets</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">500+</div>
+            <div class="stat-number">1000+</div>
             <div class="stat-label">PYQ Questions</div>
         </div>
         <div class="stat-card">
@@ -409,137 +204,203 @@
         </div>
     </div>
 
-    <!-- Subjects Section -->
     <div class="section-header" id="subjects">
         <h2>📚 Practice by Subject</h2>
-        <p>Haryana Police CET Mains Complete Syllabus Coverage</p>
+        <p>Haryana Police CET Mains Complete Syllabus Coverage — Multiple Sets Available!</p>
     </div>
 
     <div class="subjects-grid">
-        <!-- Active Quizzes -->
-        <a href="general-knowledge/" class="subject-card">
+        <!-- Haryana GK with Multiple Sets -->
+        <div class="subject-card">
             <div class="subject-icon">🚔</div>
             <h3>हरियाणा सामान्य ज्ञान</h3>
-            <p>Haryana GK — Districts, Rivers, History, Culture, Festivals</p>
-            <div class="subject-meta">
-                <span class="meta-badge active">✅ Live</span>
-                <span class="meta-badge">20 Questions</span>
-                <span class="meta-badge">5 Min</span>
+            <p>Haryana GK — Districts, Rivers, History, Culture, Festivals, Famous Personalities</p>
+            <div class="sets-row">
+                <a href="general-knowledge/" class="set-btn active">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+                <a href="#" class="set-btn">Set 3</a>
+                <a href="#" class="set-btn">Set 4</a>
+                <a href="#" class="set-btn">Set 5</a>
             </div>
-        </a>
-
-        <a href="#" class="subject-card">
-            <div class="subject-icon">🧮</div>
-            <h3>मानसिक योग्यता और संख्यात्मक क्षमता</h3>
-            <p>Quantitative Aptitude — Maths, Number System, Ratio, Profit Loss</p>
             <div class="subject-meta">
-                <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">25 Questions</span>
+                <span class="meta-badge active">✅ Set 1 Live</span>
+                <span class="meta-badge">20 Q each</span>
+                <span class="meta-badge">100 Total Q</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
-            <div class="subject-icon">🧠</div>
-            <h3>सामान्य बुद्धि और तर्क (Reasoning)</h3>
-            <p>Logical Reasoning — Coding, Blood Relations, Direction, Analogy</p>
-            <div class="subject-meta">
-                <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">25 Questions</span>
-            </div>
-        </a>
-
-        <a href="#" class="subject-card">
+        <!-- General Knowledge -->
+        <div class="subject-card">
             <div class="subject-icon">🌍</div>
             <h3>सामान्य ज्ञान (General Knowledge)</h3>
-            <p>Indian History, Polity, Constitution, Current Affairs, Awards</p>
+            <p>Indian History, Polity, Constitution, Geography, Current Affairs, Awards</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+                <a href="#" class="set-btn">Set 3</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">30 Questions</span>
+                <span class="meta-badge">25 Q each</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
+        <!-- Reasoning -->
+        <div class="subject-card">
+            <div class="subject-icon">🧠</div>
+            <h3>सामान्य बुद्धि और तर्क (Reasoning)</h3>
+            <p>Logical Reasoning — Coding, Blood Relations, Direction, Analogy, Series</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+                <a href="#" class="set-btn">Set 3</a>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-badge soon">⏳ Coming Soon</span>
+                <span class="meta-badge">25 Q each</span>
+            </div>
+        </div>
+
+        <!-- Maths -->
+        <div class="subject-card">
+            <div class="subject-icon">🧮</div>
+            <h3>मानसिक योग्यता और संख्यात्मक क्षमता</h3>
+            <p>Quantitative Aptitude — Maths, Number System, Ratio, Profit Loss, Time-Work</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+                <a href="#" class="set-btn">Set 3</a>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-badge soon">⏳ Coming Soon</span>
+                <span class="meta-badge">25 Q each</span>
+            </div>
+        </div>
+
+        <!-- General Science -->
+        <div class="subject-card">
             <div class="subject-icon">🔬</div>
             <h3>सामान्य विज्ञान (General Science)</h3>
-            <p>Physics, Chemistry, Biology, Environment, Space Science</p>
+            <p>Physics, Chemistry, Biology, Environment, Space Science, Human Body</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+                <a href="#" class="set-btn">Set 3</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">20 Questions</span>
+                <span class="meta-badge">20 Q each</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
-            <div class="subject-icon">🌾</div>
-            <h3>कृषि (Agriculture)</h3>
-            <p>Crops, Soil, Irrigation, Horticulture, Farm Management</p>
-            <div class="subject-meta">
-                <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">15 Questions</span>
-            </div>
-        </a>
-
-        <a href="#" class="subject-card">
-            <div class="subject-icon">🐄</div>
-            <h3>पशुपालन (Animal Husbandry)</h3>
-            <p>Animal Nutrition, Breeds, Dairy, Diseases, Healthcare</p>
-            <div class="subject-meta">
-                <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">15 Questions</span>
-            </div>
-        </a>
-
-        <a href="#" class="subject-card">
+        <!-- Computer -->
+        <div class="subject-card">
             <div class="subject-icon">💻</div>
             <h3>कंप्यूटर ज्ञान (Computer Knowledge)</h3>
-            <p>Basics, MS Office, Internet, Hardware, Software</p>
+            <p>Basics, MS Office, Internet, Hardware, Software, Networking, Cyber Security</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">10 Questions</span>
+                <span class="meta-badge">15 Q each</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
-            <div class="subject-icon">🇬🇧</div>
-            <h3>General English</h3>
-            <p>Grammar, Vocabulary, Comprehension, Error Detection</p>
+        <!-- Agriculture -->
+        <div class="subject-card">
+            <div class="subject-icon">🌾</div>
+            <h3>कृषि (Agriculture)</h3>
+            <p>Crops, Soil, Irrigation, Horticulture, Farm Management, Agricultural Schemes</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">20 Questions</span>
+                <span class="meta-badge">15 Q each</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
+        <!-- Animal Husbandry -->
+        <div class="subject-card">
+            <div class="subject-icon">🐄</div>
+            <h3>पशुपालन (Animal Husbandry)</h3>
+            <p>Animal Nutrition, Breeds, Dairy, Diseases, Healthcare, Poultry</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-badge soon">⏳ Coming Soon</span>
+                <span class="meta-badge">15 Q each</span>
+            </div>
+        </div>
+
+        <!-- Hindi -->
+        <div class="subject-card">
             <div class="subject-icon">🇮🇳</div>
             <h3>सामान्य हिंदी</h3>
-            <p>व्याकरण, अलंकार, समास, मुहावरे, पत्र लेखन</p>
+            <p>व्याकरण, अलंकार, समास, मुहावरे, पत्र लेखन, अपठित गद्यांश</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">20 Questions</span>
+                <span class="meta-badge">20 Q each</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
-            <div class="subject-icon">📊</div>
-            <h3>Quantitative Aptitude</h3>
-            <p>Maths, Percentage, Time-Work, Average, Interest, Mensuration</p>
+        <!-- English -->
+        <div class="subject-card">
+            <div class="subject-icon">🇬🇧</div>
+            <h3>General English</h3>
+            <p>Grammar, Vocabulary, Comprehension, Error Detection, Synonyms-Antonyms</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">25 Questions</span>
+                <span class="meta-badge">20 Q each</span>
             </div>
-        </a>
+        </div>
 
-        <a href="#" class="subject-card">
-            <div class="subject-icon">🌱</div>
-            <h3>Agriculture Entrance Exams 2026</h3>
-            <p>Special practice set for Agriculture entrance exams</p>
+        <!-- Group D -->
+        <div class="subject-card">
+            <div class="subject-icon">🧹</div>
+            <h3>हरियाणा Group D</h3>
+            <p>Group D Special Practice — Basic GK, Maths, Reasoning, Haryana GK</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Set 1</a>
+                <a href="#" class="set-btn">Set 2</a>
+                <a href="#" class="set-btn">Set 3</a>
+            </div>
             <div class="subject-meta">
                 <span class="meta-badge soon">⏳ Coming Soon</span>
-                <span class="meta-badge">30 Questions</span>
+                <span class="meta-badge">25 Q each</span>
             </div>
-        </a>
+        </div>
+
+        <!-- Current Affairs -->
+        <div class="subject-card">
+            <div class="subject-icon">📰</div>
+            <h3>करंट अफेयर्स (Current Affairs)</h3>
+            <p>Daily, Weekly, Monthly Current Affairs — Haryana, National, International</p>
+            <div class="sets-row">
+                <a href="#" class="set-btn">Jan 2026</a>
+                <a href="#" class="set-btn">Feb 2026</a>
+                <a href="#" class="set-btn">Mar 2026</a>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-badge soon">⏳ Coming Soon</span>
+                <span class="meta-badge">30 Q each</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Exam Pattern Section -->
     <section class="exam-info" id="syllabus">
         <div class="section-header">
             <h2>📋 Haryana Police CET Exam Pattern</h2>
@@ -593,7 +454,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="social-links">
@@ -603,7 +463,7 @@
                 <a href="mailto:youremail@gmail.com" title="Email">📧</a>
             </div>
             <p><strong>🎓 All Educations Adda</strong></p>
-            <p>Free Education for Haryana Students | CET | Police | SSC | Banking</p>
+            <p>Free Education for Haryana Students | CET | Police | Group D</p>
             <p>🔴 Daily Live Quiz at 7:00 PM on YouTube</p>
             <div class="copyright">
                 <p>© 2026 All Educations Adda | Made with ❤️ for Haryana Aspirants</p>
