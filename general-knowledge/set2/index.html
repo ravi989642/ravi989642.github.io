@@ -20,11 +20,7 @@
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
@@ -423,6 +419,17 @@
             box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
 
+        .btn-purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+
         .live-mode {
             display: none;
             background: var(--card-bg);
@@ -532,6 +539,14 @@
             color: #64748b;
         }
 
+        .result-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
         .mode-toggle {
             display: flex;
             justify-content: center;
@@ -600,6 +615,10 @@
 
             .result-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .result-buttons {
+                width: 100%;
             }
         }
 
@@ -710,6 +729,7 @@
         }
     </style>
     <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -718,7 +738,7 @@
             <div class="logo">
                 <div class="logo-icon">🚔</div>
                 <div class="logo-text">
-                    <h1>हरियाणा मेगा जीके क्विज</h1>
+                    <h1>हरियाणा मेगा जीके क्विज - SET 2</h1>
                     <p>राजनीति | खेल | इतिहास | राज्य जीके</p>
                 </div>
             </div>
@@ -804,9 +824,14 @@
                     <div class="label">Accuracy</div>
                 </div>
             </div>
-            <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">
-                🔄 Restart Quiz
-            </button>
+            <div class="result-buttons">
+                <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">
+                    🔄 Restart Set 2
+                </button>
+                <button class="btn btn-purple" onclick="goToSet3()" style="margin: 0 auto;">
+                    🎯 Set 3 Start करें
+                </button>
+            </div>
         </div>
 
     </div>
@@ -818,7 +843,6 @@
 
     <script>
         const questions = [
-            // ========== राजनीति (Political) - 5 Questions ==========
             {
                 id: 1,
                 question: "हरियाणा के पहले मुख्यमंत्री कौन थे?",
@@ -859,8 +883,6 @@
                 explanation: "इनेलो (Indian National Lok Dal) के संस्थापक चौधरी देवी लाल थे। उन्हें 'देश के उपप्रधानमंत्री' के रूप में भी जाना जाता है। बाद में JJP (Jannayak Janta Party) की स्थापना हुई।",
                 keypoint: "INLD = देवी लाल | JJP = दुष्यंत चौटाला"
             },
-
-            // ========== खेल (Sports) - 5 Questions ==========
             {
                 id: 6,
                 question: "हरियाणा के किस शहर को 'खेलों का गढ़' कहा जाता है?",
@@ -901,8 +923,6 @@
                 explanation: "हरियाणा में कुश्ती के प्रशिक्षण स्थल को 'अखाड़ा' कहा जाता है। यहाँ 'गुरु-शिष्य परंपरा' के तहत पहलवानों को प्रशिक्षण दिया जाता है।",
                 keypoint: "अखाड़ा = मिट्टी का मैदान + गुरु की निगरानी में प्रशिक्षण"
             },
-
-            // ========== हरियाणा का इतिहास (History) - 5 Questions ==========
             {
                 id: 11,
                 question: "'हरियाणा' शब्द का शाब्दिक अर्थ क्या है?",
@@ -943,8 +963,6 @@
                 explanation: "5 नवंबर 1556 को पानीपत की दूसरी लड़ाई में अकबर के सेनापति बैरम खान ने हेमू (हेमचंद्र विक्रमादित्य) को हराया। इसके बाद मुगल साम्राज्य की नींव मजबूत हुई।",
                 keypoint: "हेमू = हिंदू सम्राट की उपाधि लेने वाले | युद्ध: 5 नवंबर 1556"
             },
-
-            // ========== हरियाणा राज्य सामान्य ज्ञान (State GK) - 5 Questions ==========
             {
                 id: 16,
                 question: "हरियाणा का राज्य पशु (State Animal) कौन सा है?",
@@ -1154,6 +1172,10 @@
 
             setMode('practice');
             init();
+        }
+
+        function goToSet3() {
+            window.location.href = 'set3.html';
         }
 
         function setMode(mode) {
