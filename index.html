@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>All Educations Adda</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #1e3a8a, #3730a3);
+            color: white; 
+            min-height: 100vh;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.5rem; }
+        .header p { opacity: 0.9; margin-top: 10px; }
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; }
+        .quiz-card {
+            background: white;
+            color: #1e293b;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .quiz-card:hover { transform: translateY(-5px); }
+        .quiz-card h2 { color: #1e3a8a; margin-bottom: 10px; }
+        .quiz-card p { color: #64748b; }
+        .badge {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎓 All Educations Adda</h1>
+        <p>Free Practice Tests for Haryana Government Exams</p>
+    </div>
+    
+    <div class="container">
+        <a href="haryana-police-gk/" class="quiz-card">
+            <h2>🚔 Haryana Police GK Quiz</h2>
+            <p>20 Previous Year Questions with Timer & Score Tracking</p>
+            <span class="badge">20 Questions</span>
+            <span class="badge">5 Minutes</span>
+        </a>
+        
+        <a href="haryana-cet/" class="quiz-card">
+            <h2>📝 Haryana CET Preparation</h2>
+            <p>Common Eligibility Test Practice Sets</p>
+            <span class="badge">Coming Soon</span>
+        </a>
+        
+        <a href="ssc-prep/" class="quiz-card">
+            <h2>🏛️ SSC Preparation</h2>
+            <p>Staff Selection Commission Practice Tests</p>
+            <span class="badge">Coming Soon</span>
+        </a>
+    </div>
+    
+    <div class="footer">
+        <p>📺 YouTube: @alleducationsadda | ⏰ Daily 7 PM Live</p>
+        <p>Made with ❤️ for Haryana Students</p>
+    </div>
+</body>
+</html>
