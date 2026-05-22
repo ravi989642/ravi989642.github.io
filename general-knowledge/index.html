@@ -297,28 +297,6 @@
             box-shadow: 0 4px 15px rgba(245,158,11,0.4);
         }
 
-        .set-card.locked {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .set-card.locked .set-number {
-            background: #94a3b8;
-        }
-
-        .set-card.locked .start-btn {
-            background: #cbd5e1;
-            color: #64748b;
-        }
-
-        .lock-icon {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.2rem;
-            opacity: 0.5;
-        }
-
         /* Progress Section */
         .progress-section {
             background: rgba(0,0,0,0.2);
@@ -349,7 +327,7 @@
             height: 100%;
             background: linear-gradient(90deg, var(--accent), var(--accent-light));
             border-radius: 50px;
-            width: 20%;
+            width: 0%;
             transition: width 0.5s;
         }
 
@@ -395,6 +373,7 @@
             .nav-links { justify-content: center; }
         }
     </style>
+    <base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -431,7 +410,7 @@
 
             <div class="stats-row">
                 <div class="stat-item">
-                    <div class="number">5</div>
+                    <div class="number" id="total-sets">5</div>
                     <div class="label">Practice Sets</div>
                 </div>
                 <div class="stat-item">
@@ -458,7 +437,7 @@
         </div>
 
         <div class="sets-grid">
-            <!-- Set 1 - Active -->
+            <!-- Set 1 -->
             <a href="set1/" class="set-card">
                 <div class="set-number">1</div>
                 <h3>सामान्य ज्ञान<br>Set 1</h3>
@@ -494,14 +473,13 @@
                 <span class="start-btn">▶ Start Quiz</span>
             </a>
 
-            <!-- Set 5 -->
-            <a href="set5/" class="set-card locked">
-                <span class="lock-icon">🔒</span>
+            <!-- Set 5 - Now Active -->
+            <a href="set5/" class="set-card">
                 <div class="set-number">5</div>
                 <h3>सामान्य ज्ञान<br>Set 5</h3>
                 <p class="questions">20 Questions</p>
                 <p class="time">⏱️ 5 Minutes</p>
-                <span class="start-btn">🔒 Coming Soon</span>
+                <span class="start-btn">▶ Start Quiz</span>
             </a>
         </div>
     </section>
@@ -511,26 +489,26 @@
         <div class="progress-container">
             <div class="progress-header">
                 <span>📊 Your Progress</span>
-                <span>1/5 Sets Completed</span>
+                <span id="progress-text">0/5 Sets Completed</span>
             </div>
             <div class="progress-bar-bg">
-                <div class="progress-bar-fill"></div>
+                <div class="progress-bar-fill" id="progress-bar"></div>
             </div>
             <div class="progress-stats">
                 <div class="progress-stat">
-                    <div class="value">0</div>
+                    <div class="value" id="sets-done">0</div>
                     <div class="label">Sets Done</div>
                 </div>
                 <div class="progress-stat">
-                    <div class="value">0</div>
+                    <div class="value" id="questions-solved">0</div>
                     <div class="label">Questions Solved</div>
                 </div>
                 <div class="progress-stat">
-                    <div class="value">0%</div>
+                    <div class="value" id="accuracy">0%</div>
                     <div class="label">Accuracy</div>
                 </div>
                 <div class="progress-stat">
-                    <div class="value">0</div>
+                    <div class="value" id="best-score">0</div>
                     <div class="label">Best Score</div>
                 </div>
             </div>
@@ -542,6 +520,41 @@
         <p>🎓 All Educations Adda | Free Education for Haryana Students</p>
         <p>🔴 Daily Live Quiz at 7:00 PM on YouTube | 📺 @alleducationsadda</p>
     </footer>
+
+    <script>
+        // Progress tracking from localStorage
+        function updateProgress() {
+            let setsDone = 0;
+            let totalQuestions = 0;
+            let totalCorrect = 0;
+            let bestScore = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const setData = localStorage.getItem('set' + i + '_score');
+                if (setData) {
+                    const data = JSON.parse(setData);
+                    setsDone++;
+                    totalQuestions += data.answered || 0;
+                    totalCorrect += data.correct || 0;
+                    const score = data.correct || 0;
+                    if (score > bestScore) bestScore = score;
+                }
+            }
+
+            const accuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+            const progressPercent = (setsDone / 5) * 100;
+
+            document.getElementById('sets-done').textContent = setsDone;
+            document.getElementById('questions-solved').textContent = totalQuestions;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+            document.getElementById('best-score').textContent = bestScore + '/20';
+            document.getElementById('progress-text').textContent = setsDone + '/5 Sets Completed';
+            document.getElementById('progress-bar').style.width = progressPercent + '%';
+        }
+
+        // Update progress on page load
+        updateProgress();
+    </script>
 
 </body>
 </html>
