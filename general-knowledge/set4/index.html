@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हरियाणा जीके मेगा क्विज SET 4 - राजनीति | खेल | इतिहास | राज्य जीके</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #f59e0b;
+            --success: #10b981; --danger: #ef4444; --dark: #1e293b;
+            --light: #f8fafc; --card-bg: #ffffff; --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans Devanagari','Poppins',sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height: 100vh; color: var(--dark); }
+        .header { background: linear-gradient(90deg,#1e3a8a 0%,#3730a3 100%); color: white; padding: 1rem 2rem; box-shadow: var(--shadow-lg); position: sticky; top: 0; z-index: 1000; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg,#f59e0b,#d97706); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(245,158,11,0.4); }
+        .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text p { font-size: 0.75rem; opacity: 0.9; font-weight: 500; }
+        .header-stats { display: flex; gap: 1.5rem; align-items: center; }
+        .stat-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        .stat-box .label { font-size: 0.7rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box .value { font-size: 1.25rem; font-weight: 700; }
+        .timer { background: linear-gradient(135deg,#ef4444,#dc2626); padding: 0.5rem 1.25rem; border-radius: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(239,68,68,0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .progress-section { background: var(--card-bg); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
+        .progress-bar { height: 10px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg,#3b82f6,#8b5cf6); border-radius: 50px; transition: width 0.5s ease; width: 0%; }
+        .question-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .q-btn { width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--border); background: white; font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+        .q-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .q-btn.active { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        .q-btn.answered { background: linear-gradient(135deg,#10b981,#059669); color: white; border-color: #059669; }
+        .question-card { background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); margin-bottom: 1.5rem; border: 1px solid var(--border); animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .question-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .q-badge { background: linear-gradient(135deg,#3b82f6,#8b5cf6); color: white; padding: 0.4rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; }
+        .q-subject { background: #fef3c7; color: #92400e; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+        .question-text { font-size: 1.25rem; font-weight: 600; line-height: 1.6; margin-bottom: 1.5rem; color: var(--dark); }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; font-weight: 500; }
+        .option:hover { border-color: var(--primary); background: #eff6ff; transform: translateX(5px); }
+        .option-letter { width: 36px; height: 36px; border-radius: 50%; background: white; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .option:hover .option-letter { border-color: var(--primary); color: var(--primary); }
+        .option.correct { background: linear-gradient(135deg,#d1fae5,#a7f3d0); border-color: var(--success); color: #065f46; }
+        .option.correct .option-letter { background: var(--success); color: white; border-color: var(--success); }
+        .option.wrong { background: linear-gradient(135deg,#fee2e2,#fecaca); border-color: var(--danger); color: #991b1b; }
+        .option.wrong .option-letter { background: var(--danger); color: white; border-color: var(--danger); }
+        .explanation { margin-top: 1.5rem; padding: 1.25rem; background: linear-gradient(135deg,#eff6ff,#dbeafe); border-radius: 12px; border-left: 4px solid var(--primary); display: none; }
+        .explanation.show { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+        .explanation-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .explanation-text { color: #334155; line-height: 1.7; font-size: 0.95rem; }
+        .key-point { margin-top: 0.75rem; padding: 0.75rem; background: white; border-radius: 8px; border: 1px dashed var(--primary); font-size: 0.9rem; color: #475569; }
+        .key-point strong { color: var(--primary-dark); }
+        .controls { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.875rem 2rem; border-radius: 12px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; font-family: inherit; }
+        .btn-primary { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.4); }
+        .btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-success { background: linear-gradient(135deg,#10b981,#059669); color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16,185,129,0.4); }
+        .btn-purple { background: linear-gradient(135deg,#8b5cf6,#7c3aed); color: white; box-shadow: 0 4px 15px rgba(139,92,246,0.3); }
+        .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139,92,246,0.4); }
+        .live-mode { display: none; background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); }
+        .live-mode.active { display: block; }
+        .live-question { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .live-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+        .live-option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; font-weight: 600; font-size: 1.1rem; }
+        .live-answer { text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--success); margin-bottom: 1rem; }
+        .live-explanation { background: #eff6ff; padding: 1rem; border-radius: 12px; font-size: 1rem; line-height: 1.6; }
+        .result-screen { display: none; text-align: center; padding: 3rem 2rem; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow-lg); }
+        .result-screen.show { display: block; animation: slideIn 0.5s ease; }
+        .result-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .result-score { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg,#3b82f6,#8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .result-message { font-size: 1.25rem; color: #64748b; margin-bottom: 2rem; }
+        .result-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 2rem; }
+        .result-stat { background: #f8fafc; padding: 1rem; border-radius: 12px; }
+        .result-stat .number { font-size: 1.5rem; font-weight: 700; }
+        .result-stat .label { font-size: 0.8rem; color: #64748b; }
+        .result-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem; }
+        .mode-toggle { display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem; }
+        .toggle-btn { padding: 0.5rem 1.5rem; border-radius: 50px; border: 2px solid var(--border); background: white; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; font-size: 0.9rem; }
+        .toggle-btn.active { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; border-color: #2563eb; }
+        .footer { text-align: center; padding: 2rem; color: white; opacity: 0.9; font-size: 0.9rem; }
+        .footer a { color: #fbbf24; text-decoration: none; font-weight: 600; }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .question-card { padding: 1.25rem; }
+            .question-text { font-size: 1.1rem; }
+            .controls { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .live-options { grid-template-columns: 1fr; }
+            .result-stats { grid-template-columns: 1fr; }
+            .result-buttons { width: 100%; }
+        }
+        .scroll-container { height: 500px; overflow: hidden; position: relative; }
+        .scroll-content { animation: scrollUp 300s linear infinite; }
+        @keyframes scrollUp { 0%{transform:translateY(0)} 100%{transform:translateY(-100%)} }
+        .scroll-item { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 12px; border: 1px solid var(--border); }
+        html,body { width: 100%; height: 100%; overflow-x: hidden; }
+        .fullscreen-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg,#f59e0b,#d97706); color: white; border: none; padding: 12px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(245,158,11,0.4); font-family: inherit; font-size: 0.9rem; transition: all 0.3s; }
+        .fullscreen-btn:hover { transform: scale(1.05); }
+        .container { max-width: 100%; width: 100%; margin: 0; padding: 1rem 2rem; }
+        .question-card { max-width: 100%; }
+        @media screen and (min-width: 1400px) { .container { max-width: 1400px; margin: 2rem auto; } }
+    </style>
+    <base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <div class="logo-icon">🚔</div>
+            <div class="logo-text">
+                <h1>हरियाणा मेगा जीके क्विज - SET 4</h1>
+                <p>राजनीति | खेल | इतिहास | राज्य जीके</p>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat-box"><div class="label">Score</div><div class="value" id="score">0</div></div>
+            <div class="stat-box"><div class="label">Question</div><div class="value"><span id="current">1</span>/20</div></div>
+            <div class="timer" id="timer">05:00</div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="mode-toggle">
+        <button class="toggle-btn active" onclick="setMode('practice')">📝 Practice Mode</button>
+        <button class="toggle-btn" onclick="setMode('live')">📺 Live Mode</button>
+        <button class="toggle-btn" onclick="setMode('scroll')">📜 Auto Scroll</button>
+    </div>
+
+    <div class="progress-section">
+        <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-bar"></div></div>
+    </div>
+
+    <div class="question-nav" id="question-nav"></div>
+
+    <div id="practice-mode">
+        <div class="question-card" id="question-card"></div>
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="prevQuestion()" id="prev-btn">← Previous</button>
+            <button class="btn btn-success" onclick="showAnswer()" id="show-ans-btn">✅ Show Answer</button>
+            <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Next →</button>
+        </div>
+    </div>
+
+    <div class="live-mode" id="live-mode">
+        <div class="live-question" id="live-question"></div>
+        <div class="live-options" id="live-options"></div>
+        <div class="live-answer" id="live-answer"></div>
+        <div class="live-explanation" id="live-explanation"></div>
+    </div>
+
+    <div class="live-mode" id="scroll-mode">
+        <div class="scroll-container"><div class="scroll-content" id="scroll-content"></div></div>
+    </div>
+
+    <div class="result-screen" id="result-screen">
+        <div class="result-icon">🎉</div>
+        <div class="result-score" id="final-score">0/20</div>
+        <div class="result-message" id="result-message"></div>
+        <div class="result-stats">
+            <div class="result-stat"><div class="number" id="correct-count">0</div><div class="label">Correct</div></div>
+            <div class="result-stat"><div class="number" id="wrong-count">0</div><div class="label">Wrong</div></div>
+            <div class="result-stat"><div class="number" id="accuracy">0%</div><div class="label">Accuracy</div></div>
+        </div>
+        <div class="result-buttons">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Restart Set 4</button>
+            <button class="btn btn-purple" onclick="goToSet5()">🎯 Set 5 Start करें</button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>🎯 Haryana GK Mega Quiz Set 4 | Politics | Sports | History | State GK | Best of Luck! 🚔</p>
+    <p style="margin-top: 0.5rem;">All Educations Adda</p>
+</footer>
+
+<script>
+const questions = [
+    // ========== राजनीति (Political) - 5 Questions ==========
+    {id:1, question:"हरियाणा के वर्तमान राज्यपाल (Governor) 2026 में कौन हैं?", options:["बंडारू दत्तात्रेय","श्री बंडारू दत्तात्रेय","कैप्टन आनंदीबेन पटेल","श्री मनोहर लाल खट्टर"], correct:0, explanation:"बंडारू दत्तात्रेय हरियाणा के वर्तमान राज्यपाल हैं। वे पहले केंद्रीय मंत्री रह चुके हैं और 2021 से हरियाणा के राज्यपाल के पद पर हैं।", keypoint:"राज्यपाल: बंडारू दत्तात्रेय | 2021 से पद पर | पूर्व केंद्रीय मंत्री"},
+    {id:2, question:"हरियाणा में 'आप' (AAP) पार्टी ने पहली बार विधानसभा चुनाव कब लड़ा?", options:["2014","2019","2024","2019"], correct:1, explanation:"आम आदमी पार्टी (AAP) ने हरियाणा में पहली बार 2019 के विधानसभा चुनाव लड़े। हालांकि 2024 में उन्होंने अपनी पहली सीट जीती।", keypoint:"AAP हरियाणा = 2019 पहला चुनाव | 2024 में पहली जीत"},
+    {id:3, question:"हरियाणा में 'जनता पार्टी' की सरकार कब बनी थी?", options:["1977","1982","1987","1991"], correct:2, explanation:"हरियाणा में जनता पार्टी की सरकार 1987 में बनी थी। देवी लाल इसके मुख्यमंत्री बने थे। यह अस्थायी सरकार थी जो बाद में टूट गई।", keypoint:"1987 = जनता पार्टी सरकार | CM: देवी लाल"},
+    {id:4, question:"हरियाणा में 'मुख्यमंत्री' का कार्यालय कहाँ स्थित है?", options:["रोहतक","चंडीगढ़","गुरुग्राम","फरीदाबाद"], correct:1, explanation:"हरियाणा के मुख्यमंत्री का कार्यालय चंडीगढ़ में स्थित है। चंडीगढ़ हरियाणा और पंजाब दोनों की संयुक्त राजधानी है।", keypoint:"CM Office: चंडीगढ़ | सचिवालय भी चंडीगढ़ में"},
+    {id:5, question:"हरियाणा में 'हाईकोर्ट' कहाँ स्थित है?", options:["दिल्ली","चंडीगढ़","अंबाला","पंचकूला"], correct:1, explanation:"पंजाब और हरियाणा उच्च न्यायालय (High Court) चंडीगढ़ में स्थित है। यह दोनों राज्यों के लिए संयुक्त उच्च न्यायालय है।", keypoint:"High Court: चंडीगढ़ | पंजाब + हरियाणा का संयुक्त High Court"},
+
+    // ========== खेल (Sports) - 5 Questions ==========
+    {id:6, question:"हरियाणा के किस खिलाड़ी ने 2024 पेरिस ओलंपिक में पदक जीता?", options:["नीरज चोपड़ा","मनु भाकर","सरबजोत सिंह","उपरोक्त सभी"], correct:3, explanation:"2024 पेरिस ओलंपिक में हरियाणा के कई खिलाड़ियों ने पदक जीते: नीरज चोपड़ा (रजत - भाला फेंक), मनु भाकर (कांस्य - निशानेबाजी), सरबजोत सिंह (कांस्य - निशानेबाजी)।", keypoint:"2024 पेरिस = हरियाणा का गोल्डन ईयर | नीरज, मनु, सरबजोत सभी पदक"},
+    {id:7, question:"मनु भाकर किस खेल से संबंधित हैं?", options:["कुश्ती","मुक्केबाजी","निशानेबाजी","भारोत्तोलन"], correct:2, explanation:"मनु भाकर निशानेबाजी (Shooting) से संबंधित हैं। उन्होंने 2024 पेरिस ओलंपिक में 10m एयर पिस्टल में कांस्य पदक जीता। वह झज्जर, हरियाणा की हैं।", keypoint:"मनु भाकर = झज्जर, हरियाणा | 10m Air Pistol | 2024 ओलंपिक कांस्य"},
+    {id:8, question:"हरियाणा में 'साईं' (SAI) का कौन सा केंद्र 'खेलों का गढ़' में स्थित है?", options:["गुरुग्राम","रोहतक","पानीपत","हिसार"], correct:1, explanation:"साईं (Sports Authority of India) का क्षेत्रीय केंद्र रोहतक में स्थित है। रोहतक को 'खेलों का गढ़' कहा जाता है।", keypoint:"SAI Center: रोहतक | खेलों का गढ़ = रोहतक"},
+    {id:9, question:"हरियाणा के किस पहलवान ने 'पद्म श्री' 2017 में जीता?", options:["साक्षी मलिक","बबीता कुमारी","विनेश फोगाट","सभी ने"], correct:3, explanation:"2017 में हरियाणा की तीनों पहलवानों — साक्षी मलिक, बबीता कुमारी और विनेश फोगाट — को पद्म श्री से सम्मानित किया गया था।", keypoint:"2017 पद्म श्री = साक्षी + बबीता + विनेश | तीनों पहलवान"},
+    {id:10, question:"'प्रो कबड्डी लीग' में हरियाणा की कौन सी टीम है?", options:["हरियाणा स्टीलर्स","पटना पाइरेट्स","यू मुंबा","बेंगलुरु बुल्स"], correct:0, explanation:"'प्रो कबड्डी लीग' में हरियाणा की टीम 'हरियाणा स्टीलर्स' (Haryana Steelers) है। यह टीम 2017 से लीग में भाग ले रही है।", keypoint:"Haryana Steelers = PKL Team | 2017 से लीग में"},
+
+    // ========== हरियाणा का इतिहास (History) - 5 Questions ==========
+    {id:11, question:"हरियाणा में 'काला अंब' किस ऐतिहासिक घटना से संबंधित है?", options:["महाभारत","पानीपत की लड़ाई","1857 की क्रांति","अकबर का शासन"], correct:2, explanation:"काला अंब (यमुनानगर) 1857 की क्रांति (Indian Rebellion) से संबंधित है। यहाँ अंग्रेजों और विद्रोहियों के बीच एक महत्वपूर्ण युद्ध हुआ था।", keypoint:"काला अंब = 1857 क्रांति | यमुनानगर जिला | अंग्रेज vs विद्रोही"},
+    {id:12, question:"हरियाणा में 'तिलपत' किस प्राचीन नगर का हिस्सा था?", options:["इंद्रप्रस्थ","हस्तिनापुर","मथुरा","तक्षशिला"], correct:0, explanation:"तिलपत (फरीदाबाद के पास) प्राचीन इंद्रप्रस्थ का हिस्सा माना जाता है। महाभारत काल में यह पांडवों की राजधानी का एक उपनगर था।", keypoint:"तिलपत = इंद्रप्रस्थ का हिस्सा | फरीदाबाद | पांडव काल"},
+    {id:13, question:"हरियाणा में 'सिंधु नदी' किस जिले से बहती है?", options:["हिसार","सिरसा","रोहतक","भिवानी"], correct:1, explanation:"सिंधु नदी हरियाणा के सिरसा जिले से गुजरती है। यह हरियाणा की सबसे पश्चिमी नदी है और पाकिस्तान की सीमा के पास बहती है।", keypoint:"सिंधु = सिरसा जिला | हरियाणा की सबसे पश्चिमी नदी"},
+    {id:14, question:"'फतेहाबाद' का नाम किस शासक के नाम पर रखा गया है?", options:["बाबर","हुमायूं","अकबर","फिरोजशाह तुगलक"], correct:3, explanation:"फतेहाबाद का नाम फिरोजशाह तुगलक के नाम पर रखा गया है। उन्होंने इसे 'फिरोजाबाद' या 'फतेहाबाद' नाम दिया था। यह फतेहाबाद जिले का मुख्यालय है।", keypoint:"फतेहाबाद = फिरोजशाह तुगलक | 1352 ई. में बसाया गया"},
+    {id:15, question:"हरियाणा में 'गोहाना' किस ऐतिहासिक स्थल के लिए प्रसिद्ध है?", options:["सोनीपत का किला","रोहतक का मेला","कुरुक्षेत्र का मेला","पानीपत का युद्ध"], correct:0, explanation:"गोहाना सोनीपत जिले में स्थित है और 'गोहाना किला' के लिए प्रसिद्ध है। यह एक प्राचीन किला है जो मध्यकालीन युग का है।", keypoint:"गोहाना = सोनीपत | प्राचीन किला | मध्यकालीन युग"},
+
+    // ========== हरियाणा राज्य सामान्य ज्ञान (State GK) - 5 Questions ==========
+    {id:16, question:"हरियाणा में 'मुर्ग नदी' किस जिले में बहती है?", options:["गुरुग्राम","फरीदाबाद","रेवाड़ी","मेवात"], correct:2, explanation:"मुर्ग नदी रेवाड़ी जिले में बहती है। यह एक छोटी नदी है जो अरावली पहाड़ियों से निकलती है।", keypoint:"मुर्ग नदी = रेवाड़ी | अरावली पहाड़ियों से निकलती है"},
+    {id:17, question:"हरियाणा में 'सूरजकुंड' किस प्रकार का स्थल है?", options:["किला","तालाब","मेला स्थल","विश्वविद्यालय"], correct:2, explanation:"सूरजकुंड फरीदाबाद में एक प्रसिद्ध मेला स्थल है। यहाँ हर साल 'सूरजकुंड अंतर्राष्ट्रीय हस्तशिल्प मेला' लगता है। यह एक कृत्रिम तालाब (पोखर) भी है।", keypoint:"सूरजकुंड = मेला + तालाब | फरीदाबाद | अंतर्राष्ट्रीय हस्तशिल्प मेला"},
+    {id:18, question:"हरियाणा में 'यमुना नगर' पहले किस नाम से जाना जाता था?", options:["अंबाला","जगाधरी","सहारनपुर","कुरुक्षेत्र"], correct:1, explanation:"यमुना नगर पहले 'जगाधरी' के नाम से जाना जाता था। यहाँ ब्रिटिश काल में एक बड़ा छावनी क्षेत्र था। अब यह एक औद्योगिक शहर है।", keypoint:"यमुना नगर = पुराना नाम जगाधरी | ब्रिटिश छावनी | औद्योगिक शहर"},
+    {id:19, question:"हरियाणा में 'CCS हरियाणा कृषि विश्वविद्यालय' कहाँ है?", options:["करनाल","हिसार","रोहतक","पानीपत"], correct:1, explanation:"CCS हरियाणा कृषि विश्वविद्यालय (Chaudhary Charan Singh Haryana Agricultural University) हिसार में स्थित है। यह एशिया का सबसे बड़ा कृषि विश्वविद्यालय माना जाता है।", keypoint:"CCS HAU = हिसार | एशिया का सबसे बड़ा कृषि विश्वविद्यालय"},
+    {id:20, question:"हरियाणा में 'गुजरी महल' किसने बनवाया था?", options:["अकबर","फिरोजशाह तुगलक","शेरशाह सूरी","औरंगजेब"], correct:1, explanation:"गुजरी महल हिसार में फिरोजशाह तुगलक ने बनवाया था। यह उनकी पत्नी गुजरी के नाम पर बना था। अब यह एक संग्रहालय (museum) है।", keypoint:"गुजरी महल = हिसार | फिरोजशाह तुगलक | अब संग्रहालय"}
+];
+
+let currentQuestion=0, score=0, answered=new Array(questions.length).fill(false), selectedOptions=new Array(questions.length).fill(-1), timerInterval, timeLeft=300;
+
+function init(){ renderNav(); renderQuestion(); startTimer(); }
+function renderNav(){ document.getElementById('question-nav').innerHTML=questions.map((q,i)=>`<button class="q-btn ${i===currentQuestion?'active':''} ${answered[i]?'answered':''}" onclick="goToQuestion(${i})">${i+1}</button>`).join(''); }
+function renderQuestion(){ const q=questions[currentQuestion]; document.getElementById('question-card').innerHTML=`<div class="question-header"><span class="q-badge">सवाल ${q.id}</span><span class="q-subject">${getSubject(q.id)}</span></div><div class="question-text">${q.question}</div><div class="options">${q.options.map((opt,i)=>`<div class="option ${selectedOptions[currentQuestion]===i?(i===q.correct?'correct':'wrong'):''} ${answered[currentQuestion]&&i===q.correct?'correct':''}" onclick="selectOption(${i})"><span class="option-letter">${String.fromCharCode(65+i)}</span><span>${opt}</span></div>`).join('')}</div><div class="explanation ${answered[currentQuestion]?'show':''}"><div class="explanation-title">📖 व्याख्या</div><div class="explanation-text">${q.explanation}</div><div class="key-point"><strong>💡 याद रखें:</strong> ${q.keypoint}</div></div>`; document.getElementById('current').textContent=currentQuestion+1; document.getElementById('score').textContent=score; const progress=((currentQuestion+1)/questions.length)*100; document.getElementById('progress-bar').style.width=progress+'%'; document.getElementById('progress-text').textContent=Math.round(progress)+'%'; document.getElementById('prev-btn').disabled=currentQuestion===0; document.getElementById('next-btn').textContent=currentQuestion===questions.length-1?'Finish 🏁':'Next →'; renderNav(); }
+function getSubject(id){ if(id<=5) return "राजनीति"; if(id<=10) return "खेल"; if(id<=15) return "इतिहास"; return "राज्य जीके"; }
+function selectOption(index){ if(answered[currentQuestion]) return; selectedOptions[currentQuestion]=index; answered[currentQuestion]=true; if(index===questions[currentQuestion].correct) score++; renderQuestion(); }
+function showAnswer(){ if(!answered[currentQuestion]){ answered[currentQuestion]=true; renderQuestion(); } }
+function nextQuestion(){ if(currentQuestion<questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
+function prevQuestion(){ if(currentQuestion>0){ currentQuestion--; renderQuestion(); } }
+function goToQuestion(index){ currentQuestion=index; renderQuestion(); }
+function startTimer(){ clearInterval(timerInterval); timerInterval=setInterval(()=>{ timeLeft--; const m=Math.floor(timeLeft/60), s=timeLeft%60; document.getElementById('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; if(timeLeft<=0){ clearInterval(timerInterval); showResults(); } },1000); }
+function showResults(){ clearInterval(timerInterval); document.getElementById('practice-mode').style.display='none'; document.getElementById('live-mode').style.display='none'; document.getElementById('scroll-mode').style.display='none'; document.querySelector('.progress-section').style.display='none'; document.querySelector('.question-nav').style.display='none'; document.querySelector('.mode-toggle').style.display='none'; const correct=answered.filter((a,i)=>a&&selectedOptions[i]===questions[i].correct).length; const wrong=answered.filter((a,i)=>a&&selectedOptions[i]!==questions[i].correct).length; const accuracy=answered.filter(a=>a).length>0?Math.round((correct/answered.filter(a=>a).length)*100):0; document.getElementById('final-score').textContent=`${correct}/${questions.length}`; document.getElementById('correct-count').textContent=correct; document.getElementById('wrong-count').textContent=wrong; document.getElementById('accuracy').textContent=accuracy+'%'; let msg=''; if(accuracy>=80) msg='🌟 उत्कृष्ट! आप बहुत अच्छी तैयारी में हैं!'; else if(accuracy>=60) msg='✅ अच्छा! थोड़ा और अभ्यास करें!'; else if(accuracy>=40) msg='⚠️ औसत! सभी विषयों पर फोकस करें!'; else msg='📚 और अभ्यास की ज़रूरत है! हिम्मत न हारें!'; document.getElementById('result-message').textContent=msg; document.getElementById('result-screen').classList.add('show'); }
+function restartQuiz(){ currentQuestion=0; score=0; answered=new Array(questions.length).fill(false); selectedOptions=new Array(questions.length).fill(-1); timeLeft=300; document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; document.querySelector('.mode-toggle').style.display='flex'; document.getElementById('result-screen').classList.remove('show'); setMode('practice'); init(); }
+function goToSet5(){ window.location.href='set5.html'; }
+function setMode(mode){ document.querySelectorAll('.toggle-btn').forEach(btn=>btn.classList.remove('active')); event.target.classList.add('active'); document.getElementById('practice-mode').style.display='none'; document.getElementById('live-mode').classList.remove('active'); document.getElementById('scroll-mode').classList.remove('active'); document.querySelector('.progress-section').style.display='none'; document.querySelector('.question-nav').style.display='none'; if(mode==='practice'){ document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; renderQuestion(); } else if(mode==='live'){ document.getElementById('live-mode').classList.add('active'); startLiveMode(); } else if(mode==='scroll'){ document.getElementById('scroll-mode').classList.add('active'); startScrollMode(); } }
+let liveIndex=0, liveInterval;
+function startLiveMode(){ clearInterval(liveInterval); liveIndex=0; showLiveQuestion(); liveInterval=setInterval(()=>{ liveIndex++; if(liveIndex>=questions.length) liveIndex=0; showLiveQuestion(); },15000); }
+function showLiveQuestion(){ const q=questions[liveIndex]; document.getElementById('live-question').textContent=`${liveIndex+1}. ${q.question}`; document.getElementById('live-options').innerHTML=q.options.map((opt,i)=>`<div class="live-option">${String.fromCharCode(65+i)}. ${opt}</div>`).join(''); document.getElementById('live-answer').textContent=`✅ सही जवाब: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`; document.getElementById('live-explanation').innerHTML=`<strong>📖 व्याख्या:</strong> ${q.explanation}<br><br><strong>💡 याद रखें:</strong> ${q.keypoint}`; }
+function startScrollMode(){ document.getElementById('scroll-content').innerHTML=questions.map(q=>`<div class="scroll-item"><div style="font-weight:700;color:#1e3a8a;margin-bottom:0.5rem;">सवाल ${q.id}: ${q.question}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.5rem;">${q.options.map((opt,i)=>`<div style="background:#f1f5f9;padding:0.5rem;border-radius:6px;">${String.fromCharCode(65+i)}. ${opt}</div>`).join('')}</div><div style="color:#059669;font-weight:700;">✅ ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}</div><div style="color:#64748b;font-size:0.9rem;margin-top:0.5rem;">💡 ${q.keypoint}</div></div>`).join(''); }
+init();
+</script>
+<button class="fullscreen-btn" onclick="toggleFullscreen()" title="Full Screen">🖥️ Full Screen</button>
+<script>function toggleFullscreen(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen().catch(err=>console.log('Error:',err)); } else { document.exitFullscreen(); } }</script>
+</body>
+</html>
