@@ -233,7 +233,7 @@ function showResults(){ clearInterval(timerInterval); document.getElementById('p
 function restartQuiz(){ currentQuestion=0; score=0; answered=new Array(questions.length).fill(false); selectedOptions=new Array(questions.length).fill(-1); timeLeft=300; document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; document.querySelector('.mode-toggle').style.display='flex'; document.getElementById('result-screen').classList.remove('show'); setMode('practice'); init(); }
 
 function goToSet2() {
-    window.location.href = '../../india-gk/set2/';
+    window.location.href = '../../India-GK/set2/';
 }
 
 function setMode(mode){ 
