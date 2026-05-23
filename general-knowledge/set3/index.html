@@ -177,10 +177,8 @@
             <div class="result-stat"><div class="number" id="accuracy">0%</div><div class="label">Accuracy</div></div>
         </div>
         <div class="result-buttons">
-            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Restart Set 3</button>
-            <button class="btn btn-purple" onclick="goToSet4()" style="margin: 0 auto;">
-    🎯 Set 4 Start करें
-</button>
+            <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">🔄 Restart Set 3</button>
+            <button class="btn btn-purple" onclick="goToSet4()" style="margin: 0 auto;">🎯 Set 4 Start करें</button>
         </div>
     </div>
 </div>
@@ -222,13 +220,16 @@ function renderQuestion(){ const q=questions[currentQuestion]; document.getEleme
 function getSubject(id){ if(id<=5) return "राजनीति"; if(id<=10) return "खेल"; if(id<=15) return "इतिहास"; return "राज्य जीके"; }
 function selectOption(index){ if(answered[currentQuestion]) return; selectedOptions[currentQuestion]=index; answered[currentQuestion]=true; if(index===questions[currentQuestion].correct) score++; renderQuestion(); }
 function showAnswer(){ if(!answered[currentQuestion]){ answered[currentQuestion]=true; renderQuestion(); } }
-function nextQuestion(){ if(currentQuestion<<questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
+function nextQuestion(){ if(currentQuestion < questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
 function prevQuestion(){ if(currentQuestion>0){ currentQuestion--; renderQuestion(); } }
 function goToQuestion(index){ currentQuestion=index; renderQuestion(); }
 function startTimer(){ clearInterval(timerInterval); timerInterval=setInterval(()=>{ timeLeft--; const m=Math.floor(timeLeft/60), s=timeLeft%60; document.getElementById('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; if(timeLeft<=0){ clearInterval(timerInterval); showResults(); } },1000); }
 function showResults(){ clearInterval(timerInterval); document.getElementById('practice-mode').style.display='none'; document.getElementById('live-mode').style.display='none'; document.getElementById('scroll-mode').style.display='none'; document.querySelector('.progress-section').style.display='none'; document.querySelector('.question-nav').style.display='none'; document.querySelector('.mode-toggle').style.display='none'; const correct=answered.filter((a,i)=>a&&selectedOptions[i]===questions[i].correct).length; const wrong=answered.filter((a,i)=>a&&selectedOptions[i]!==questions[i].correct).length; const accuracy=answered.filter(a=>a).length>0?Math.round((correct/answered.filter(a=>a).length)*100):0; document.getElementById('final-score').textContent=`${correct}/${questions.length}`; document.getElementById('correct-count').textContent=correct; document.getElementById('wrong-count').textContent=wrong; document.getElementById('accuracy').textContent=accuracy+'%'; let msg=''; if(accuracy>=80) msg='🌟 उत्कृष्ट! आप बहुत अच्छी तैयारी में हैं!'; else if(accuracy>=60) msg='✅ अच्छा! थोड़ा और अभ्यास करें!'; else if(accuracy>=40) msg='⚠️ औसत! सभी विषयों पर फोकस करें!'; else msg='📚 और अभ्यास की ज़रूरत है! हिम्मत न हारें!'; document.getElementById('result-message').textContent=msg; document.getElementById('result-screen').classList.add('show'); }
 function restartQuiz(){ currentQuestion=0; score=0; answered=new Array(questions.length).fill(false); selectedOptions=new Array(questions.length).fill(-1); timeLeft=300; document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; document.querySelector('.mode-toggle').style.display='flex'; document.getElementById('result-screen').classList.remove('show'); setMode('practice'); init(); }
-function goToSet4() { window.location.href = '../set4/'; }
+
+function goToSet4() {
+    window.location.href = '../set4/';
+}
 
 function setMode(mode){ 
     document.querySelectorAll('.toggle-btn').forEach(btn=>btn.classList.remove('active')); 
