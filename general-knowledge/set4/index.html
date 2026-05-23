@@ -14,7 +14,7 @@
             --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans Devanagari','Poppins',sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height: 100vh; color: var(--dark); }
+        body { font-family: 'Noto Sans Devanagरी','Poppins',sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height: 100vh; color: var(--dark); }
         .header { background: linear-gradient(90deg,#1e3a8a 0%,#3730a3 100%); color: white; padding: 1rem 2rem; box-shadow: var(--shadow-lg); position: sticky; top: 0; z-index: 1000; }
         .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .logo { display: flex; align-items: center; gap: 0.75rem; }
@@ -113,11 +113,10 @@
         @media screen and (min-width: 1400px) { .container { max-width: 1400px; margin: 2rem auto; } }
     </style>
     <base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
-<header class="header">
+<<header class="header">
     <div class="header-content">
         <div class="logo">
             <div class="logo-icon">🚔</div>
@@ -178,41 +177,34 @@
             <div class="result-stat"><div class="number" id="accuracy">0%</div><div class="label">Accuracy</div></div>
         </div>
         <div class="result-buttons">
-            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Restart Set 4</button>
-            <button class="btn btn-purple" onclick="goToSet5()">🎯 Set 5 Start करें</button>
+            <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">🔄 Restart Set 4</button>
+            <button class="btn btn-purple" onclick="goToSet5()" style="margin: 0 auto;">🎯 Set 5 Start करें</button>
         </div>
     </div>
 </div>
 
-<footer class="footer">
+<<footer class="footer">
     <p>🎯 Haryana GK Mega Quiz Set 4 | Politics | Sports | History | State GK | Best of Luck! 🚔</p>
     <p style="margin-top: 0.5rem;">All Educations Adda</p>
 </footer>
 
 <script>
 const questions = [
-    // ========== राजनीति (Political) - 5 Questions ==========
     {id:1, question:"हरियाणा के वर्तमान राज्यपाल (Governor) 2026 में कौन हैं?", options:["बंडारू दत्तात्रेय","श्री बंडारू दत्तात्रेय","कैप्टन आनंदीबेन पटेल","श्री मनोहर लाल खट्टर"], correct:0, explanation:"बंडारू दत्तात्रेय हरियाणा के वर्तमान राज्यपाल हैं। वे पहले केंद्रीय मंत्री रह चुके हैं और 2021 से हरियाणा के राज्यपाल के पद पर हैं।", keypoint:"राज्यपाल: बंडारू दत्तात्रेय | 2021 से पद पर | पूर्व केंद्रीय मंत्री"},
     {id:2, question:"हरियाणा में 'आप' (AAP) पार्टी ने पहली बार विधानसभा चुनाव कब लड़ा?", options:["2014","2019","2024","2019"], correct:1, explanation:"आम आदमी पार्टी (AAP) ने हरियाणा में पहली बार 2019 के विधानसभा चुनाव लड़े। हालांकि 2024 में उन्होंने अपनी पहली सीट जीती।", keypoint:"AAP हरियाणा = 2019 पहला चुनाव | 2024 में पहली जीत"},
     {id:3, question:"हरियाणा में 'जनता पार्टी' की सरकार कब बनी थी?", options:["1977","1982","1987","1991"], correct:2, explanation:"हरियाणा में जनता पार्टी की सरकार 1987 में बनी थी। देवी लाल इसके मुख्यमंत्री बने थे। यह अस्थायी सरकार थी जो बाद में टूट गई।", keypoint:"1987 = जनता पार्टी सरकार | CM: देवी लाल"},
     {id:4, question:"हरियाणा में 'मुख्यमंत्री' का कार्यालय कहाँ स्थित है?", options:["रोहतक","चंडीगढ़","गुरुग्राम","फरीदाबाद"], correct:1, explanation:"हरियाणा के मुख्यमंत्री का कार्यालय चंडीगढ़ में स्थित है। चंडीगढ़ हरियाणा और पंजाब दोनों की संयुक्त राजधानी है।", keypoint:"CM Office: चंडीगढ़ | सचिवालय भी चंडीगढ़ में"},
     {id:5, question:"हरियाणा में 'हाईकोर्ट' कहाँ स्थित है?", options:["दिल्ली","चंडीगढ़","अंबाला","पंचकूला"], correct:1, explanation:"पंजाब और हरियाणा उच्च न्यायालय (High Court) चंडीगढ़ में स्थित है। यह दोनों राज्यों के लिए संयुक्त उच्च न्यायालय है।", keypoint:"High Court: चंडीगढ़ | पंजाब + हरियाणा का संयुक्त High Court"},
-
-    // ========== खेल (Sports) - 5 Questions ==========
     {id:6, question:"हरियाणा के किस खिलाड़ी ने 2024 पेरिस ओलंपिक में पदक जीता?", options:["नीरज चोपड़ा","मनु भाकर","सरबजोत सिंह","उपरोक्त सभी"], correct:3, explanation:"2024 पेरिस ओलंपिक में हरियाणा के कई खिलाड़ियों ने पदक जीते: नीरज चोपड़ा (रजत - भाला फेंक), मनु भाकर (कांस्य - निशानेबाजी), सरबजोत सिंह (कांस्य - निशानेबाजी)।", keypoint:"2024 पेरिस = हरियाणा का गोल्डन ईयर | नीरज, मनु, सरबजोत सभी पदक"},
     {id:7, question:"मनु भाकर किस खेल से संबंधित हैं?", options:["कुश्ती","मुक्केबाजी","निशानेबाजी","भारोत्तोलन"], correct:2, explanation:"मनु भाकर निशानेबाजी (Shooting) से संबंधित हैं। उन्होंने 2024 पेरिस ओलंपिक में 10m एयर पिस्टल में कांस्य पदक जीता। वह झज्जर, हरियाणा की हैं।", keypoint:"मनु भाकर = झज्जर, हरियाणा | 10m Air Pistol | 2024 ओलंपिक कांस्य"},
     {id:8, question:"हरियाणा में 'साईं' (SAI) का कौन सा केंद्र 'खेलों का गढ़' में स्थित है?", options:["गुरुग्राम","रोहतक","पानीपत","हिसार"], correct:1, explanation:"साईं (Sports Authority of India) का क्षेत्रीय केंद्र रोहतक में स्थित है। रोहतक को 'खेलों का गढ़' कहा जाता है।", keypoint:"SAI Center: रोहतक | खेलों का गढ़ = रोहतक"},
     {id:9, question:"हरियाणा के किस पहलवान ने 'पद्म श्री' 2017 में जीता?", options:["साक्षी मलिक","बबीता कुमारी","विनेश फोगाट","सभी ने"], correct:3, explanation:"2017 में हरियाणा की तीनों पहलवानों — साक्षी मलिक, बबीता कुमारी और विनेश फोगाट — को पद्म श्री से सम्मानित किया गया था।", keypoint:"2017 पद्म श्री = साक्षी + बबीता + विनेश | तीनों पहलवान"},
     {id:10, question:"'प्रो कबड्डी लीग' में हरियाणा की कौन सी टीम है?", options:["हरियाणा स्टीलर्स","पटना पाइरेट्स","यू मुंबा","बेंगलुरु बुल्स"], correct:0, explanation:"'प्रो कबड्डी लीग' में हरियाणा की टीम 'हरियाणा स्टीलर्स' (Haryana Steelers) है। यह टीम 2017 से लीग में भाग ले रही है।", keypoint:"Haryana Steelers = PKL Team | 2017 से लीग में"},
-
-    // ========== हरियाणा का इतिहास (History) - 5 Questions ==========
     {id:11, question:"हरियाणा में 'काला अंब' किस ऐतिहासिक घटना से संबंधित है?", options:["महाभारत","पानीपत की लड़ाई","1857 की क्रांति","अकबर का शासन"], correct:2, explanation:"काला अंब (यमुनानगर) 1857 की क्रांति (Indian Rebellion) से संबंधित है। यहाँ अंग्रेजों और विद्रोहियों के बीच एक महत्वपूर्ण युद्ध हुआ था।", keypoint:"काला अंब = 1857 क्रांति | यमुनानगर जिला | अंग्रेज vs विद्रोही"},
     {id:12, question:"हरियाणा में 'तिलपत' किस प्राचीन नगर का हिस्सा था?", options:["इंद्रप्रस्थ","हस्तिनापुर","मथुरा","तक्षशिला"], correct:0, explanation:"तिलपत (फरीदाबाद के पास) प्राचीन इंद्रप्रस्थ का हिस्सा माना जाता है। महाभारत काल में यह पांडवों की राजधानी का एक उपनगर था।", keypoint:"तिलपत = इंद्रप्रस्थ का हिस्सा | फरीदाबाद | पांडव काल"},
     {id:13, question:"हरियाणा में 'सिंधु नदी' किस जिले से बहती है?", options:["हिसार","सिरसा","रोहतक","भिवानी"], correct:1, explanation:"सिंधु नदी हरियाणा के सिरसा जिले से गुजरती है। यह हरियाणा की सबसे पश्चिमी नदी है और पाकिस्तान की सीमा के पास बहती है।", keypoint:"सिंधु = सिरसा जिला | हरियाणा की सबसे पश्चिमी नदी"},
     {id:14, question:"'फतेहाबाद' का नाम किस शासक के नाम पर रखा गया है?", options:["बाबर","हुमायूं","अकबर","फिरोजशाह तुगलक"], correct:3, explanation:"फतेहाबाद का नाम फिरोजशाह तुगलक के नाम पर रखा गया है। उन्होंने इसे 'फिरोजाबाद' या 'फतेहाबाद' नाम दिया था। यह फतेहाबाद जिले का मुख्यालय है।", keypoint:"फतेहाबाद = फिरोजशाह तुगलक | 1352 ई. में बसाया गया"},
     {id:15, question:"हरियाणा में 'गोहाना' किस ऐतिहासिक स्थल के लिए प्रसिद्ध है?", options:["सोनीपत का किला","रोहतक का मेला","कुरुक्षेत्र का मेला","पानीपत का युद्ध"], correct:0, explanation:"गोहाना सोनीपत जिले में स्थित है और 'गोहाना किला' के लिए प्रसिद्ध है। यह एक प्राचीन किला है जो मध्यकालीन युग का है।", keypoint:"गोहाना = सोनीपत | प्राचीन किला | मध्यकालीन युग"},
-
-    // ========== हरियाणा राज्य सामान्य ज्ञान (State GK) - 5 Questions ==========
     {id:16, question:"हरियाणा में 'मुर्ग नदी' किस जिले में बहती है?", options:["गुरुग्राम","फरीदाबाद","रेवाड़ी","मेवात"], correct:2, explanation:"मुर्ग नदी रेवाड़ी जिले में बहती है। यह एक छोटी नदी है जो अरावली पहाड़ियों से निकलती है।", keypoint:"मुर्ग नदी = रेवाड़ी | अरावली पहाड़ियों से निकलती है"},
     {id:17, question:"हरियाणा में 'सूरजकुंड' किस प्रकार का स्थल है?", options:["किला","तालाब","मेला स्थल","विश्वविद्यालय"], correct:2, explanation:"सूरजकुंड फरीदाबाद में एक प्रसिद्ध मेला स्थल है। यहाँ हर साल 'सूरजकुंड अंतर्राष्ट्रीय हस्तशिल्प मेला' लगता है। यह एक कृत्रिम तालाब (पोखर) भी है।", keypoint:"सूरजकुंड = मेला + तालाब | फरीदाबाद | अंतर्राष्ट्रीय हस्तशिल्प मेला"},
     {id:18, question:"हरियाणा में 'यमुना नगर' पहले किस नाम से जाना जाता था?", options:["अंबाला","जगाधरी","सहारनपुर","कुरुक्षेत्र"], correct:1, explanation:"यमुना नगर पहले 'जगाधरी' के नाम से जाना जाता था। यहाँ ब्रिटिश काल में एक बड़ा छावनी क्षेत्र था। अब यह एक औद्योगिक शहर है।", keypoint:"यमुना नगर = पुराना नाम जगाधरी | ब्रिटिश छावनी | औद्योगिक शहर"},
@@ -228,7 +220,7 @@ function renderQuestion(){ const q=questions[currentQuestion]; document.getEleme
 function getSubject(id){ if(id<=5) return "राजनीति"; if(id<=10) return "खेल"; if(id<=15) return "इतिहास"; return "राज्य जीके"; }
 function selectOption(index){ if(answered[currentQuestion]) return; selectedOptions[currentQuestion]=index; answered[currentQuestion]=true; if(index===questions[currentQuestion].correct) score++; renderQuestion(); }
 function showAnswer(){ if(!answered[currentQuestion]){ answered[currentQuestion]=true; renderQuestion(); } }
-function nextQuestion(){ if(currentQuestion<questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
+function nextQuestion(){ if(currentQuestion < questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
 function prevQuestion(){ if(currentQuestion>0){ currentQuestion--; renderQuestion(); } }
 function goToQuestion(index){ currentQuestion=index; renderQuestion(); }
 function startTimer(){ clearInterval(timerInterval); timerInterval=setInterval(()=>{ timeLeft--; const m=Math.floor(timeLeft/60), s=timeLeft%60; document.getElementById('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; if(timeLeft<=0){ clearInterval(timerInterval); showResults(); } },1000); }
@@ -238,7 +230,32 @@ function restartQuiz(){ currentQuestion=0; score=0; answered=new Array(questions
 function goToSet5() {
     window.location.href = '../set5/';
 }
-function setMode(mode){ document.querySelectorAll('.toggle-btn').forEach(btn=>btn.classList.remove('active')); event.target.classList.add('active'); document.getElementById('practice-mode').style.display='none'; document.getElementById('live-mode').classList.remove('active'); document.getElementById('scroll-mode').classList.remove('active'); document.querySelector('.progress-section').style.display='none'; document.querySelector('.question-nav').style.display='none'; if(mode==='practice'){ document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; renderQuestion(); } else if(mode==='live'){ document.getElementById('live-mode').classList.add('active'); startLiveMode(); } else if(mode==='scroll'){ document.getElementById('scroll-mode').classList.add('active'); startScrollMode(); } }
+
+function setMode(mode){ 
+    document.querySelectorAll('.toggle-btn').forEach(btn=>btn.classList.remove('active')); 
+    const btns = document.querySelectorAll('.toggle-btn');
+    if(mode === 'practice') btns[0].classList.add('active');
+    if(mode === 'live') btns[1].classList.add('active');
+    if(mode === 'scroll') btns[2].classList.add('active');
+    document.getElementById('practice-mode').style.display='none'; 
+    document.getElementById('live-mode').classList.remove('active'); 
+    document.getElementById('scroll-mode').classList.remove('active'); 
+    document.querySelector('.progress-section').style.display='none'; 
+    document.querySelector('.question-nav').style.display='none'; 
+    if(mode==='practice'){ 
+        document.getElementById('practice-mode').style.display='block'; 
+        document.querySelector('.progress-section').style.display='block'; 
+        document.querySelector('.question-nav').style.display='flex'; 
+        renderQuestion(); 
+    } else if(mode==='live'){ 
+        document.getElementById('live-mode').classList.add('active'); 
+        startLiveMode(); 
+    } else if(mode==='scroll'){ 
+        document.getElementById('scroll-mode').classList.add('active'); 
+        startScrollMode(); 
+    } 
+}
+
 let liveIndex=0, liveInterval;
 function startLiveMode(){ clearInterval(liveInterval); liveIndex=0; showLiveQuestion(); liveInterval=setInterval(()=>{ liveIndex++; if(liveIndex>=questions.length) liveIndex=0; showLiveQuestion(); },15000); }
 function showLiveQuestion(){ const q=questions[liveIndex]; document.getElementById('live-question').textContent=`${liveIndex+1}. ${q.question}`; document.getElementById('live-options').innerHTML=q.options.map((opt,i)=>`<div class="live-option">${String.fromCharCode(65+i)}. ${opt}</div>`).join(''); document.getElementById('live-answer').textContent=`✅ सही जवाब: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`; document.getElementById('live-explanation').innerHTML=`<strong>📖 व्याख्या:</strong> ${q.explanation}<br><br><strong>💡 याद रखें:</strong> ${q.keypoint}`; }
