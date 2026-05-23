@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India GK Mega Quiz SET 2 - Polity | Constitution | Geography | Current Affairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #f59e0b;
+            --success: #10b981; --danger: #ef4444; --dark: #1e293b;
+            --light: #f8fafc; --card-bg: #ffffff; --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans Devanagरी','Poppins',sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height: 100vh; color: var(--dark); }
+        .header { background: linear-gradient(90deg,#1e3a8a 0%,#3730a3 100%); color: white; padding: 1rem 2rem; box-shadow: var(--shadow-lg); position: sticky; top: 0; z-index: 1000; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg,#f59e0b,#d97706); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(245,158,11,0.4); }
+        .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text p { font-size: 0.75rem; opacity: 0.9; font-weight: 500; }
+        .header-stats { display: flex; gap: 1.5rem; align-items: center; }
+        .stat-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        .stat-box .label { font-size: 0.7rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box .value { font-size: 1.25rem; font-weight: 700; }
+        .timer { background: linear-gradient(135deg,#ef4444,#dc2626); padding: 0.5rem 1.25rem; border-radius: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(239,68,68,0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .progress-section { background: var(--card-bg); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
+        .progress-bar { height: 10px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg,#3b82f6,#8b5cf6); border-radius: 50px; transition: width 0.5s ease; width: 0%; }
+        .question-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .q-btn { width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--border); background: white; font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+        .q-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .q-btn.active { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        .q-btn.answered { background: linear-gradient(135deg,#10b981,#059669); color: white; border-color: #059669; }
+        .question-card { background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); margin-bottom: 1.5rem; border: 1px solid var(--border); animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .question-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .q-badge { background: linear-gradient(135deg,#3b82f6,#8b5cf6); color: white; padding: 0.4rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; }
+        .q-subject { background: #fef3c7; color: #92400e; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+        .question-text { font-size: 1.25rem; font-weight: 600; line-height: 1.6; margin-bottom: 1.5rem; color: var(--dark); }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; font-weight: 500; }
+        .option:hover { border-color: var(--primary); background: #eff6ff; transform: translateX(5px); }
+        .option-letter { width: 36px; height: 36px; border-radius: 50%; background: white; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .option:hover .option-letter { border-color: var(--primary); color: var(--primary); }
+        .option.correct { background: linear-gradient(135deg,#d1fae5,#a7f3d0); border-color: var(--success); color: #065f46; }
+        .option.correct .option-letter { background: var(--success); color: white; border-color: var(--success); }
+        .option.wrong { background: linear-gradient(135deg,#fee2e2,#fecaca); border-color: var(--danger); color: #991b1b; }
+        .option.wrong .option-letter { background: var(--danger); color: white; border-color: var(--danger); }
+        .explanation { margin-top: 1.5rem; padding: 1.25rem; background: linear-gradient(135deg,#eff6ff,#dbeafe); border-radius: 12px; border-left: 4px solid var(--primary); display: none; }
+        .explanation.show { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+        .explanation-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .explanation-text { color: #334155; line-height: 1.7; font-size: 0.95rem; }
+        .key-point { margin-top: 0.75rem; padding: 0.75rem; background: white; border-radius: 8px; border: 1px dashed var(--primary); font-size: 0.9rem; color: #475569; }
+        .key-point strong { color: var(--primary-dark); }
+        .controls { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.875rem 2rem; border-radius: 12px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; font-family: inherit; }
+        .btn-primary { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.4); }
+        .btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-success { background: linear-gradient(135deg,#10b981,#059669); color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16,185,129,0.4); }
+        .btn-purple { background: linear-gradient(135deg,#8b5cf6,#7c3aed); color: white; box-shadow: 0 4px 15px rgba(139,92,246,0.3); }
+        .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139,92,246,0.4); }
+        .live-mode { display: none; background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); }
+        .live-mode.active { display: block; }
+        .live-question { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .live-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+        .live-option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; font-weight: 600; font-size: 1.1rem; }
+        .live-answer { text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--success); margin-bottom: 1rem; }
+        .live-explanation { background: #eff6ff; padding: 1rem; border-radius: 12px; font-size: 1rem; line-height: 1.6; }
+        .result-screen { display: none; text-align: center; padding: 3rem 2rem; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow-lg); }
+        .result-screen.show { display: block; animation: slideIn 0.5s ease; }
+        .result-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .result-score { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg,#3b82f6,#8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .result-message { font-size: 1.25rem; color: #64748b; margin-bottom: 2rem; }
+        .result-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 2rem; }
+        .result-stat { background: #f8fafc; padding: 1rem; border-radius: 12px; }
+        .result-stat .number { font-size: 1.5rem; font-weight: 700; }
+        .result-stat .label { font-size: 0.8rem; color: #64748b; }
+        .result-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem; }
+        .mode-toggle { display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem; }
+        .toggle-btn { padding: 0.5rem 1.5rem; border-radius: 50px; border: 2px solid var(--border); background: white; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; font-size: 0.9rem; }
+        .toggle-btn.active { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; border-color: #2563eb; }
+        .footer { text-align: center; padding: 2rem; color: white; opacity: 0.9; font-size: 0.9rem; }
+        .footer a { color: #fbbf24; text-decoration: none; font-weight: 600; }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .question-card { padding: 1.25rem; }
+            .question-text { font-size: 1.1rem; }
+            .controls { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .live-options { grid-template-columns: 1fr; }
+            .result-stats { grid-template-columns: 1fr; }
+            .result-buttons { width: 100%; }
+        }
+        .scroll-container { height: 500px; overflow: hidden; position: relative; }
+        .scroll-content { animation: scrollUp 300s linear infinite; }
+        @keyframes scrollUp { 0%{transform:translateY(0)} 100%{transform:translateY(-100%)} }
+        .scroll-item { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 12px; border: 1px solid var(--border); }
+        html,body { width: 100%; height: 100%; overflow-x: hidden; }
+        .fullscreen-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg,#f59e0b,#d97706); color: white; border: none; padding: 12px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(245,158,11,0.4); font-family: inherit; font-size: 0.9rem; transition: all 0.3s; }
+        .fullscreen-btn:hover { transform: scale(1.05); }
+        .container { max-width: 100%; width: 100%; margin: 0; padding: 1rem 2rem; }
+        .question-card { max-width: 100%; }
+        @media screen and (min-width: 1400px) { .container { max-width: 1400px; margin: 2rem auto; } }
+    </style>
+    <base target="_blank">
+</head>
+<body>
+
+<<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <div class="logo-icon">🌍</div>
+            <div class="logo-text">
+                <h1>India GK Mega Quiz - SET 2</h1>
+                <p>Polity | Constitution | Geography | Current Affairs | Awards</p>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat-box"><div class="label">Score</div><div class="value" id="score">0</div></div>
+            <div class="stat-box"><div class="label">Question</div><div class="value"><span id="current">1</span>/25</div></div>
+            <div class="timer" id="timer">05:00</div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="mode-toggle">
+        <button class="toggle-btn active" onclick="setMode('practice')">📝 Practice Mode</button>
+        <button class="toggle-btn" onclick="setMode('live')">📺 Live Mode</button>
+        <button class="toggle-btn" onclick="setMode('scroll')">📜 Auto Scroll</button>
+    </div>
+
+    <div class="progress-section">
+        <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-bar"></div></div>
+    </div>
+
+    <div class="question-nav" id="question-nav"></div>
+
+    <div id="practice-mode">
+        <div class="question-card" id="question-card"></div>
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="prevQuestion()" id="prev-btn">← Previous</button>
+            <button class="btn btn-success" onclick="showAnswer()" id="show-ans-btn">✅ Show Answer</button>
+            <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Next →</button>
+        </div>
+    </div>
+
+    <div class="live-mode" id="live-mode">
+        <div class="live-question" id="live-question"></div>
+        <div class="live-options" id="live-options"></div>
+        <div class="live-answer" id="live-answer"></div>
+        <div class="live-explanation" id="live-explanation"></div>
+    </div>
+
+    <div class="live-mode" id="scroll-mode">
+        <div class="scroll-container"><div class="scroll-content" id="scroll-content"></div></div>
+    </div>
+
+    <div class="result-screen" id="result-screen">
+        <div class="result-icon">🎉</div>
+        <div class="result-score" id="final-score">0/25</div>
+        <div class="result-message" id="result-message"></div>
+        <div class="result-stats">
+            <div class="result-stat"><div class="number" id="correct-count">0</div><div class="label">Correct</div></div>
+            <div class="result-stat"><div class="number" id="wrong-count">0</div><div class="label">Wrong</div></div>
+            <div class="result-stat"><div class="number" id="accuracy">0%</div><div class="label">Accuracy</div></div>
+        </div>
+        <div class="result-buttons">
+            <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">🔄 Restart Set 2</button>
+            <button class="btn btn-purple" onclick="goToSet3()" style="margin: 0 auto;">🎯 Set 3 Start करें</button>
+        </div>
+    </div>
+</div>
+
+<<footer class="footer">
+    <p>🎯 India GK Mega Quiz Set 2 | Polity | Constitution | Geography | Current Affairs | Awards | Best of Luck! 🌍</p>
+    <p style="margin-top: 0.5rem;">All Educations Adda</p>
+</footer>
+
+<script>
+const questions = [
+    {id:1, question:"भारतीय संविधान में कितने मौलिक अधिकार (Fundamental Rights) हैं?", options:["4","5","6","7"], correct:2, explanation:"भारतीय संविधान में 6 मौलिक अधिकार हैं: समानता का अधिकार, स्वतंत्रता का अधिकार, शोषण के विरुद्ध अधिकार, धार्मिक स्वतंत्रता, सांस्कृतिक और शैक्षिक अधिकार, और संवैधानिक उपचार का अधिकार।", keypoint:"6 मौलिक अधिकार | अनुच्छेद 12-35 | मूल संरचना का हिस्सा"},
+    {id:2, question:"भारत में 'राज्यसभा' में अधिकतम कितने सदस्य हो सकते हैं?", options:["238","245","250","252"], correct:2, explanation:"राज्यसभा में अधिकतम 250 सदस्य हो सकते हैं। वर्तमान में 245 सदस्य हैं (233 राज्यों से + 12 राष्ट्रपति द्वारा नामित)।", keypoint:"अधिकतम: 250 | वर्तमान: 245 | 12 राष्ट्रपति नामित"},
+    {id:3, question:"भारत का 'सबसे ऊँचा जलप्रपात' कौन सा है?", options:["जोग फॉल्स","कुंचिकल फॉल्स","नोहकालिकाई फॉल्स","डूड़सागर फॉल्स"], correct:1, explanation:"कुंचिकल फॉल्स (Kunchikal Falls) कर्नाटक में स्थित है और 455 मीटर ऊँचा है। यह भारत का सबसे ऊँचा जलप्रपात है। जोग फॉल्स 253 मीटर ऊँचा है।", keypoint:"कुंचिकल फॉल्स = 455 मीटर | कर्नाटक | भारत का सबसे ऊँचा"},
+    {id:4, question:"भारत में 'महिला आरक्षण बिल' (Women's Reservation Bill) कब पारित हुआ?", options:["2023","2022","2019","2014"], correct:0, explanation:"महिला आरक्षण बिल 2023 में पारित हुआ। इसके तहत लोकसभा और राज्य विधानसभाओं में 33% सीटें महिलाओं के लिए आरक्षित होंगी।", keypoint:"2023 में पारित | 33% आरक्षण | लोकसभा + विधानसभा"},
+    {id:5, question:"भारत का 'सबसे बड़ा द्वीप' कौन सा है?", options:["लक्षद्वीप","अंडमान","ग्रेट निकोबार","मध्य अंडमान"], correct:2, explanation:"ग्रेट निकोबार (Great Nicobar) भारत का सबसे बड़ा द्वीप है (1,045 वर्ग किमी)। यह अंडमान और निकोबार द्वीप समूह का हिस्सा है।", keypoint:"ग्रेट निकोबार = 1,045 वर्ग किमी | अंडमान-निकोबार | सबसे बड़ा"},
+    {id:6, question:"भारतीय संविधान में 'मौलिक कर्तव्य' (Fundamental Duties) किस संशोधन से जोड़े गए?", options:["42वां","44वां","52वां","61वां"], correct:0, explanation:"42वां संविधान संशोधन 1976 में 10 मौलिक कर्तव्य जोड़े गए। 86वें संशोधन 2002 में 11वां कर्तव्य (6-14 वर्ष के बच्चों को शिक्षा) जोड़ा गया।", keypoint:"42वां संशोधन = 1976 | 10 कर्तव्य | 86वां = 11वां कर्तव्य"},
+    {id:7, question:"भारत में 'चंद्रयान-3' कब लॉन्च हुआ?", options:["14 जुलाई 2023","14 अगस्त 2023","23 अगस्त 2023","2 सितंबर 2023"], correct:0, explanation:"चंद्रयान-3 14 जुलाई 2023 को लॉन्च हुआ। 23 अगस्त 2023 को चंद्रमा की सतह पर सफल लैंडिंग हुई। भारत चंद्रमा के दक्षिणी ध्रुव पर उतरने वाला पहला देश बना।", keypoint:"लॉन्च: 14 जुलाई 2023 | लैंडिंग: 23 अगस्त 2023 | पहला दक्षिणी ध्रुव"},
+    {id:8, question:"भारत का 'सबसे बड़ा रेगिस्तान' कौन सा है?", options:["थार","कच्छ","लद्दाख","जैसलमेर"], correct:0, explanation:"थार मरुस्थल (Thar Desert) भारत का सबसे बड़ा रेगिस्तान है (2,00,000 वर्ग किमी)। यह राजस्थान, गुजरात, पंजाब और हरियाणा में फैला है।", keypoint:"थार = 2,00,000 वर्ग किमी | राजस्थान + गुजरात + पंजाब + हरियाणा"},
+    {id:9, question:"भारत में 'लोकपाल' (Lokpal) कब स्थापित हुआ?", options:["2013","2014","2019","2020"], correct:2, explanation:"लोकपाल 2019 में स्थापित हुआ। पहले लोकपाल न्यायमूर्ति पिनाकी चंद्र घोष थे। लोकपाल भ्रष्टाचार के आरोप में मंत्रियों, MPs और IAS अधिकारियों की जांच करता है।", keypoint:"लोकपाल = 2019 | पहले: पिनाकी चंद्र घोष | भ्रष्टाचार विरोधी"},
+    {id:10, question:"भारत का 'सबसे लंबा समुद्र तट' कौन सा है?", options:["जुहू बीच","मरीना बीच","कोवलम बीच","पuri बीच"], correct:1, explanation:"मरीना बीच (Marina Beach) चेन्नई में स्थित है और 13 किमी लंबा है। यह भारत का सबसे लंबा और दुनिया का दूसरा सबसे लंबा समुद्र तट है।", keypoint:"मरीना बीच = 13 किमी | चेन्नई | भारत का सबसे लंबा"},
+    {id:11, question:"भारतीय संविधान में 'निर्देशक तत्व' (DPSP) किस अनुच्छेद में हैं?", options:["36-51","38-51","40-51","42-51"], correct:0, explanation:"निर्देशक तत्व राज्य की नीति (DPSP) अनुच्छेद 36-51 में हैं। ये गांधीवादी, समाजवादी और उदारवादी तत्वों पर आधारित हैं।", keypoint:"DPSP = अनुच्छेद 36-51 | गांधीवादी + समाजवादी + उदारवादी"},
+    {id:12, question:"भारत में 'G20 शिखर सम्मेलन' 2023 कहाँ हुआ?", options:["मुंबई","दिल्ली","बैंगलोर","हैदराबाद"], correct:1, explanation:"G20 शिखर सम्मेलन 2023 नई दिल्ली में हुआ। यह 9-10 सितंबर 2023 को हुआ। भारत ने 'वसुधैव कुटुंबकम' (One Earth, One Family, One Future) की थीम रखी।", keypoint:"G20 2023 = नई दिल्ली | 9-10 सितंबर | थीम: वसुधैव कुटुंबकम"},
+    {id:13, question:"भारत का 'सबसे ऊँचा रेलवे स्टेशन' कौन सा है?", options:["शिमला","घूम","दार्जीलिंग","ऊटी"], correct:1, explanation:"घूम (Ghum) रेलवे स्टेशन पश्चिम बंगाल में 2,258 मीटर की ऊँचाई पर स्थित है। यह भारत का सबसे ऊँचा रेलवे स्टेशन है। यह दार्जीलिंग हिमालयन रेलway का हिस्सा है।", keypoint:"घूम = 2,258 मीटर | पश्चिम बंगाल | दार्जीलिंग हिमालयन रेलway"},
+    {id:14, question:"भारत में 'वित्त आयोग' (Finance Commission) कितने वर्षों में बनता है?", options:["3","4","5","6"], correct:2, explanation:"वित्त आयोग हर 5 वर्षों में बनता है। यह केंद्र और राज्यों के बीच राजस्व का बंटवारा तय करता है। 15वां वित्त आयोग 2021-2026 के लिए N.K. सिंह की अध्यक्षता में बना।", keypoint:"हर 5 साल | केंद्र-राज्य राजस्व बंटवारा | 15वां: N.K. सिंह"},
+    {id:15, question:"भारत का 'सबसे बड़ा बांध' कौन सा है?", options:["भाखड़ा नांगल","हीराकुंड","तिहरी","सरदार सरोवर"], correct:1, explanation:"हीराकुंड बांध (Hirakud Dam) ओडिशा में महानदी पर 25.8 किमी लंबा है। यह दुनिया का सबसे लंबा एकांतरिक बांध (earthen dam) है।", keypoint:"हीराकुंड = 25.8 किमी | ओडिशा | दुनिया का सबसे लंबा earthen dam"},
+    {id:16, question:"भारत में 'राष्ट्रीय मानवाधिकार आयोग' (NHRC) कब स्थापित हुआ?", options:["1992","1993","1994","1995"], correct:1, explanation:"NHRC 12 अक्टूबर 1993 को स्थापित हुआ। यह 'संरक्षण अधिनियम 1993' के तहत बना। इसका मुख्यालय नई दिल्ली में है।", keypoint:"NHRC = 12 अक्टूबर 1993 | मुख्यालय: नई दिल्ली | मानवाधिकार संरक्षण अधिनियम"},
+    {id:17, question:"भारत में 'स्टेच्यू ऑफ यूनिटी' (Statue of Unity) किसकी है?", options:["महात्मा गांधी","सरदार पटेल","सुभाष चंद्र बोस","डॉ. अंबेडकर"], correct:1, explanation:"स्टेच्यू ऑफ यूनिटी सरदार वल्लभभाई पटेल की 182 मीटर ऊँची प्रतिमा है। यह गुजरात के केवडिया में नर्मदा नदी के किनारे स्थित है। यह दुनिया की सबसे ऊँची प्रतिमा है।", keypoint:"सरदार पटेल = 182 मीटर | गुजरात | दुनिया की सबसे ऊँची प्रतिमा"},
+    {id:18, question:"भारतीय संविधान में 'मौलिक अधिकारों' की अवधारणा किस देश से ली गई?", options:["ब्रिटेन","अमेरिका","कनाडा","आयरलैंड"], correct:1, explanation:"मौलिक अधिकारों की अवधारणा अमेरिका के संविधान से ली गई। अमेरिकी 'बिल ऑफ राइट्स' से प्रेरित होकर भारत में मौलिक अधिकार अनुच्छेद 12-35 में शामिल किए गए।", keypoint:"अमेरिका से | बिल ऑफ राइट्स | अनुच्छेद 12-35"},
+    {id:19, question:"भारत में 'सुप्रीम कोर्ट' में वर्तमान में कितने जज हो सकते हैं?", options:["30","31","33","34"], correct:3, explanation:"सुप्रीम कोर्ट में वर्तमान में 34 जज हो सकते हैं (1 CJI + 33 अन्य)। यह संख्या 2019 में बढ़ाई गई थी (पहले 31 थी)।", keypoint:"अधिकतम: 34 | 1 CJI + 33 | 2019 में बढ़ाया गया"},
+    {id:20, question:"भारत का 'सबसे बड़ा तटीय राज्य' कौन सा है?", options:["गुजरात","महाराष्ट्र","आंध्र प्रदेश","तमिलनाडु"], correct:0, explanation:"गुजरात भारत का सबसे बड़ा तटीय राज्य है (1,600 किमी समुद्र तट)। इसके बाद आंध्र प्रदेश (974 किमी) और तमिलनाडु (906 किमी) आते हैं।", keypoint:"गुजरात = 1,600 किमी | सबसे लंबा समुद्र तट | कच्छ की खाड़ी"},
+    {id:21, question:"भारत में 'आधार' (UIDAI) कब स्थापित हुआ?", options:["2009","2010","2011","2012"], correct:0, explanation:"UIDAI 12 जुलाई 2009 को स्थापित हुआ। आधार भारत का 12 अंकों का विशिष्ट पहचान संख्या है। यह दुनिया का सबसे बड़ा बायोमेट्रिक ID कार्ड कार्यक्रम है।", keypoint:"UIDAI = 12 जुलाई 2009 | 12 अंकों का आधार | दुनिया का सबसे बड़ा बायोमेट्रिक"},
+    {id:22, question:"भारत में 'राष्ट्रीय शिक्षा नीति' (NEP) 2020 कब लागू हुई?", options:["2019","2020","2021","2022"], correct:1, explanation:"राष्ट्रीय शिक्षा नीति (NEP) 2020 29 जुलाई 2020 को लागू हुई। यह 34 साल बाद पहली नई शिक्षा नीति थी। इसमें 5+3+3+4 की शिक्षा संरचना प्रस्तावित की गई।", keypoint:"NEP 2020 = 29 जुलाई 2020 | 5+3+3+4 संरचना | 34 साल बाद नई नीति"},
+    {id:23, question:"भारत का 'सबसे ऊँचा पर्वत शिखर' कौन सा है?", options:["Nanda Devi","Kanchenjunga","K2","Mount Everest"], correct:1, explanation:"कंचनजंगा (Kanchenjunga) 8,586 मीटर ऊँचा है और भारत का सबसे ऊँचा पर्वत है। यह सिक्किम में नेपाल सीमा पर स्थित है। K2 पाकिस्तान अधिकृत कश्मीर में है।", keypoint:"कंचनजंगा = 8,586 मीटर | सिक्किम | भारत का सबसे ऊँचा"},
+    {id:24, question:"भारत में 'मनरेगा' (MGNREGA) कब शुरू हुआ?", options:["2004","2005","2006","2007"], correct:1, explanation:"मनरेगा (Mahatma Gandhi National Rural Employment Guarantee Act) 2 फरवरी 2006 को शुरू हुआ। यह ग्रामीण क्षेत्रों में 100 दिन की गारंटीशुदा रोजगार देता है।", keypoint:"मनरेगा = 2 फरवरी 2006 | 100 दिन गारंटीशुदा रोजगार | ग्रामीण क्षेत्र"},
+    {id:25, question:"भारत का 'सबसे बड़ा तालाब/झील' कौन सा है?", options:["डल झील","चिल्का झील","सांभर झील","वेम्बनाड झील"], correct:1, explanation:"चिल्का झील (Chilika Lake) ओडिशा में 1,100 वर्ग किमी क्षेत्रफल में फैली है। यह भारत की सबसे बड़ी नमकीन पानी की झील है।", keypoint:"चिल्का = 1,100 वर्ग किमी | ओडिशा | सबसे बड़ी नमकीन पानी की झील"}
+];
+
+let currentQuestion=0, score=0, answered=new Array(questions.length).fill(false), selectedOptions=new Array(questions.length).fill(-1), timerInterval, timeLeft=300;
+
+function init(){ renderNav(); renderQuestion(); startTimer(); }
+function renderNav(){ document.getElementById('question-nav').innerHTML=questions.map((q,i)=>`<button class="q-btn ${i===currentQuestion?'active':''} ${answered[i]?'answered':''}" onclick="goToQuestion(${i})">${i+1}</button>`).join(''); }
+function renderQuestion(){ const q=questions[currentQuestion]; document.getElementById('question-card').innerHTML=`<div class="question-header"><span class="q-badge">सवाल ${q.id}</span><span class="q-subject">${getSubject(q.id)}</span></div><div class="question-text">${q.question}</div><div class="options">${q.options.map((opt,i)=>`<div class="option ${selectedOptions[currentQuestion]===i?(i===q.correct?'correct':'wrong'):''} ${answered[currentQuestion]&&i===q.correct?'correct':''}" onclick="selectOption(${i})"><span class="option-letter">${String.fromCharCode(65+i)}</span><span>${opt}</span></div>`).join('')}</div><div class="explanation ${answered[currentQuestion]?'show':''}"><div class="explanation-title">📖 व्याख्या</div><div class="explanation-text">${q.explanation}</div><div class="key-point"><strong>💡 याद रखें:</strong> ${q.keypoint}</div></div>`; document.getElementById('current').textContent=currentQuestion+1; document.getElementById('score').textContent=score; const progress=((currentQuestion+1)/questions.length)*100; document.getElementById('progress-bar').style.width=progress+'%'; document.getElementById('progress-text').textContent=Math.round(progress)+'%'; document.getElementById('prev-btn').disabled=currentQuestion===0; document.getElementById('next-btn').textContent=currentQuestion===questions.length-1?'Finish 🏁':'Next →'; renderNav(); }
+function getSubject(id){ if(id<=5) return "संविधान"; if(id<=10) return "भूगोल"; if(id<=15) return "करंट"; if(id<=20) return "पॉलिटी"; return "अवार्ड्स"; }
+function selectOption(index){ if(answered[currentQuestion]) return; selectedOptions[currentQuestion]=index; answered[currentQuestion]=true; if(index===questions[currentQuestion].correct) score++; renderQuestion(); }
+function showAnswer(){ if(!answered[currentQuestion]){ answered[currentQuestion]=true; renderQuestion(); } }
+function nextQuestion(){ if(currentQuestion < questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
+function prevQuestion(){ if(currentQuestion>0){ currentQuestion--; renderQuestion(); } }
+function goToQuestion(index){ currentQuestion=index; renderQuestion(); }
+function startTimer(){ clearInterval(timerInterval); timerInterval=setInterval(()=>{ timeLeft--; const m=Math.floor(timeLeft/60), s=timeLeft%60; document.getElementById('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; if(timeLeft<=0){ clearInterval(timerInterval); showResults(); } },1000); }
+function showResults(){ clearInterval(timerInterval); document.getElementById('practice-mode').style.display='none'; document.getElementById('live-mode').style.display='none'; document.getElementById('scroll-mode').style.display='none'; document.querySelector('.progress-section').style.display='none'; document.querySelector('.question-nav').style.display='none'; document.querySelector('.mode-toggle').style.display='none'; const correct=answered.filter((a,i)=>a&&selectedOptions[i]===questions[i].correct).length; const wrong=answered.filter((a,i)=>a&&selectedOptions[i]!==questions[i].correct).length; const accuracy=answered.filter(a=>a).length>0?Math.round((correct/answered.filter(a=>a).length)*100):0; document.getElementById('final-score').textContent=`${correct}/${questions.length}`; document.getElementById('correct-count').textContent=correct; document.getElementById('wrong-count').textContent=wrong; document.getElementById('accuracy').textContent=accuracy+'%'; let msg=''; if(accuracy>=80) msg='🌟 उत्कृष्ट! आप बहुत अच्छी तैयारी में हैं!'; else if(accuracy>=60) msg='✅ अच्छा! थोड़ा और अभ्यास करें!'; else if(accuracy>=40) msg='⚠️ औसत! सभी विषयों पर फोकस करें!'; else msg='📚 और अभ्यास की ज़रूरत है! हिम्मत न हारें!'; document.getElementById('result-message').textContent=msg; document.getElementById('result-screen').classList.add('show'); }
+function restartQuiz(){ currentQuestion=0; score=0; answered=new Array(questions.length).fill(false); selectedOptions=new Array(questions.length).fill(-1); timeLeft=300; document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; document.querySelector('.mode-toggle').style.display='flex'; document.getElementById('result-screen').classList.remove('show'); setMode('practice'); init(); }
+
+function goToSet3() {
+    window.location.href = '../set3/';
+}
+
+function setMode(mode){ 
+    document.querySelectorAll('.toggle-btn').forEach(btn=>btn.classList.remove('active')); 
+    const btns = document.querySelectorAll('.toggle-btn');
+    if(mode === 'practice') btns[0].classList.add('active');
+    if(mode === 'live') btns[1].classList.add('active');
+    if(mode === 'scroll') btns[2].classList.add('active');
+    document.getElementById('practice-mode').style.display='none'; 
+    document.getElementById('live-mode').classList.remove('active'); 
+    document.getElementById('scroll-mode').classList.remove('active'); 
+    document.querySelector('.progress-section').style.display='none'; 
+    document.querySelector('.question-nav').style.display='none'; 
+    if(mode==='practice'){ 
+        document.getElementById('practice-mode').style.display='block'; 
+        document.querySelector('.progress-section').style.display='block'; 
+        document.querySelector('.question-nav').style.display='flex'; 
+        renderQuestion(); 
+    } else if(mode==='live'){ 
+        document.getElementById('live-mode').classList.add('active'); 
+        startLiveMode(); 
+    } else if(mode==='scroll'){ 
+        document.getElementById('scroll-mode').classList.add('active'); 
+        startScrollMode(); 
+    } 
+}
+
+let liveIndex=0, liveInterval;
+function startLiveMode(){ clearInterval(liveInterval); liveIndex=0; showLiveQuestion(); liveInterval=setInterval(()=>{ liveIndex++; if(liveIndex>=questions.length) liveIndex=0; showLiveQuestion(); },15000); }
+function showLiveQuestion(){ const q=questions[liveIndex]; document.getElementById('live-question').textContent=`${liveIndex+1}. ${q.question}`; document.getElementById('live-options').innerHTML=q.options.map((opt,i)=>`<div class="live-option">${String.fromCharCode(65+i)}. ${opt}</div>`).join(''); document.getElementById('live-answer').textContent=`✅ सही जवाब: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`; document.getElementById('live-explanation').innerHTML=`<strong>📖 व्याख्या:</strong> ${q.explanation}<br><br><strong>💡 याद रखें:</strong> ${q.keypoint}`; }
+function startScrollMode(){ document.getElementById('scroll-content').innerHTML=questions.map(q=>`<div class="scroll-item"><div style="font-weight:700;color:#1e3a8a;margin-bottom:0.5rem;">सवाल ${q.id}: ${q.question}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.5rem;">${q.options.map((opt,i)=>`<div style="background:#f1f5f9;padding:0.5rem;border-radius:6px;">${String.fromCharCode(65+i)}. ${opt}</div>`).join('')}</div><div style="color:#059669;font-weight:700;">✅ ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}</div><div style="color:#64748b;font-size:0.9rem;margin-top:0.5rem;">💡 ${q.keypoint}</div></div>`).join(''); }
+init();
+</script>
+<button class="fullscreen-btn" onclick="toggleFullscreen()" title="Full Screen">🖥️ Full Screen</button>
+<script>function toggleFullscreen(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen().catch(err=>console.log('Error:',err)); } else { document.exitFullscreen(); } }</script>
+</body>
+</html>
