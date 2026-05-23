@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India GK Mega Quiz SET 3 - History | Polity | Geography | Current Affairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #f59e0b;
+            --success: #10b981; --danger: #ef4444; --dark: #1e293b;
+            --light: #f8fafc; --card-bg: #ffffff; --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans Devanagरी','Poppins',sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height: 100vh; color: var(--dark); }
+        .header { background: linear-gradient(90deg,#1e3a8a 0%,#3730a3 100%); color: white; padding: 1rem 2rem; box-shadow: var(--shadow-lg); position: sticky; top: 0; z-index: 1000; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg,#f59e0b,#d97706); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(245,158,11,0.4); }
+        .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text p { font-size: 0.75rem; opacity: 0.9; font-weight: 500; }
+        .header-stats { display: flex; gap: 1.5rem; align-items: center; }
+        .stat-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        .stat-box .label { font-size: 0.7rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box .value { font-size: 1.25rem; font-weight: 700; }
+        .timer { background: linear-gradient(135deg,#ef4444,#dc2626); padding: 0.5rem 1.25rem; border-radius: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(239,68,68,0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .progress-section { background: var(--card-bg); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
+        .progress-bar { height: 10px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg,#3b82f6,#8b5cf6); border-radius: 50px; transition: width 0.5s ease; width: 0%; }
+        .question-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .q-btn { width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--border); background: white; font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+        .q-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .q-btn.active { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        .q-btn.answered { background: linear-gradient(135deg,#10b981,#059669); color: white; border-color: #059669; }
+        .question-card { background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); margin-bottom: 1.5rem; border: 1px solid var(--border); animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .question-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .q-badge { background: linear-gradient(135deg,#3b82f6,#8b5cf6); color: white; padding: 0.4rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; }
+        .q-subject { background: #fef3c7; color: #92400e; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+        .question-text { font-size: 1.25rem; font-weight: 600; line-height: 1.6; margin-bottom: 1.5rem; color: var(--dark); }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; font-weight: 500; }
+        .option:hover { border-color: var(--primary); background: #eff6ff; transform: translateX(5px); }
+        .option-letter { width: 36px; height: 36px; border-radius: 50%; background: white; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .option:hover .option-letter { border-color: var(--primary); color: var(--primary); }
+        .option.correct { background: linear-gradient(135deg,#d1fae5,#a7f3d0); border-color: var(--success); color: #065f46; }
+        .option.correct .option-letter { background: var(--success); color: white; border-color: var(--success); }
+        .option.wrong { background: linear-gradient(135deg,#fee2e2,#fecaca); border-color: var(--danger); color: #991b1b; }
+        .option.wrong .option-letter { background: var(--danger); color: white; border-color: var(--danger); }
+        .explanation { margin-top: 1.5rem; padding: 1.25rem; background: linear-gradient(135deg,#eff6ff,#dbeafe); border-radius: 12px; border-left: 4px solid var(--primary); display: none; }
+        .explanation.show { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+        .explanation-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .explanation-text { color: #334155; line-height: 1.7; font-size: 0.95rem; }
+        .key-point { margin-top: 0.75rem; padding: 0.75rem; background: white; border-radius: 8px; border: 1px dashed var(--primary); font-size: 0.9rem; color: #475569; }
+        .key-point strong { color: var(--primary-dark); }
+        .controls { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.875rem 2rem; border-radius: 12px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; font-family: inherit; }
+        .btn-primary { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.4); }
+        .btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-success { background: linear-gradient(135deg,#10b981,#059669); color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16,185,129,0.4); }
+        .btn-purple { background: linear-gradient(135deg,#8b5cf6,#7c3aed); color: white; box-shadow: 0 4px 15px rgba(139,92,246,0.3); }
+        .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139,92,246,0.4); }
+        .live-mode { display: none; background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); }
+        .live-mode.active { display: block; }
+        .live-question { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .live-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+        .live-option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; font-weight: 600; font-size: 1.1rem; }
+        .live-answer { text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--success); margin-bottom: 1rem; }
+        .live-explanation { background: #eff6ff; padding: 1rem; border-radius: 12px; font-size: 1rem; line-height: 1.6; }
+        .result-screen { display: none; text-align: center; padding: 3rem 2rem; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow-lg); }
+        .result-screen.show { display: block; animation: slideIn 0.5s ease; }
+        .result-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .result-score { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg,#3b82f6,#8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .result-message { font-size: 1.25rem; color: #64748b; margin-bottom: 2rem; }
+        .result-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 2rem; }
+        .result-stat { background: #f8fafc; padding: 1rem; border-radius: 12px; }
+        .result-stat .number { font-size: 1.5rem; font-weight: 700; }
+        .result-stat .label { font-size: 0.8rem; color: #64748b; }
+        .result-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem; }
+        .mode-toggle { display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem; }
+        .toggle-btn { padding: 0.5rem 1.5rem; border-radius: 50px; border: 2px solid var(--border); background: white; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; font-size: 0.9rem; }
+        .toggle-btn.active { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; border-color: #2563eb; }
+        .footer { text-align: center; padding: 2rem; color: white; opacity: 0.9; font-size: 0.9rem; }
+        .footer a { color: #fbbf24; text-decoration: none; font-weight: 600; }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .question-card { padding: 1.25rem; }
+            .question-text { font-size: 1.1rem; }
+            .controls { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .live-options { grid-template-columns: 1fr; }
+            .result-stats { grid-template-columns: 1fr; }
+            .result-buttons { width: 100%; }
+        }
+        .scroll-container { height: 500px; overflow: hidden; position: relative; }
+        .scroll-content { animation: scrollUp 300s linear infinite; }
+        @keyframes scrollUp { 0%{transform:translateY(0)} 100%{transform:translateY(-100%)} }
+        .scroll-item { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 12px; border: 1px solid var(--border); }
+        html,body { width: 100%; height: 100%; overflow-x: hidden; }
+        .fullscreen-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg,#f59e0b,#d97706); color: white; border: none; padding: 12px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(245,158,11,0.4); font-family: inherit; font-size: 0.9rem; transition: all 0.3s; }
+        .fullscreen-btn:hover { transform: scale(1.05); }
+        .container { max-width: 100%; width: 100%; margin: 0; padding: 1rem 2rem; }
+        .question-card { max-width: 100%; }
+        @media screen and (min-width: 1400px) { .container { max-width: 1400px; margin: 2rem auto; } }
+    </style>
+    <base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <div class="logo-icon">🌍</div>
+            <div class="logo-text">
+                <h1>India GK Mega Quiz - SET 3</h1>
+                <p>History | Polity | Geography | Current Affairs | Awards</p>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat-box"><div class="label">Score</div><div class="value" id="score">0</div></div>
+            <div class="stat-box"><div class="label">Question</div><div class="value"><span id="current">1</span>/25</div></div>
+            <div class="timer" id="timer">05:00</div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="mode-toggle">
+        <button class="toggle-btn active" onclick="setMode('practice')">📝 Practice Mode</button>
+        <button class="toggle-btn" onclick="setMode('live')">📺 Live Mode</button>
+        <button class="toggle-btn" onclick="setMode('scroll')">📜 Auto Scroll</button>
+    </div>
+
+    <div class="progress-section">
+        <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-bar"></div></div>
+    </div>
+
+    <div class="question-nav" id="question-nav"></div>
+
+    <div id="practice-mode">
+        <div class="question-card" id="question-card"></div>
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="prevQuestion()" id="prev-btn">← Previous</button>
+            <button class="btn btn-success" onclick="showAnswer()" id="show-ans-btn">✅ Show Answer</button>
+            <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Next →</button>
+        </div>
+    </div>
+
+    <div class="live-mode" id="live-mode">
+        <div class="live-question" id="live-question"></div>
+        <div class="live-options" id="live-options"></div>
+        <div class="live-answer" id="live-answer"></div>
+        <div class="live-explanation" id="live-explanation"></div>
+    </div>
+
+    <div class="live-mode" id="scroll-mode">
+        <div class="scroll-container"><div class="scroll-content" id="scroll-content"></div></div>
+    </div>
+
+    <div class="result-screen" id="result-screen">
+        <div class="result-icon">🎉</div>
+        <div class="result-score" id="final-score">0/25</div>
+        <div class="result-message" id="result-message"></div>
+        <div class="result-stats">
+            <div class="result-stat"><div class="number" id="correct-count">0</div><div class="label">Correct</div></div>
+            <div class="result-stat"><div class="number" id="wrong-count">0</div><div class="label">Wrong</div></div>
+            <div class="result-stat"><div class="number" id="accuracy">0%</div><div class="label">Accuracy</div></div>
+        </div>
+        <div class="result-buttons">
+            <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">🔄 Restart Set 3</button>
+            <button class="btn btn-purple" onclick="goToHome()" style="margin: 0 auto;">🏠 Back to Home</button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>🎯 India GK Mega Quiz Set 3 | History | Polity | Geography | Current Affairs | Awards | Best of Luck! 🌍</p>
+    <p style="margin-top: 0.5rem;">All Educations Adda</p>
+</footer>
+
+<script>
+const questions = [
+    {
+        id: 1,
+        question: "भारत की पहली महिला प्रधानमंत्री कौन थीं?",
+        options: ['सरोजिनी नायडू', 'इंदिरा गांधी', 'प्रतिभा पाटिल', 'सुचेता कृपलानी'],
+        correct: 1,
+        explanation: "इंदिरा गांधी भारत की पहली महिला प्रधानमंत्री थीं। उन्होंने 24 जनवरी 1966 को शपथ ली। वे दो बार (1966-77 और 1980-84) PM रहीं।",
+        keypoint: "पहली महिला PM: इंदिरा गांधी | 1966 | दो कार्यकाल"
+    },
+    {
+        id: 2,
+        question: "संविधान की कौन सी अनुसूची राज्यों और केंद्र शासित प्रदेशों की सूची बताती है?",
+        options: ['पहली अनुसूची', 'दूसरी अनुसूची', 'चौथी अनुसूची', 'पाँचवीं अनुसूची'],
+        correct: 0,
+        explanation: "पहली अनुसूची (First Schedule) में भारत के सभी राज्यों और केंद्र शासित प्रदेशों के नाम और क्षेत्रफल की सूची है।",
+        keypoint: "First Schedule = राज्य + केंद्र शासित प्रदेशों की सूची"
+    },
+    {
+        id: 3,
+        question: "कर्क रेखा (Tropic of Cancer) कितने भारतीय राज्यों से गुजरती है?",
+        options: ['6', '7', '8', '9'],
+        correct: 2,
+        explanation: "कर्क रेखा 8 भारतीय राज्यों से गुजरती है: गुजरात, राजस्थान, मध्य प्रदेश, छत्तीसगढ़, झारखंड, पश्चिम बंगाल, त्रिपुरा और मिजोरम।",
+        keypoint: "Tropic of Cancer = 8 राज्य | गुजरात से मिजोरम"
+    },
+    {
+        id: 4,
+        question: "'भारत की खोज' (Discovery of India) किसने लिखी?",
+        options: ['महात्मा गांधी', 'जवाहरलाल नेहरू', 'सरदार पटेल', 'भगत सिंह'],
+        correct: 1,
+        explanation: "'Discovery of India' जवाहरलाल नेहरू ने 1946 में लिखी। यह भारत के इतिहास, संस्कृति और दर्शन पर आधारित पुस्तक है।",
+        keypoint: "Discovery of India = जवाहरलाल नेहरू | 1946"
+    },
+    {
+        id: 5,
+        question: "भारत की सबसे बड़ी मीठे पानी की झील कौन सी है?",
+        options: ['डल झील', 'वुलर झील', 'चिल्का झील', 'सांभर झील'],
+        correct: 1,
+        explanation: "वुलर झील (Wular Lake) जम्मू-कश्मीर में है और भारत की सबसे बड़ी मीठे पानी की झील है। इसका क्षेत्रफल 30-260 वर्ग किमी (मौसम के अनुसार) है।",
+        keypoint: "वुलर झील = सबसे बड़ी मीठे पानी की झील | जम्मू-कश्मीर"
+    },
+    {
+        id: 6,
+        question: "भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई?",
+        options: ['1883', '1885', '1887', '1890'],
+        correct: 1,
+        explanation: "भारतीय राष्ट्रीय कांग्रेस की स्थापना 28 दिसंबर 1885 को हुई। पहला अधिवेशन बंबई में हुआ और ए.ओ. ह्यूम (A.O. Hume) संस्थापक थे।",
+        keypoint: "INC स्थापना: 28 दिसंबर 1885 | बंबई | A.O. Hume"
+    },
+    {
+        id: 7,
+        question: "संविधान के किस अनुच्छेद में 'शिक्षा का अधिकार' (RTE) है?",
+        options: ['अनुच्छेद 21', 'अनुच्छेद 21A', 'अनुच्छेद 29', 'अनुच्छेद 45'],
+        correct: 1,
+        explanation: "अनुच्छेद 21A में 6-14 वर्ष के बच्चों के लिए निःशुल्क और अनिवार्य शिक्षा का अधिकार है। यह 86वें संविधान संशोधन (2002) से जोड़ा गया।",
+        keypoint: "Article 21A = RTE | 6-14 वर्ष | 86वां संशोधन 2002"
+    },
+    {
+        id: 8,
+        question: "भारत में सबसे लंबी समुद्र तट रेखा (Coastline) किस राज्य की है?",
+        options: ['महाराष्ट्र', 'तमिलनाडु', 'आंध्र प्रदेश', 'गुजरात'],
+        correct: 3,
+        explanation: "गुजरात की समुद्र तट रेखा सबसे लंबी है (लगभग 1,600 किमी)। इसके बाद आंध्र प्रदेश (लगभग 974 किमी) और तमिलनाडु आते हैं।",
+        keypoint: "सबसे लंबी coastline: गुजरात | ~1,600 किमी"
+    },
+    {
+        id: 9,
+        question: "स्वतंत्र भारत के पहले गवर्नर जनरल (Governor-General) कौन थे?",
+        options: ['लॉर्ड माउंटबैटन', 'लॉर्ड क्लाइव', 'वारेन हेस्टिंग्स', 'कर्जन'],
+        correct: 0,
+        explanation: "लॉर्ड माउंटबैटन स्वतंत्र भारत के पहले गवर्नर जनरल थे (15 अगस्त 1947 – 21 जून 1948)। उनके बाद सी. राजगोपालाचारी पहले भारतीय गवर्नर जनरल बने।",
+        keypoint: "पहले GG: लॉर्ड माउंटबैटन | 15 अगस्त 1947 | पहले भारतीय: राजगोपालाचारी"
+    },
+    {
+        id: 10,
+        question: "'भारतीय पुनर्जागरण के जनक' (Father of Indian Renaissance) किसे कहा जाता है?",
+        options: ['स्वामी विवेकानंद', 'राजा राम मोहन राय', 'दयानंद सरस्वती', 'रवींद्रनाथ टैगोर'],
+        correct: 1,
+        explanation: "राजा राम मोहन राय को 'भारतीय पुनर्जागरण के जनक' कहा जाता है। उन्होंने 1828 में ब्रह्म समाज की स्थापना की और सती प्रथा का विरोध किया।",
+        keypoint: "Father of Indian Renaissance: राजा राम मोहन राय | ब्रह्म समाज 1828 | सती विरोध"
+    },
+    {
+        id: 11,
+        question: "वित्त आयोग (Finance Commission) का गठन संविधान के किस अनुच्छेद के तहत होता है?",
+        options: ['अनुच्छेद 275', 'अनुच्छेद 280', 'अनुच्छेद 352', 'अनुच्छेद 356'],
+        correct: 1,
+        explanation: "अनुच्छेद 280 के तहत हर 5 वर्ष में वित्त आयोग का गठन होता है। यह केंद्र और राज्यों के बीच राजस्व का बंटवारा तय करता है।",
+        keypoint: "Article 280 = Finance Commission | हर 5 साल | केंद्र-राज्य राजस्व बंटवारा"
+    },
+    {
+        id: 12,
+        question: "किस नदी को 'बिहार का शोक' (Sorrow of Bihar) कहा जाता है?",
+        options: ['गंडक', 'कोसी', 'घाघरा', 'सोन'],
+        correct: 1,
+        explanation: "कोसी नदी को 'बिहार का शोक' कहा जाता है क्योंकि यह बाढ़ और अपनी धारा बदलने के लिए कुख्यात है। इसे 'भारत का सैंडपीपर' भी कहते हैं।",
+        keypoint: "Sorrow of Bihar: कोसी | बाढ़ + धारा परिवर्तन | 'भारत का सैंडपीपर'"
+    },
+    {
+        id: 13,
+        question: "आज़ाद हिंद फौज (INA) की स्थापना किसने की?",
+        options: ['भगत सिंह', 'चंद्रशेखर आज़ाद', 'सुभाष चंद्र बोस', 'सरदार पटेल'],
+        correct: 2,
+        explanation: "सुभाष चंद्र बोस ने 1943 में सिंगापुर में आज़ाद हिंद फौज (INA) की स्थापना की। उनका प्रसिद्ध नारा 'तुम मुझे खून दो, मैं तुम्हें आज़ादी दूंगा' था।",
+        keypoint: "INA स्थापना: सुभाष चंद्र बोस | 1943 | सिंगापुर | 'दिल्ली चलो'"
+    },
+    {
+        id: 14,
+        question: "राज्यसभा (Rajya Sabha) सदस्य का कार्यकाल कितना होता है?",
+        options: ['4 वर्ष', '5 वर्ष', '6 वर्ष', '7 वर्ष'],
+        correct: 2,
+        explanation: "राज्यसभा सदस्य का कार्यकाल 6 वर्ष होता है। हर 2 साल में 1/3 सदस्य सेवानिवृत्त होते हैं। संविधान के अनुच्छेद 83 में यह प्रावधान है।",
+        keypoint: "Rajya Sabha tenure = 6 साल | हर 2 साल 1/3 retire | Article 83"
+    },
+    {
+        id: 15,
+        question: "भारत का सबसे छोटा राज्य (क्षेत्रफल के अनुसार) कौन सा है?",
+        options: ['सिक्किम', 'गोवा', 'त्रिपुरा', 'नागालैंड'],
+        correct: 1,
+        explanation: "गोवा भारत का सबसे छोटा राज्य है (3,702 वर्ग किमी)। यह 30 मई 1987 को 25वां राज्य बना। इससे पहले यह केंद्र शासित प्रदेश था।",
+        keypoint: "सबसे छोटा राज्य: गोवा | 3,702 वर्ग किमी | 25वां राज्य 1987"
+    },
+    {
+        id: 16,
+        question: "प्लासी का युद्ध (Battle of Plassey) कब लड़ा गया?",
+        options: ['1753', '1757', '1764', '1767'],
+        correct: 1,
+        explanation: "प्लासी का युद्ध 23 जून 1757 को लड़ा गया। इसमें रॉबर्ट क्लाइव ने सिराजुद्दौला को हराया। यह भारत में ब्रिटिश राज की शुरुआत माना जाता है।",
+        keypoint: "प्लासी: 23 जून 1757 | क्लाइव vs सिराजुद्दौला | ब्रिटिश शुरुआत"
+    },
+    {
+        id: 17,
+        question: "मुख्य चुनाव आयुक्त (Chief Election Commissioner) की नियुक्ति कौन करता है?",
+        options: ['प्रधानमंत्री', 'राष्ट्रपति', 'लोकसभा अध्यक्ष', 'उच्चतम न्यायालय'],
+        correct: 1,
+        explanation: "मुख्य चुनाव आयुक्त की नियुक्ति राष्ट्रपति करता है। यह संविधान के अनुच्छेद 324 में वर्णित है। CEC का कार्यकाल 6 वर्ष या 65 वर्ष की आयु whichever is earlier।",
+        keypoint: "CEC नियुक्ति: राष्ट्रपति | Article 324 | 6 साल / 65 साल"
+    },
+    {
+        id: 18,
+        question: "किस राज्य को 'भारत का मसाला बगीचा' (Spice Garden of India) कहा जाता है?",
+        options: ['कर्नाटक', 'तमिलनाडु', 'केरल', 'आंध्र प्रदेश'],
+        correct: 2,
+        explanation: "केरल को 'Spice Garden of India' कहा जाता है क्योंकि यहाँ काली मिर्च, दालचीनी, लौंग, इलायची आदि मसालों की खेती होती है।",
+        keypoint: "Spice Garden: केरल | काली मिर्च, दालचीनी, लौंग, इलायची"
+    },
+    {
+        id: 19,
+        question: "अंतरिक्ष में जाने वाली पहली भारतीय महिला कौन थीं?",
+        options: ['सुनीता विलियम्स', 'कल्पना चावला', 'वलentina तेरेश्कोवा', 'राकेश शर्मा'],
+        correct: 1,
+        explanation: "कल्पना चावला पहली भारतीय महिला थीं जो अंतरिक्ष गईं (1997, STS-87 मिशन)। उनका जन्म कर्णाल, हरियाणा में हुआ था। 2003 में कोलंबिया दुर्घटना में उनकी मृत्यु हुई।",
+        keypoint: "पहली भारतीय महिला अंतरिक्ष: कल्पना चावला | 1997 | कर्णाल, हरियाणा"
+    },
+    {
+        id: 20,
+        question: "उपराष्ट्रपति (Vice President) का चुनाव कौन करता है?",
+        options: ['सभी राज्य विधानसभाएं', 'लोकसभा + राज्यसभा सदस्य', 'केवल राज्यसभा', 'निर्वाचक मंडल'],
+        correct: 1,
+        explanation: "उपराष्ट्रपति का चुनाव संसद के दोनों सदनों (लोकसभा + राज्यसभा) के सदस्य करते हैं। यह अनुच्छेद 66 के तहत होता है। कार्यकाल 5 वर्ष होता है।",
+        keypoint: "VP चुनाव: LS + RS सदस्य | Article 66 | 5 साल कार्यकाल"
+    },
+    {
+        id: 21,
+        question: "विश्व की सबसे बड़ी डेल्टा (Delta) कौन सी है?",
+        options: ['नाइल डेल्टा', 'सुंदरबन डेल्टा', 'मिसिसिपी डेल्टा', 'गंगा डेल्टा'],
+        correct: 1,
+        explanation: "सुंदरबन डेल्टा विश्व की सबसे बड़ी डेल्टा है। यह गंगा-ब्रह्मपुत्र नदी प्रणाली द्वारा बनाई गई है और बंगाल की खाड़ी में फैली है। यह UNESCO विश्व धरोहर स्थल भी है।",
+        keypoint: "सबसे बड़ी डेल्टा: सुंदरबन | गंगा-ब्रह्मपुत्र | UNESCO Heritage"
+    },
+    {
+        id: 22,
+        question: "राष्ट्रपति बनने के लिए न्यूनतम आयु (Minimum Age) कितनी होनी चाहिए?",
+        options: ['25 वर्ष', '30 वर्ष', '35 वर्ष', '40 वर्ष'],
+        correct: 2,
+        explanation: "राष्ट्रपति बनने के लिए न्यूनतम आयु 35 वर्ष है (अनुच्छेद 58)। उपराष्ट्रपति के लिए भी 35, लोकसभा सदस्य के लिए 25 और राज्यसभा के लिए 30 वर्ष है।",
+        keypoint: "President min age: 35 | VP: 35 | LS: 25 | RS: 30 | Article 58"
+    },
+    {
+        id: 23,
+        question: "किस पंचवर्षीय योजना (Five Year Plan) पर महालनोबिस मॉडल (Mahalanobis Model) आधारित थी?",
+        options: ['पहली', 'दूसरी', 'तीसरी', 'चौथी'],
+        correct: 1,
+        explanation: "दूसरी पंचवर्षीय योजना (1956-61) प्रो. पी.सी. महालनोबिस के मॉडल पर आधारित थी। इसमें भारी उद्योगों (Heavy Industries) पर जोर दिया गया था।",
+        keypoint: "दूसरी योजना = महालनोबिस मॉडल | 1956-61 | Heavy Industries"
+    },
+    {
+        id: 24,
+        question: "भारत के पहले उप-प्रधानमंत्री (Deputy Prime Minister) कौन थे?",
+        options: ['जवाहरलाल नेहरू', 'सरदार वल्लभभाई पटेल', 'मोरारजी देसाई', 'लाल बहादुर शास्त्री'],
+        correct: 1,
+        explanation: "सरदार वल्लभभाई पटेल भारत के पहले उप-प्रधानमंत्री (15 अगस्त 1947 – 15 दिसंबर 1950) और गृह मंत्री थे। उन्हें 'लोह पुरुष' (Iron Man of India) कहा जाता है।",
+        keypoint: "पहले DPM: सरदार पटेल | 1947-50 | Iron Man | गृह मंत्री"
+    },
+    {
+        id: 25,
+        question: "भारत और श्रीलंका को कौन सी जलसंधि (Strait) अलग करती है?",
+        options: ['बाब-एल-मंदेब', 'मोज़ेम्बिक', 'पाक जलसंधि', 'मन्नार की खाड़ी'],
+        correct: 3,
+        explanation: "मन्नार की खाड़ी (Gulf of Mannar) और पाक जलसंधि (Palk Strait) भारत और श्रीलंका को अलग करते हैं। पाक जलसंधि की चौड़ाई लगभग 40-85 किमी है। रामसेतु इसी क्षेत्र में है।",
+        keypoint: "India-Sri Lanka: पाक जलसंधि + Gulf of Mannar | रामसेतु | 40-85 किमी चौड़ाई"
+    }];
+
+let currentQuestion=0, score=0, answered=new Array(questions.length).fill(false), selectedOptions=new Array(questions.length).fill(-1), timerInterval, timeLeft=300;
+
+function init(){ renderNav(); renderQuestion(); startTimer(); }
+function renderNav(){ document.getElementById('question-nav').innerHTML=questions.map((q,i)=>`<button class="q-btn ${i===currentQuestion?'active':''} ${answered[i]?'answered':''}" onclick="goToQuestion(${i})">${i+1}</button>`).join(''); }
+function renderQuestion(){ const q=questions[currentQuestion]; document.getElementById('question-card').innerHTML=`<div class="question-header"><span class="q-badge">सवाल ${q.id}</span><span class="q-subject">${getSubject(q.id)}</span></div><div class="question-text">${q.question}</div><div class="options">${q.options.map((opt,i)=>`<div class="option ${selectedOptions[currentQuestion]===i?(i===q.correct?'correct':'wrong'):''} ${answered[currentQuestion]&&i===q.correct?'correct':''}" onclick="selectOption(${i})"><span class="option-letter">${String.fromCharCode(65+i)}</span><span>${opt}</span></div>`).join('')}</div><div class="explanation ${answered[currentQuestion]?'show':''}"><div class="explanation-title">📖 व्याख्या</div><div class="explanation-text">${q.explanation}</div><div class="key-point"><strong>💡 याद रखें:</strong> ${q.keypoint}</div></div>`; document.getElementById('current').textContent=currentQuestion+1; document.getElementById('score').textContent=score; const progress=((currentQuestion+1)/questions.length)*100; document.getElementById('progress-bar').style.width=progress+'%'; document.getElementById('progress-text').textContent=Math.round(progress)+'%'; document.getElementById('prev-btn').disabled=currentQuestion===0; document.getElementById('next-btn').textContent=currentQuestion===questions.length-1?'Finish 🏁':'Next →'; renderNav(); }
+function getSubject(id){ if(id<=5) return "इतिहास"; if(id<=10) return "भूगोल"; if(id<=15) return "संविधान"; if(id<=20) return "करंट"; return "अवार्ड्स"; }
+function selectOption(index){ if(answered[currentQuestion]) return; selectedOptions[currentQuestion]=index; answered[currentQuestion]=true; if(index===questions[currentQuestion].correct) score++; renderQuestion(); }
+function showAnswer(){ if(!answered[currentQuestion]){ answered[currentQuestion]=true; renderQuestion(); } }
+function nextQuestion(){ if(currentQuestion < questions.length-1){ currentQuestion++; renderQuestion(); } else showResults(); }
+function prevQuestion(){ if(currentQuestion>0){ currentQuestion--; renderQuestion(); } }
+function goToQuestion(index){ currentQuestion=index; renderQuestion(); }
+function startTimer(){ clearInterval(timerInterval); timerInterval=setInterval(()=>{ timeLeft--; const m=Math.floor(timeLeft/60), s=timeLeft%60; document.getElementById('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; if(timeLeft<=0){ clearInterval(timerInterval); showResults(); } },1000); }
+function showResults(){ clearInterval(timerInterval); document.getElementById('practice-mode').style.display='none'; document.getElementById('live-mode').style.display='none'; document.getElementById('scroll-mode').style.display='none'; document.querySelector('.progress-section').style.display='none'; document.querySelector('.question-nav').style.display='none'; document.querySelector('.mode-toggle').style.display='none'; const correct=answered.filter((a,i)=>a&&selectedOptions[i]===questions[i].correct).length; const wrong=answered.filter((a,i)=>a&&selectedOptions[i]!==questions[i].correct).length; const accuracy=answered.filter(a=>a).length>0?Math.round((correct/answered.filter(a=>a).length)*100):0; document.getElementById('final-score').textContent=`${correct}/${questions.length}`; document.getElementById('correct-count').textContent=correct; document.getElementById('wrong-count').textContent=wrong; document.getElementById('accuracy').textContent=accuracy+'%'; let msg=''; if(accuracy>=80) msg='🌟 उत्कृष्ट! आप बहुत अच्छी तैयारी में हैं!'; else if(accuracy>=60) msg='✅ अच्छा! थोड़ा और अभ्यास करें!'; else if(accuracy>=40) msg='⚠️ औसत! सभी विषयों पर फोकस करें!'; else msg='📚 और अभ्यास की ज़रूरत है! हिम्मत न हारें!'; document.getElementById('result-message').textContent=msg; document.getElementById('result-screen').classList.add('show'); }
+function restartQuiz(){ currentQuestion=0; score=0; answered=new Array(questions.length).fill(false); selectedOptions=new Array(questions.length).fill(-1); timeLeft=300; document.getElementById('practice-mode').style.display='block'; document.querySelector('.progress-section').style.display='block'; document.querySelector('.question-nav').style.display='flex'; document.querySelector('.mode-toggle').style.display='flex'; document.getElementById('result-screen').classList.remove('show'); setMode('practice'); init(); }
+
+function goToHome() {
+    window.location.href = '../../index.html';
+}
+
+function setMode(mode){ 
+    document.querySelectorAll('.toggle-btn').forEach(btn=>btn.classList.remove('active')); 
+    const btns = document.querySelectorAll('.toggle-btn');
+    if(mode === 'practice') btns[0].classList.add('active');
+    if(mode === 'live') btns[1].classList.add('active');
+    if(mode === 'scroll') btns[2].classList.add('active');
+    document.getElementById('practice-mode').style.display='none'; 
+    document.getElementById('live-mode').classList.remove('active'); 
+    document.getElementById('scroll-mode').classList.remove('active'); 
+    document.querySelector('.progress-section').style.display='none'; 
+    document.querySelector('.question-nav').style.display='none'; 
+    if(mode==='practice'){ 
+        document.getElementById('practice-mode').style.display='block'; 
+        document.querySelector('.progress-section').style.display='block'; 
+        document.querySelector('.question-nav').style.display='flex'; 
+        renderQuestion(); 
+    } else if(mode==='live'){ 
+        document.getElementById('live-mode').classList.add('active'); 
+        startLiveMode(); 
+    } else if(mode==='scroll'){ 
+        document.getElementById('scroll-mode').classList.add('active'); 
+        startScrollMode(); 
+    } 
+}
+
+let liveIndex=0, liveInterval;
+function startLiveMode(){ clearInterval(liveInterval); liveIndex=0; showLiveQuestion(); liveInterval=setInterval(()=>{ liveIndex++; if(liveIndex>=questions.length) liveIndex=0; showLiveQuestion(); },15000); }
+function showLiveQuestion(){ const q=questions[liveIndex]; document.getElementById('live-question').textContent=`${liveIndex+1}. ${q.question}`; document.getElementById('live-options').innerHTML=q.options.map((opt,i)=>`<div class="live-option">${String.fromCharCode(65+i)}. ${opt}</div>`).join(''); document.getElementById('live-answer').textContent=`✅ सही जवाब: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`; document.getElementById('live-explanation').innerHTML=`<strong>📖 व्याख्या:</strong> ${q.explanation}<br><br><strong>💡 याद रखें:</strong> ${q.keypoint}`; }
+function startScrollMode(){ document.getElementById('scroll-content').innerHTML=questions.map(q=>`<div class="scroll-item"><div style="font-weight:700;color:#1e3a8a;margin-bottom:0.5rem;">सवाल ${q.id}: ${q.question}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.5rem;">${q.options.map((opt,i)=>`<div style="background:#f1f5f9;padding:0.5rem;border-radius:6px;">${String.fromCharCode(65+i)}. ${opt}</div>`).join('')}</div><div style="color:#059669;font-weight:700;">✅ ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}</div><div style="color:#64748b;font-size:0.9rem;margin-top:0.5rem;">💡 ${q.keypoint}</div></div>`).join(''); }
+init();
+</script>
+<button class="fullscreen-btn" onclick="toggleFullscreen()" title="Full Screen">🖥️ Full Screen</button>
+<script>function toggleFullscreen(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen().catch(err=>console.log('Error:',err)); } else { document.exitFullscreen(); } }</script>
+</body>
+</html>/
