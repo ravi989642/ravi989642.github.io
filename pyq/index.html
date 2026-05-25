@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haryana PYQ Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1146ff,#6c2bd9);
+    min-height:100vh;
+    color:#111;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+.top-header{
+    width:100%;
+    background:#15002e;
+    color:white;
+    padding:14px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-icon{
+    width:60px;
+    height:60px;
+    background:linear-gradient(45deg,#ffb300,#ff6f00);
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+.logo-text h1{
+    font-size:28px;
+}
+
+.logo-text p{
+    font-size:14px;
+    opacity:0.8;
+}
+
+.header-stats{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.08);
+    padding:12px 22px;
+    border-radius:14px;
+    text-align:center;
+    min-width:120px;
+}
+
+.stat-box h2{
+    font-size:28px;
+    margin-top:5px;
+}
+
+.timer{
+    background:linear-gradient(45deg,#ff3d00,#ff1744);
+}
+
+/* MAIN */
+
+.main-container{
+    width:100%;
+    padding:25px;
+}
+
+.mode-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.mode-btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.active-mode{
+    background:linear-gradient(45deg,#0066ff,#00a2ff);
+    color:white;
+}
+
+.normal-mode{
+    background:white;
+}
+
+.mode-btn:hover{
+    transform:translateY(-3px);
+}
+
+.progress-area{
+    width:100%;
+    background:white;
+    padding:20px;
+    border-radius:24px;
+    margin-bottom:20px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.progress-bar{
+    width:100%;
+    height:14px;
+    background:#ddd;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:5%;
+    background:linear-gradient(45deg,#0059ff,#7c4dff);
+    border-radius:50px;
+}
+
+/* LAYOUT */
+
+.quiz-layout{
+    display:grid;
+    grid-template-columns:2.2fr 1fr;
+    gap:25px;
+}
+
+.quiz-card{
+    background:white;
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.15);
+}
+
+.question-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.badges{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.badge{
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.blue-badge{
+    background:#dfe8ff;
+    color:#1d4fff;
+}
+
+.yellow-badge{
+    background:#fff0cf;
+    color:#d47d00;
+}
+
+.green-badge{
+    background:#ddffe8;
+    color:#00a84f;
+}
+
+.red-badge{
+    background:#ffe3e3;
+    color:#ff2d2d;
+}
+
+.question{
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.option{
+    border:2px solid #e0e0e0;
+    border-radius:18px;
+    padding:22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    cursor:pointer;
+    transition:0.3s;
+    background:white;
+}
+
+.option:hover{
+    border-color:#3d5afe;
+    transform:translateX(4px);
+}
+
+.option-letter{
+    min-width:52px;
+    min-height:52px;
+    border-radius:50%;
+    border:2px solid #3d5afe;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:22px;
+    color:#3d5afe;
+}
+
+.option.correct{
+    background:#e7ffef;
+    border-color:#00b84f;
+}
+
+.option.correct .option-letter{
+    border-color:#00b84f;
+    color:#00b84f;
+}
+
+.option.wrong{
+    background:#ffe7e7;
+    border-color:#ff3131;
+}
+
+.option.wrong .option-letter{
+    border-color:#ff3131;
+    color:#ff3131;
+}
+
+/* EXTRA KNOWLEDGE */
+
+.extra-box{
+    margin-top:25px;
+    background:#f1fff5;
+    border:2px solid #c5ffd5;
+    padding:20px;
+    border-radius:18px;
+}
+
+.extra-box h3{
+    color:#00a651;
+    margin-bottom:10px;
+}
+
+.extra-box p{
+    line-height:1.8;
+    font-size:16px;
+}
+
+/* BUTTONS */
+
+.bottom-buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.action-btn{
+    border:none;
+    padding:16px 35px;
+    border-radius:16px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.prev-btn{
+    background:white;
+    border:2px solid #ddd;
+}
+
+.answer-btn{
+    background:linear-gradient(45deg,#00b84f,#00d96b);
+    color:white;
+}
+
+.next-btn{
+    background:linear-gradient(45deg,#0066ff,#00a2ff);
+    color:white;
+}
+
+.action-btn:hover{
+    transform:scale(1.04);
+}
+
+/* RIGHT PANEL */
+
+.side-panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.side-card{
+    background:white;
+    border-radius:24px;
+    padding:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.side-card h3{
+    margin-bottom:18px;
+    color:#4527a0;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.q-number{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f2f2f2;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.active-q{
+    background:linear-gradient(45deg,#0059ff,#6c2bd9);
+    color:white;
+}
+
+.performance{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.performance-box{
+    background:#f8f8f8;
+    padding:18px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.performance-box h2{
+    margin-top:10px;
+    color:#1d1d1d;
+}
+
+.full-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:linear-gradient(45deg,#00c853,#00e676);
+    color:white;
+    border:none;
+    padding:18px 28px;
+    border-radius:18px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .quiz-layout{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    .question{
+        font-size:25px;
+    }
+
+    .option{
+        padding:18px;
+    }
+
+    .top-header{
+        justify-content:center;
+    }
+
+    .header-stats{
+        justify-content:center;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<div class="top-header">
+
+    <div class="logo-section">
+
+        <div class="logo-icon">🛡️</div>
+
+        <div class="logo-text">
+            <h1>हरियाणा पुलिस भर्ती - सेट 1</h1>
+            <p>🔥 Previous Year Questions (PYQ) Practice</p>
+        </div>
+
+    </div>
+
+    <div class="header-stats">
+
+        <div class="stat-box">
+            🏆 Score
+            <h2 id="score">0</h2>
+        </div>
+
+        <div class="stat-box">
+            📚 Question
+            <h2 id="qno">1 / 25</h2>
+        </div>
+
+        <div class="stat-box timer">
+            ⏰ Time Left
+            <h2 id="timer">30:00</h2>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-container">
+
+    <div class="mode-buttons">
+
+        <button class="mode-btn active-mode">📘 Practice Mode</button>
+        <button class="mode-btn normal-mode">🔴 Live Mode</button>
+        <button class="mode-btn normal-mode">▶️ Auto Scroll</button>
+
+    </div>
+
+    <div class="progress-area">
+
+        <div class="progress-top">
+            <span>📈 Overall Progress</span>
+            <span id="progressText">4%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </div>
+
+    <div class="quiz-layout">
+
+        <!-- LEFT -->
+
+        <div class="quiz-card">
+
+            <div class="question-top">
+
+                <div class="badges">
+                    <div class="badge blue-badge">📍 Haryana GK</div>
+                    <div class="badge yellow-badge">📝 HSSC CET 2023</div>
+                </div>
+
+                <div class="badges">
+                    <div class="badge green-badge">✔ Marks: +2</div>
+                    <div class="badge red-badge">❌ Negative: 0.50</div>
+                </div>
+
+            </div>
+
+            <div class="question" id="question">
+                हरियाणा का गठन कब हुआ?
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <div class="extra-box">
+                <h3>💡 Extra Knowledge</h3>
+                <p id="extra">
+                    हरियाणा राज्य पंजाब से अलग होकर 1 नवंबर 1966 को बनाया गया था।
+                </p>
+            </div>
+
+            <div class="bottom-buttons">
+
+                <button class="action-btn prev-btn">⬅ Previous</button>
+
+                <button class="action-btn answer-btn">
+                    ✅ Show Answer
+                </button>
+
+                <button class="action-btn next-btn" onclick="nextQuestion()">
+                    Next ➜
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="side-panel">
+
+            <div class="side-card">
+
+                <h3>🗂️ Question Navigator</h3>
+
+                <div class="question-grid" id="questionGrid"></div>
+
+            </div>
+
+            <div class="side-card">
+
+                <h3>📚 Quick Facts</h3>
+
+                <p style="line-height:1.9;">
+                    ✨ Haryana became India's 17th state.<br><br>
+                    🗓️ Formed on: 1 November 1966.<br><br>
+                    📍 Capital: Chandigarh.
+                </p>
+
+            </div>
+
+            <div class="side-card">
+
+                <h3>📊 Your Performance</h3>
+
+                <div class="performance">
+
+                    <div class="performance-box">
+                        🎯
+                        <h2 id="attempted">0</h2>
+                        Attempted
+                    </div>
+
+                    <div class="performance-box">
+                        ✅
+                        <h2 id="correct">0</h2>
+                        Correct
+                    </div>
+
+                    <div class="performance-box">
+                        ❌
+                        <h2 id="wrong">0</h2>
+                        Wrong
+                    </div>
+
+                    <div class="performance-box">
+                        📈
+                        <h2 id="accuracy">0%</h2>
+                        Accuracy
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<button class="full-btn" onclick="toggleFullscreen()">
+🖥️ Full Screen
+</button>
+
+<script>
+
+const quizData = [
+
+{
+question:"हरियाणा का गठन कब हुआ?",
+options:["1 नवंबर 1966","15 अगस्त 1947","26 जनवरी 1950","2 अक्टूबर 1965"],
+answer:"1 नवंबर 1966",
+extra:"हरियाणा राज्य पंजाब से अलग होकर 1 नवंबर 1966 को बनाया गया था।"
+},
+
+{
+question:"हरियाणा की राजधानी क्या है?",
+options:["रोहतक","चंडीगढ़","करनाल","हिसार"],
+answer:"चंडीगढ़",
+extra:"चंडीगढ़ पंजाब और हरियाणा दोनों की राजधानी है।"
+},
+
+{
+question:"हरियाणा का राजकीय पशु कौन सा है?",
+options:["ब्लैक बक","बाघ","शेर","हाथी"],
+answer:"ब्लैक बक",
+extra:"ब्लैक बक यानी काला हिरण हरियाणा का राजकीय पशु है।"
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let attempted = 0;
+let wrong = 0;
+
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const extra = document.getElementById("extra");
+
+function loadQuestion(){
+
+    const q = quizData[currentQuestion];
+
+    question.innerText = q.question;
+    extra.innerText = q.extra;
+
+    document.getElementById("qno").innerText =
+    `${currentQuestion+1} / ${quizData.length}`;
+
+    const progress =
+    ((currentQuestion+1)/quizData.length)*100;
+
+    document.getElementById("progressFill").style.width =
+    progress + "%";
+
+    document.getElementById("progressText").innerText =
+    Math.floor(progress) + "%";
+
+    options.innerHTML = "";
+
+    q.options.forEach((opt,index)=>{
+
+        const letters = ["A","B","C","D"];
+
+        const div = document.createElement("div");
+        div.classList.add("option");
+
+        div.innerHTML = `
+            <div class="option-letter">${letters[index]}</div>
+            <div>${opt}</div>
+        `;
+
+        div.onclick = ()=>checkAnswer(div,opt);
+
+        options.appendChild(div);
+
+    });
+
+    updateNavigator();
+}
+
+function checkAnswer(el,opt){
+
+    const correctAns = quizData[currentQuestion].answer;
+
+    const allOptions = document.querySelectorAll(".option");
+
+    attempted++;
+
+    allOptions.forEach(op=>{
+
+        op.style.pointerEvents="none";
+
+        if(op.innerText.includes(correctAns)){
+            op.classList.add("correct");
+        }
+
+    });
+
+    if(opt===correctAns){
+
+        score++;
+
+    }else{
+
+        wrong++;
+        el.classList.add("wrong");
+    }
+
+    updateStats();
+}
+
+function updateStats(){
+
+    document.getElementById("score").innerText = score;
+    document.getElementById("attempted").innerText = attempted;
+    document.getElementById("correct").innerText = score;
+    document.getElementById("wrong").innerText = wrong;
+
+    let acc = attempted===0 ? 0 :
+    Math.floor((score/attempted)*100);
+
+    document.getElementById("accuracy").innerText =
+    acc + "%";
+}
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(currentQuestion >= quizData.length){
+
+        alert("🎉 Quiz Completed!");
+        currentQuestion = 0;
+    }
+
+    loadQuestion();
+}
+
+function updateNavigator(){
+
+    const grid = document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+    for(let i=0;i<quizData.length;i++){
+
+        const div = document.createElement("div");
+
+        div.classList.add("q-number");
+
+        if(i===currentQuestion){
+            div.classList.add("active-q");
+        }
+
+        div.innerText = i+1;
+
+        div.onclick = ()=>{
+
+            currentQuestion = i;
+            loadQuestion();
+        };
+
+        grid.appendChild(div);
+    }
+}
+
+function toggleFullscreen(){
+
+    if(!document.fullscreenElement){
+
+        document.documentElement.requestFullscreen();
+
+    }else{
+
+        document.exitFullscreen();
+    }
+}
+
+/* TIMER */
+
+let totalTime = 1800;
+
+setInterval(()=>{
+
+    let minutes = Math.floor(totalTime/60);
+    let seconds = totalTime%60;
+
+    seconds = seconds < 10 ? "0"+seconds : seconds;
+
+    document.getElementById("timer").innerText =
+    `${minutes}:${seconds}`;
+
+    if(totalTime>0){
+        totalTime--;
+    }
+
+},1000);
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
