@@ -94,30 +94,40 @@ body {
 
 .sets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.25rem;
 }
 
+/* ACTIVE SET CARD */
 .set-card {
     background: white; color: var(--dark); border-radius: 16px;
     padding: 1.5rem; text-decoration: none; transition: all 0.3s;
     border: 2px solid transparent; position: relative; overflow: hidden;
-    display: block;
+    display: block; cursor: pointer;
 }
 .set-card::before {
     content: ''; position: absolute; top: 0; left: 0;
     width: 100%; height: 4px;
     background: linear-gradient(90deg, var(--success), #059669);
 }
-.set-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-color: var(--success); }
+.set-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+    border-color: var(--success); 
+}
 
+/* LOCKED SET CARD */
 .set-card.locked {
     opacity: 0.6; cursor: not-allowed;
 }
 .set-card.locked::before {
     background: linear-gradient(90deg, #94a3b8, #64748b);
 }
-.set-card.locked:hover { transform: none; box-shadow: none; border-color: transparent; }
+.set-card.locked:hover { 
+    transform: none; 
+    box-shadow: none; 
+    border-color: transparent; 
+}
 
 .set-number {
     font-size: 2.5rem; font-weight: 800;
@@ -145,6 +155,24 @@ body {
 .lock-icon {
     position: absolute; top: 1rem; right: 1rem;
     font-size: 1.5rem; opacity: 0.5;
+}
+
+/* START BUTTON ON CARD */
+.start-btn {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--success), #059669);
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.set-card:hover .start-btn {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
 .footer { background: rgba(0,0,0,0.3); padding: 2rem; text-align: center; margin-top: 3rem; }
@@ -205,7 +233,7 @@ body {
 
 <script>
 const totalSets = 40;
-const activeSets = 5; // First 5 sets are active, rest are coming soon
+const activeSets = 5;
 
 function generateSets() {
     const grid = document.getElementById('setsGrid');
@@ -216,29 +244,51 @@ function generateSets() {
         const startQ = (i - 1) * 25 + 1;
         const endQ = i * 25;
 
-        const card = document.createElement('a');
-        card.className = `set-card ${isActive ? '' : 'locked'}`;
-        card.href = isActive ? `set${i}/` : 'javascript:void(0)';
-        card.setAttribute('data-status', isActive ? 'active' : 'locked');
+        // Create wrapper div
+        const wrapper = document.createElement('div');
 
-        card.innerHTML = `
-            ${!isActive ? '<span class="lock-icon">🔒</span>' : ''}
-            <div class="set-number">SET ${i}</div>
-            <div class="set-title">Questions ${startQ}-${endQ}</div>
-            <div class="set-meta">${isActive ? '✅ Available Now' : '⏳ Coming Soon'} • 25 Questions</div>
-            <div class="set-progress">
-                <div class="set-progress-fill" style="width: ${isActive ? '100%' : '0%'}"></div>
-            </div>
-        `;
+        if (isActive) {
+            // ACTIVE: Use <a> tag with proper href
+            const link = document.createElement('a');
+            link.className = 'set-card';
+            // Use ./set1/ format (relative to current directory)
+            link.href = './set' + i + '/';
+            link.setAttribute('data-status', 'active');
 
-        if (!isActive) {
-            card.onclick = function(e) {
-                e.preventDefault();
-                alert('🔒 Set ' + i + ' is coming soon! Stay tuned for updates.');
+            link.innerHTML = `
+                <div class="set-number">SET ${i}</div>
+                <div class="set-title">Questions ${startQ}-${endQ}</div>
+                <div class="set-meta">✅ Available Now • 25 Questions • 30 Min</div>
+                <div class="set-progress">
+                    <div class="set-progress-fill" style="width: 100%"></div>
+                </div>
+                <span class="start-btn">▶ Start Practice</span>
+            `;
+            wrapper.appendChild(link);
+        } else {
+            // LOCKED: Use div with click handler
+            const card = document.createElement('div');
+            card.className = 'set-card locked';
+            card.setAttribute('data-status', 'locked');
+
+            card.innerHTML = `
+                <span class="lock-icon">🔒</span>
+                <div class="set-number">SET ${i}</div>
+                <div class="set-title">Questions ${startQ}-${endQ}</div>
+                <div class="set-meta">⏳ Coming Soon • 25 Questions</div>
+                <div class="set-progress">
+                    <div class="set-progress-fill" style="width: 0%"></div>
+                </div>
+            `;
+
+            card.onclick = function() {
+                alert('🔒 Set ' + i + ' is coming soon!\n\nStay tuned for daily updates on our YouTube channel 📺');
             };
+
+            wrapper.appendChild(card);
         }
 
-        grid.appendChild(card);
+        grid.appendChild(wrapper);
     }
 }
 
@@ -249,10 +299,11 @@ function filterSets(type) {
     const cards = document.querySelectorAll('.set-card');
     cards.forEach(card => {
         const status = card.getAttribute('data-status');
+        const wrapper = card.parentElement;
         if (type === 'all' || status === type) {
-            card.style.display = 'block';
+            wrapper.style.display = 'block';
         } else {
-            card.style.display = 'none';
+            wrapper.style.display = 'none';
         }
     });
 }
