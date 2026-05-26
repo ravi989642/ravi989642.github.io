@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYQ Sets - All Educations Adda</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary: #1e3a8a;
+    --primary-dark: #0f172a;
+    --secondary: #3730a3;
+    --accent: #f59e0b;
+    --accent-light: #fbbf24;
+    --success: #10b981;
+    --danger: #ef4444;
+    --light: #f8fafc;
+    --dark: #0f172a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
+    color: white;
+    min-height: 100vh;
+}
+
+.navbar {
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 700; }
+.nav-logo span { font-size: 2rem; }
+
+.nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.nav-links a {
+    color: white; text-decoration: none; font-weight: 500;
+    padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.1); color: var(--accent-light); }
+.nav-cta {
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    color: white !important; font-weight: 700 !important;
+}
+
+.hero {
+    text-align: center; padding: 3rem 2rem 2rem;
+    max-width: 900px; margin: 0 auto;
+}
+.hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+.hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.5rem; }
+
+.stats-bar {
+    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.stat-pill {
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem; border-radius: 50px;
+    font-weight: 600; border: 1px solid rgba(255,255,255,0.2);
+}
+.stat-pill span { color: var(--accent-light); font-weight: 800; }
+
+.filter-bar {
+    max-width: 600px; margin: 0 auto 2rem; padding: 0 1rem;
+    display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+}
+.filter-btn {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; padding: 0.5rem 1rem; border-radius: 8px;
+    cursor: pointer; font-weight: 600; transition: all 0.3s;
+    font-family: inherit;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    border-color: var(--accent);
+}
+
+.sets-container {
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem 3rem;
+}
+
+.sets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.set-card {
+    background: white; color: var(--dark); border-radius: 16px;
+    padding: 1.5rem; text-decoration: none; transition: all 0.3s;
+    border: 2px solid transparent; position: relative; overflow: hidden;
+    display: block;
+}
+.set-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--success), #059669);
+}
+.set-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-color: var(--success); }
+
+.set-card.locked {
+    opacity: 0.6; cursor: not-allowed;
+}
+.set-card.locked::before {
+    background: linear-gradient(90deg, #94a3b8, #64748b);
+}
+.set-card.locked:hover { transform: none; box-shadow: none; border-color: transparent; }
+
+.set-number {
+    font-size: 2.5rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--success), #059669);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+.set-card.locked .set-number {
+    background: linear-gradient(135deg, #94a3b8, #64748b);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.set-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.set-meta { color: #64748b; font-size: 0.85rem; margin-bottom: 0.75rem; }
+.set-progress {
+    background: #f1f5f9; border-radius: 8px; height: 6px; overflow: hidden;
+}
+.set-progress-fill {
+    height: 100%; border-radius: 8px;
+    background: linear-gradient(90deg, var(--success), #059669);
+    width: 0%; transition: width 0.5s;
+}
+.set-card.locked .set-progress-fill { background: #94a3b8; }
+
+.lock-icon {
+    position: absolute; top: 1rem; right: 1rem;
+    font-size: 1.5rem; opacity: 0.5;
+}
+
+.footer { background: rgba(0,0,0,0.3); padding: 2rem; text-align: center; margin-top: 3rem; }
+.footer p { opacity: 0.8; }
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 1.75rem; }
+    .sets-grid { grid-template-columns: repeat(2, 1fr); }
+    .navbar { flex-direction: column; }
+}
+@media (max-width: 480px) {
+    .sets-grid { grid-template-columns: 1fr; }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-logo">
+        <span>🎓</span>
+        <span>All Educations Adda</span>
+    </div>
+    <div class="nav-links">
+        <a href="../index.html">🏠 Home</a>
+        <a href="../index.html#subjects">📚 Subjects</a>
+        <a href="../index.html#syllabus">📋 Syllabus</a>
+        <a href="https://youtube.com/@alleducationsadda" target="_blank">📺 YouTube</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>📚 Previous Year Questions (PYQ)</h1>
+    <p>1000+ Questions from Haryana Police, CET, Group D & Other Exams</p>
+    <div class="stats-bar">
+        <div class="stat-pill"><span>1000+</span> Total Questions</div>
+        <div class="stat-pill"><span>40</span> Sets</div>
+        <div class="stat-pill"><span>25</span> Q per Set</div>
+        <div class="stat-pill"><span>0</span> Attempted</div>
+    </div>
+</section>
+
+<div class="filter-bar">
+    <button class="filter-btn active" onclick="filterSets('all')">All Sets</button>
+    <button class="filter-btn" onclick="filterSets('active')">Active</button>
+    <button class="filter-btn" onclick="filterSets('locked')">Coming Soon</button>
+</div>
+
+<div class="sets-container">
+    <div class="sets-grid" id="setsGrid">
+        <!-- Sets will be generated by JavaScript -->
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 All Educations Adda | Free Education for Haryana Aspirants</p>
+</footer>
+
+<script>
+const totalSets = 40;
+const activeSets = 5; // First 5 sets are active, rest are coming soon
+
+function generateSets() {
+    const grid = document.getElementById('setsGrid');
+    grid.innerHTML = '';
+
+    for (let i = 1; i <= totalSets; i++) {
+        const isActive = i <= activeSets;
+        const startQ = (i - 1) * 25 + 1;
+        const endQ = i * 25;
+
+        const card = document.createElement('a');
+        card.className = `set-card ${isActive ? '' : 'locked'}`;
+        card.href = isActive ? `set${i}/` : 'javascript:void(0)';
+        card.setAttribute('data-status', isActive ? 'active' : 'locked');
+
+        card.innerHTML = `
+            ${!isActive ? '<span class="lock-icon">🔒</span>' : ''}
+            <div class="set-number">SET ${i}</div>
+            <div class="set-title">Questions ${startQ}-${endQ}</div>
+            <div class="set-meta">${isActive ? '✅ Available Now' : '⏳ Coming Soon'} • 25 Questions</div>
+            <div class="set-progress">
+                <div class="set-progress-fill" style="width: ${isActive ? '100%' : '0%'}"></div>
+            </div>
+        `;
+
+        if (!isActive) {
+            card.onclick = function(e) {
+                e.preventDefault();
+                alert('🔒 Set ' + i + ' is coming soon! Stay tuned for updates.');
+            };
+        }
+
+        grid.appendChild(card);
+    }
+}
+
+function filterSets(type) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    const cards = document.querySelectorAll('.set-card');
+    cards.forEach(card => {
+        const status = card.getAttribute('data-status');
+        if (type === 'all' || status === type) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+generateSets();
+</script>
+
+</body>
+</html>
