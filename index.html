@@ -84,6 +84,134 @@
         .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-light); }
         .stat-label { font-size: 0.85rem; opacity: 0.9; margin-top: 0.25rem; }
 
+        /* PYQ SECTION */
+        .pyq-section {
+            background: rgba(0,0,0,0.2);
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+        }
+        .pyq-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .pyq-header h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .pyq-header p { opacity: 0.9; font-size: 1.1rem; }
+
+        .pyq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pyq-card {
+            background: white;
+            color: var(--dark);
+            border-radius: 20px;
+            padding: 1.75rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+        .pyq-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        .pyq-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+            border-color: var(--accent); 
+        }
+
+        .pyq-card.locked {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .pyq-card.locked::before {
+            background: linear-gradient(90deg, #94a3b8, #64748b);
+        }
+        .pyq-card.locked:hover { 
+            transform: none; 
+            box-shadow: none; 
+            border-color: transparent; 
+        }
+
+        .pyq-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .pyq-card h3 { 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+            margin-bottom: 0.5rem; 
+        }
+        .pyq-card p { 
+            color: #64748b; 
+            font-size: 0.9rem; 
+            margin-bottom: 1rem; 
+            line-height: 1.5;
+        }
+
+        .pyq-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .pyq-badge {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .pyq-badge.active { 
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0); 
+            color: #065f46; 
+        }
+        .pyq-badge.soon { 
+            background: #fef3c7; 
+            color: #92400e; 
+        }
+
+        .pyq-lock-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.4;
+        }
+
+        .pyq-cta {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .pyq-cta.active {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+        }
+        .pyq-cta.active:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+        .pyq-cta.locked {
+            background: #e2e8f0;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }
+
         .section-header { text-align: center; padding: 2rem 1rem 1rem; }
         .section-header h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
         .section-header p { opacity: 0.8; font-size: 1.1rem; }
@@ -154,9 +282,9 @@
             .navbar { flex-direction: column; }
             .nav-links { justify-content: center; }
             .subjects-grid { grid-template-columns: 1fr; }
+            .pyq-grid { grid-template-columns: 1fr; }
         }
     </style>
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -168,9 +296,10 @@
         </div>
         <div class="nav-links">
             <a href="#home">🏠 Home</a>
-            <a href="#subjects">📚 Subjects</a>
+            <a href="#pyq">📚 PYQ</a>
+            <a href="#subjects">📖 Subjects</a>
             <a href="#syllabus">📋 Syllabus</a>
-            <a href="general-knowledge/" class="nav-cta">🚔 Police GK Quiz</a>
+            <a href="pyq/" class="nav-cta">📝 PYQ Practice</a>
             <a href="https://youtube.com/@alleducationsadda" target="_blank">📺 YouTube</a>
         </div>
     </nav>
@@ -204,6 +333,132 @@
             <div class="stat-label">Subjects</div>
         </div>
     </div>
+
+    <!-- PYQ SECTION -->
+    <section class="pyq-section" id="pyq">
+        <div class="pyq-header">
+            <h2>📚 Previous Year Questions (PYQ)</h2>
+            <p>1000+ Questions from Haryana Police, CET, Group D & Other Exams — Practice by Sets of 25</p>
+        </div>
+
+        <div class="pyq-grid">
+            <!-- PYQ Main Card -->
+            <a href="pyq/" class="pyq-card">
+                <div class="pyq-icon">📝</div>
+                <h3>हरियाणा पुलिस PYQ - All Sets</h3>
+                <p>Complete collection of 1000+ Previous Year Questions. Practice set by set with timer, score tracking & detailed explanations.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge active">✅ 5 Sets Live</span>
+                    <span class="pyq-badge">125 Q Available</span>
+                    <span class="pyq-badge soon">35 Sets Soon</span>
+                </div>
+                <span class="pyq-cta active">🚀 Start Practice →</span>
+            </a>
+
+            <!-- Set 1 -->
+            <a href="pyq/set1/" class="pyq-card">
+                <div class="pyq-icon">1️⃣</div>
+                <h3>PYQ Set 1 (Questions 1-25)</h3>
+                <p>Haryana GK, History, Polity, Geography & Science — Mixed questions from HSSC CET, Police & Group D exams.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge active">✅ Available Now</span>
+                    <span class="pyq-badge">25 Questions</span>
+                    <span class="pyq-badge">30 Min Timer</span>
+                </div>
+                <span class="pyq-cta active">▶ Start Set 1</span>
+            </a>
+
+            <!-- Set 2 -->
+            <a href="pyq/set2/" class="pyq-card">
+                <div class="pyq-icon">2️⃣</div>
+                <h3>PYQ Set 2 (Questions 26-50)</h3>
+                <p>Continue your practice with the next 25 questions. Covering important topics from previous year papers.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge active">✅ Available Now</span>
+                    <span class="pyq-badge">25 Questions</span>
+                    <span class="pyq-badge">30 Min Timer</span>
+                </div>
+                <span class="pyq-cta active">▶ Start Set 2</span>
+            </a>
+
+            <!-- Set 3 -->
+            <a href="pyq/set3/" class="pyq-card">
+                <div class="pyq-icon">3️⃣</div>
+                <h3>PYQ Set 3 (Questions 51-75)</h3>
+                <p>Advanced level questions from Haryana Police and CET exams with detailed explanations.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge active">✅ Available Now</span>
+                    <span class="pyq-badge">25 Questions</span>
+                    <span class="pyq-badge">30 Min Timer</span>
+                </div>
+                <span class="pyq-cta active">▶ Start Set 3</span>
+            </a>
+
+            <!-- Set 4 -->
+            <a href="pyq/set4/" class="pyq-card">
+                <div class="pyq-icon">4️⃣</div>
+                <h3>PYQ Set 4 (Questions 76-100)</h3>
+                <p>More challenging questions covering all subjects with image-based learning support.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge active">✅ Available Now</span>
+                    <span class="pyq-badge">25 Questions</span>
+                    <span class="pyq-badge">30 Min Timer</span>
+                </div>
+                <span class="pyq-cta active">▶ Start Set 4</span>
+            </a>
+
+            <!-- Set 5 -->
+            <a href="pyq/set5/" class="pyq-card">
+                <div class="pyq-icon">5️⃣</div>
+                <h3>PYQ Set 5 (Questions 101-125)</h3>
+                <p>Latest pattern questions with extra knowledge section revealed after answering.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge active">✅ Available Now</span>
+                    <span class="pyq-badge">25 Questions</span>
+                    <span class="pyq-badge">30 Min Timer</span>
+                </div>
+                <span class="pyq-cta active">▶ Start Set 5</span>
+            </a>
+
+            <!-- Set 6 - Locked -->
+            <div class="pyq-card locked" onclick="alert('🔒 Set 6 is coming soon! Stay tuned for daily updates.')">
+                <span class="pyq-lock-icon">🔒</span>
+                <div class="pyq-icon">6️⃣</div>
+                <h3>PYQ Set 6 (Questions 126-150)</h3>
+                <p>More questions coming soon. Subscribe to our YouTube channel for daily updates!</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge soon">⏳ Coming Soon</span>
+                    <span class="pyq-badge">25 Questions</span>
+                </div>
+                <span class="pyq-cta locked">🔒 Locked</span>
+            </div>
+
+            <!-- Set 7 - Locked -->
+            <div class="pyq-card locked" onclick="alert('🔒 Set 7 is coming soon! Stay tuned for daily updates.')">
+                <span class="pyq-lock-icon">🔒</span>
+                <div class="pyq-icon">7️⃣</div>
+                <h3>PYQ Set 7 (Questions 151-175)</h3>
+                <p>More questions coming soon. Subscribe to our YouTube channel for daily updates!</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge soon">⏳ Coming Soon</span>
+                    <span class="pyq-badge">25 Questions</span>
+                </div>
+                <span class="pyq-cta locked">🔒 Locked</span>
+            </div>
+
+            <!-- View All Sets -->
+            <a href="pyq/" class="pyq-card" style="background: linear-gradient(135deg, #1e3a8a, #3730a3); color: white;">
+                <div class="pyq-icon" style="font-size: 3rem;">📋</div>
+                <h3 style="color: white;">View All 40 Sets</h3>
+                <p style="color: rgba(255,255,255,0.9);">See the complete list of all 40 PYQ sets. Track your progress and unlock new sets as they become available.</p>
+                <div class="pyq-meta">
+                    <span class="pyq-badge" style="background: rgba(255,255,255,0.2); color: white;">40 Total Sets</span>
+                    <span class="pyq-badge" style="background: rgba(255,255,255,0.2); color: white;">1000 Questions</span>
+                </div>
+                <span class="pyq-cta active" style="background: white; color: var(--primary);">📂 Browse All Sets</span>
+            </a>
+        </div>
+    </section>
 
     <div class="section-header" id="subjects">
         <h2>📚 Practice by Subject</h2>
