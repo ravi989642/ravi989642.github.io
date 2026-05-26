@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haryana PYQ Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1146ff,#6c2bd9);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+.top-header{
+    width:100%;
+    background:#170032;
+    padding:12px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    color:white;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    background:linear-gradient(45deg,#ffb300,#ff6f00);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.logo-text h1{
+    font-size:24px;
+}
+
+.logo-text p{
+    font-size:13px;
+    opacity:0.8;
+}
+
+.header-stats{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.08);
+    padding:10px 18px;
+    border-radius:14px;
+    min-width:110px;
+    text-align:center;
+}
+
+.stat-box h2{
+    margin-top:4px;
+    font-size:22px;
+}
+
+.timer{
+    background:linear-gradient(45deg,#ff3d00,#ff1744);
+}
+
+/* MAIN */
+
+.main{
+    padding:18px;
+}
+
+.progress-area{
+    background:white;
+    padding:18px;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.progress-bar{
+    width:100%;
+    height:14px;
+    background:#ddd;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:4%;
+    height:100%;
+    background:linear-gradient(45deg,#0059ff,#7c4dff);
+}
+
+/* LAYOUT */
+
+.quiz-layout{
+    display:grid;
+    grid-template-columns:2.5fr 1fr;
+    gap:18px;
+}
+
+.quiz-card{
+    background:white;
+    border-radius:24px;
+    padding:22px;
+}
+
+.question-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.badges{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.badge{
+    padding:7px 14px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.blue{
+    background:#dfe8ff;
+    color:#2450ff;
+}
+
+.yellow{
+    background:#fff1d2;
+    color:#d17d00;
+}
+
+.green{
+    background:#dcffe7;
+    color:#00a651;
+}
+
+.question{
+    font-size:24px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+/* OPTIONS */
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.option{
+    border:2px solid #e5e5e5;
+    border-radius:16px;
+    padding:15px 18px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.option:hover{
+    border-color:#2450ff;
+    transform:translateX(3px);
+}
+
+.option-letter{
+    min-width:42px;
+    min-height:42px;
+    border-radius:50%;
+    border:2px solid #2450ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    color:#2450ff;
+    font-size:18px;
+}
+
+.option-text{
+    font-size:15px;
+    font-weight:500;
+}
+
+.correct{
+    background:#e8fff0;
+    border-color:#00b84f !important;
+}
+
+.correct .option-letter{
+    border-color:#00b84f;
+    color:#00b84f;
+}
+
+.wrong{
+    background:#ffe7e7;
+    border-color:#ff3131 !important;
+}
+
+.wrong .option-letter{
+    border-color:#ff3131;
+    color:#ff3131;
+}
+
+/* EXTRA KNOWLEDGE */
+
+.extra-box{
+    margin-top:18px;
+    background:#f1fff5;
+    border:2px solid #c6ffd6;
+    border-radius:16px;
+    padding:16px;
+    display:none; /* HIDDEN BY DEFAULT */
+}
+
+.extra-box h3{
+    color:#00a651;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.extra-box p{
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* BUTTONS */
+
+.bottom-buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.action-btn{
+    border:none;
+    padding:13px 28px;
+    border-radius:14px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.action-btn:hover{
+    transform:scale(1.04);
+}
+
+.prev-btn{
+    background:white;
+    border:2px solid #ddd;
+}
+
+.answer-btn{
+    background:linear-gradient(45deg,#00b84f,#00d96b);
+    color:white;
+}
+
+.next-btn{
+    background:linear-gradient(45deg,#0066ff,#00a2ff);
+    color:white;
+}
+
+/* SIDE PANEL */
+
+.side-panel{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.side-card{
+    background:white;
+    border-radius:22px;
+    padding:18px;
+}
+
+.side-card h3{
+    margin-bottom:16px;
+    color:#4b21a8;
+}
+
+/* NAVIGATION */
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.q-number{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#f1f1f1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.active-q{
+    background:linear-gradient(45deg,#0059ff,#6c2bd9);
+    color:white;
+}
+
+/* PERFORMANCE */
+
+.performance{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.performance-box{
+    background:#f7f7f7;
+    padding:14px;
+    border-radius:14px;
+    text-align:center;
+}
+
+.performance-box h2{
+    font-size:26px;
+    margin-top:8px;
+}
+
+/* IMAGE CARD */
+
+.image-card img{
+    width:100%;
+    border-radius:14px;
+    margin-bottom:10px;
+    object-fit:cover;
+    max-height:220px;
+}
+
+.image-card p{
+    font-size:14px;
+    line-height:1.7;
+    color:#444;
+}
+
+/* FULLSCREEN */
+
+.full-btn{
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    border:none;
+    background:linear-gradient(45deg,#00c853,#00e676);
+    color:white;
+    padding:16px 26px;
+    border-radius:18px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .quiz-layout{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .question{
+        font-size:21px;
+    }
+
+    .top-header{
+        justify-content:center;
+    }
+
+    .header-stats{
+        justify-content:center;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
+
+</style>
+<base target="_blank">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="top-header">
+
+    <div class="logo-section">
+
+        <div class="logo-icon">🛡️</div>
+
+        <div class="logo-text">
+            <h1>हरियाणा पुलिस भर्ती - SET 1</h1>
+            <p>🔥 Previous Year Questions Practice</p>
+        </div>
+
+    </div>
+
+    <div class="header-stats">
+
+        <div class="stat-box">
+            🏆 Score
+            <h2 id="score">0</h2>
+        </div>
+
+        <div class="stat-box">
+            📚 Question
+            <h2 id="qno">1/25</h2>
+        </div>
+
+        <div class="stat-box timer">
+            ⏰ Time
+            <h2 id="timer">30:00</h2>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- PROGRESS -->
+
+    <div class="progress-area">
+
+        <div class="progress-top">
+            <span>📈 Overall Progress</span>
+            <span id="progressText">4%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </div>
+
+    <!-- LAYOUT -->
+
+    <div class="quiz-layout">
+
+        <!-- LEFT -->
+
+        <div class="quiz-card">
+
+            <div class="question-top">
+
+                <div class="badges">
+                    <div class="badge blue" id="subject">
+                        📍 Haryana GK
+                    </div>
+
+                    <div class="badge yellow" id="exam">
+                        📝 HSSC CET 2023
+                    </div>
+                </div>
+
+                <div class="badges">
+
+                    <div class="badge green">
+                        ✔ Marks: +2
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="question" id="question">
+                हरियाणा का गठन कब हुआ?
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <!-- EXTRA -->
+
+            <div class="extra-box" id="extraBox">
+
+                <h3>💡 Extra Knowledge</h3>
+
+                <p id="extra">
+                    हरियाणा राज्य पंजाब से अलग होकर 1 नवंबर 1966 को बनाया गया था।
+                </p>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="bottom-buttons">
+
+                <button class="action-btn prev-btn" onclick="prevQuestion()">
+                    ⬅ Previous
+                </button>
+
+                <button class="action-btn answer-btn" onclick="showAnswer()">
+                    ✅ Show Answer
+                </button>
+
+                <button class="action-btn next-btn" onclick="nextQuestion()">
+                    Next ➜
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="side-panel">
+
+            <!-- NAVIGATION -->
+
+            <div class="side-card">
+
+                <h3>🗂️ Question Navigator</h3>
+
+                <div class="question-grid" id="questionGrid"></div>
+
+            </div>
+
+            <!-- QUESTION IMAGE (Replaces Quick Facts) -->
+
+            <div class="side-card image-card">
+
+                <h3>📷 इस प्रश्न का विषय</h3>
+
+                <img id="questionImage" src="" alt="Question Image">
+
+                <p id="imageCaption"></p>
+
+            </div>
+
+            <!-- PERFORMANCE -->
+
+            <div class="side-card">
+
+                <h3>📊 Your Performance</h3>
+
+                <div class="performance">
+
+                    <div class="performance-box">
+                        🎯
+                        <h2 id="attempted">0</h2>
+                        Attempted
+                    </div>
+
+                    <div class="performance-box">
+                        ✅
+                        <h2 id="correct">0</h2>
+                        Correct
+                    </div>
+
+                    <div class="performance-box">
+                        ❌
+                        <h2 id="wrong">0</h2>
+                        Wrong
+                    </div>
+
+                    <div class="performance-box">
+                        📈
+                        <h2 id="accuracy">0%</h2>
+                        Accuracy
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FULLSCREEN -->
+
+<button class="full-btn" onclick="toggleFullscreen()">
+🖥️ Full Screen
+</button>
+
+<script>
+
+/* 25 QUESTIONS */
+
+const quizData = [
+
+{
+question:"हरियाणा का गठन कब हुआ?",
+subject:"Haryana GK",
+exam:"HSSC CET 2023",
+options:["1 नवंबर 1966","15 अगस्त 1947","26 जनवरी 1950","2 अक्टूबर 1965"],
+answer:"1 नवंबर 1966",
+extra:"हरियाणा राज्य पंजाब से अलग होकर 1 नवंबर 1966 को बनाया गया था।",
+image:"https://placehold.co/400x220/4b21a8/ffffff?text=Haryana+Formation+1966",
+imageCaption:"हरियाणा 1 नवंबर 1966 को भारत का 17वां राज्य बना।"
+},
+
+{
+question:"हरियाणा की राजधानी क्या है?",
+subject:"Haryana GK",
+exam:"Police 2022",
+options:["रोहतक","चंडीगढ़","फरीदाबाद","करनाल"],
+answer:"चंडीगढ़",
+extra:"चंडीगढ़ पंजाब और हरियाणा दोनों की राजधानी है।",
+image:"https://placehold.co/400x220/FF6F00/ffffff?text=Chandigarh+Capital",
+imageCaption:"चंडीगढ़ एक केंद्रशासित प्रदेश भी है और दोनों राज्यों की संयुक्त राजधानी है।"
+},
+
+{
+question:"हरियाणा में कितने जिले हैं?",
+subject:"Haryana GK",
+exam:"Group D",
+options:["20","21","22","23"],
+answer:"22",
+extra:"हरियाणा में वर्तमान में 22 जिले हैं।",
+image:"https://placehold.co/400x220/1565C0/ffffff?text=22+Districts",
+imageCaption:"हरियाणा में वर्तमान में कुल 22 जिले हैं।"
+},
+
+{
+question:"हरियाणा का सबसे बड़ा जिला कौन सा है?",
+subject:"Haryana GK",
+exam:"Patwari",
+options:["भिवानी","हिसार","सिरसा","करनाल"],
+answer:"सिरसा",
+extra:"सिरसा क्षेत्रफल की दृष्टि से सबसे बड़ा जिला है।",
+image:"https://placehold.co/400x220/2E7D32/ffffff?text=Sirsa+District",
+imageCaption:"सिरसा हरियाणा का क्षेत्रफल में सबसे बड़ा जिला है।"
+},
+
+{
+question:"हरियाणा की सबसे लंबी नदी कौन सी है?",
+subject:"Haryana GK",
+exam:"CET",
+options:["यमुना","घग्गर","मारकंडा","साहिबी"],
+answer:"यमुना",
+extra:"यमुना हरियाणा की सबसे लंबी नदी है।",
+image:"https://placehold.co/400x220/00ACC1/ffffff?text=Yamuna+River",
+imageCaption:"यमुना नदी हरियाणा की सबसे लंबी और पवित्र नदी मानी जाती है।"
+},
+
+{
+question:"हरियाणा का राजकीय पशु कौन सा है?",
+subject:"Haryana GK",
+exam:"Police",
+options:["ब्लैक बक","बाघ","हिरण","नीलगाय"],
+answer:"ब्लैक बक",
+extra:"ब्लैक बक यानी काला हिरण हरियाणा का राज्य पशु है।",
+image:"https://placehold.co/400x220/5E35B1/ffffff?text=Black+Buck",
+imageCaption:"काला हिरण (Black Buck) हरियाणा का राजकीय पशु है।"
+},
+
+{
+question:"हरियाणा का राजकीय वृक्ष कौन सा है?",
+subject:"Haryana GK",
+exam:"Canal Patwari",
+options:["पीपल","बरगद","नीम","शीशम"],
+answer:"पीपल",
+extra:"पीपल हरियाणा का राजकीय वृक्ष है।",
+image:"https://placehold.co/400x220/43A047/ffffff?text=Peepal+Tree",
+imageCaption:"पीपल वृक्ष हरियाणा का राजकीय वृक्ष है।"
+},
+
+{
+question:"हरियाणा का राजकीय पक्षी कौन सा है?",
+subject:"Haryana GK",
+exam:"Group D",
+options:["मोर","ब्लैक फ्रैंकोलिन","तोता","गौरैया"],
+answer:"ब्लैक फ्रैंकोलिन",
+extra:"ब्लैक फ्रैंकोलिन को काला तीतर भी कहा जाता है।",
+image:"https://placehold.co/400x220/8D6E63/ffffff?text=Black+Francolin",
+imageCaption:"काला तीतर (Black Francolin) हरियाणा का राजकीय पक्षी है।"
+},
+
+{
+question:"हरियाणा का सबसे छोटा जिला कौन सा है?",
+subject:"Haryana GK",
+exam:"TGT",
+options:["पंचकूला","रोहतक","फरीदाबाद","पलवल"],
+answer:"पंचकूला",
+extra:"पंचकूला हरियाणा का सबसे छोटा जिला है।",
+image:"https://placehold.co/400x220/3949AB/ffffff?text=Panchkula",
+imageCaption:"पंचकूला हरियाणा का क्षेत्रफल में सबसे छोटा जिला है।"
+},
+
+{
+question:"सूरजकुंड मेला कहाँ आयोजित होता है?",
+subject:"Haryana GK",
+exam:"CET",
+options:["रोहतक","फरीदाबाद","गुरुग्राम","हिसार"],
+answer:"फरीदाबाद",
+extra:"सूरजकुंड अंतरराष्ट्रीय शिल्प मेला फरीदाबाद में लगता है।",
+image:"https://placehold.co/400x220/E53935/ffffff?text=Surajkund+Mela",
+imageCaption:"सूरजकुंड मेला फरीदाबाद में आयोजित होता है।"
+},
+
+{
+question:"मुगल साम्राज्य का संस्थापक कौन था?",
+subject:"History",
+exam:"Police",
+options:["अकबर","बाबर","जहाँगीर","हुमायूँ"],
+answer:"बाबर",
+extra:"1526 में बाबर ने मुगल साम्राज्य की स्थापना की।",
+image:"https://placehold.co/400x220/6D4C41/ffffff?text=Mughal+Empire",
+imageCaption:"बाबर ने 1526 में पानीपत की पहली लड़ाई जीतकर मुगल साम्राज्य की नींव रखी।"
+},
+
+{
+question:"अकबर ने दीन-ए-इलाही कब शुरू किया?",
+subject:"History",
+exam:"Patwari",
+options:["1582","1570","1600","1565"],
+answer:"1582",
+extra:"दीन-ए-इलाही अकबर की धार्मिक नीति थी।",
+image:"https://placehold.co/400x220/FFB300/ffffff?text=Akbar",
+imageCaption:"अकबर ने 1582 में दीन-ए-इलाही नामक नई धार्मिक नीति शुरू की।"
+},
+
+{
+question:"1857 विद्रोह में झांसी की रानी कौन थी?",
+subject:"History",
+exam:"Group D",
+options:["रानी दुर्गावती","रानी लक्ष्मीबाई","अहिल्याबाई","चाँद बीबी"],
+answer:"रानी लक्ष्मीबाई",
+extra:"रानी लक्ष्मीबाई 1857 की वीरांगना थीं।",
+image:"https://placehold.co/400x220/C62828/ffffff?text=Rani+Lakshmibai",
+imageCaption:"रानी लक्ष्मीबाई ने 1857 के विद्रोह में अंग्रेजों के विरुद्ध लड़ाई लड़ी।"
+},
+
+{
+question:"भारत छोड़ो आंदोलन कब शुरू हुआ?",
+subject:"History",
+exam:"Clerk",
+options:["1940","1941","1942","1945"],
+answer:"1942",
+extra:"भारत छोड़ो आंदोलन अगस्त 1942 में शुरू हुआ।",
+image:"https://placehold.co/400x220/2E7D32/ffffff?text=Quit+India+1942",
+imageCaption:"भारत छोड़ो आंदोलन 8 अगस्त 1942 को गांधीजी के नेतृत्व में शुरू हुआ।"
+},
+
+{
+question:"भारत पर पहला मुस्लिम आक्रमण किसने किया?",
+subject:"History",
+exam:"CET",
+options:["बाबर","गजनवी","मुहम्मद बिन कासिम","गोरी"],
+answer:"मुहम्मद बिन कासिम",
+extra:"712 ई. में मुहम्मद बिन कासिम ने सिंध पर आक्रमण किया।",
+image:"https://placehold.co/400x220/5D4037/ffffff?text=First+Invasion",
+imageCaption:"712 ईस्वी में मुहम्मद बिन कासिम ने सिंध पर आक्रमण कर भारत में पहली बार इस्लामिक शासन स्थापित किया।"
+},
+
+{
+question:"भारतीय संविधान में कितनी अनुसूचियाँ हैं?",
+subject:"Polity",
+exam:"CET",
+options:["10","12","14","8"],
+answer:"12",
+extra:"भारतीय संविधान में 12 अनुसूचियाँ हैं।",
+image:"https://placehold.co/400x220/1A237E/ffffff?text=Constitution",
+imageCaption:"भारतीय संविधान में वर्तमान में 12 अनुसूचियाँ हैं।"
+},
+
+{
+question:"समानता का अधिकार किस अनुच्छेद में है?",
+subject:"Polity",
+exam:"Police",
+options:["14","19","21","32"],
+answer:"14",
+extra:"अनुच्छेद 14 समानता का अधिकार देता है।",
+image:"https://placehold.co/400x220/283593/ffffff?text=Article+14",
+imageCaption:"अनुच्छेद 14 कानून के समक्ष समानता का अधिकार प्रदान करता है।"
+},
+
+{
+question:"राज्यसभा सदस्य का कार्यकाल कितना होता है?",
+subject:"Polity",
+exam:"Group D",
+options:["4 वर्ष","5 वर्ष","6 वर्ष","7 वर्ष"],
+answer:"6 वर्ष",
+extra:"राज्यसभा सदस्य का कार्यकाल 6 वर्ष होता है।",
+image:"https://placehold.co/400x220/4527A0/ffffff?text=Rajya+Sabha",
+imageCaption:"राज्यसभा सदस्य का कार्यकाल 6 वर्ष होता है, जिसमें हर 2 साल में 1/3 सदस्य सेवानिवृत्त होते हैं।"
+},
+
+{
+question:"संविधान संशोधन किस अनुच्छेद में है?",
+subject:"Polity",
+exam:"Patwari",
+options:["352","356","368","370"],
+answer:"368",
+extra:"अनुच्छेद 368 संविधान संशोधन से संबंधित है।",
+image:"https://placehold.co/400x220/263238/ffffff?text=Article+368",
+imageCaption:"अनुच्छेद 368 संविधान संशोधन की प्रक्रिया का वर्णन करता है।"
+},
+
+{
+question:"भारत के मुख्य न्यायाधीश की नियुक्ति कौन करता है?",
+subject:"Polity",
+exam:"CET",
+options:["प्रधानमंत्री","राष्ट्रपति","लोकसभा","संसद"],
+answer:"राष्ट्रपति",
+extra:"CJI की नियुक्ति राष्ट्रपति करता है।",
+image:"https://placehold.co/400x220/37474F/ffffff?text=Chief+Justice",
+imageCaption:"भारत के मुख्य न्यायाधीश (CJI) की नियुक्ति राष्ट्रपति द्वारा की जाती है।"
+},
+
+{
+question:"भारत का सबसे बड़ा द्वीप कौन सा है?",
+subject:"Geography",
+exam:"Police",
+options:["अंडमान","माजुली","ग्रेट निकोबार","लक्षद्वीप"],
+answer:"ग्रेट निकोबार",
+extra:"ग्रेट निकोबार भारत का सबसे बड़ा द्वीप है।",
+image:"https://placehold.co/400x220/00695C/ffffff?text=Great+Nicobar",
+imageCaption:"ग्रेट निकोबार भारत का क्षेत्रफल में सबसे बड़ा द्वीप है।"
+},
+
+{
+question:"Silicon Valley किस देश में स्थित है?",
+subject:"Geography",
+exam:"Canal Patwari",
+options:["भारत","जापान","अमेरिका","चीन"],
+answer:"अमेरिका",
+extra:"Silicon Valley कैलिफोर्निया में स्थित है।",
+image:"https://placehold.co/400x220/0277BD/ffffff?text=Silicon+Valley",
+imageCaption:"सिलिकॉन वैली अमेरिका के कैलिफोर्निया राज्य में स्थित है।"
+},
+
+{
+question:"विश्व का सबसे ऊँचा जलप्रपात कौन सा है?",
+subject:"Geography",
+exam:"Group D",
+options:["नियाग्रा","एंजेल फॉल्स","विक्टोरिया","जोग फॉल्स"],
+answer:"एंजेल फॉल्स",
+extra:"एंजेल फॉल्स वेनेजुएला में स्थित है।",
+image:"https://placehold.co/400x220/00838F/ffffff?text=Angel+Falls",
+imageCaption:"एंजेल फॉल्स वेनेजुएला में स्थित है और यह विश्व का सबसे ऊँचा जलप्रपात है।"
+},
+
+{
+question:"भारत का Coal Capital किसे कहा जाता है?",
+subject:"Geography",
+exam:"TGT",
+options:["रांची","धनबाद","भोपाल","कोलकाता"],
+answer:"धनबाद",
+extra:"धनबाद को भारत की कोयला राजधानी कहा जाता है।",
+image:"https://placehold.co/400x220/4E342E/ffffff?text=Coal+Capital",
+imageCaption:"धनबाद झारखंड में स्थित है और इसे भारत की कोयला राजधानी कहा जाता है।"
+},
+
+{
+question:"मानव शरीर की सबसे बड़ी ग्रंथि कौन सी है?",
+subject:"Science",
+exam:"CET",
+options:["हृदय","यकृत","फेफड़ा","गुर्दा"],
+answer:"यकृत",
+extra:"यकृत (Liver) मानव शरीर की सबसे बड़ी ग्रंथि है।",
+image:"https://placehold.co/400x220/C62828/ffffff?text=Human+Liver",
+imageCaption:"यकृत (Liver) मानव शरीर की सबसे बड़ी ग्रंथि है जो रक्त सफाई का मुख्य कार्य करती है।"
+}
+
+];
+
+/* VARIABLES */
+
+let currentQuestion = 0;
+let score = 0;
+let attempted = 0;
+let wrong = 0;
+let answeredCurrent = false;
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+    const q = quizData[currentQuestion];
+
+    document.getElementById("question").innerText = q.question;
+    document.getElementById("subject").innerText = "📍 " + q.subject;
+    document.getElementById("exam").innerText = "📝 " + q.exam;
+    document.getElementById("extra").innerText = q.extra;
+
+    document.getElementById("qno").innerText =
+    `${currentQuestion+1}/25`;
+
+    const progress =
+    ((currentQuestion+1)/quizData.length)*100;
+
+    document.getElementById("progressFill").style.width =
+    progress + "%";
+
+    document.getElementById("progressText").innerText =
+    Math.floor(progress) + "%";
+
+    const optionsDiv =
+    document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const letters = ["A","B","C","D"];
+
+        const div = document.createElement("div");
+
+        div.classList.add("option");
+
+        div.innerHTML = `
+
+            <div class="option-letter">
+                ${letters[index]}
+            </div>
+
+            <div class="option-text">
+                ${option}
+            </div>
+
+        `;
+
+        div.onclick = ()=>checkAnswer(div,option);
+
+        optionsDiv.appendChild(div);
+
+    });
+
+    // HIDE EXTRA BOX ON NEW QUESTION
+    document.getElementById("extraBox").style.display = "none";
+    answeredCurrent = false;
+
+    // UPDATE SIDE IMAGE
+    document.getElementById("questionImage").src = q.image;
+    document.getElementById("imageCaption").innerText = q.imageCaption || "";
+
+    updateNavigator();
+
+}
+
+/* CHECK ANSWER */
+
+function checkAnswer(element,selected){
+
+    if(answeredCurrent) return;
+    answeredCurrent = true;
+
+    const correctAnswer =
+    quizData[currentQuestion].answer;
+
+    const allOptions =
+    document.querySelectorAll(".option");
+
+    attempted++;
+
+    allOptions.forEach(opt=>{
+
+        opt.style.pointerEvents = "none";
+
+        if(opt.innerText.includes(correctAnswer)){
+            opt.classList.add("correct");
+        }
+
+    });
+
+    if(selected===correctAnswer){
+
+        score++;
+
+    }else{
+
+        wrong++;
+        element.classList.add("wrong");
+
+    }
+
+    // SHOW EXTRA KNOWLEDGE
+    document.getElementById("extraBox").style.display = "block";
+
+    updatePerformance();
+
+}
+
+/* SHOW ANSWER BUTTON */
+
+function showAnswer(){
+    if(answeredCurrent) return;
+    answeredCurrent = true;
+
+    const correctAnswer = quizData[currentQuestion].answer;
+    const allOptions = document.querySelectorAll(".option");
+
+    allOptions.forEach(opt => {
+        opt.style.pointerEvents = "none";
+        if(opt.innerText.includes(correctAnswer)){
+            opt.classList.add("correct");
+        }
+    });
+
+    // SHOW EXTRA KNOWLEDGE WITHOUT SCORING
+    document.getElementById("extraBox").style.display = "block";
+}
+
+/* PERFORMANCE */
+
+function updatePerformance(){
+
+    document.getElementById("score").innerText = score;
+    document.getElementById("attempted").innerText = attempted;
+    document.getElementById("correct").innerText = score;
+    document.getElementById("wrong").innerText = wrong;
+
+    let accuracy = attempted===0 ? 0 :
+    Math.floor((score/attempted)*100);
+
+    document.getElementById("accuracy").innerText =
+    accuracy + "%";
+
+}
+
+/* NEXT */
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(currentQuestion >= quizData.length){
+
+        alert("🎉 Quiz Completed!");
+        currentQuestion = 0;
+
+    }
+
+    loadQuestion();
+
+}
+
+/* PREVIOUS */
+
+function prevQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+        loadQuestion();
+
+    }
+
+}
+
+/* NAVIGATION */
+
+function updateNavigator(){
+
+    const grid =
+    document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+    for(let i=0;i<<quizData.length;i++){
+
+        const div =
+        document.createElement("div");
+
+        div.classList.add("q-number");
+
+        if(i===currentQuestion){
+
+            div.classList.add("active-q");
+
+        }
+
+        div.innerText = i+1;
+
+        div.onclick = ()=>{
+
+            currentQuestion = i;
+            loadQuestion();
+
+        };
+
+        grid.appendChild(div);
+
+    }
+
+}
+
+/* FULLSCREEN */
+
+function toggleFullscreen(){
+
+    if(!document.fullscreenElement){
+
+        document.documentElement.requestFullscreen();
+
+    }else{
+
+        document.exitFullscreen();
+
+    }
+
+}
+
+/* TIMER */
+
+let totalTime = 1800;
+
+setInterval(()=>{
+
+    let minutes =
+    Math.floor(totalTime/60);
+
+    let seconds =
+    totalTime%60;
+
+    seconds =
+    seconds < 10 ? "0"+seconds : seconds;
+
+    document.getElementById("timer").innerText =
+    `${minutes}:${seconds}`;
+
+    if(totalTime>0){
+
+        totalTime--;
+
+    }
+
+},1000);
+
+/* START */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
