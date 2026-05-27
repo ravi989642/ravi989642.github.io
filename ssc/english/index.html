@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Rearrangement (Para Jumbles) — Practice Set 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+
+        html, body { width: 100%; height: 100%; overflow-x: hidden; }
+
+        .header {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+
+        .logo-icon {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text p { font-size: 0.75rem; opacity: 0.9; font-weight: 500; }
+
+        .header-stats {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-box .label { font-size: 0.7rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box .value { font-size: 1.25rem; font-weight: 700; }
+
+        .timer {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+
+        .progress-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
+        .progress-bar { height: 10px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 50px; transition: width 0.5s ease; width: 0%; }
+
+        .question-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .q-btn {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .q-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .q-btn.active { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        .q-btn.answered { background: linear-gradient(135deg, #10b981, #059669); color: white; border-color: #059669; }
+        .q-btn.wrong-ans { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border-color: #dc2626; }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .question-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+
+        .q-badge {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .q-level {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .question-text { font-size: 1.15rem; font-weight: 600; line-height: 1.6; margin-bottom: 1.5rem; color: var(--dark); }
+
+        .sentences-box {
+            background: #f8fafc;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sentences-box .sent {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .sentences-box .sent strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .option {
+            background: #f8fafc;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .option:hover { border-color: var(--primary); background: #eff6ff; transform: translateX(5px); }
+        .option-letter { width: 36px; height: 36px; border-radius: 50%; background: white; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .option:hover .option-letter { border-color: var(--primary); color: var(--primary); }
+        .option.correct { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-color: var(--success); color: #065f46; }
+        .option.correct .option-letter { background: var(--success); color: white; border-color: var(--success); }
+        .option.wrong { background: linear-gradient(135deg, #fee2e2, #fecaca); border-color: var(--danger); color: #991b1b; }
+        .option.wrong .option-letter { background: var(--danger); color: white; border-color: var(--danger); }
+
+        .explanation {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            display: none;
+        }
+
+        .explanation.show { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .explanation-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .explanation-text { color: #334155; line-height: 1.7; font-size: 0.95rem; }
+        .key-point { margin-top: 0.75rem; padding: 0.75rem; background: white; border-radius: 8px; border: 1px dashed var(--primary); font-size: 0.9rem; color: #475569; }
+        .key-point strong { color: var(--primary-dark); }
+
+        .controls { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: inherit;
+        }
+
+        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4); }
+        .btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); }
+        .btn-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); padding: 0.875rem 2rem; border-radius: 12px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; font-family: inherit; }
+        .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4); }
+
+        .live-mode { display: none; background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); }
+        .live-mode.active { display: block; }
+        .live-question { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .live-sentences { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.8; }
+        .live-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+        .live-option { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; font-weight: 600; font-size: 1.1rem; }
+        .live-answer { text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--success); margin-bottom: 1rem; }
+        .live-explanation { background: #eff6ff; padding: 1rem; border-radius: 12px; font-size: 1rem; line-height: 1.6; }
+
+        .result-screen { display: none; text-align: center; padding: 3rem 2rem; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow-lg); }
+        .result-screen.show { display: block; animation: slideIn 0.5s ease; }
+        .result-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .result-score { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .result-message { font-size: 1.25rem; color: #64748b; margin-bottom: 2rem; }
+        .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .result-stat { background: #f8fafc; padding: 1rem; border-radius: 12px; }
+        .result-stat .number { font-size: 1.5rem; font-weight: 700; }
+        .result-stat .label { font-size: 0.8rem; color: #64748b; }
+
+        .mode-toggle { display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem; }
+        .toggle-btn { padding: 0.5rem 1.5rem; border-radius: 50px; border: 2px solid var(--border); background: white; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; font-size: 0.9rem; }
+        .toggle-btn.active { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border-color: #2563eb; }
+
+        .footer { text-align: center; padding: 2rem; color: white; opacity: 0.9; font-size: 0.9rem; }
+        .footer a { color: #fbbf24; text-decoration: none; font-weight: 600; }
+
+        .scroll-container { height: 500px; overflow: hidden; position: relative; }
+        .scroll-content { animation: scrollUp 400s linear infinite; }
+        @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+        .scroll-item { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 12px; border: 1px solid var(--border); }
+
+        .fullscreen-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; padding: 12px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); font-family: inherit; font-size: 0.9rem; transition: all 0.3s; }
+        .fullscreen-btn:hover { transform: scale(1.05); }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .question-card { padding: 1.25rem; }
+            .question-text { font-size: 1.05rem; }
+            .controls { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .live-options { grid-template-columns: 1fr; }
+            .result-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🧩</div>
+                <div class="logo-text">
+                    <h1>Para Jumbles — SET 1</h1>
+                    <p>Sentence Rearrangement for SSC/Bank/Railways</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <div class="label">Score</div>
+                    <div class="value" id="score">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="label">Question</div>
+                    <div class="value"><span id="current">1</span>/45</div>
+                </div>
+                <div class="timer" id="timer">20:00</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="mode-toggle">
+            <button class="toggle-btn active" onclick="setMode('practice')">📝 Practice Mode</button>
+            <button class="toggle-btn" onclick="setMode('live')">📺 Live Mode</button>
+            <button class="toggle-btn" onclick="setMode('scroll')">📜 Auto Scroll</button>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <span>Progress</span>
+                <span id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="question-nav" id="question-nav"></div>
+
+        <div id="practice-mode">
+            <div class="question-card" id="question-card"></div>
+            <div class="controls">
+                <button class="btn btn-secondary" onclick="prevQuestion()" id="prev-btn">← Previous</button>
+                <button class="btn btn-success" onclick="showAnswer()" id="show-ans-btn">✅ Show Answer</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Next →</button>
+            </div>
+        </div>
+
+        <div class="live-mode" id="live-mode">
+            <div class="live-question" id="live-question"></div>
+            <div class="live-sentences" id="live-sentences"></div>
+            <div class="live-options" id="live-options"></div>
+            <div class="live-answer" id="live-answer"></div>
+            <div class="live-explanation" id="live-explanation"></div>
+        </div>
+
+        <div class="live-mode" id="scroll-mode">
+            <div class="scroll-container">
+                <div class="scroll-content" id="scroll-content"></div>
+            </div>
+        </div>
+
+        <div class="result-screen" id="result-screen">
+            <div class="result-icon">🎉</div>
+            <div class="result-score" id="final-score">0/45</div>
+            <div class="result-message" id="result-message"></div>
+            <div class="result-stats">
+                <div class="result-stat">
+                    <div class="number" id="correct-count">0</div>
+                    <div class="label">Correct</div>
+                </div>
+                <div class="result-stat">
+                    <div class="number" id="wrong-count">0</div>
+                    <div class="label">Wrong</div>
+                </div>
+                <div class="result-stat">
+                    <div class="number" id="accuracy">0%</div>
+                    <div class="label">Accuracy</div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem;">
+                <button class="btn btn-primary" onclick="restartQuiz()" style="margin: 0 auto;">🔄 Restart Set 1</button>
+                <button class="btn btn-purple" onclick="goToSet2()" style="margin: 0 auto;">🎯 Start Set 2</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🧩 Para Jumbles Practice | SSC CGL/CHSL/CPO/MTS | Bank PO/Clerk | Railways | Best of Luck!</p>
+        <p style="margin-top: 0.5rem;">Open Source — Share with Friends!</p>
+    </footer>
+
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Full Screen">🖥️ Full Screen</button>
+
+    <script>
+
+        const questions = [
+            // SECTION A: BASIC (1-10)
+            {
+                id: 1, level: "Basic",
+                sentences: [
+                    "A. The king was very happy and rewarded the farmer generously.",
+                    "B. One day, a poor farmer found a treasure in his field.",
+                    "C. He decided to give it to the king.",
+                    "D. The farmer was honest and did not keep the treasure for himself."
+                ],
+                options: ["BDCA", "BCDA", "DBAC", "BDAC"],
+                correct: 0,
+                explanation: "The correct sequence is BDCA. B introduces the event (farmer finds treasure). D shows his honesty (he didn't keep it). C shows his action (decided to give to king). A is the result (king rewarded him).",
+                keypoint: "Look for the opening sentence that introduces the topic — usually a general statement or event."
+            },
+            {
+                id: 2, level: "Basic",
+                sentences: [
+                    "A. It is the tallest building in the city.",
+                    "B. The Burj Tower stands proudly in the center of the metropolis.",
+                    "C. Thousands of tourists visit it every year.",
+                    "D. It was completed in 2010 after five years of construction."
+                ],
+                options: ["BDAC", "BADC", "ABDC", "BACD"],
+                correct: 1,
+                explanation: "The correct sequence is BADC. B introduces the Burj Tower. A describes it (tallest building). D gives construction details. C gives the result (tourists visit).",
+                keypoint: "After introducing the subject, describe it, then give details, then result/effect."
+            },
+            {
+                id: 3, level: "Basic",
+                sentences: [
+                    "A. However, she never gave up on her dreams.",
+                    "B. She practiced every day for hours.",
+                    "C. Maria faced many difficulties in her childhood.",
+                    "D. Eventually, she became a world-famous pianist."
+                ],
+                options: ["CABD", "CADB", "ACBD", "CBAD"],
+                correct: 0,
+                explanation: "The correct sequence is CABD. C introduces Maria and her difficulties. A shows contrast (however, she didn't give up). B shows her action (practiced daily). D is the final result (became famous).",
+                keypoint: "'However' indicates a contrast — it must follow a negative or challenging statement."
+            },
+            {
+                id: 4, level: "Basic",
+                sentences: [
+                    "A. The teacher explained the concept clearly.",
+                    "B. All the students understood it perfectly.",
+                    "C. The class had been struggling with the topic for days.",
+                    "D. She used simple examples and diagrams."
+                ],
+                options: ["CADB", "ADBC", "CDBA", "CABD"],
+                correct: 0,
+                explanation: "The correct sequence is CADB. C sets the problem (struggling for days). A shows the solution (teacher explained). D gives the method (simple examples). B is the result (students understood).",
+                keypoint: "Problem → Solution → Method → Result is a common pattern."
+            },
+            {
+                id: 5, level: "Basic",
+                sentences: [
+                    "A. The river was polluted by industrial waste.",
+                    "B. The government launched a massive cleanup drive.",
+                    "C. Fish started dying and the water turned black.",
+                    "D. After two years, the river was clean again."
+                ],
+                options: ["ACBD", "ABCD", "ACBD", "CABD"],
+                correct: 0,
+                explanation: "The correct sequence is ACBD. A introduces the problem (pollution). C shows consequences (fish dying). B shows action taken (cleanup drive). D shows the final result (river clean).",
+                keypoint: "Cause → Effect → Action → Result is a standard chronological pattern."
+            },
+            {
+                id: 6, level: "Basic",
+                sentences: [
+                    "A. He woke up late and missed his bus.",
+                    "B. Rahul had an important interview at 9 AM.",
+                    "C. He decided to take a taxi and reached just in time.",
+                    "D. Unfortunately, his alarm did not ring that morning."
+                ],
+                options: ["BADC", "BDAC", "ABDC", "BACD"],
+                correct: 1,
+                explanation: "The correct sequence is BDAC. B introduces Rahul and the interview. D shows the problem (alarm didn't ring). A shows the consequence (woke up late, missed bus). C shows the solution (took taxi, reached on time).",
+                keypoint: "Introduction → Problem → Consequence → Solution."
+            },
+            {
+                id: 7, level: "Basic",
+                sentences: [
+                    "A. The invention of the printing press changed everything.",
+                    "B. Books became affordable and knowledge spread rapidly.",
+                    "C. Before that, books were handwritten and very expensive.",
+                    "D. This revolutionized education across Europe."
+                ],
+                options: ["ACBD", "CABD", "ACDB", "CADB"],
+                correct: 0,
+                explanation: "The correct sequence is ACBD. A introduces the invention. C gives the 'before' situation (handwritten, expensive). B shows the immediate effect (affordable books). D shows the broader impact (revolutionized education).",
+                keypoint: "'Before that' is a time marker — it must follow the event it contrasts with."
+            },
+            {
+                id: 8, level: "Basic",
+                sentences: [
+                    "A. The team celebrated their victory with great enthusiasm.",
+                    "B. They had practiced hard for six months.",
+                    "C. In the final match, they defeated the defending champions.",
+                    "D. Their coach was proud of their dedication."
+                ],
+                options: ["BCDA", "CBDA", "BDCA", "BCAD"],
+                correct: 0,
+                explanation: "The correct sequence is BCDA. B gives background (practiced hard). C shows the event (defeated champions). A shows celebration (victory). D gives the coach's reaction.",
+                keypoint: "Background → Event → Immediate reaction → Broader reaction."
+            },
+            {
+                id: 9, level: "Basic",
+                sentences: [
+                    "A. It provides shelter to many endangered species.",
+                    "B. The Sundarbans is the largest mangrove forest in the world.",
+                    "C. However, climate change poses a serious threat to this ecosystem.",
+                    "D. It is also home to the Royal Bengal Tiger."
+                ],
+                options: ["BADC", "BDAC", "ABDC", "BACD"],
+                correct: 0,
+                explanation: "The correct sequence is BADC. B introduces the Sundarbans. A describes it (shelter to species). D adds more info (also home to tiger). C shows the threat (however, climate change).",
+                keypoint: "'However' at the end often signals a shift to problems/challenges."
+            },
+            {
+                id: 10, level: "Basic",
+                sentences: [
+                    "A. The old man lived alone in a small cottage.",
+                    "B. Children from the village loved to hear his stories.",
+                    "C. He had traveled the world when he was young.",
+                    "D. Every evening, they would gather around his fireplace."
+                ],
+                options: ["ACBD", "ACDB", "CABD", "CADB"],
+                correct: 1,
+                explanation: "The correct sequence is ACDB. A introduces the old man. C gives background (traveled the world). D shows the routine (every evening, they gathered). B explains why (loved his stories).",
+                keypoint: "Introduction → Background → Routine/Habit → Reason."
+            },
+
+            // SECTION B: MODERATE (11-25)
+            {
+                id: 11, level: "Moderate",
+                sentences: [
+                    "A. The Great Depression of the 1930s was the worst economic downturn in modern history.",
+                    "B. Millions of people lost their jobs, homes, and savings.",
+                    "C. It began with the stock market crash of 1929 in the United States.",
+                    "D. Governments around the world were forced to implement new economic policies.",
+                    "E. The crisis soon spread to other countries, affecting global trade."
+                ],
+                options: ["ACBED", "CABED", "ACEBD", "AEBCD"],
+                correct: 0,
+                explanation: "The correct sequence is ACBED. A introduces the Great Depression. C gives the starting point (1929 crash). B shows the impact (millions lost jobs). E shows spread (to other countries). D shows response (new policies).",
+                keypoint: "General statement → Origin → Immediate impact → Spread → Response."
+            },
+            {
+                id: 12, level: "Moderate",
+                sentences: [
+                    "A. Artificial Intelligence is transforming various industries at an unprecedented pace.",
+                    "B. However, concerns about job displacement and ethical issues remain significant.",
+                    "C. From healthcare to finance, AI-powered systems are improving efficiency.",
+                    "D. Many experts believe that regulation is necessary to ensure responsible development.",
+                    "E. Despite these challenges, the potential benefits of AI cannot be ignored."
+                ],
+                options: ["ACBDE", "ACBED", "CABDE", "ACDEB"],
+                correct: 0,
+                explanation: "The correct sequence is ACBDE. A introduces AI transformation. C gives examples (healthcare, finance). B shows concerns (however, job displacement). D shows expert opinion (regulation needed). E concludes (despite challenges, benefits remain).",
+                keypoint: "Topic → Examples → Concerns → Expert view → Balanced conclusion."
+            },
+            {
+                id: 13, level: "Moderate",
+                sentences: [
+                    "A. The human brain is one of the most complex organs in the body.",
+                    "B. It controls everything from basic survival functions to advanced reasoning.",
+                    "C. Despite decades of research, scientists are still uncovering its mysteries.",
+                    "D. Recent advances in neuroimaging have provided new insights.",
+                    "E. However, a complete understanding of consciousness remains elusive."
+                ],
+                options: ["ABCDE", "ABDCE", "ABEDC", "ACBDE"],
+                correct: 1,
+                explanation: "The correct sequence is ABDCE. A introduces the brain. B describes its functions. D shows recent progress (neuroimaging). C shows ongoing challenge (still uncovering). E adds the ultimate mystery (consciousness elusive).",
+                keypoint: "Introduction → Description → Recent progress → Ongoing challenge → Ultimate mystery."
+            },
+            {
+                id: 14, level: "Moderate",
+                sentences: [
+                    "A. Climate change is no longer a distant threat; it is happening now.",
+                    "B. Rising sea levels are threatening coastal communities around the world.",
+                    "C. Scientists have been warning about these consequences for decades.",
+                    "D. Extreme weather events are becoming more frequent and intense.",
+                    "E. Immediate global action is required to mitigate the worst impacts."
+                ],
+                options: ["ADBCE", "ABDCE", "ACBDE", "ABCDE"],
+                correct: 0,
+                explanation: "The correct sequence is ADBCE. A states the reality (happening now). D gives evidence (extreme weather). B gives more evidence (rising sea levels). C shows prior warnings (scientists warned). E calls for action (global action needed).",
+                keypoint: "Assertion → Evidence 1 → Evidence 2 → Prior context → Call to action."
+            },
+            {
+                id: 15, level: "Moderate",
+                sentences: [
+                    "A. The Industrial Revolution began in Britain in the late 18th century.",
+                    "B. It transformed society from agrarian to industrial.",
+                    "C. Factories sprang up in cities, drawing people from rural areas.",
+                    "D. This rapid urbanization created overcrowded living conditions.",
+                    "E. Nevertheless, it laid the foundation for the modern economy."
+                ],
+                options: ["ABCED", "ACBDE", "ABCDE", "ABDCE"],
+                correct: 2,
+                explanation: "The correct sequence is ABCDE. A introduces the Industrial Revolution. B shows transformation (agrarian to industrial). C shows mechanism (factories, migration). D shows problem (overcrowding). E gives balanced conclusion (foundation for modern economy).",
+                keypoint: "'Nevertheless' signals a positive turn after negative points — must come near the end."
+            },
+            {
+                id: 16, level: "Moderate",
+                sentences: [
+                    "A. Reading is one of the most enriching habits a person can develop.",
+                    "B. It improves vocabulary, comprehension, and critical thinking skills.",
+                    "C. Moreover, reading reduces stress and enhances empathy.",
+                    "D. In the digital age, many people have replaced books with screens.",
+                    "E. However, the benefits of reading physical books remain unmatched."
+                ],
+                options: ["ABCED", "ABDCE", "ABCDE", "ACBDE"],
+                correct: 0,
+                explanation: "The correct sequence is ABCED. A introduces reading as enriching. B gives benefits (vocabulary, thinking). C adds more benefits (stress, empathy). D shows modern shift (screens replacing books). E gives contrast (however, physical books still better).",
+                keypoint: "'Moreover' adds to previous points; 'However' contrasts with the modern trend."
+            },
+            {
+                id: 17, level: "Moderate",
+                sentences: [
+                    "A. The discovery of penicillin by Alexander Fleming was accidental.",
+                    "B. He noticed that mold had killed bacteria in a petri dish.",
+                    "C. This observation led to the development of the first antibiotic.",
+                    "D. Before penicillin, minor infections could be fatal.",
+                    "E. It revolutionized medicine and saved millions of lives."
+                ],
+                options: ["ABDCE", "ABCDE", "ADBCE", "ABEDC"],
+                correct: 0,
+                explanation: "The correct sequence is ABDCE. A introduces the accidental discovery. B describes what happened (mold killed bacteria). D gives the 'before' context (infections were fatal). C shows the development (led to first antibiotic). E shows the impact (revolutionized medicine).",
+                keypoint: "Event → Observation → Prior context → Development → Impact."
+            },
+            {
+                id: 18, level: "Moderate",
+                sentences: [
+                    "A. Space exploration has always captured human imagination.",
+                    "B. The moon landing in 1969 was a historic achievement.",
+                    "C. Since then, numerous missions have expanded our understanding.",
+                    "D. Today, private companies are also entering the space race.",
+                    "E. The ultimate goal remains establishing human presence on Mars."
+                ],
+                options: ["ABCDE", "ACBDE", "ABEDC", "ABDCE"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A introduces space exploration. B gives a milestone (1969 moon landing). C shows progress since then (numerous missions). D shows current development (private companies). E looks to the future (goal: Mars).",
+                keypoint: "General → Milestone → Progress → Current → Future is a classic timeline pattern."
+            },
+            {
+                id: 19, level: "Moderate",
+                sentences: [
+                    "A. Democracy is often described as government by the people.",
+                    "B. It requires active participation and informed citizens.",
+                    "C. However, voter apathy and misinformation pose serious challenges.",
+                    "D. Without accountability, democratic institutions can weaken.",
+                    "E. Therefore, civic education is essential for sustaining democracy."
+                ],
+                options: ["ABCDE", "ABDCE", "ACBDE", "ABEDC"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A defines democracy. B states requirements (participation, informed citizens). C shows challenges (voter apathy). D adds danger (without accountability). E gives solution (civic education needed).",
+                keypoint: "Definition → Requirements → Challenges → Danger → Solution."
+            },
+            {
+                id: 20, level: "Moderate",
+                sentences: [
+                    "A. The internet has fundamentally changed how we communicate.",
+                    "B. Social media platforms have made information sharing instantaneous.",
+                    "C. However, this has also led to the spread of fake news.",
+                    "D. Cybersecurity threats have increased with greater connectivity.",
+                    "E. Balancing openness with safety remains a critical challenge."
+                ],
+                options: ["ABCDE", "ABDCE", "ABEDC", "ACBDE"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A introduces the internet's impact. B gives example (social media). C shows first problem (fake news). D shows second problem (cybersecurity). E gives the balancing challenge.",
+                keypoint: "Topic → Example → Problem 1 → Problem 2 → Balancing challenge."
+            },
+            {
+                id: 21, level: "Moderate",
+                sentences: [
+                    "A. Yoga originated in ancient India thousands of years ago.",
+                    "B. It combines physical postures, breathing techniques, and meditation.",
+                    "C. In recent decades, it has gained popularity worldwide.",
+                    "D. Scientific studies have confirmed its benefits for mental and physical health.",
+                    "E. The United Nations has even declared an International Day of Yoga."
+                ],
+                options: ["ABCDE", "ACBDE", "ABDCE", "ABEDC"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A introduces origin (ancient India). B describes what it is (postures, breathing). C shows spread (worldwide popularity). D gives scientific backing (studies confirm). E shows official recognition (UN declared day).",
+                keypoint: "Origin → Description → Spread → Scientific validation → Official recognition."
+            },
+            {
+                id: 22, level: "Moderate",
+                sentences: [
+                    "A. The Amazon rainforest is often called the lungs of the Earth.",
+                    "B. It produces about 20% of the world's oxygen.",
+                    "C. Deforestation is threatening this vital ecosystem.",
+                    "D. Illegal logging and agricultural expansion are major causes.",
+                    "E. Conservation efforts must be strengthened to protect it."
+                ],
+                options: ["ABCDE", "ABDCE", "ACBDE", "ABEDC"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A introduces the Amazon. B explains why it's important (20% oxygen). C shows the threat (deforestation). D gives causes (logging, agriculture). E calls for action (conservation needed).",
+                keypoint: "Importance → Reason → Threat → Causes → Call for action."
+            },
+            {
+                id: 23, level: "Moderate",
+                sentences: [
+                    "A. Education is the most powerful tool for social change.",
+                    "B. It empowers individuals and reduces inequality.",
+                    "C. Yet, millions of children around the world still lack access to schooling.",
+                    "D. Gender disparity in education remains a significant issue.",
+                    "E. Governments and NGOs must work together to ensure universal education."
+                ],
+                options: ["ABCDE", "ABDCE", "ABEDC", "ACBDE"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A states the power of education. B shows benefits (empowers, reduces inequality). C shows the gap (millions lack access). D gives specific issue (gender disparity). E calls for collaboration (govt + NGOs).",
+                keypoint: "Power → Benefits → Gap → Specific issue → Call for collaboration."
+            },
+            {
+                id: 24, level: "Moderate",
+                sentences: [
+                    "A. The COVID-19 pandemic disrupted lives across the globe.",
+                    "B. Healthcare systems were overwhelmed in many countries.",
+                    "C. Economies suffered as businesses were forced to shut down.",
+                    "D. Remote work and online education became the new normal.",
+                    "E. The crisis also highlighted the importance of scientific research."
+                ],
+                options: ["ABCDE", "ACBDE", "ABDCE", "ABEDC"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A introduces COVID disruption. B shows health impact (overwhelmed systems). C shows economic impact (businesses shut). D shows adaptation (remote work). E shows a positive lesson (importance of research).",
+                keypoint: "General disruption → Health → Economic → Adaptation → Lesson learned."
+            },
+            {
+                id: 25, level: "Moderate",
+                sentences: [
+                    "A. Renewable energy sources are essential for a sustainable future.",
+                    "B. Solar and wind power have become increasingly affordable.",
+                    "C. Many countries are investing heavily in green technology.",
+                    "D. However, the transition from fossil fuels faces political and economic hurdles.",
+                    "E. Public awareness and policy support are crucial for success."
+                ],
+                options: ["ABCDE", "ABDCE", "ABEDC", "ACBDE"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDE. A states importance of renewables. B gives examples (solar, wind). C shows global action (countries investing). D shows challenges (political, economic hurdles). E gives requirements (awareness, policy).",
+                keypoint: "Importance → Examples → Global action → Challenges → Requirements for success."
+            },
+
+            // SECTION C: ADVANCED (26-40)
+            {
+                id: 26, level: "Advanced",
+                sentences: [
+                    "A. The concept of zero as a number was revolutionary in mathematics.",
+                    "B. Ancient Indian mathematicians were among the first to treat zero as a numeral.",
+                    "C. This innovation enabled the development of the decimal system.",
+                    "D. It also allowed for more complex calculations and algebra.",
+                    "E. The influence of this discovery spread to the Arab world and eventually Europe.",
+                    "F. Today, zero is indispensable in computer science and digital technology."
+                ],
+                options: ["ABCDEF", "ACBDEF", "ABDCFE", "ABDCEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces zero as revolutionary. B gives origin (Indian mathematicians). C shows first impact (decimal system). D adds more impact (complex calculations). E traces spread (Arab world, Europe). F connects to modern relevance (computer science).",
+                keypoint: "Concept → Origin → Impact 1 → Impact 2 → Spread → Modern relevance."
+            },
+            {
+                id: 27, level: "Advanced",
+                sentences: [
+                    "A. The philosophy of Stoicism originated in ancient Greece.",
+                    "B. It teaches that virtue is the highest good and emotions should be controlled.",
+                    "C. Marcus Aurelius, a Roman emperor, was one of its most famous practitioners.",
+                    "D. His book "Meditations" remains a classic of Stoic literature.",
+                    "E. In modern times, Stoicism has experienced a revival among entrepreneurs and athletes.",
+                    "F. Its emphasis on resilience and self-discipline resonates with contemporary challenges."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces Stoicism's origin. B describes its teachings. C gives a famous practitioner (Marcus Aurelius). D mentions his work (Meditations). E shows modern revival. F explains why (resilience, self-discipline).",
+                keypoint: "Origin → Teachings → Famous practitioner → Work → Modern revival → Reason for revival."
+            },
+            {
+                id: 28, level: "Advanced",
+                sentences: [
+                    "A. Quantum mechanics challenges our intuitive understanding of reality.",
+                    "B. Particles can exist in multiple states simultaneously until observed.",
+                    "C. This phenomenon, known as superposition, defies classical physics.",
+                    "D. Einstein famously criticized this aspect, saying "God does not play dice."",
+                    "E. Nevertheless, experiments have consistently confirmed quantum predictions.",
+                    "F. Quantum computers are now being developed to harness these strange properties."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ACBDEF", "ABDCFE"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces quantum mechanics. B describes a strange property (superposition). C names the phenomenon. D shows criticism (Einstein's quote). E shows validation (experiments confirmed). F shows application (quantum computers).",
+                keypoint: "Topic → Strange property → Naming → Criticism → Validation → Application."
+            },
+            {
+                id: 29, level: "Advanced",
+                sentences: [
+                    "A. The Silk Road was not a single road but a network of trade routes.",
+                    "B. It connected the East and West for over fifteen centuries.",
+                    "C. Along these routes, goods, ideas, religions, and diseases traveled.",
+                    "D. The Black Death is believed to have spread to Europe via the Silk Road.",
+                    "E. The decline of the Silk Road began with the rise of maritime trade.",
+                    "F. Today, China's Belt and Road Initiative is seen as a modern revival of this concept."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A defines the Silk Road. B gives duration (15 centuries). C describes what traveled (goods, ideas). D gives an example (Black Death). E shows decline (maritime trade). F shows modern revival (Belt and Road).",
+                keypoint: "Definition → Duration → What traveled → Example → Decline → Modern revival."
+            },
+            {
+                id: 30, level: "Advanced",
+                sentences: [
+                    "A. The human genome project was launched in 1990 with ambitious goals.",
+                    "B. It aimed to map all the genes in human DNA.",
+                    "C. The project was completed in 2003, ahead of schedule and under budget.",
+                    "D. It has since revolutionized our understanding of genetic diseases.",
+                    "E. However, ethical concerns about genetic privacy have emerged.",
+                    "F. Gene editing technologies like CRISPR have opened new possibilities and debates."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces the project (1990). B states the goal (map genes). C gives completion (2003). D shows positive impact (genetic diseases). E shows concerns (privacy). F shows new technology (CRISPR) and debates.",
+                keypoint: "Launch → Goal → Completion → Positive impact → Concerns → New tech & debates."
+            },
+            {
+                id: 31, level: "Advanced",
+                sentences: [
+                    "A. The Treaty of Versailles ended World War I in 1919.",
+                    "B. It imposed harsh penalties and reparations on Germany.",
+                    "C. Many historians argue that these conditions created economic instability.",
+                    "D. The hyperinflation of the 1920s devastated the German middle class.",
+                    "E. This resentment contributed to the rise of extremist political movements.",
+                    "F. The treaty is often cited as a factor that indirectly led to World War II."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces the treaty (1919). B describes terms (harsh penalties). C gives historical analysis (economic instability). D gives evidence (hyperinflation). E shows political consequence (extremism). F draws long-term conclusion (led to WWII).",
+                keypoint: "Event → Terms → Analysis → Evidence → Consequence → Long-term conclusion."
+            },
+            {
+                id: 32, level: "Advanced",
+                sentences: [
+                    "A. Photosynthesis is the process by which plants convert light energy into chemical energy.",
+                    "B. It occurs primarily in the chloroplasts of plant cells.",
+                    "C. Chlorophyll absorbs sunlight and uses it to transform carbon dioxide and water.",
+                    "D. This process releases oxygen as a byproduct.",
+                    "E. The glucose produced serves as the foundation of most food chains.",
+                    "F. Without photosynthesis, life as we know it would not exist on Earth."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A defines photosynthesis. B gives location (chloroplasts). C describes mechanism (chlorophyll, CO2, water). D shows byproduct (oxygen). E shows product use (glucose, food chains). F gives ultimate importance (life wouldn't exist).",
+                keypoint: "Definition → Location → Mechanism → Byproduct → Product use → Ultimate importance."
+            },
+            {
+                id: 33, level: "Advanced",
+                sentences: [
+                    "A. The printing press was invented by Johannes Gutenberg around 1440.",
+                    "B. Before its invention, books were copied by hand, making them rare and expensive.",
+                    "C. The Gutenberg Bible was one of the first major books printed using movable type.",
+                    "D. This innovation dramatically increased literacy rates across Europe.",
+                    "E. It also facilitated the spread of new ideas during the Renaissance.",
+                    "F. Some scholars argue that the printing press was as transformative as the internet is today."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces the invention (Gutenberg, 1440). B gives the 'before' situation (hand-copied, expensive). C gives an example (Gutenberg Bible). D shows impact (literacy increased). E adds more impact (Renaissance ideas). F gives modern comparison (as transformative as internet).",
+                keypoint: "Invention → Before situation → Example → Impact 1 → Impact 2 → Modern comparison."
+            },
+            {
+                id: 34, level: "Advanced",
+                sentences: [
+                    "A. The theory of evolution by natural selection was proposed by Charles Darwin.",
+                    "B. He published "On the Origin of Species" in 1859 after years of research.",
+                    "C. The theory explained how species adapt and change over generations.",
+                    "D. It faced significant opposition from religious and scientific communities.",
+                    "E. Over time, however, overwhelming evidence from multiple fields supported it.",
+                    "F. Today, evolution is the foundational theory of modern biology."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces Darwin's theory. B gives publication details (1859). C explains the theory (adaptation, change). D shows opposition (religious, scientific). E shows validation (evidence supported). F gives current status (foundational theory).",
+                keypoint: "Proposal → Publication → Explanation → Opposition → Validation → Current status."
+            },
+            {
+                id: 35, level: "Advanced",
+                sentences: [
+                    "A. Blockchain technology was originally developed to support cryptocurrencies.",
+                    "B. It functions as a decentralized and transparent ledger of transactions.",
+                    "C. Each block contains a record of transactions and is linked to the previous one.",
+                    "D. This structure makes it extremely difficult to alter historical records.",
+                    "E. Beyond finance, blockchain is being explored for supply chain management and voting.",
+                    "F. Critics, however, point to energy consumption and scalability issues."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces origin (cryptocurrencies). B describes function (decentralized ledger). C explains structure (blocks linked). D shows security benefit (difficult to alter). E shows expanded use (supply chain, voting). F shows criticism (energy, scalability).",
+                keypoint: "Origin → Function → Structure → Benefit → Expanded use → Criticism."
+            },
+            {
+                id: 36, level: "Advanced",
+                sentences: [
+                    "A. The concept of human rights has evolved significantly over centuries.",
+                    "B. The Magna Carta of 1215 is often seen as an early milestone.",
+                    "C. The Enlightenment further developed ideas of individual liberty and equality.",
+                    "D. The Universal Declaration of Human Rights was adopted by the UN in 1948.",
+                    "E. Despite these frameworks, violations persist in many parts of the world.",
+                    "F. Activists and organizations continue to fight for the protection of these rights."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces evolution of human rights. B gives early milestone (Magna Carta, 1215). C shows development (Enlightenment). D gives modern milestone (UN 1948). E shows ongoing problem (violations persist). F shows ongoing struggle (activists fighting).",
+                keypoint: "Evolution → Early milestone → Development → Modern milestone → Problem → Ongoing struggle."
+            },
+            {
+                id: 37, level: "Advanced",
+                sentences: [
+                    "A. Neuroplasticity refers to the brain's ability to reorganize itself.",
+                    "B. It was once believed that the adult brain was fixed and unchangeable.",
+                    "C. Modern research has shown that the brain can form new neural connections throughout life.",
+                    "D. This discovery has transformed rehabilitation after strokes and injuries.",
+                    "E. Learning new skills, such as languages or musical instruments, enhances neuroplasticity.",
+                    "F. Maintaining cognitive health in old age is now linked to continued mental stimulation."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A defines neuroplasticity. B gives old belief (brain was fixed). C shows new discovery (new connections throughout life). D shows application (rehabilitation). E gives example (learning skills). F connects to health (cognitive health in old age).",
+                keypoint: "Definition → Old belief → New discovery → Application → Example → Health connection."
+            },
+            {
+                id: 38, level: "Advanced",
+                sentences: [
+                    "A. The Green Revolution began in the 1960s to address food shortages.",
+                    "B. High-yield variety seeds, chemical fertilizers, and irrigation were introduced.",
+                    "C. Crop production increased dramatically in countries like India and Mexico.",
+                    "D. However, the environmental costs soon became apparent.",
+                    "E. Soil degradation, water depletion, and loss of biodiversity were major consequences.",
+                    "F. Today, sustainable agriculture is being promoted as a more balanced approach."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces the Green Revolution (1960s). B describes methods (seeds, fertilizers). C shows success (production increased). D shows problem (environmental costs). E gives consequences (soil, water, biodiversity). F shows modern shift (sustainable agriculture).",
+                keypoint: "Introduction → Methods → Success → Problem → Consequences → Modern shift."
+            },
+            {
+                id: 39, level: "Advanced",
+                sentences: [
+                    "A. The Big Bang theory is the prevailing cosmological model of the universe.",
+                    "B. It proposes that the universe began as an extremely hot and dense singularity.",
+                    "C. Approximately 13.8 billion years ago, this singularity expanded rapidly.",
+                    "D. As the universe cooled, subatomic particles formed atoms.",
+                    "E. These atoms eventually coalesced into stars and galaxies.",
+                    "F. Ongoing observations, such as cosmic microwave background radiation, support this theory."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces the theory. B describes the beginning (hot, dense singularity). C gives timeline (13.8 billion years ago). D shows cooling (particles formed atoms). E shows formation (stars, galaxies). F gives evidence (cosmic microwave background).",
+                keypoint: "Theory → Beginning → Timeline → Cooling → Formation → Evidence."
+            },
+            {
+                id: 40, level: "Advanced",
+                sentences: [
+                    "A. The feminist movement has undergone several waves since the 19th century.",
+                    "B. The first wave focused primarily on legal rights, especially suffrage.",
+                    "C. The second wave expanded to issues like workplace equality and reproductive rights.",
+                    "D. The third wave addressed diversity and intersectionality within feminism.",
+                    "E. The fourth wave, emerging in the digital age, uses social media for activism.",
+                    "F. Each wave has built upon the achievements and limitations of the previous one."
+                ],
+                options: ["ABCDEF", "ABDCEF", "ABDCFE", "ACBDEF"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEF. A introduces waves of feminism. B describes first wave (suffrage). C describes second wave (workplace, reproductive). D describes third wave (diversity). E describes fourth wave (digital, social media). F gives overarching theme (building on previous).",
+                keypoint: "Chronological order with numbered waves: 1st → 2nd → 3rd → 4th → Summary."
+            },
+            // SECTION D: EXPERT (41-45)
+            {
+                id: 41, level: "Expert",
+                sentences: [
+                    "A. The Fermi Paradox asks why, given the vast number of stars, we have not detected alien civilizations.",
+                    "B. One explanation is that intelligent life destroys itself before achieving interstellar communication.",
+                    "C. Another possibility is that advanced civilizations choose not to communicate with us.",
+                    "D. The "Great Filter" theory suggests a critical barrier that most life fails to overcome.",
+                    "E. Some scientists propose that we are simply looking in the wrong way or at the wrong time.",
+                    "F. The search for extraterrestrial intelligence continues, but the silence remains profound.",
+                    "G. Resolving this paradox could fundamentally alter humanity's understanding of its place in the cosmos."
+                ],
+                options: ["ABCDEFG", "ABDCEFG", "ABDCFEG", "ACBDEFG"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEFG. A poses the Fermi Paradox. B, C, D, E present various explanations (self-destruction, non-communication, Great Filter, wrong method). F notes the ongoing search. G concludes with the profound significance.",
+                keypoint: "Paradox → Multiple explanations → Ongoing search → Profound significance."
+            },
+            {
+                id: 42, level: "Expert",
+                sentences: [
+                    "A. The concept of the "invisible hand" was introduced by Adam Smith in 1776.",
+                    "B. It describes how self-interest in a free market can lead to socially beneficial outcomes.",
+                    "C. Critics argue that this theory ignores issues like inequality and market failures.",
+                    "D. The 2008 financial crisis renewed debates about the limits of unregulated markets.",
+                    "E. Keynesian economics emerged partly as a response to the perceived shortcomings of laissez-faire.",
+                    "F. Today, most economies operate as mixed systems, balancing market freedom with regulation.",
+                    "G. The ongoing tension between these approaches shapes economic policy worldwide."
+                ],
+                options: ["ABCDEFG", "ABDCEFG", "ABDCFEG", "ACBDEFG"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEFG. A introduces the concept (Adam Smith, 1776). B explains it (self-interest → beneficial outcomes). C shows criticism (ignores inequality). D gives modern example (2008 crisis). E shows alternative theory (Keynesian). F shows current state (mixed systems). G gives ongoing tension.",
+                keypoint: "Concept → Explanation → Criticism → Modern example → Alternative → Current state → Ongoing tension."
+            },
+            {
+                id: 43, level: "Expert",
+                sentences: [
+                    "A. CRISPR-Cas9 is a revolutionary gene-editing technology discovered in bacteria.",
+                    "B. It allows scientists to make precise changes to DNA with unprecedented ease.",
+                    "C. Potential applications include curing genetic diseases and improving crop resilience.",
+                    "D. However, the technology raises profound ethical questions.",
+                    "E. The possibility of "designer babies" has sparked international debate.",
+                    "F. In 2018, a Chinese scientist claimed to have edited human embryos, causing global outrage.",
+                    "G. Regulatory frameworks are struggling to keep pace with scientific advancement.",
+                    "H. The future of gene editing will depend on how society balances innovation with ethics."
+                ],
+                options: ["ABCDEFGH", "ABDCEFGH", "ABDCFEGH", "ACBDEFGH"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEFGH. A introduces CRISPR. B explains capability. C lists positive applications. D transitions to ethical concerns. E gives specific example (designer babies). F provides real incident (2018 Chinese scientist). G discusses regulatory challenges. H concludes with the future balance needed.",
+                keypoint: "Technology → Capability → Applications → Ethical concerns → Specific example → Real incident → Regulatory gap → Future balance."
+            },
+            {
+                id: 44, level: "Expert",
+                sentences: [
+                    "A. The concept of sustainable development was formally defined in the Brundtland Report of 1987.",
+                    "B. It emphasized meeting present needs without compromising future generations.",
+                    "C. The report highlighted the interconnectedness of economic growth, social equity, and environmental protection.",
+                    "D. The Millennium Development Goals and later the Sustainable Development Goals built upon this framework.",
+                    "E. Despite global commitments, progress has been uneven across regions and sectors.",
+                    "F. Climate change has emerged as the most urgent test of sustainable development principles.",
+                    "G. Critics argue that current economic models are fundamentally incompatible with true sustainability.",
+                    "H. Achieving these goals requires unprecedented cooperation between governments, businesses, and civil society."
+                ],
+                options: ["ABCDEFGH", "ABDCEFGH", "ABDCFEGH", "ACBDEFGH"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEFGH. A introduces the concept (Brundtland Report, 1987). B defines it (present needs, future generations). C explains interconnectedness (economy, equity, environment). D shows follow-up frameworks (MDGs, SDGs). E shows uneven progress. F gives urgent challenge (climate change). G shows criticism (economic models incompatible). H calls for cooperation.",
+                keypoint: "Definition → Explanation → Frameworks → Progress → Urgent challenge → Criticism → Call for cooperation."
+            },
+            {
+                id: 45, level: "Expert",
+                sentences: [
+                    "A. The nature versus nurture debate has shaped psychology for over a century.",
+                    "B. Early behaviorists emphasized environmental factors as the primary determinants of behavior.",
+                    "C. The discovery of DNA and advances in genetics shifted attention to biological influences.",
+                    "D. Twin and adoption studies have provided evidence for both heredity and environment.",
+                    "E. Modern understanding recognizes that nature and nurture interact in complex ways.",
+                    "F. Epigenetics has revealed how environmental factors can influence gene expression.",
+                    "G. This emerging field bridges the gap between genetic determinism and environmentalism.",
+                    "H. The debate continues to evolve, but the interactionist perspective is now dominant."
+                ],
+                options: ["ABCDEFGH", "ABDCEFGH", "ABDCFEGH", "ACBDEFGH"],
+                correct: 0,
+                explanation: "The correct sequence is ABCDEFGH. A introduces the debate. B presents the nurture side (behaviorists). C presents the nature side (genetics). D provides evidence from studies. E introduces the modern synthesis. F gives a scientific mechanism (epigenetics). G explains how it bridges the gap. H concludes with the current consensus.",
+                keypoint: "Debate → Nurture side → Nature side → Evidence → Modern synthesis → Mechanism → Bridge → Current consensus."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = new Array(questions.length).fill(false);
+        let selectedOptions = new Array(questions.length).fill(-1);
+        let timerInterval;
+        let timeLeft = 1200; // 20 minutes for 45 questions
+
+        function init() {
+            renderNav();
+            renderQuestion();
+            startTimer();
+        }
+
+        function renderNav() {
+            const nav = document.getElementById('question-nav');
+            nav.innerHTML = questions.map((q, i) => {
+                let cls = '';
+                if (i === currentQuestion) cls = 'active';
+                else if (answered[i]) {
+                    cls = selectedOptions[i] === questions[i].correct ? 'answered' : 'wrong-ans';
+                }
+                return `<button class="q-btn ${cls}" onclick="goToQuestion(${i})">${i + 1}</button>`;
+            }).join('');
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQuestion];
+            const card = document.getElementById('question-card');
+
+            const sentencesHtml = q.sentences.map(s => {
+                const letter = s.charAt(0);
+                const text = s.substring(3);
+                return `<div class="sent"><strong>${letter}.</strong>${text}</div>`;
+            }).join('');
+
+            card.innerHTML = `
+                <div class="question-header">
+                    <span class="q-badge">Q${q.id}</span>
+                    <span class="q-level">${q.level} Level</span>
+                </div>
+                <div class="question-text">Rearrange the following sentences to form a meaningful paragraph. Choose the correct sequence:</div>
+                <div class="sentences-box">
+                    ${sentencesHtml}
+                </div>
+                <div class="options">
+                    ${q.options.map((opt, i) => `
+                        <div class="option ${selectedOptions[currentQuestion] === i ? (i === q.correct ? 'correct' : 'wrong') : ''} ${answered[currentQuestion] && i === q.correct ? 'correct' : ''}" 
+                             onclick="selectOption(${i})">
+                            <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+                            <span>${opt}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="explanation ${answered[currentQuestion] ? 'show' : ''}">
+                    <div class="explanation-title">📖 Explanation</div>
+                    <div class="explanation-text">${q.explanation}</div>
+                    <div class="key-point"><strong>💡 Strategy Tip:</strong> ${q.keypoint}</div>
+                </div>
+            `;
+
+            document.getElementById('current').textContent = currentQuestion + 1;
+            document.getElementById('score').textContent = score;
+
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+
+            document.getElementById('prev-btn').disabled = currentQuestion === 0;
+            document.getElementById('next-btn').textContent = currentQuestion === questions.length - 1 ? 'Finish 🏁' : 'Next →';
+
+            renderNav();
+        }
+
+        function selectOption(index) {
+            if (answered[currentQuestion]) return;
+            selectedOptions[currentQuestion] = index;
+            answered[currentQuestion] = true;
+            if (index === questions[currentQuestion].correct) {
+                score++;
+            }
+            renderQuestion();
+        }
+
+        function showAnswer() {
+            if (!answered[currentQuestion]) {
+                answered[currentQuestion] = true;
+                renderQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function goToQuestion(index) {
+            currentQuestion = index;
+            renderQuestion();
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showResults();
+                }
+            }, 1000);
+        }
+
+        function showResults() {
+            clearInterval(timerInterval);
+            document.getElementById('practice-mode').style.display = 'none';
+            document.getElementById('live-mode').style.display = 'none';
+            document.getElementById('scroll-mode').style.display = 'none';
+            document.querySelector('.progress-section').style.display = 'none';
+            document.querySelector('.question-nav').style.display = 'none';
+            document.querySelector('.mode-toggle').style.display = 'none';
+
+            const correct = answered.filter((a, i) => a && selectedOptions[i] === questions[i].correct).length;
+            const wrong = answered.filter((a, i) => a && selectedOptions[i] !== questions[i].correct).length;
+            const attempted = answered.filter(a => a).length;
+            const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+
+            document.getElementById('final-score').textContent = `${correct}/${questions.length}`;
+            document.getElementById('correct-count').textContent = correct;
+            document.getElementById('wrong-count').textContent = wrong;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+
+            let message = '';
+            if (accuracy >= 80) message = '🌟 Excellent! You have mastered Para Jumbles!';
+            else if (accuracy >= 60) message = '✅ Good! Keep practicing to reach mastery!';
+            else if (accuracy >= 40) message = '⚠️ Average! Focus on identifying opening and closing sentences!';
+            else message = '📚 Needs more practice! Review the strategy tips for each question!';
+
+            document.getElementById('result-message').textContent = message;
+            document.getElementById('result-screen').classList.add('show');
+        }
+
+        function goToSet2() {
+            alert('Set 2 will be available soon! Keep practicing Set 1.');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = new Array(questions.length).fill(false);
+            selectedOptions = new Array(questions.length).fill(-1);
+            timeLeft = 1200;
+
+            document.getElementById('practice-mode').style.display = 'block';
+            document.querySelector('.progress-section').style.display = 'block';
+            document.querySelector('.question-nav').style.display = 'flex';
+            document.querySelector('.mode-toggle').style.display = 'flex';
+            document.getElementById('result-screen').classList.remove('show');
+
+            setMode('practice');
+            init();
+        }
+
+        function setMode(mode) {
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('practice-mode').style.display = 'none';
+            document.getElementById('live-mode').classList.remove('active');
+            document.getElementById('scroll-mode').classList.remove('active');
+            document.querySelector('.progress-section').style.display = 'none';
+            document.querySelector('.question-nav').style.display = 'none';
+
+            if (mode === 'practice') {
+                document.getElementById('practice-mode').style.display = 'block';
+                document.querySelector('.progress-section').style.display = 'block';
+                document.querySelector('.question-nav').style.display = 'flex';
+                renderQuestion();
+            } else if (mode === 'live') {
+                document.getElementById('live-mode').classList.add('active');
+                startLiveMode();
+            } else if (mode === 'scroll') {
+                document.getElementById('scroll-mode').classList.add('active');
+                startScrollMode();
+            }
+        }
+
+        let liveIndex = 0;
+        let liveInterval;
+
+        function startLiveMode() {
+            clearInterval(liveInterval);
+            liveIndex = 0;
+            showLiveQuestion();
+            liveInterval = setInterval(() => {
+                liveIndex++;
+                if (liveIndex >= questions.length) liveIndex = 0;
+                showLiveQuestion();
+            }, 15000);
+        }
+
+        function showLiveQuestion() {
+            const q = questions[liveIndex];
+            document.getElementById('live-question').textContent = `${liveIndex + 1}. Rearrange the sentences to form a meaningful paragraph:`;
+            document.getElementById('live-sentences').innerHTML = q.sentences.map(s => `<div>${s}</div>`).join('');
+            document.getElementById('live-options').innerHTML = q.options.map((opt, i) => 
+                `<div class="live-option">${String.fromCharCode(65 + i)}. ${opt}</div>`
+            ).join('');
+            document.getElementById('live-answer').textContent = `✅ Correct Answer: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}`;
+            document.getElementById('live-explanation').innerHTML = `<strong>📖 Explanation:</strong> ${q.explanation}<br><br><strong>💡 Tip:</strong> ${q.keypoint}`;
+        }
+
+        function startScrollMode() {
+            const content = document.getElementById('scroll-content');
+            content.innerHTML = questions.map(q => `
+                <div class="scroll-item">
+                    <div style="font-weight:700;color:#1e3a8a;margin-bottom:0.5rem;">Q${q.id} [${q.level}]: Rearrange the sentences</div>
+                    <div style="margin-bottom:0.5rem;line-height:1.8;font-size:0.95rem;">
+                        ${q.sentences.map(s => `<div>${s}</div>`).join('')}
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.5rem;">
+                        ${q.options.map((opt, i) => `<div style="background:#f1f5f9;padding:0.5rem;border-radius:6px;">${String.fromCharCode(65+i)}. ${opt}</div>`).join('')}
+                    </div>
+                    <div style="color:#059669;font-weight:700;">✅ ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}</div>
+                    <div style="color:#64748b;font-size:0.9rem;margin-top:0.5rem;">💡 ${q.keypoint}</div>
+                </div>
+            `).join('');
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log('Error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
