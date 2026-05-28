@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Synonyms - Vocabulary Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #f59e0b;
+            --success: #10b981; --danger: #ef4444; --dark: #1e293b;
+            --light: #f8fafc; --card-bg: #ffffff; --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; color: var(--dark);
+        }
+        .header {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3730a3 100%);
+            color: white; padding: 1rem 2rem;
+            box-shadow: var(--shadow-lg); position: sticky; top: 0; z-index: 1000;
+        }
+        .header-content {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; box-shadow: 0 4px 12px rgba(245,158,11,0.4);
+        }
+        .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text p { font-size: 0.75rem; opacity: 0.9; font-weight: 500; }
+        .header-stats { display: flex; gap: 1.5rem; align-items: center; }
+        .stat-box {
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; border-radius: 10px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .stat-box .label { font-size: 0.7rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box .value { font-size: 1.25rem; font-weight: 700; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .mode-toggle {
+            display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .toggle-btn {
+            padding: 0.5rem 1.5rem; border-radius: 50px; border: 2px solid var(--border);
+            background: white; font-weight: 600; cursor: pointer; transition: all 0.3s;
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border-color: #2563eb;
+        }
+        .progress-section {
+            background: var(--card-bg); border-radius: 16px; padding: 1.25rem;
+            margin-bottom: 1.5rem; box-shadow: var(--shadow);
+        }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
+        .progress-bar { height: 10px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 50px; transition: width 0.5s ease; }
+        .word-card {
+            background: var(--card-bg); border-radius: 20px; padding: 2rem;
+            box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;
+            border: 1px solid var(--border); animation: slideIn 0.4s ease;
+        }
+        @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .word-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .word-badge {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white;
+            padding: 0.4rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem;
+        }
+        .word-number { background: #fef3c7; color: #92400e; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+        .word-title { font-size: 2rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 0.5rem; }
+        .word-pronunciation { font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem; font-style: italic; }
+        .synonyms-box { background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; }
+        .synonyms-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 0.75rem; font-size: 1rem; }
+        .synonyms-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .synonym-tag {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af;
+            padding: 0.4rem 0.9rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+            border: 1px solid #93c5fd;
+        }
+        .write-section { margin-top: 1.5rem; }
+        .write-label { font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; display: block; }
+        .write-input {
+            width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 12px;
+            font-size: 1.1rem; font-family: inherit; margin-bottom: 0.75rem;
+            transition: all 0.3s;
+        }
+        .write-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .write-input.correct { border-color: var(--success); background: #f0fdf4; }
+        .write-input.wrong { border-color: var(--danger); background: #fef2f2; }
+        .write-feedback { font-size: 0.9rem; margin-top: 0.5rem; min-height: 1.5rem; }
+        .write-feedback.correct { color: var(--success); font-weight: 600; }
+        .write-feedback.wrong { color: var(--danger); font-weight: 600; }
+        .controls { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn {
+            padding: 0.875rem 2rem; border-radius: 12px; border: none; font-weight: 700;
+            font-size: 1rem; cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; gap: 0.5rem; font-family: inherit;
+        }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.4); }
+        .btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16,185,129,0.4); }
+        .btn-check { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .btn-check:hover { transform: translateY(-2px); }
+        .review-card {
+            background: var(--card-bg); border-radius: 16px; padding: 1.5rem;
+            box-shadow: var(--shadow); margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+        .review-word { font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; }
+        .review-synonyms { color: #64748b; font-size: 0.95rem; }
+        .review-date { font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem; }
+        .streak-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 16px; padding: 1.5rem; text-align: center;
+            margin-bottom: 1.5rem; border: 2px solid #fbbf24;
+        }
+        .streak-number { font-size: 3rem; font-weight: 800; color: #92400e; }
+        .streak-label { font-size: 1rem; color: #92400e; font-weight: 600; }
+        .empty-state { text-align: center; padding: 3rem; color: #64748b; }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .footer { text-align: center; padding: 2rem; color: white; opacity: 0.9; font-size: 0.9rem; }
+        .hint-box {
+            background: #fef3c7; border: 1px dashed #fbbf24; border-radius: 8px;
+            padding: 0.75rem; margin-top: 0.75rem; font-size: 0.9rem; color: #92400e;
+        }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .word-card { padding: 1.25rem; }
+            .controls { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">📚</div>
+                <div class="logo-text">
+                    <h1>Daily Synonyms</h1>
+                    <p>Learn 10 Words Every Day</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box"><div class="label">Streak</div><div class="value" id="streak">0</div></div>
+                <div class="stat-box"><div class="label">Learned</div><div class="value" id="learned">0</div></div>
+                <div class="stat-box"><div class="label">Day</div><div class="value" id="day-num">1</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="mode-toggle">
+            <button class="toggle-btn active" onclick="setMode('learn', this)">📝 Learn Daily</button>
+            <button class="toggle-btn" onclick="setMode('review', this)">📖 Review All</button>
+            <button class="toggle-btn" onclick="setMode('write', this)">✍️ Write Practice</button>
+        </div>
+
+        <!-- Learn Mode -->
+        <div id="learn-mode">
+            <div class="progress-section">
+                <div class="progress-header"><span>Today's Progress</span><span id="learn-progress-text">0/10</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="learn-progress-bar" style="width:0%"></div></div>
+            </div>
+            <div class="word-card" id="word-card"></div>
+            <div class="controls">
+                <button class="btn btn-secondary" onclick="prevWord()">← Previous</button>
+                <button class="btn btn-success" onclick="markLearned()">✅ Mark Learned</button>
+                <button class="btn btn-primary" onclick="nextWord()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Review Mode -->
+        <div id="review-mode" style="display:none">
+            <div class="streak-box">
+                <div class="streak-number" id="review-streak">0</div>
+                <div class="streak-label">🔥 Day Streak</div>
+            </div>
+            <div id="review-list"></div>
+        </div>
+
+        <!-- Write Practice Mode -->
+        <div id="write-mode" style="display:none">
+            <div class="progress-section">
+                <div class="progress-header"><span>Write Practice</span><span id="write-progress-text">0/10</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="write-progress-bar" style="width:0%"></div></div>
+            </div>
+            <div class="word-card" id="write-card"></div>
+            <div class="controls">
+                <button class="btn btn-secondary" onclick="prevWrite()">← Previous</button>
+                <button class="btn btn-check" onclick="checkAnswer()">✓ Check Answer</button>
+                <button class="btn btn-primary" onclick="nextWrite()">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>📚 Daily Synonyms | Vocabulary Builder | SSC/Bank/Competitive Exams</p>
+        <p style="margin-top:0.5rem">Practice daily to master 3000+ words!</p>
+    </footer>
+
+    <script>
+
+var allWords = [
+    // DAY 1
+    {word:"Abase", synonyms:["Degrade","Disgrace","Humiliate","Demean","Dishonour","Stigmatise"], day:1},
+    {word:"Abandon", synonyms:["Desert","Forsake","Leave","Relinquish"], day:1},
+    {word:"Abhor", synonyms:["Hate","Detest","Loathe","Abominate"], day:1},
+    {word:"Abut", synonyms:["Adjoin","Border","Verge on","Join"], day:1},
+    {word:"Abstain", synonyms:["Refuse","Renounce","Avoid","Shun"], day:1},
+    {word:"Abbreviate", synonyms:["Curtail","Abridge","Compress","Shorten","Truncate"], day:1},
+    {word:"Aberration", synonyms:["Deviation","Wandering","Errant","Irregular","Weird","Abnormal"], day:1},
+    {word:"Abet", synonyms:["Aid","Assist","Condone","Favour","Support","Promote"], day:1},
+    {word:"Absurd", synonyms:["Ridiculous","Silly","Foolish","Preposterous"], day:1},
+    {word:"Abstruse", synonyms:["Recondite","Hidden","Difficult"], day:1},
+    // DAY 2
+    {word:"Assiduous", synonyms:["Painstaking","Diligent","Industrious","Laborious","Meticulous"], day:2},
+    {word:"Abundant", synonyms:["Ample","Copious","Plentiful","Bountiful","Existing in large quantities"], day:2},
+    {word:"Adequate", synonyms:["Enough","Sufficient","Proportionate"], day:2},
+    {word:"Accommodate", synonyms:["Adapt","Adjust","Reconcile"], day:2},
+    {word:"Acme", synonyms:["Summit","Apex","Zenith","Peak"], day:2},
+    {word:"Acclaim", synonyms:["Applaud","Cheer","Celebrate","Extol"], day:2},
+    {word:"Acquiesce", synonyms:["Assent","Rest","Accede","Comply","Concur","Consent","Submit"], day:2},
+    {word:"Admiration", synonyms:["Esteem","Praise","Respect","Approval","Approbation","Awe","Regard"], day:2},
+    {word:"Adherent", synonyms:["Sticking to","Follower","Partisan","Devotee"], day:2},
+    {word:"Affliction", synonyms:["Distress","Ordeal","Suffering","Sorrow"], day:2},
+    // DAY 3
+    {word:"Adversity", synonyms:["Misfortune","Calamity","Catastrophe","Hostility"], day:3},
+    {word:"Ameliorate", synonyms:["Make better","Improve","Amend"], day:3},
+    {word:"Ally", synonyms:["Colleague","Helper","Partner","Accomplice"], day:3},
+    {word:"Audacious", synonyms:["Bold","Brazen","Impudent","Daring"], day:3},
+    {word:"Astonish", synonyms:["Amaze","Surprise","Astound","Flabbergast"], day:3},
+    {word:"Assistance", synonyms:["Help","Aid","Succor","Collaboration","Sustenance"], day:3},
+    {word:"Aphorism", synonyms:["Maxim","Apothegm","Axiom","Proverb","Motto","Adage"], day:3},
+    {word:"Apprehend", synonyms:["Seize","Know","Fear","Arrest","Understand"], day:3},
+    {word:"Appraise", synonyms:["Evaluate","Estimate"], day:3},
+    {word:"Antithesis", synonyms:["Contrasting","Reverse"], day:3},
+    // DAY 4
+    {word:"Alms", synonyms:["Dole","Gratuity","Money, clothes and food that are given to poor people"], day:4},
+    {word:"Beg", synonyms:["Implore","Solicit","Supplicate","Beseech","Request","Plead"], day:4},
+    {word:"Behaviour", synonyms:["Conduct","Demeanour","Deportment","Manner"], day:4},
+    {word:"Base", synonyms:["Ignoble","Mean","Low","Foundation"], day:4},
+    {word:"Bad", synonyms:["Evil","Wicked","Devilish","Naughty","Worthless"], day:4},
+    {word:"Blame", synonyms:["Reprove","Condemn","Reproach"], day:4},
+    {word:"Baffle", synonyms:["Frustrate","Confuse","Perplex","Bewilder","Mystify"], day:4},
+    {word:"Banish", synonyms:["Expel","Eject","Oust","Evict","Exile"], day:4},
+    {word:"Barbarous", synonyms:["Uncivilized","Brutal","Cruel","Savage"], day:4},
+    {word:"Barren", synonyms:["Unproductive","Sterile","Arid","Desolate"], day:4},
+    // DAY 5
+    {word:"Bashful", synonyms:["Shy","Timid","Diffident","Sheepish"], day:5},
+    {word:"Beckon", synonyms:["Signal","Gesture","Summon","Wave"], day:5},
+    {word:"Befogged", synonyms:["Confused","Bewildered","Muddled"], day:5},
+    {word:"Belittle", synonyms:["Disparage","Decry","Depreciate","Minimize"], day:5},
+    {word:"Benevolent", synonyms:["Kind","Charitable","Humane","Philanthropic"], day:5},
+    {word:"Benign", synonyms:["Kindly","Gentle","Favourable","Harmless"], day:5},
+    {word:"Bequest", synonyms:["Legacy","Inheritance","Endowment"], day:5},
+    {word:"Bereave", synonyms:["Deprive","Dispossess","Rob","Divest"], day:5},
+    {word:"Besiege", synonyms:["Surround","Encircle","Blockade","Trap"], day:5},
+    {word:"Bestow", synonyms:["Confer","Grant","Award","Present"], day:5},
+    // DAY 6
+    {word:"Betray", synonyms:["Deceive","Trick","Mislead","Expose"], day:6},
+    {word:"Bewitch", synonyms:["Enchant","Charm","Captivate","Mesmerize"], day:6},
+    {word:"Bias", synonyms:["Prejudice","Partiality","Favouritism","Inclination"], day:6},
+    {word:"Bizarre", synonyms:["Strange","Odd","Weird","Peculiar","Fantastic"], day:6},
+    {word:"Blasphemy", synonyms:["Profanity","Sacrilege","Impiousness"], day:6},
+    {word:"Blatant", synonyms:["Flagrant","Conspicuous","Obvious","Shameless"], day:6},
+    {word:"Bleak", synonyms:["Gloomy","Dismal","Cheerless","Desolate"], day:6},
+    {word:"Blend", synonyms:["Mix","Combine","Merge","Fuse","Amalgamate"], day:6},
+    {word:"Bliss", synonyms:["Joy","Ecstasy","Euphoria","Felicity","Rapture"], day:6},
+    {word:"Blunt", synonyms:["Dull","Obtuse","Straightforward","Frank"], day:6},
+    // DAY 7
+    {word:"Boisterous", synonyms:["Noisy","Rowdy","Raucous","Unrestrained"], day:7},
+    {word:"Bold", synonyms:["Daring","Brave","Courageous","Intrepid"], day:7},
+    {word:"Boon", synonyms:["Blessing","Benefit","Advantage","Gift"], day:7},
+    {word:"Bore", synonyms:["Drill","Pierce","Tire","Weary"], day:7},
+    {word:"Boundless", synonyms:["Limitless","Infinite","Vast","Immense"], day:7},
+    {word:"Braggart", synonyms:["Boaster","Show-off","Swaggerer"], day:7},
+    {word:"Brazen", synonyms:["Bold","Shameless","Impudent","Insolent"], day:7},
+    {word:"Breach", synonyms:["Break","Violation","Infringement","Gap"], day:7},
+    {word:"Brittle", synonyms:["Fragile","Breakable","Frail","Delicate"], day:7},
+    {word:"Brood", synonyms:["Ponder","Meditate","Dwell","Fret"], day:7},
+    // DAY 8
+    {word:"Brutal", synonyms:["Cruel","Savage","Inhuman","Barbarous"], day:8},
+    {word:"Bulk", synonyms:["Mass","Volume","Magnitude","Majority"], day:8},
+    {word:"Burden", synonyms:["Load","Weight","Onus","Responsibility"], day:8},
+    {word:"Bustle", synonyms:["Hurry","Hustle","Stir","Commotion"], day:8},
+    {word:"Cajole", synonyms:["Coax","Wheedle","Persuade","Entice"], day:8},
+    {word:"Calamity", synonyms:["Disaster","Catastrophe","Tragedy","Misfortune"], day:8},
+    {word:"Calm", synonyms:["Peaceful","Tranquil","Serene","Placid"], day:8},
+    {word:"Candour", synonyms:["Frankness","Honesty","Openness","Sincerity"], day:8},
+    {word:"Capable", synonyms:["Competent","Able","Proficient","Skilled"], day:8},
+    {word:"Captivate", synonyms:["Charm","Enchant","Fascinate","Bewitch"], day:8},
+    // DAY 9
+    {word:"Careless", synonyms:["Negligent","Reckless","Thoughtless","Heedless"], day:9},
+    {word:"Cautious", synonyms:["Careful","Wary","Prudent","Guarded"], day:9},
+    {word:"Cease", synonyms:["Stop","Halt","Discontinue","Terminate"], day:9},
+    {word:"Censure", synonyms:["Blame","Rebuke","Reprimand","Condemn"], day:9},
+    {word:"Champion", synonyms:["Defender","Protector","Advocate","Vindicator"], day:9},
+    {word:"Chaos", synonyms:["Disorder","Confusion","Turmoil","Pandemonium"], day:9},
+    {word:"Charity", synonyms:["Benevolence","Generosity","Alms","Philanthropy"], day:9},
+    {word:"Chaste", synonyms:["Pure","Virtuous","Modest","Innocent"], day:9},
+    {word:"Cherish", synonyms:["Treasure","Value","Esteem","Nurture"], day:9},
+    {word:"Chronic", synonyms:["Persistent","Constant","Habitual","Incurable"], day:9},
+    // DAY 10
+    {word:"Circumvent", synonyms:["Avoid","Evade","Bypass","Skirt"], day:10},
+    {word:"Clamour", synonyms:["Uproar","Outcry","Hubbub","Noise"], day:10},
+    {word:"Clandestine", synonyms:["Secret","Covert","Furtive","Surreptitious"], day:10},
+    {word:"Clarity", synonyms:["Clearness","Lucidity","Transparency","Precision"], day:10},
+    {word:"Clemency", synonyms:["Mercy","Leniency","Compassion","Forbearance"], day:10},
+    {word:"Cling", synonyms:["Adhere","Stick","Hold","Attach"], day:10},
+    {word:"Coarse", synonyms:["Rough","Crude","Vulgar","Unrefined"], day:10},
+    {word:"Coax", synonyms:["Persuade","Cajole","Wheedle","Urge"], day:10},
+    {word:"Collapse", synonyms:["Fall","Cave in","Crumble","Break down"], day:10},
+    {word:"Colossal", synonyms:["Huge","Enormous","Immense","Gigantic","Vast"], day:10},
+    // DAY 11
+    {word:"Combat", synonyms:["Fight","Battle","Conflict","Struggle"], day:11},
+    {word:"Comfort", synonyms:["Consolation","Solace","Relief","Ease"], day:11},
+    {word:"Comical", synonyms:["Funny","Amusing","Humorous","Ludicrous"], day:11},
+    {word:"Commence", synonyms:["Begin","Start","Initiate","Inaugurate"], day:11},
+    {word:"Compassion", synonyms:["Sympathy","Pity","Mercy","Tenderness"], day:11},
+    {word:"Compel", synonyms:["Force","Oblige","Constrain","Necessitate"], day:11},
+    {word:"Competent", synonyms:["Capable","Able","Efficient","Proficient"], day:11},
+    {word:"Complacent", synonyms:["Self-satisfied","Smug","Contented"], day:11},
+    {word:"Complicate", synonyms:["Confuse","Entangle","Perplex","Muddle"], day:11},
+    {word:"Comply", synonyms:["Obey","Conform","Accede","Submit"], day:11},
+    // DAY 12
+    {word:"Conceal", synonyms:["Hide","Cover","Disguise","Suppress"], day:12},
+    {word:"Concede", synonyms:["Admit","Allow","Grant","Acknowledge"], day:12},
+    {word:"Conceive", synonyms:["Imagine","Think","Visualize","Comprehend"], day:12},
+    {word:"Concise", synonyms:["Brief","Short","Succinct","Terse"], day:12},
+    {word:"Condemn", synonyms:["Censure","Blame","Denounce","Convict"], day:12},
+    {word:"Confer", synonyms:["Consult","Discuss","Bestow","Grant"], day:12},
+    {word:"Confess", synonyms:["Admit","Acknowledge","Reveal","Disclose"], day:12},
+    {word:"Confident", synonyms:["Assured","Certain","Positive","Self-reliant"], day:12},
+    {word:"Confine", synonyms:["Restrict","Limit","Imprison","Enclose"], day:12},
+    {word:"Confirm", synonyms:["Verify","Validate","Authenticate","Substantiate"], day:12},
+    // DAY 13
+    {word:"Conflict", synonyms:["Clash","Discord","Friction","Strife"], day:13},
+    {word:"Conform", synonyms:["Comply","Adapt","Adjust","Follow"], day:13},
+    {word:"Confuse", synonyms:["Bewilder","Baffle","Perplex","Muddle"], day:13},
+    {word:"Congenial", synonyms:["Pleasant","Agreeable","Friendly","Compatible"], day:13},
+    {word:"Conspicuous", synonyms:["Obvious","Noticeable","Prominent","Striking"], day:13},
+    {word:"Contaminate", synonyms:["Pollute","Taint","Defile","Infect"], day:13},
+    {word:"Contempt", synonyms:["Scorn","Disdain","Disrespect","Derision"], day:13},
+    {word:"Contend", synonyms:["Compete","Struggle","Fight","Assert"], day:13},
+    {word:"Contradict", synonyms:["Deny","Oppose","Refute","Dispute"], day:13},
+    {word:"Contrary", synonyms:["Opposite","Conflicting","Adverse","Antagonistic"], day:13},
+    // DAY 14
+    {word:"Contribute", synonyms:["Donate","Give","Add","Share"], day:14},
+    {word:"Contrive", synonyms:["Plan","Devise","Scheme","Invent"], day:14},
+    {word:"Controversy", synonyms:["Debate","Dispute","Argument","Polemic"], day:14},
+    {word:"Convenient", synonyms:["Handy","Suitable","Appropriate","Favourable"], day:14},
+    {word:"Convince", synonyms:["Persuade","Assure","Satisfy","Prove"], day:14},
+    {word:"Cooperate", synonyms:["Collaborate","Assist","Help","Contribute"], day:14},
+    {word:"Copious", synonyms:["Abundant","Plentiful","Profuse","Ample"], day:14},
+    {word:"Cordial", synonyms:["Warm","Friendly","Hearty","Sincere"], day:14},
+    {word:"Corrupt", synonyms:["Dishonest","Depraved","Immoral","Venal"], day:14},
+    {word:"Counterfeit", synonyms:["Fake","Forged","Bogus","Spurious"], day:14},
+    // DAY 15
+    {word:"Courage", synonyms:["Bravery","Valour","Fearlessness","Intrepidity"], day:15},
+    {word:"Courteous", synonyms:["Polite","Respectful","Gracious","Civil"], day:15},
+    {word:"Covet", synonyms:["Desire","Crave","Yearn","Long for"], day:15},
+    {word:"Credible", synonyms:["Believable","Plausible","Trustworthy","Reliable"], day:15},
+    {word:"Criticize", synonyms:["Blame","Censure","Condemn","Find fault"], day:15},
+    {word:"Crucial", synonyms:["Critical","Vital","Essential","Decisive"], day:15},
+    {word:"Crude", synonyms:["Raw","Rough","Unrefined","Vulgar"], day:15},
+    {word:"Cruel", synonyms:["Brutal","Savage","Inhuman","Ruthless"], day:15},
+    {word:"Crush", synonyms:["Squash","Pulverize","Smash","Demolish"], day:15},
+    {word:"Cunning", synonyms:["Sly","Crafty","Wily","Deceitful"], day:15},
+    // DAY 16
+    {word:"Curse", synonyms:["Oath","Imprecation","Malediction","Damn"], day:16},
+    {word:"Curtail", synonyms:["Reduce","Cut short","Limit","Restrict"], day:16},
+    {word:"Cynic", synonyms:["Sceptic","Doubter","Pessimist","Misanthrope"], day:16},
+    {word:"Daring", synonyms:["Bold","Brave","Audacious","Adventurous"], day:16},
+    {word:"Daunt", synonyms:["Intimidate","Discourage","Dismay","Frighten"], day:16},
+    {word:"Dawdle", synonyms:["Delay","Linger","Loiter","Procrastinate"], day:16},
+    {word:"Debate", synonyms:["Discuss","Argue","Dispute","Deliberate"], day:16},
+    {word:"Decay", synonyms:["Rot","Decompose","Deteriorate","Decline"], day:16},
+    {word:"Deceit", synonyms:["Fraud","Deception","Trickery","Dishonesty"], day:16},
+    {word:"Decent", synonyms:["Proper","Respectable","Modest","Appropriate"], day:16},
+    // DAY 17
+    {word:"Decline", synonyms:["Refuse","Reject","Deteriorate","Wane"], day:17},
+    {word:"Decorate", synonyms:["Adorn","Ornament","Embellish","Beautify"], day:17},
+    {word:"Decrease", synonyms:["Reduce","Lessen","Diminish","Shrink"], day:17},
+    {word:"Defame", synonyms:["Slander","Libel","Disparage","Vilify"], day:17},
+    {word:"Defeat", synonyms:["Conquer","Vanquish","Overcome","Overthrow"], day:17},
+    {word:"Defect", synonyms:["Flaw","Fault","Imperfection","Blemish"], day:17},
+    {word:"Defend", synonyms:["Protect","Guard","Shield","Safeguard"], day:17},
+    {word:"Defer", synonyms:["Postpone","Delay","Adjourn","Suspend"], day:17},
+    {word:"Defiant", synonyms:["Rebellious","Resistant","Obstinate","Recalcitrant"], day:17},
+    {word:"Deficiency", synonyms:["Shortage","Lack","Deficit","Inadequacy"], day:17},
+    // DAY 18
+    {word:"Defile", synonyms:["Pollute","Contaminate","Corrupt","Sully"], day:18},
+    {word:"Definite", synonyms:["Clear","Certain","Explicit","Specific"], day:18},
+    {word:"Deform", synonyms:["Disfigure","Distort","Mutilate","Warp"], day:18},
+    {word:"Defy", synonyms:["Resist","Oppose","Challenge","Disobey"], day:18},
+    {word:"Degrade", synonyms:["Humiliate","Demean","Disgrace","Lower"], day:18},
+    {word:"Deliberate", synonyms:["Intentional","Planned","Calculated","Premeditated"], day:18},
+    {word:"Delicate", synonyms:["Fragile","Dainty","Fine","Subtle"], day:18},
+    {word:"Delight", synonyms:["Joy","Pleasure","Rapture","Ecstasy"], day:18},
+    {word:"Delude", synonyms:["Deceive","Mislead","Cheat","Dupe"], day:18},
+    {word:"Demand", synonyms:["Require","Claim","Insist","Request"], day:18},
+    // DAY 19
+    {word:"Demolish", synonyms:["Destroy","Raze","Ruin","Annihilate"], day:19},
+    {word:"Denounce", synonyms:["Condemn","Censure","Accuse","Indict"], day:19},
+    {word:"Dense", synonyms:["Thick","Compact","Crowded","Impenetrable"], day:19},
+    {word:"Deny", synonyms:["Refuse","Reject","Contradict","Disclaim"], day:19},
+    {word:"Depart", synonyms:["Leave","Go","Withdraw","Retire"], day:19},
+    {word:"Depend", synonyms:["Rely","Trust","Count on","Lean on"], day:19},
+    {word:"Depict", synonyms:["Portray","Represent","Describe","Illustrate"], day:19},
+    {word:"Deplete", synonyms:["Exhaust","Drain","Empty","Consume"], day:19},
+    {word:"Deplore", synonyms:["Lament","Bemoan","Regret","Disapprove"], day:19},
+    {word:"Deploy", synonyms:["Arrange","Position","Station","Organize"], day:19},
+    // DAY 20
+    {word:"Deprive", synonyms:["Dispossess","Divest","Rob","Bereave"], day:20},
+    {word:"Deride", synonyms:["Mock","Ridicule","Scorn","Taunt"], day:20},
+    {word:"Descend", synonyms:["Fall","Drop","Decline","Go down"], day:20},
+    {word:"Desert", synonyms:["Abandon","Forsake","Leave","Renounce"], day:20},
+    {word:"Desire", synonyms:["Wish","Want","Crave","Long for"], day:20},
+    {word:"Desolate", synonyms:["Barren","Bleak","Forlorn","Forsaken"], day:20},
+    {word:"Despair", synonyms:["Hopelessness","Despondency","Dejection","Misery"], day:20},
+    {word:"Despise", synonyms:["Hate","Scorn","Detest","Loathe"], day:20},
+    {word:"Destroy", synonyms:["Ruin","Demolish","Annihilate","Devastate"], day:20},
+    {word:"Detach", synonyms:["Separate","Disconnect","Remove","Disengage"], day:20},
+    // DAY 21
+    {word:"Detect", synonyms:["Discover","Find","Notice","Identify"], day:21},
+    {word:"Deter", synonyms:["Discourage","Prevent","Hinder","Dissuade"], day:21},
+    {word:"Deteriorate", synonyms:["Worsen","Decline","Degenerate","Decay"], day:21},
+    {word:"Detest", synonyms:["Hate","Abhor","Loathe","Despise"], day:21},
+    {word:"Deviate", synonyms:["Diverge","Stray","Veer","Depart"], day:21},
+    {word:"Devise", synonyms:["Plan","Invent","Create","Contrive"], day:21},
+    {word:"Devote", synonyms:["Dedicate","Commit","Consecrate","Pledge"], day:21},
+    {word:"Devour", synonyms:["Consume","Eat","Gobble","Wolf down"], day:21},
+    {word:"Dexterity", synonyms:["Skill","Adroitness","Deftness","Finesse"], day:21},
+    {word:"Diagnose", synonyms:["Identify","Detect","Determine","Recognize"], day:21},
+    // DAY 22
+    {word:"Dictate", synonyms:["Command","Order","Prescribe","Direct"], day:22},
+    {word:"Die", synonyms:["Perish","Expire","Decease","Pass away"], day:22},
+    {word:"Difficult", synonyms:["Hard","Arduous","Laborious","Onerous"], day:22},
+    {word:"Dignity", synonyms:["Nobility","Honour","Self-respect","Prestige"], day:22},
+    {word:"Dilemma", synonyms:["Predicament","Quandary","Plight","Problem"], day:22},
+    {word:"Diligent", synonyms:["Hardworking","Industrious","Assiduous","Sedulous"], day:22},
+    {word:"Diminish", synonyms:["Decrease","Lessen","Reduce","Shrink"], day:22},
+    {word:"Disaster", synonyms:["Catastrophe","Calamity","Tragedy","Misfortune"], day:22},
+    {word:"Discard", synonyms:["Reject","Throw away","Dispose","Jettison"], day:22},
+    {word:"Discern", synonyms:["Perceive","Detect","Distinguish","Recognize"], day:22},
+    // DAY 23
+    {word:"Disclose", synonyms:["Reveal","Expose","Uncover","Divulge"], day:23},
+    {word:"Discomfort", synonyms:["Unease","Pain","Distress","Inconvenience"], day:23},
+    {word:"Discord", synonyms:["Disagreement","Conflict","Strife","Dissension"], day:23},
+    {word:"Discourage", synonyms:["Deter","Dishearten","Demoralize","Depress"], day:23},
+    {word:"Disdain", synonyms:["Contempt","Scorn","Derision","Disrespect"], day:23},
+    {word:"Disguise", synonyms:["Conceal","Hide","Camouflage","Mask"], day:23},
+    {word:"Disgust", synonyms:["Revulsion","Repulsion","Nausea","Aversion"], day:23},
+    {word:"Dishonest", synonyms:["Deceitful","Fraudulent","Corrupt","Unscrupulous"], day:23},
+    {word:"Disinclined", synonyms:["Reluctant","Unwilling","Averse","Indisposed"], day:23},
+    {word:"Dismiss", synonyms:["Remove","Discharge","Reject","Disregard"], day:23},
+    // DAY 24
+    {word:"Disorder", synonyms:["Confusion","Chaos","Disarray","Tumult"], day:24},
+    {word:"Disperse", synonyms:["Scatter","Distribute","Spread","Dissipate"], day:24},
+    {word:"Dispute", synonyms:["Argument","Debate","Controversy","Conflict"], day:24},
+    {word:"Disrupt", synonyms:["Interrupt","Disturb","Upset","Disorganize"], day:24},
+    {word:"Dissolve", synonyms:["Melt","Liquefy","Disintegrate","Disband"], day:24},
+    {word:"Distant", synonyms:["Far","Remote","Aloof","Removed"], day:24},
+    {word:"Distinct", synonyms:["Clear","Definite","Obvious","Unmistakable"], day:24},
+    {word:"Distinguish", synonyms:["Differentiate","Discern","Recognize","Identify"], day:24},
+    {word:"Distort", synonyms:["Twist","Warp","Pervert","Misrepresent"], day:24},
+    {word:"Distract", synonyms:["Divert","Sidetrack","Disturb","Confuse"], day:24},
+    // DAY 25
+    {word:"Distress", synonyms:["Suffering","Anguish","Torment","Affliction"], day:25},
+    {word:"Distribute", synonyms:["Give out","Hand out","Allocate","Dispense"], day:25},
+    {word:"Distrust", synonyms:["Mistrust","Suspect","Doubt","Question"], day:25},
+    {word:"Disturb", synonyms:["Interrupt","Upset","Agitate","Perturb"], day:25},
+    {word:"Diverse", synonyms:["Varied","Different","Miscellaneous","Assorted"], day:25},
+    {word:"Divide", synonyms:["Separate","Split","Partition","Break up"], day:25},
+    {word:"Divine", synonyms:["Godly","Holy","Sacred","Heavenly"], day:25},
+    {word:"Divulge", synonyms:["Reveal","Disclose","Expose","Confess"], day:25},
+    {word:"Docile", synonyms:["Submissive","Compliant","Obedient","Gentle"], day:25},
+    {word:"Dodge", synonyms:["Avoid","Evade","Elude","Sidestep"], day:25},
+    // DAY 26
+    {word:"Doleful", synonyms:["Sad","Mournful","Melancholy","Gloomy"], day:26},
+    {word:"Dominate", synonyms:["Control","Rule","Govern","Command"], day:26},
+    {word:"Dormant", synonyms:["Inactive","Sleeping","Latent","Inert"], day:26},
+    {word:"Doubt", synonyms:["Uncertainty","Suspicion","Misgiving","Hesitation"], day:26},
+    {word:"Dread", synonyms:["Fear","Terror","Horror","Apprehension"], day:26},
+    {word:"Dull", synonyms:["Boring","Tedious","Monotonous","Uninteresting"], day:26},
+    {word:"Duplicate", synonyms:["Copy","Reproduce","Replicate","Clone"], day:26},
+    {word:"Durable", synonyms:["Lasting","Enduring","Resilient","Sturdy"], day:26},
+    {word:"Dwindle", synonyms:["Diminish","Decline","Shrink","Wane"], day:26},
+    {word:"Eager", synonyms:["Keen","Enthusiastic","Anxious","Impatient"], day:26},
+    // DAY 27
+    {word:"Earnest", synonyms:["Serious","Sincere","Determined","Resolute"], day:27},
+    {word:"Eccentric", synonyms:["Odd","Strange","Peculiar","Unconventional"], day:27},
+    {word:"Eclipse", synonyms:["Overshadow","Surpass","Outshine","Obscure"], day:27},
+    {word:"Ecstasy", synonyms:["Bliss","Rapture","Euphoria","Delight"], day:27},
+    {word:"Edible", synonyms:["Eatable","Consumable","Palatable","Safe to eat"], day:27},
+    {word:"Effective", synonyms:["Efficient","Potent","Powerful","Competent"], day:27},
+    {word:"Efficient", synonyms:["Effective","Competent","Capable","Productive"], day:27},
+    {word:"Eject", synonyms:["Expel","Remove","Oust","Evict"], day:27},
+    {word:"Elaborate", synonyms:["Detailed","Complex","Complicated","Intricate"], day:27},
+    {word:"Elegant", synonyms:["Graceful","Refined","Stylish","Sophisticated"], day:27},
+    // DAY 28
+    {word:"Elevate", synonyms:["Raise","Lift","Promote","Uplift"], day:28},
+    {word:"Elicit", synonyms:["Draw out","Extract","Evoke","Obtain"], day:28},
+    {word:"Eliminate", synonyms:["Remove","Eradicate","Exterminate","Abolish"], day:28},
+    {word:"Elite", synonyms:["Best","Top","Select","Superior"], day:28},
+    {word:"Eloquent", synonyms:["Articulate","Fluent","Expressive","Persuasive"], day:28},
+    {word:"Elude", synonyms:["Escape","Evade","Avoid","Dodge"], day:28},
+    {word:"Embrace", synonyms:["Hug","Accept","Adopt","Welcome"], day:28},
+    {word:"Emerge", synonyms:["Appear","Arise","Surface","Come out"], day:28},
+    {word:"Eminent", synonyms:["Distinguished","Prominent","Renowned","Famous"], day:28},
+    {word:"Emit", synonyms:["Release","Discharge","Send out","Exude"], day:28},
+    // DAY 29
+    {word:"Empathy", synonyms:["Sympathy","Compassion","Understanding","Sensitivity"], day:29},
+    {word:"Emphasize", synonyms:["Stress","Highlight","Underline","Accentuate"], day:29},
+    {word:"Employ", synonyms:["Hire","Use","Engage","Utilize"], day:29},
+    {word:"Empty", synonyms:["Vacant","Bare","Devoid","Unfilled"], day:29},
+    {word:"Enchant", synonyms:["Charm","Captivate","Bewitch","Fascinate"], day:29},
+    {word:"Encourage", synonyms:["Inspire","Motivate","Urge","Support"], day:29},
+    {word:"Endeavour", synonyms:["Attempt","Try","Effort","Strive"], day:29},
+    {word:"Endorse", synonyms:["Approve","Support","Recommend","Sanction"], day:29},
+    {word:"Endure", synonyms:["Bear","Tolerate","Suffer","Last"], day:29},
+    {word:"Enemies", synonyms:["Foes","Opponents","Adversaries","Rivals"], day:29},
+    // DAY 30
+    {word:"Energetic", synonyms:["Vigorous","Active","Dynamic","Lively"], day:30},
+    {word:"Enervate", synonyms:["Weaken","Exhaust","Debilitate","Drain"], day:30},
+    {word:"Enforce", synonyms:["Impose","Apply","Implement","Execute"], day:30},
+    {word:"Engage", synonyms:["Involve","Occupy","Employ","Participate"], day:30},
+    {word:"Enhance", synonyms:["Improve","Intensify","Augment","Boost"], day:30},
+    {word:"Enigma", synonyms:["Mystery","Puzzle","Riddle","Conundrum"], day:30},
+    {word:"Enormous", synonyms:["Huge","Immense","Vast","Gigantic"], day:30},
+    {word:"Enquire", synonyms:["Ask","Investigate","Query","Examine"], day:30},
+    {word:"Enrage", synonyms:["Infuriate","Anger","Incense","Madden"], day:30},
+    {word:"Ensue", synonyms:["Follow","Result","Succeed","Develop"], day:30}
+];
+
+var currentDay = 1;
+var currentWord = 0;
+var learnedWords = [];
+var streak = 0;
+var writeProgress = [];
+var currentWriteWord = 0;
+
+function init() {
+    loadProgress();
+    updateStats();
+    renderLearnCard();
+}
+
+function loadProgress() {
+    var saved = localStorage.getItem('synonyms_progress');
+    if (saved) {
+        var data = JSON.parse(saved);
+        learnedWords = data.learned || [];
+        streak = data.streak || 0;
+        currentDay = data.currentDay || 1;
+    }
+}
+
+function saveProgress() {
+    var data = {
+        learned: learnedWords,
+        streak: streak,
+        currentDay: currentDay
+    };
+    localStorage.setItem('synonyms_progress', JSON.stringify(data));
+}
+
+function updateStats() {
+    document.getElementById('streak').textContent = streak;
+    document.getElementById('learned').textContent = learnedWords.length;
+    document.getElementById('day-num').textContent = currentDay;
+}
+
+function getTodayWords() {
+    var words = [];
+    for (var i = 0; i < allWords.length; i++) {
+        if (allWords[i].day === currentDay) {
+            words.push(allWords[i]);
+        }
+    }
+    return words;
+}
+
+function renderLearnCard() {
+    var words = getTodayWords();
+    if (words.length === 0) {
+        document.getElementById('word-card').innerHTML = 
+            '<div class="empty-state">' +
+                '<div class="empty-state-icon">&#127881;</div>' +
+                '<h2>All words learned for today!</h2>' +
+                '<p>Come back tomorrow for 10 new words.</p>' +
+            '</div>';
+        return;
+    }
+
+    var w = words[currentWord];
+    var card = document.getElementById('word-card');
+
+    var synHtml = '';
+    for (var i = 0; i < w.synonyms.length; i++) {
+        synHtml = synHtml + '<span class="synonym-tag">' + w.synonyms[i] + '</span>';
+    }
+
+    var isLearned = false;
+    for (var i = 0; i < learnedWords.length; i++) {
+        if (learnedWords[i] === w.word) {
+            isLearned = true;
+            break;
+        }
+    }
+
+    card.innerHTML = 
+        '<div class="word-header">' +
+            '<span class="word-badge">Word ' + (currentWord + 1) + '/10</span>' +
+            '<span class="word-number">Day ' + w.day + '</span>' +
+        '</div>' +
+        '<div class="word-title">' + w.word + '</div>' +
+        '<div class="synonyms-box">' +
+            '<div class="synonyms-title">&#128214; Synonyms:</div>' +
+            '<div class="synonyms-list">' + synHtml + '</div>' +
+        '</div>' +
+        '<div class="hint-box">' +
+            '&#128161; <strong>Tip:</strong> Type any synonym in the Write Practice tab to reinforce memory!' +
+        '</div>';
+
+    var progress = ((currentWord + 1) / words.length) * 100;
+    document.getElementById('learn-progress-bar').style.width = progress + '%';
+    document.getElementById('learn-progress-text').textContent = (currentWord + 1) + '/' + words.length;
+
+    var btn = document.querySelector('#learn-mode .btn-success');
+    if (btn) {
+        btn.textContent = isLearned ? '&#9989; Already Learned' : '&#9989; Mark Learned';
+        btn.style.opacity = isLearned ? '0.7' : '1';
+    }
+}
+
+function nextWord() {
+    var words = getTodayWords();
+    if (currentWord < words.length - 1) {
+        currentWord++;
+        renderLearnCard();
+    }
+}
+
+function prevWord() {
+    if (currentWord > 0) {
+        currentWord--;
+        renderLearnCard();
+    }
+}
+
+function markLearned() {
+    var words = getTodayWords();
+    var w = words[currentWord];
+
+    var alreadyLearned = false;
+    for (var i = 0; i < learnedWords.length; i++) {
+        if (learnedWords[i] === w.word) {
+            alreadyLearned = true;
+            break;
+        }
+    }
+
+    if (!alreadyLearned) {
+        learnedWords.push(w.word);
+        streak++;
+        saveProgress();
+        updateStats();
+    }
+
+    renderLearnCard();
+
+    // Auto advance after marking
+    if (currentWord < words.length - 1) {
+        setTimeout(function() {
+            currentWord++;
+            renderLearnCard();
+        }, 500);
+    }
+}
+
+function renderReview() {
+    var list = document.getElementById('review-list');
+    document.getElementById('review-streak').textContent = streak;
+
+    if (learnedWords.length === 0) {
+        list.innerHTML = 
+            '<div class="empty-state">' +
+                '<div class="empty-state-icon">&#128218;</div>' +
+                '<h2>No words learned yet!</h2>' +
+                '<p>Start learning in the Learn Daily tab.</p>' +
+            '</div>';
+        return;
+    }
+
+    var html = '';
+    for (var i = 0; i < learnedWords.length; i++) {
+        var word = learnedWords[i];
+        var wordData = null;
+        for (var j = 0; j < allWords.length; j++) {
+            if (allWords[j].word === word) {
+                wordData = allWords[j];
+                break;
+            }
+        }
+        if (wordData) {
+            var synText = '';
+            for (var k = 0; k < wordData.synonyms.length; k++) {
+                synText = synText + wordData.synonyms[k];
+                if (k < wordData.synonyms.length - 1) synText = synText + ', ';
+            }
+            html = html + 
+                '<div class="review-card">' +
+                    '<div class="review-word">' + wordData.word + '</div>' +
+                    '<div class="review-synonyms">' + synText + '</div>' +
+                    '<div class="review-date">Day ' + wordData.day + '</div>' +
+                '</div>';
+        }
+    }
+    list.innerHTML = html;
+}
+
+function renderWriteCard() {
+    var words = getTodayWords();
+    if (words.length === 0) {
+        document.getElementById('write-card').innerHTML = 
+            '<div class="empty-state">' +
+                '<div class="empty-state-icon">&#9997;</div>' +
+                '<h2>No words for today!</h2>' +
+            '</div>';
+        return;
+    }
+
+    var w = words[currentWriteWord];
+    var card = document.getElementById('write-card');
+
+    card.innerHTML = 
+        '<div class="word-header">' +
+            '<span class="word-badge">Write ' + (currentWriteWord + 1) + '/10</span>' +
+            '<span class="word-number">Day ' + w.day + '</span>' +
+        '</div>' +
+        '<div class="word-title">' + w.word + '</div>' +
+        '<div class="write-section">' +
+            '<label class="write-label">Type any synonym for this word:</label>' +
+            '<input type="text" class="write-input" id="write-input" placeholder="Type a synonym here..." onkeypress="if(event.keyCode===13)checkAnswer()">' +
+            '<div class="write-feedback" id="write-feedback"></div>' +
+        '</div>';
+
+    var progress = ((currentWriteWord + 1) / words.length) * 100;
+    document.getElementById('write-progress-bar').style.width = progress + '%';
+    document.getElementById('write-progress-text').textContent = (currentWriteWord + 1) + '/' + words.length;
+}
+
+function checkAnswer() {
+    var words = getTodayWords();
+    var w = words[currentWriteWord];
+    var input = document.getElementById('write-input');
+    var feedback = document.getElementById('write-feedback');
+
+    if (!input || !input.value.trim()) {
+        feedback.textContent = 'Please type a synonym first!';
+        feedback.className = 'write-feedback wrong';
+        return;
+    }
+
+    var userAnswer = input.value.trim().toLowerCase();
+    var correct = false;
+
+    for (var i = 0; i < w.synonyms.length; i++) {
+        if (w.synonyms[i].toLowerCase().indexOf(userAnswer) !== -1 || 
+            userAnswer.indexOf(w.synonyms[i].toLowerCase()) !== -1) {
+            correct = true;
+            break;
+        }
+    }
+
+    if (correct) {
+        input.className = 'write-input correct';
+        feedback.textContent = '&#9989; Correct! Well done!';
+        feedback.className = 'write-feedback correct';
+
+        // Mark as learned if not already
+        var alreadyLearned = false;
+        for (var i = 0; i < learnedWords.length; i++) {
+            if (learnedWords[i] === w.word) {
+                alreadyLearned = true;
+                break;
+            }
+        }
+        if (!alreadyLearned) {
+            learnedWords.push(w.word);
+            streak++;
+            saveProgress();
+            updateStats();
+        }
+    } else {
+        input.className = 'write-input wrong';
+        var hint = w.synonyms[0];
+        feedback.innerHTML = '&#10060; Try again! Hint: Starts with "' + hint.charAt(0) + '"';
+        feedback.className = 'write-feedback wrong';
+    }
+}
+
+function nextWrite() {
+    var words = getTodayWords();
+    if (currentWriteWord < words.length - 1) {
+        currentWriteWord++;
+        renderWriteCard();
+    }
+}
+
+function prevWrite() {
+    if (currentWriteWord > 0) {
+        currentWriteWord--;
+        renderWriteCard();
+    }
+}
+
+function setMode(mode, btn) {
+    var btns = document.querySelectorAll('.toggle-btn');
+    for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+    btn.classList.add('active');
+
+    document.getElementById('learn-mode').style.display = 'none';
+    document.getElementById('review-mode').style.display = 'none';
+    document.getElementById('write-mode').style.display = 'none';
+
+    if (mode === 'learn') {
+        document.getElementById('learn-mode').style.display = 'block';
+        renderLearnCard();
+    } else if (mode === 'review') {
+        document.getElementById('review-mode').style.display = 'block';
+        renderReview();
+    } else if (mode === 'write') {
+        document.getElementById('write-mode').style.display = 'block';
+        renderWriteCard();
+    }
+}
+
+// Initialize
+window.onload = function() {
+    init();
+};
+</script>
+</body>
+</html>
