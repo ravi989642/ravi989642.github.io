@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Jumbles — SET 1 | SSC/Bank/Railways</title>
+    <title>Para Jumbles - SET 1 | SSC/Bank/Railways</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -175,6 +175,37 @@
         .scroll-item { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 12px; border: 1px solid var(--border); }
         .fullscreen-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; padding: 12px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(245,158,11,0.4); font-family: inherit; font-size: 0.9rem; transition: all 0.3s; }
         .fullscreen-btn:hover { transform: scale(1.05); }
+
+        /* Time Extend Popup Styles */
+        .time-popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); z-index: 10000;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .time-popup-box {
+            background: white; border-radius: 20px; padding: 2.5rem;
+            max-width: 450px; width: 90%; text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .time-popup-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .time-popup-title { font-size: 1.5rem; margin-bottom: 0.5rem; color: #1e293b; font-weight: 700; }
+        .time-popup-text { color: #64748b; margin-bottom: 1.5rem; line-height: 1.6; }
+        .time-popup-score { background: #f8fafc; border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; }
+        .time-popup-score-num { font-size: 2rem; font-weight: 800; color: #2563eb; }
+        .time-popup-score-label { font-size: 0.9rem; color: #64748b; }
+        .time-popup-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+        .time-popup-btn {
+            padding: 0.875rem 1.5rem; border-radius: 12px; border: none;
+            font-weight: 700; font-size: 1rem; cursor: pointer; font-family: inherit;
+            transition: all 0.3s;
+        }
+        .time-popup-btn:hover { transform: translateY(-2px); }
+        .time-popup-btn-green { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .time-popup-btn-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+        .time-popup-btn-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+        .time-popup-btn-white { background: white; color: #64748b; border: 2px solid #e2e8f0; }
+        .time-popup-btn-white:hover { border-color: #2563eb; color: #2563eb; }
+
         @media (max-width: 768px) {
             .header-content { flex-direction: column; text-align: center; }
             .question-card { padding: 1.25rem; }
@@ -193,23 +224,23 @@
             <div class="logo">
                 <div class="logo-icon">🧩</div>
                 <div class="logo-text">
-                    <h1>Para Jumbles — SET 1</h1>
+                    <h1>Para Jumbles - SET 1</h1>
                     <p>Sentence Rearrangement for SSC/Bank/Railways</p>
                 </div>
             </div>
             <div class="header-stats">
                 <div class="stat-box"><div class="label">Score</div><div class="value" id="score">0</div></div>
                 <div class="stat-box"><div class="label">Question</div><div class="value"><span id="current">1</span>/45</div></div>
-                <div class="timer" id="timer">20:00</div>
+                <div class="timer" id="timer">30:00</div>
             </div>
         </div>
     </header>
 
     <div class="container">
         <div class="mode-toggle">
-            <button class="toggle-btn active" data-mode="practice" onclick="setMode('practice', this)">📝 Practice Mode</button>
-            <button class="toggle-btn" data-mode="live" onclick="setMode('live', this)">📺 Live Mode</button>
-            <button class="toggle-btn" data-mode="scroll" onclick="setMode('scroll', this)">📜 Auto Scroll</button>
+            <button class="toggle-btn active" data-mode="practice" onclick="setMode('practice', this)">&#128221; Practice Mode</button>
+            <button class="toggle-btn" data-mode="live" onclick="setMode('live', this)">&#128250; Live Mode</button>
+            <button class="toggle-btn" data-mode="scroll" onclick="setMode('scroll', this)">&#128220; Auto Scroll</button>
         </div>
 
         <div class="progress-section">
@@ -222,9 +253,9 @@
         <div id="practice-mode">
             <div class="question-card" id="question-card"></div>
             <div class="controls">
-                <button class="btn btn-secondary" onclick="prevQuestion()" id="prev-btn">← Previous</button>
-                <button class="btn btn-success" onclick="showAnswer()" id="show-ans-btn">✅ Show Answer</button>
-                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Next →</button>
+                <button class="btn btn-secondary" onclick="prevQuestion()" id="prev-btn">&#8592; Previous</button>
+                <button class="btn btn-success" onclick="showAnswer()" id="show-ans-btn">&#9989; Show Answer</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Next &#8594;</button>
             </div>
         </div>
 
@@ -241,7 +272,7 @@
         </div>
 
         <div class="result-screen" id="result-screen">
-            <div class="result-icon">🎉</div>
+            <div class="result-icon">&#127881;</div>
             <div class="result-score" id="final-score">0/45</div>
             <div class="result-message" id="result-message"></div>
             <div class="result-stats">
@@ -250,124 +281,129 @@
                 <div class="result-stat"><div class="number" id="accuracy">0%</div><div class="label">Accuracy</div></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;margin-top:1rem;">
-                <button class="btn btn-primary" onclick="restartQuiz()" style="margin:0 auto;">🔄 Restart Set 1</button>
-                <button class="btn btn-purple" onclick="goToSet2()" style="margin:0 auto;">🎯 Start Set 2</button>
+                <button class="btn btn-primary" onclick="restartQuiz()" style="margin:0 auto;">&#128260; Restart Set 1</button>
+                <button class="btn btn-purple" onclick="goToSet2()" style="margin:0 auto;">&#127919; Start Set 2</button>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>🧩 Para Jumbles Practice | SSC CGL/CHSL/CPO/MTS | Bank PO/Clerk | Railways | Best of Luck!</p>
-        <p style="margin-top:0.5rem;">Open Source — Share with Friends!</p>
+        <p>&#129513; Para Jumbles Practice | SSC CGL/CHSL/CPO/MTS | Bank PO/Clerk | Railways | Best of Luck!</p>
+        <p style="margin-top:0.5rem;">Open Source - Share with Friends!</p>
     </footer>
 
-    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Full Screen">🖥️ Full Screen</button>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Full Screen">&#128187; Full Screen</button>
 
     <script>
 
-const questions = [
-    {id:1,level:"Basic",sentences:["A. The king was very happy and rewarded the farmer generously.","B. One day, a poor farmer found a treasure in his field.","C. He decided to give it to the king.","D. The farmer was honest and did not keep the treasure for himself."],options:["BDCA","BCDA","DBAC","BDAC"],correct:0,explanation:"The correct sequence is BDCA. B introduces the event (farmer finds treasure). D shows his honesty. C shows his action (give to king). A is the result (king rewarded).",keypoint:"Look for the opening sentence that introduces the topic."},
-    {id:2,level:"Basic",sentences:["A. It is the tallest building in the city.","B. The Burj Tower stands proudly in the center of the metropolis.","C. Thousands of tourists visit it every year.","D. It was completed in 2010 after five years of construction."],options:["BDAC","BADC","ABDC","BACD"],correct:1,explanation:"The correct sequence is BADC. B introduces the Burj Tower. A describes it (tallest). D gives construction details. C gives the result (tourists visit).",keypoint:"After introducing the subject, describe it, then give details, then result."},
-    {id:3,level:"Basic",sentences:["A. However, she never gave up on her dreams.","B. She practiced every day for hours.","C. Maria faced many difficulties in her childhood.","D. Eventually, she became a world-famous pianist."],options:["CABD","CADB","ACBD","CBAD"],correct:0,explanation:"The correct sequence is CABD. C introduces Maria's difficulties. A shows contrast (she didn't give up). B shows her action. D is the final result.",keypoint:"'However' indicates contrast — it must follow a challenging statement."},
-    {id:4,level:"Basic",sentences:["A. The teacher explained the concept clearly.","B. All the students understood it perfectly.","C. The class had been struggling with the topic for days.","D. She used simple examples and diagrams."],options:["CADB","ADBC","CDBA","CABD"],correct:0,explanation:"The correct sequence is CADB. C sets the problem (struggling). A shows solution (teacher explained). D gives method (simple examples). B is the result.",keypoint:"Problem → Solution → Method → Result is a common pattern."},
-    {id:5,level:"Basic",sentences:["A. The river was polluted by industrial waste.","B. The government launched a massive cleanup drive.","C. Fish started dying and the water turned black.","D. After two years, the river was clean again."],options:["ACBD","ABCD","ACBD","CABD"],correct:0,explanation:"The correct sequence is ACBD. A introduces pollution. C shows consequences (fish dying). B shows action (cleanup). D shows final result (river clean).",keypoint:"Cause → Effect → Action → Result is a standard chronological pattern."},
-    {id:6,level:"Basic",sentences:["A. He woke up late and missed his bus.","B. Rahul had an important interview at 9 AM.","C. He decided to take a taxi and reached just in time.","D. Unfortunately, his alarm did not ring that morning."],options:["BADC","BDAC","ABDC","BACD"],correct:1,explanation:"The correct sequence is BDAC. B introduces Rahul and interview. D shows problem (alarm didn't ring). A shows consequence (woke up late). C shows solution (took taxi).",keypoint:"Introduction → Problem → Consequence → Solution."},
-    {id:7,level:"Basic",sentences:["A. The invention of the printing press changed everything.","B. Books became affordable and knowledge spread rapidly.","C. Before that, books were handwritten and very expensive.","D. This revolutionized education across Europe."],options:["ACBD","CABD","ACDB","CADB"],correct:0,explanation:"The correct sequence is ACBD. A introduces invention. C gives 'before' situation (handwritten, expensive). B shows effect (affordable books). D shows broader impact (education).",keypoint:"'Before that' is a time marker — it must follow the event it contrasts with."},
-    {id:8,level:"Basic",sentences:["A. The team celebrated their victory with great enthusiasm.","B. They had practiced hard for six months.","C. In the final match, they defeated the defending champions.","D. Their coach was proud of their dedication."],options:["BCDA","CBDA","BDCA","BCAD"],correct:0,explanation:"The correct sequence is BCDA. B gives background (practiced hard). C shows event (defeated champions). A shows celebration. D gives coach's reaction.",keypoint:"Background → Event → Immediate reaction → Broader reaction."},
-    {id:9,level:"Basic",sentences:["A. It provides shelter to many endangered species.","B. The Sundarbans is the largest mangrove forest in the world.","C. However, climate change poses a serious threat to this ecosystem.","D. It is also home to the Royal Bengal Tiger."],options:["BADC","BDAC","ABDC","BACD"],correct:0,explanation:"The correct sequence is BADC. B introduces Sundarbans. A describes it (shelter). D adds more info (tiger). C shows threat (climate change).",keypoint:"'However' at the end often signals a shift to problems/challenges."},
-    {id:10,level:"Basic",sentences:["A. The old man lived alone in a small cottage.","B. Children from the village loved to hear his stories.","C. He had traveled the world when he was young.","D. Every evening, they would gather around his fireplace."],options:["ACBD","ACDB","CABD","CADB"],correct:1,explanation:"The correct sequence is ACDB. A introduces old man. C gives background (traveled world). D shows routine (every evening). B explains why (loved stories).",keypoint:"Introduction → Background → Routine → Reason."},
-    {id:11,level:"Moderate",sentences:["A. The Great Depression of the 1930s was the worst economic downturn in modern history.","B. Millions of people lost their jobs, homes, and savings.","C. It began with the stock market crash of 1929 in the United States.","D. Governments around the world were forced to implement new economic policies.","E. The crisis soon spread to other countries, affecting global trade."],options:["ACBED","CABED","ACEBD","AEBCD"],correct:0,explanation:"The correct sequence is ACBED. A introduces Great Depression. C gives starting point (1929 crash). B shows impact (millions lost jobs). E shows spread (other countries). D shows response (new policies).",keypoint:"General statement → Origin → Immediate impact → Spread → Response."},
-    {id:12,level:"Moderate",sentences:["A. Artificial Intelligence is transforming various industries at an unprecedented pace.","B. However, concerns about job displacement and ethical issues remain significant.","C. From healthcare to finance, AI-powered systems are improving efficiency.","D. Many experts believe that regulation is necessary to ensure responsible development.","E. Despite these challenges, the potential benefits of AI cannot be ignored."],options:["ACBDE","ACBED","CABDE","ACDEB"],correct:0,explanation:"The correct sequence is ACBDE. A introduces AI transformation. C gives examples (healthcare, finance). B shows concerns. D shows expert opinion. E concludes (despite challenges, benefits remain).",keypoint:"Topic → Examples → Concerns → Expert view → Balanced conclusion."},
-    {id:13,level:"Moderate",sentences:["A. The human brain is one of the most complex organs in the body.","B. It controls everything from basic survival functions to advanced reasoning.","C. Despite decades of research, scientists are still uncovering its mysteries.","D. Recent advances in neuroimaging have provided new insights.","E. However, a complete understanding of consciousness remains elusive."],options:["ABCDE","ABDCE","ABEDC","ACBDE"],correct:1,explanation:"The correct sequence is ABDCE. A introduces the brain. B describes functions. D shows recent progress. C shows ongoing challenge. E adds ultimate mystery.",keypoint:"Introduction → Description → Recent progress → Ongoing challenge → Ultimate mystery."},
-    {id:14,level:"Moderate",sentences:["A. Climate change is no longer a distant threat; it is happening now.","B. Rising sea levels are threatening coastal communities around the world.","C. Scientists have been warning about these consequences for decades.","D. Extreme weather events are becoming more frequent and intense.","E. Immediate global action is required to mitigate the worst impacts."],options:["ADBCE","ABDCE","ACBDE","ABCDE"],correct:0,explanation:"The correct sequence is ADBCE. A states reality. D gives evidence (extreme weather). B gives more evidence (rising sea levels). C shows prior warnings. E calls for action.",keypoint:"Assertion → Evidence 1 → Evidence 2 → Prior context → Call to action."},
-    {id:15,level:"Moderate",sentences:["A. The Industrial Revolution began in Britain in the late 18th century.","B. It transformed society from agrarian to industrial.","C. Factories sprang up in cities, drawing people from rural areas.","D. This rapid urbanization created overcrowded living conditions.","E. Nevertheless, it laid the foundation for the modern economy."],options:["ABCED","ACBDE","ABCDE","ABDCE"],correct:2,explanation:"The correct sequence is ABCDE. A introduces Industrial Revolution. B shows transformation. C shows mechanism (factories). D shows problem (overcrowding). E gives balanced conclusion.",keypoint:"'Nevertheless' signals a positive turn after negative points."},
-    {id:16,level:"Moderate",sentences:["A. Reading is one of the most enriching habits a person can develop.","B. It improves vocabulary, comprehension, and critical thinking skills.","C. Moreover, reading reduces stress and enhances empathy.","D. In the digital age, many people have replaced books with screens.","E. However, the benefits of reading physical books remain unmatched."],options:["ABCED","ABDCE","ABCDE","ACBDE"],correct:0,explanation:"The correct sequence is ABCED. A introduces reading. B gives benefits. C adds more benefits. D shows modern shift (screens). E gives contrast (physical books still better).",keypoint:"'Moreover' adds to previous points; 'However' contrasts with modern trend."},
-    {id:17,level:"Moderate",sentences:["A. The discovery of penicillin by Alexander Fleming was accidental.","B. He noticed that mold had killed bacteria in a petri dish.","C. This observation led to the development of the first antibiotic.","D. Before penicillin, minor infections could be fatal.","E. It revolutionized medicine and saved millions of lives."],options:["ABDCE","ABCDE","ADBCE","ABEDC"],correct:0,explanation:"The correct sequence is ABDCE. A introduces accidental discovery. B describes what happened. D gives 'before' context. C shows development. E shows impact.",keypoint:"Event → Observation → Prior context → Development → Impact."},
-    {id:18,level:"Moderate",sentences:["A. Space exploration has always captured human imagination.","B. The moon landing in 1969 was a historic achievement.","C. Since then, numerous missions have expanded our understanding.","D. Today, private companies are also entering the space race.","E. The ultimate goal remains establishing human presence on Mars."],options:["ABCDE","ACBDE","ABEDC","ABDCE"],correct:0,explanation:"The correct sequence is ABCDE. A introduces space exploration. B gives milestone (1969). C shows progress since then. D shows current development. E looks to future (Mars).",keypoint:"General → Milestone → Progress → Current → Future is a classic timeline pattern."},
-    {id:19,level:"Moderate",sentences:["A. Democracy is often described as government by the people.","B. It requires active participation and informed citizens.","C. However, voter apathy and misinformation pose serious challenges.","D. Without accountability, democratic institutions can weaken.","E. Therefore, civic education is essential for sustaining democracy."],options:["ABCDE","ABDCE","ACBDE","ABEDC"],correct:0,explanation:"The correct sequence is ABCDE. A defines democracy. B states requirements. C shows challenges. D adds danger. E gives solution.",keypoint:"Definition → Requirements → Challenges → Danger → Solution."},
-    {id:20,level:"Moderate",sentences:["A. The internet has fundamentally changed how we communicate.","B. Social media platforms have made information sharing instantaneous.","C. However, this has also led to the spread of fake news.","D. Cybersecurity threats have increased with greater connectivity.","E. Balancing openness with safety remains a critical challenge."],options:["ABCDE","ABDCE","ABEDC","ACBDE"],correct:0,explanation:"The correct sequence is ABCDE. A introduces internet's impact. B gives example (social media). C shows first problem. D shows second problem. E gives balancing challenge.",keypoint:"Topic → Example → Problem 1 → Problem 2 → Balancing challenge."},
-    {id:21,level:"Moderate",sentences:["A. Yoga originated in ancient India thousands of years ago.","B. It combines physical postures, breathing techniques, and meditation.","C. In recent decades, it has gained popularity worldwide.","D. Scientific studies have confirmed its benefits for mental and physical health.","E. The United Nations has even declared an International Day of Yoga."],options:["ABCDE","ACBDE","ABDCE","ABEDC"],correct:0,explanation:"The correct sequence is ABCDE. A introduces origin. B describes what it is. C shows spread. D gives scientific backing. E shows official recognition.",keypoint:"Origin → Description → Spread → Scientific validation → Official recognition."},
-    {id:22,level:"Moderate",sentences:["A. The Amazon rainforest is often called the lungs of the Earth.","B. It produces about 20% of the world's oxygen.","C. Deforestation is threatening this vital ecosystem.","D. Illegal logging and agricultural expansion are major causes.","E. Conservation efforts must be strengthened to protect it."],options:["ABCDE","ABDCE","ACBDE","ABEDC"],correct:0,explanation:"The correct sequence is ABCDE. A introduces Amazon. B explains importance. C shows threat. D gives causes. E calls for action.",keypoint:"Importance → Reason → Threat → Causes → Call for action."},
-    {id:23,level:"Moderate",sentences:["A. Education is the most powerful tool for social change.","B. It empowers individuals and reduces inequality.","C. Yet, millions of children around the world still lack access to schooling.","D. Gender disparity in education remains a significant issue.","E. Governments and NGOs must work together to ensure universal education."],options:["ABCDE","ABDCE","ABEDC","ACBDE"],correct:0,explanation:"The correct sequence is ABCDE. A states power of education. B shows benefits. C shows gap. D gives specific issue. E calls for collaboration.",keypoint:"Power → Benefits → Gap → Specific issue → Call for collaboration."},
-    {id:24,level:"Moderate",sentences:["A. The COVID-19 pandemic disrupted lives across the globe.","B. Healthcare systems were overwhelmed in many countries.","C. Economies suffered as businesses were forced to shut down.","D. Remote work and online education became the new normal.","E. The crisis also highlighted the importance of scientific research."],options:["ABCDE","ACBDE","ABDCE","ABEDC"],correct:0,explanation:"The correct sequence is ABCDE. A introduces COVID disruption. B shows health impact. C shows economic impact. D shows adaptation. E shows positive lesson.",keypoint:"General disruption → Health → Economic → Adaptation → Lesson learned."},
-    {id:25,level:"Moderate",sentences:["A. Renewable energy sources are essential for a sustainable future.","B. Solar and wind power have become increasingly affordable.","C. Many countries are investing heavily in green technology.","D. However, the transition from fossil fuels faces political and economic hurdles.","E. Public awareness and policy support are crucial for success."],options:["ABCDE","ABDCE","ABEDC","ACBDE"],correct:0,explanation:"The correct sequence is ABCDE. A states importance. B gives examples. C shows global action. D shows challenges. E gives requirements.",keypoint:"Importance → Examples → Global action → Challenges → Requirements for success."},
-    {id:26,level:"Advanced",sentences:["A. The concept of zero as a number was revolutionary in mathematics.","B. Ancient Indian mathematicians were among the first to treat zero as a numeral.","C. This innovation enabled the development of the decimal system.","D. It also allowed for more complex calculations and algebra.","E. The influence of this discovery spread to the Arab world and eventually Europe.","F. Today, zero is indispensable in computer science and digital technology."],options:["ABCDEF","ACBDEF","ABDCFE","ABDCEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces zero as revolutionary. B gives origin. C shows first impact (decimal system). D adds more impact. E traces spread. F connects to modern relevance.",keypoint:"Concept → Origin → Impact 1 → Impact 2 → Spread → Modern relevance."},
-    {id:27,level:"Advanced",sentences:["A. The philosophy of Stoicism originated in ancient Greece.","B. It teaches that virtue is the highest good and emotions should be controlled.","C. Marcus Aurelius, a Roman emperor, was one of its most famous practitioners.","D. His book 'Meditations' remains a classic of Stoic literature.","E. In modern times, Stoicism has experienced a revival among entrepreneurs and athletes.","F. Its emphasis on resilience and self-discipline resonates with contemporary challenges."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces origin. B describes teachings. C gives famous practitioner. D mentions his work. E shows modern revival. F explains why.",keypoint:"Origin → Teachings → Famous practitioner → Work → Modern revival → Reason for revival."},
-    {id:28,level:"Advanced",sentences:["A. Quantum mechanics challenges our intuitive understanding of reality.","B. Particles can exist in multiple states simultaneously until observed.","C. This phenomenon, known as superposition, defies classical physics.","D. Einstein famously criticized this aspect, saying 'God does not play dice.'","E. Nevertheless, experiments have consistently confirmed quantum predictions.","F. Quantum computers are now being developed to harness these strange properties."],options:["ABCDEF","ABDCEF","ACBDEF","ABDCFE"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces quantum mechanics. B describes strange property. C names phenomenon. D shows criticism. E shows validation. F shows application.",keypoint:"Topic → Strange property → Naming → Criticism → Validation → Application."},
-    {id:29,level:"Advanced",sentences:["A. The Silk Road was not a single road but a network of trade routes.","B. It connected the East and West for over fifteen centuries.","C. Along these routes, goods, ideas, religions, and diseases traveled.","D. The Black Death is believed to have spread to Europe via the Silk Road.","E. The decline of the Silk Road began with the rise of maritime trade.","F. Today, China's Belt and Road Initiative is seen as a modern revival of this concept."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A defines Silk Road. B gives duration. C describes what traveled. D gives example. E shows decline. F shows modern revival.",keypoint:"Definition → Duration → What traveled → Example → Decline → Modern revival."},
-    {id:30,level:"Advanced",sentences:["A. The human genome project was launched in 1990 with ambitious goals.","B. It aimed to map all the genes in human DNA.","C. The project was completed in 2003, ahead of schedule and under budget.","D. It has since revolutionized our understanding of genetic diseases.","E. However, ethical concerns about genetic privacy have emerged.","F. Gene editing technologies like CRISPR have opened new possibilities and debates."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces project (1990). B states goal. C gives completion (2003). D shows positive impact. E shows concerns. F shows new technology and debates.",keypoint:"Launch → Goal → Completion → Positive impact → Concerns → New tech and debates."},
-    {id:31,level:"Advanced",sentences:["A. The Treaty of Versailles ended World War I in 1919.","B. It imposed harsh penalties and reparations on Germany.","C. Many historians argue that these conditions created economic instability.","D. The hyperinflation of the 1920s devastated the German middle class.","E. This resentment contributed to the rise of extremist political movements.","F. The treaty is often cited as a factor that indirectly led to World War II."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces treaty (1919). B describes terms. C gives historical analysis. D gives evidence. E shows political consequence. F draws long-term conclusion.",keypoint:"Event → Terms → Analysis → Evidence → Consequence → Long-term conclusion."},
-    {id:32,level:"Advanced",sentences:["A. Photosynthesis is the process by which plants convert light energy into chemical energy.","B. It occurs primarily in the chloroplasts of plant cells.","C. Chlorophyll absorbs sunlight and uses it to transform carbon dioxide and water.","D. This process releases oxygen as a byproduct.","E. The glucose produced serves as the foundation of most food chains.","F. Without photosynthesis, life as we know it would not exist on Earth."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A defines photosynthesis. B gives location. C describes mechanism. D shows byproduct. E shows product use. F gives ultimate importance.",keypoint:"Definition → Location → Mechanism → Byproduct → Product use → Ultimate importance."},
-    {id:33,level:"Advanced",sentences:["A. The printing press was invented by Johannes Gutenberg around 1440.","B. Before its invention, books were copied by hand, making them rare and expensive.","C. The Gutenberg Bible was one of the first major books printed using movable type.","D. This innovation dramatically increased literacy rates across Europe.","E. It also facilitated the spread of new ideas during the Renaissance.","F. Some scholars argue that the printing press was as transformative as the internet is today."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces invention (1440). B gives 'before' situation. C gives example. D shows impact. E adds more impact. F gives modern comparison.",keypoint:"Invention → Before situation → Example → Impact 1 → Impact 2 → Modern comparison."},
-    {id:34,level:"Advanced",sentences:["A. The theory of evolution by natural selection was proposed by Charles Darwin.","B. He published 'On the Origin of Species' in 1859 after years of research.","C. The theory explained how species adapt and change over generations.","D. It faced significant opposition from religious and scientific communities.","E. Over time, however, overwhelming evidence from multiple fields supported it.","F. Today, evolution is the foundational theory of modern biology."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces Darwin's theory. B gives publication details. C explains the theory. D shows opposition. E shows validation. F gives current status.",keypoint:"Proposal → Publication → Explanation → Opposition → Validation → Current status."},
-    {id:35,level:"Advanced",sentences:["A. Blockchain technology was originally developed to support cryptocurrencies.","B. It functions as a decentralized and transparent ledger of transactions.","C. Each block contains a record of transactions and is linked to the previous one.","D. This structure makes it extremely difficult to alter historical records.","E. Beyond finance, blockchain is being explored for supply chain management and voting.","F. Critics, however, point to energy consumption and scalability issues."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces origin. B describes function. C explains structure. D shows security benefit. E shows expanded use. F shows criticism.",keypoint:"Origin → Function → Structure → Benefit → Expanded use → Criticism."},
-    {id:36,level:"Advanced",sentences:["A. The concept of human rights has evolved significantly over centuries.","B. The Magna Carta of 1215 is often seen as an early milestone.","C. The Enlightenment further developed ideas of individual liberty and equality.","D. The Universal Declaration of Human Rights was adopted by the UN in 1948.","E. Despite these frameworks, violations persist in many parts of the world.","F. Activists and organizations continue to fight for the protection of these rights."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces evolution. B gives early milestone. C shows development. D gives modern milestone. E shows ongoing problem. F shows ongoing struggle.",keypoint:"Evolution → Early milestone → Development → Modern milestone → Problem → Ongoing struggle."},
-    {id:37,level:"Advanced",sentences:["A. Neuroplasticity refers to the brain's ability to reorganize itself.","B. It was once believed that the adult brain was fixed and unchangeable.","C. Modern research has shown that the brain can form new neural connections throughout life.","D. This discovery has transformed rehabilitation after strokes and injuries.","E. Learning new skills, such as languages or musical instruments, enhances neuroplasticity.","F. Maintaining cognitive health in old age is now linked to continued mental stimulation."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A defines neuroplasticity. B gives old belief. C shows new discovery. D shows application. E gives example. F connects to health.",keypoint:"Definition → Old belief → New discovery → Application → Example → Health connection."},
-    {id:38,level:"Advanced",sentences:["A. The Green Revolution began in the 1960s to address food shortages.","B. High-yield variety seeds, chemical fertilizers, and irrigation were introduced.","C. Crop production increased dramatically in countries like India and Mexico.","D. However, the environmental costs soon became apparent.","E. Soil degradation, water depletion, and loss of biodiversity were major consequences.","F. Today, sustainable agriculture is being promoted as a more balanced approach."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces Green Revolution. B describes methods. C shows success. D shows problem. E gives consequences. F shows modern shift.",keypoint:"Introduction → Methods → Success → Problem → Consequences → Modern shift."},
-    {id:39,level:"Advanced",sentences:["A. The Big Bang theory is the prevailing cosmological model of the universe.","B. It proposes that the universe began as an extremely hot and dense singularity.","C. Approximately 13.8 billion years ago, this singularity expanded rapidly.","D. As the universe cooled, subatomic particles formed atoms.","E. These atoms eventually coalesced into stars and galaxies.","F. Ongoing observations, such as cosmic microwave background radiation, support this theory."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces theory. B describes beginning. C gives timeline. D shows cooling. E shows formation. F gives evidence.",keypoint:"Theory → Beginning → Timeline → Cooling → Formation → Evidence."},
-    {id:40,level:"Advanced",sentences:["A. The feminist movement has undergone several waves since the 19th century.","B. The first wave focused primarily on legal rights, especially suffrage.","C. The second wave expanded to issues like workplace equality and reproductive rights.","D. The third wave addressed diversity and intersectionality within feminism.","E. The fourth wave, emerging in the digital age, uses social media for activism.","F. Each wave has built upon the achievements and limitations of the previous one."],options:["ABCDEF","ABDCEF","ABDCFE","ACBDEF"],correct:0,explanation:"The correct sequence is ABCDEF. A introduces waves. B describes first wave. C describes second. D describes third. E describes fourth. F gives overarching theme.",keypoint:"Chronological order with numbered waves: 1st → 2nd → 3rd → 4th → Summary."},
-    {id:41,level:"Expert",sentences:["A. The Fermi Paradox asks why, given the vast number of stars, we have not detected alien civilizations.","B. One explanation is that intelligent life destroys itself before achieving interstellar communication.","C. Another possibility is that advanced civilizations choose not to communicate with us.","D. The 'Great Filter' theory suggests a critical barrier that most life fails to overcome.","E. Some scientists propose that we are simply looking in the wrong way or at the wrong time.","F. The search for extraterrestrial intelligence continues, but the silence remains profound.","G. Resolving this paradox could fundamentally alter humanity's understanding of its place in the cosmos."],options:["ABCDEFG","ABDCEFG","ABDCFEG","ACBDEFG"],correct:0,explanation:"The correct sequence is ABCDEFG. A poses the Fermi Paradox. B,C,D,E present various explanations. F notes ongoing search. G concludes with profound significance.",keypoint:"Paradox → Multiple explanations → Ongoing search → Profound significance."},
-    {id:42,level:"Expert",sentences:["A. The concept of the 'invisible hand' was introduced by Adam Smith in 1776.","B. It describes how self-interest in a free market can lead to socially beneficial outcomes.","C. Critics argue that this theory ignores issues like inequality and market failures.","D. The 2008 financial crisis renewed debates about the limits of unregulated markets.","E. Keynesian economics emerged partly as a response to the perceived shortcomings of laissez-faire.","F. Today, most economies operate as mixed systems, balancing market freedom with regulation.","G. The ongoing tension between these approaches shapes economic policy worldwide."],options:["ABCDEFG","ABDCEFG","ABDCFEG","ACBDEFG"],correct:0,explanation:"The correct sequence is ABCDEFG. A introduces concept. B explains it. C shows criticism. D gives modern example. E shows alternative theory. F shows current state. G gives ongoing tension.",keypoint:"Concept → Explanation → Criticism → Modern example → Alternative → Current state → Ongoing tension."},
-    {id:43,level:"Expert",sentences:["A. CRISPR-Cas9 is a revolutionary gene-editing technology discovered in bacteria.","B. It allows scientists to make precise changes to DNA with unprecedented ease.","C. Potential applications include curing genetic diseases and improving crop resilience.","D. However, the technology raises profound ethical questions.","E. The possibility of 'designer babies' has sparked international debate.","F. In 2018, a Chinese scientist claimed to have edited human embryos, causing global outrage.","G. Regulatory frameworks are struggling to keep pace with scientific advancement.","H. The future of gene editing will depend on how society balances innovation with ethics."],options:["ABCDEFGH","ABDCEFGH","ABDCFEGH","ACBDEFGH"],correct:0,explanation:"The correct sequence is ABCDEFGH. A introduces CRISPR. B explains capability. C lists applications. D transitions to ethics. E gives specific example. F provides real incident. G discusses regulatory gap. H concludes with future balance.",keypoint:"Technology → Capability → Applications → Ethical concerns → Specific example → Real incident → Regulatory gap → Future balance."},
-    {id:44,level:"Expert",sentences:["A. The concept of sustainable development was formally defined in the Brundtland Report of 1987.","B. It emphasized meeting present needs without compromising future generations.","C. The report highlighted the interconnectedness of economic growth, social equity, and environmental protection.","D. The Millennium Development Goals and later the Sustainable Development Goals built upon this framework.","E. Despite global commitments, progress has been uneven across regions and sectors.","F. Climate change has emerged as the most urgent test of sustainable development principles.","G. Critics argue that current economic models are fundamentally incompatible with true sustainability.","H. Achieving these goals requires unprecedented cooperation between governments, businesses, and civil society."],options:["ABCDEFGH","ABDCEFGH","ABDCFEGH","ACBDEFGH"],correct:0,explanation:"The correct sequence is ABCDEFGH. A introduces concept. B defines it. C explains interconnectedness. D shows follow-up frameworks. E shows uneven progress. F gives urgent challenge. G shows criticism. H calls for cooperation.",keypoint:"Definition → Explanation → Frameworks → Progress → Urgent challenge → Criticism → Call for cooperation."},
-    {id:45,level:"Expert",sentences:["A. The nature versus nurture debate has shaped psychology for over a century.","B. Early behaviorists emphasized environmental factors as the primary determinants of behavior.","C. The discovery of DNA and advances in genetics shifted attention to biological influences.","D. Twin and adoption studies have provided evidence for both heredity and environment.","E. Modern understanding recognizes that nature and nurture interact in complex ways.","F. Epigenetics has revealed how environmental factors can influence gene expression.","G. This emerging field bridges the gap between genetic determinism and environmentalism.","H. The debate continues to evolve, but the interactionist perspective is now dominant."],options:["ABCDEFGH","ABDCEFGH","ABDCFEGH","ACBDEFGH"],correct:0,explanation:"The correct sequence is ABCDEFGH. A introduces debate. B presents nurture side. C presents nature side. D provides evidence. E introduces modern synthesis. F gives mechanism. G explains bridge. H concludes with consensus.",keypoint:"Debate → Nurture side → Nature side → Evidence → Modern synthesis → Mechanism → Bridge → Current consensus."}
+var questions = [
+    {id:1,level:'Basic',sentences:['A. The king was very happy and rewarded the farmer generously.','B. One day, a poor farmer found a treasure in his field.','C. He decided to give it to the king.','D. The farmer was honest and did not keep the treasure for himself.'],options:['BDCA','BCDA','DBAC','BDAC'],correct:0,explanation:'The correct sequence is BDCA. B introduces the event (farmer finds treasure). D shows his honesty. C shows his action (give to king). A is the result (king rewarded).',keypoint:'Look for the opening sentence that introduces the topic.'},
+    {id:2,level:'Basic',sentences:['A. It is the tallest building in the city.','B. The Burj Tower stands proudly in the center of the metropolis.','C. Thousands of tourists visit it every year.','D. It was completed in 2010 after five years of construction.'],options:['BDAC','BADC','ABDC','BACD'],correct:1,explanation:'The correct sequence is BADC. B introduces the Burj Tower. A describes it (tallest). D gives construction details. C gives the result (tourists visit).',keypoint:'After introducing the subject, describe it, then give details, then result.'},
+    {id:3,level:'Basic',sentences:['A. However, she never gave up on her dreams.','B. She practiced every day for hours.','C. Maria faced many difficulties in her childhood.','D. Eventually, she became a world-famous pianist.'],options:['CABD','CADB','ACBD','CBAD'],correct:0,explanation:'The correct sequence is CABD. C introduces Marias difficulties. A shows contrast (she did not give up). B shows her action. D is the final result.',keypoint:'However indicates contrast - it must follow a challenging statement.'},
+    {id:4,level:'Basic',sentences:['A. The teacher explained the concept clearly.','B. All the students understood it perfectly.','C. The class had been struggling with the topic for days.','D. She used simple examples and diagrams.'],options:['CADB','ADBC','CDBA','CABD'],correct:0,explanation:'The correct sequence is CADB. C sets the problem (struggling for days). A shows solution (teacher explained). D gives method (simple examples). B is the result (students understood).',keypoint:'Problem -> Solution -> Method -> Result is a common pattern.'},
+    {id:5,level:'Basic',sentences:['A. The river was polluted by industrial waste.','B. The government launched a massive cleanup drive.','C. Fish started dying and the water turned black.','D. After two years, the river was clean again.'],options:['ACBD','ABCD','ACBD','CABD'],correct:0,explanation:'The correct sequence is ACBD. A introduces pollution. C shows consequences (fish dying). B shows action (cleanup). D shows final result (river clean).',keypoint:'Cause -> Effect -> Action -> Result is a standard chronological pattern.'},
+    {id:6,level:'Basic',sentences:['A. He woke up late and missed his bus.','B. Rahul had an important interview at 9 AM.','C. He decided to take a taxi and reached just in time.','D. Unfortunately, his alarm did not ring that morning.'],options:['BADC','BDAC','ABDC','BACD'],correct:1,explanation:'The correct sequence is BDAC. B introduces Rahul and interview. D shows problem (alarm did not ring). A shows consequence (woke up late). C shows solution (took taxi).',keypoint:'Introduction -> Problem -> Consequence -> Solution.'},
+    {id:7,level:'Basic',sentences:['A. The invention of the printing press changed everything.','B. Books became affordable and knowledge spread rapidly.','C. Before that, books were handwritten and very expensive.','D. This revolutionized education across Europe.'],options:['ACBD','CABD','ACDB','CADB'],correct:0,explanation:'The correct sequence is ACBD. A introduces invention. C gives before situation (handwritten, expensive). B shows effect (affordable books). D shows broader impact (education).',keypoint:'Before that is a time marker - it must follow the event it contrasts with.'},
+    {id:8,level:'Basic',sentences:['A. The team celebrated their victory with great enthusiasm.','B. They had practiced hard for six months.','C. In the final match, they defeated the defending champions.','D. Their coach was proud of their dedication.'],options:['BCDA','CBDA','BDCA','BCAD'],correct:0,explanation:'The correct sequence is BCDA. B gives background (practiced hard). C shows event (defeated champions). A shows celebration. D gives coach reaction.',keypoint:'Background -> Event -> Immediate reaction -> Broader reaction.'},
+    {id:9,level:'Basic',sentences:['A. It provides shelter to many endangered species.','B. The Sundarbans is the largest mangrove forest in the world.','C. However, climate change poses a serious threat to this ecosystem.','D. It is also home to the Royal Bengal Tiger.'],options:['BADC','BDAC','ABDC','BACD'],correct:0,explanation:'The correct sequence is BADC. B introduces Sundarbans. A describes it (shelter). D adds more info (tiger). C shows threat (climate change).',keypoint:'However at the end often signals a shift to problems/challenges.'},
+    {id:10,level:'Basic',sentences:['A. The old man lived alone in a small cottage.','B. Children from the village loved to hear his stories.','C. He had traveled the world when he was young.','D. Every evening, they would gather around his fireplace.'],options:['ACBD','ACDB','CABD','CADB'],correct:1,explanation:'The correct sequence is ACDB. A introduces old man. C gives background (traveled world). D shows routine (every evening). B explains why (loved stories).',keypoint:'Introduction -> Background -> Routine -> Reason.'},
+    {id:11,level:'Moderate',sentences:['A. The Great Depression of the 1930s was the worst economic downturn in modern history.','B. Millions of people lost their jobs, homes, and savings.','C. It began with the stock market crash of 1929 in the United States.','D. Governments around the world were forced to implement new economic policies.','E. The crisis soon spread to other countries, affecting global trade.'],options:['ACBED','CABED','ACEBD','AEBCD'],correct:0,explanation:'The correct sequence is ACBED. A introduces Great Depression. C gives starting point (1929 crash). B shows impact (millions lost jobs). E shows spread (other countries). D shows response (new policies).',keypoint:'General statement -> Origin -> Immediate impact -> Spread -> Response.'},
+    {id:12,level:'Moderate',sentences:['A. Artificial Intelligence is transforming various industries at an unprecedented pace.','B. However, concerns about job displacement and ethical issues remain significant.','C. From healthcare to finance, AI-powered systems are improving efficiency.','D. Many experts believe that regulation is necessary to ensure responsible development.','E. Despite these challenges, the potential benefits of AI cannot be ignored.'],options:['ACBDE','ACBED','CABDE','ACDEB'],correct:0,explanation:'The correct sequence is ACBDE. A introduces AI transformation. C gives examples (healthcare, finance). B shows concerns. D shows expert opinion. E concludes (despite challenges, benefits remain).',keypoint:'Topic -> Examples -> Concerns -> Expert view -> Balanced conclusion.'},
+    {id:13,level:'Moderate',sentences:['A. The human brain is one of the most complex organs in the body.','B. It controls everything from basic survival functions to advanced reasoning.','C. Despite decades of research, scientists are still uncovering its mysteries.','D. Recent advances in neuroimaging have provided new insights.','E. However, a complete understanding of consciousness remains elusive.'],options:['ABCDE','ABDCE','ABEDC','ACBDE'],correct:1,explanation:'The correct sequence is ABDCE. A introduces the brain. B describes functions. D shows recent progress. C shows ongoing challenge. E adds ultimate mystery.',keypoint:'Introduction -> Description -> Recent progress -> Ongoing challenge -> Ultimate mystery.'},
+    {id:14,level:'Moderate',sentences:['A. Climate change is no longer a distant threat; it is happening now.','B. Rising sea levels are threatening coastal communities around the world.','C. Scientists have been warning about these consequences for decades.','D. Extreme weather events are becoming more frequent and intense.','E. Immediate global action is required to mitigate the worst impacts.'],options:['ADBCE','ABDCE','ACBDE','ABCDE'],correct:0,explanation:'The correct sequence is ADBCE. A states reality. D gives evidence (extreme weather). B gives more evidence (rising sea levels). C shows prior warnings. E calls for action.',keypoint:'Assertion -> Evidence 1 -> Evidence 2 -> Prior context -> Call to action.'},
+    {id:15,level:'Moderate',sentences:['A. The Industrial Revolution began in Britain in the late 18th century.','B. It transformed society from agrarian to industrial.','C. Factories sprang up in cities, drawing people from rural areas.','D. This rapid urbanization created overcrowded living conditions.','E. Nevertheless, it laid the foundation for the modern economy.'],options:['ABCED','ACBDE','ABCDE','ABDCE'],correct:2,explanation:'The correct sequence is ABCDE. A introduces Industrial Revolution. B shows transformation. C shows mechanism (factories). D shows problem (overcrowding). E gives balanced conclusion.',keypoint:'Nevertheless signals a positive turn after negative points.'},
+    {id:16,level:'Moderate',sentences:['A. Reading is one of the most enriching habits a person can develop.','B. It improves vocabulary, comprehension, and critical thinking skills.','C. Moreover, reading reduces stress and enhances empathy.','D. In the digital age, many people have replaced books with screens.','E. However, the benefits of reading physical books remain unmatched.'],options:['ABCED','ABDCE','ABCDE','ACBDE'],correct:0,explanation:'The correct sequence is ABCED. A introduces reading. B gives benefits. C adds more benefits. D shows modern shift (screens). E gives contrast (physical books still better).',keypoint:'Moreover adds to previous points; However contrasts with modern trend.'},
+    {id:17,level:'Moderate',sentences:['A. The discovery of penicillin by Alexander Fleming was accidental.','B. He noticed that mold had killed bacteria in a petri dish.','C. This observation led to the development of the first antibiotic.','D. Before penicillin, minor infections could be fatal.','E. It revolutionized medicine and saved millions of lives.'],options:['ABDCE','ABCDE','ADBCE','ABEDC'],correct:0,explanation:'The correct sequence is ABDCE. A introduces accidental discovery. B describes what happened. D gives before context. C shows development. E shows impact.',keypoint:'Event -> Observation -> Prior context -> Development -> Impact.'},
+    {id:18,level:'Moderate',sentences:['A. Space exploration has always captured human imagination.','B. The moon landing in 1969 was a historic achievement.','C. Since then, numerous missions have expanded our understanding.','D. Today, private companies are also entering the space race.','E. The ultimate goal remains establishing human presence on Mars.'],options:['ABCDE','ACBDE','ABEDC','ABDCE'],correct:0,explanation:'The correct sequence is ABCDE. A introduces space exploration. B gives milestone (1969). C shows progress since then. D shows current development. E looks to future (Mars).',keypoint:'General -> Milestone -> Progress -> Current -> Future is a classic timeline pattern.'},
+    {id:19,level:'Moderate',sentences:['A. Democracy is often described as government by the people.','B. It requires active participation and informed citizens.','C. However, voter apathy and misinformation pose serious challenges.','D. Without accountability, democratic institutions can weaken.','E. Therefore, civic education is essential for sustaining democracy.'],options:['ABCDE','ABDCE','ACBDE','ABEDC'],correct:0,explanation:'The correct sequence is ABCDE. A defines democracy. B states requirements. C shows challenges. D adds danger. E gives solution.',keypoint:'Definition -> Requirements -> Challenges -> Danger -> Solution.'},
+    {id:20,level:'Moderate',sentences:['A. The internet has fundamentally changed how we communicate.','B. Social media platforms have made information sharing instantaneous.','C. However, this has also led to the spread of fake news.','D. Cybersecurity threats have increased with greater connectivity.','E. Balancing openness with safety remains a critical challenge.'],options:['ABCDE','ABDCE','ABEDC','ACBDE'],correct:0,explanation:'The correct sequence is ABCDE. A introduces internets impact. B gives example (social media). C shows first problem. D shows second problem. E gives balancing challenge.',keypoint:'Topic -> Example -> Problem 1 -> Problem 2 -> Balancing challenge.'},
+    {id:21,level:'Moderate',sentences:['A. Yoga originated in ancient India thousands of years ago.','B. It combines physical postures, breathing techniques, and meditation.','C. In recent decades, it has gained popularity worldwide.','D. Scientific studies have confirmed its benefits for mental and physical health.','E. The United Nations has even declared an International Day of Yoga.'],options:['ABCDE','ACBDE','ABDCE','ABEDC'],correct:0,explanation:'The correct sequence is ABCDE. A introduces origin. B describes what it is. C shows spread. D gives scientific backing. E shows official recognition.',keypoint:'Origin -> Description -> Spread -> Scientific validation -> Official recognition.'},
+    {id:22,level:'Moderate',sentences:['A. The Amazon rainforest is often called the lungs of the Earth.','B. It produces about 20% of the worlds oxygen.','C. Deforestation is threatening this vital ecosystem.','D. Illegal logging and agricultural expansion are major causes.','E. Conservation efforts must be strengthened to protect it.'],options:['ABCDE','ABDCE','ACBDE','ABEDC'],correct:0,explanation:'The correct sequence is ABCDE. A introduces Amazon. B explains importance. C shows threat. D gives causes. E calls for action.',keypoint:'Importance -> Reason -> Threat -> Causes -> Call for action.'},
+    {id:23,level:'Moderate',sentences:['A. Education is the most powerful tool for social change.','B. It empowers individuals and reduces inequality.','C. Yet, millions of children around the world still lack access to schooling.','D. Gender disparity in education remains a significant issue.','E. Governments and NGOs must work together to ensure universal education.'],options:['ABCDE','ABDCE','ABEDC','ACBDE'],correct:0,explanation:'The correct sequence is ABCDE. A states power of education. B shows benefits. C shows gap. D gives specific issue. E calls for collaboration.',keypoint:'Power -> Benefits -> Gap -> Specific issue -> Call for collaboration.'},
+    {id:24,level:'Moderate',sentences:['A. The COVID-19 pandemic disrupted lives across the globe.','B. Healthcare systems were overwhelmed in many countries.','C. Economies suffered as businesses were forced to shut down.','D. Remote work and online education became the new normal.','E. The crisis also highlighted the importance of scientific research.'],options:['ABCDE','ACBDE','ABDCE','ABEDC'],correct:0,explanation:'The correct sequence is ABCDE. A introduces COVID disruption. B shows health impact. C shows economic impact. D shows adaptation. E shows positive lesson.',keypoint:'General disruption -> Health -> Economic -> Adaptation -> Lesson learned.'},
+    {id:25,level:'Moderate',sentences:['A. Renewable energy sources are essential for a sustainable future.','B. Solar and wind power have become increasingly affordable.','C. Many countries are investing heavily in green technology.','D. However, the transition from fossil fuels faces political and economic hurdles.','E. Public awareness and policy support are crucial for success.'],options:['ABCDE','ABDCE','ABEDC','ACBDE'],correct:0,explanation:'The correct sequence is ABCDE. A states importance. B gives examples. C shows global action. D shows challenges. E gives requirements.',keypoint:'Importance -> Examples -> Global action -> Challenges -> Requirements for success.'},
+    {id:26,level:'Advanced',sentences:['A. The concept of zero as a number was revolutionary in mathematics.','B. Ancient Indian mathematicians were among the first to treat zero as a numeral.','C. This innovation enabled the development of the decimal system.','D. It also allowed for more complex calculations and algebra.','E. The influence of this discovery spread to the Arab world and eventually Europe.','F. Today, zero is indispensable in computer science and digital technology.'],options:['ABCDEF','ACBDEF','ABDCFE','ABDCEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces zero as revolutionary. B gives origin. C shows first impact (decimal system). D adds more impact. E traces spread. F connects to modern relevance.',keypoint:'Concept -> Origin -> Impact 1 -> Impact 2 -> Spread -> Modern relevance.'},
+    {id:27,level:'Advanced',sentences:['A. The philosophy of Stoicism originated in ancient Greece.','B. It teaches that virtue is the highest good and emotions should be controlled.','C. Marcus Aurelius, a Roman emperor, was one of its most famous practitioners.','D. His book Meditations remains a classic of Stoic literature.','E. In modern times, Stoicism has experienced a revival among entrepreneurs and athletes.','F. Its emphasis on resilience and self-discipline resonates with contemporary challenges.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces origin. B describes teachings. C gives famous practitioner. D mentions his work. E shows modern revival. F explains why.',keypoint:'Origin -> Teachings -> Famous practitioner -> Work -> Modern revival -> Reason for revival.'},
+    {id:28,level:'Advanced',sentences:['A. Quantum mechanics challenges our intuitive understanding of reality.','B. Particles can exist in multiple states simultaneously until observed.','C. This phenomenon, known as superposition, defies classical physics.','D. Einstein famously criticized this aspect, saying God does not play dice.','E. Nevertheless, experiments have consistently confirmed quantum predictions.','F. Quantum computers are now being developed to harness these strange properties.'],options:['ABCDEF','ABDCEF','ACBDEF','ABDCFE'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces quantum mechanics. B describes strange property. C names phenomenon. D shows criticism. E shows validation. F shows application.',keypoint:'Topic -> Strange property -> Naming -> Criticism -> Validation -> Application.'},
+    {id:29,level:'Advanced',sentences:['A. The Silk Road was not a single road but a network of trade routes.','B. It connected the East and West for over fifteen centuries.','C. Along these routes, goods, ideas, religions, and diseases traveled.','D. The Black Death is believed to have spread to Europe via the Silk Road.','E. The decline of the Silk Road began with the rise of maritime trade.','F. Today, Chinas Belt and Road Initiative is seen as a modern revival of this concept.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A defines Silk Road. B gives duration. C describes what traveled. D gives example. E shows decline. F shows modern revival.',keypoint:'Definition -> Duration -> What traveled -> Example -> Decline -> Modern revival.'},
+    {id:30,level:'Advanced',sentences:['A. The human genome project was launched in 1990 with ambitious goals.','B. It aimed to map all the genes in human DNA.','C. The project was completed in 2003, ahead of schedule and under budget.','D. It has since revolutionized our understanding of genetic diseases.','E. However, ethical concerns about genetic privacy have emerged.','F. Gene editing technologies like CRISPR have opened new possibilities and debates.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces project (1990). B states goal. C gives completion (2003). D shows positive impact. E shows concerns. F shows new technology and debates.',keypoint:'Launch -> Goal -> Completion -> Positive impact -> Concerns -> New tech and debates.'},
+    {id:31,level:'Advanced',sentences:['A. The Treaty of Versailles ended World War I in 1919.','B. It imposed harsh penalties and reparations on Germany.','C. Many historians argue that these conditions created economic instability.','D. The hyperinflation of the 1920s devastated the German middle class.','E. This resentment contributed to the rise of extremist political movements.','F. The treaty is often cited as a factor that indirectly led to World War II.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces treaty (1919). B describes terms. C gives historical analysis. D gives evidence. E shows political consequence. F draws long-term conclusion.',keypoint:'Event -> Terms -> Analysis -> Evidence -> Consequence -> Long-term conclusion.'},
+    {id:32,level:'Advanced',sentences:['A. Photosynthesis is the process by which plants convert light energy into chemical energy.','B. It occurs primarily in the chloroplasts of plant cells.','C. Chlorophyll absorbs sunlight and uses it to transform carbon dioxide and water.','D. This process releases oxygen as a byproduct.','E. The glucose produced serves as the foundation of most food chains.','F. Without photosynthesis, life as we know it would not exist on Earth.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A defines photosynthesis. B gives location. C describes mechanism. D shows byproduct. E shows product use. F gives ultimate importance.',keypoint:'Definition -> Location -> Mechanism -> Byproduct -> Product use -> Ultimate importance.'},
+    {id:33,level:'Advanced',sentences:['A. The printing press was invented by Johannes Gutenberg around 1440.','B. Before its invention, books were copied by hand, making them rare and expensive.','C. The Gutenberg Bible was one of the first major books printed using movable type.','D. This innovation dramatically increased literacy rates across Europe.','E. It also facilitated the spread of new ideas during the Renaissance.','F. Some scholars argue that the printing press was as transformative as the internet is today.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces invention (1440). B gives before situation. C gives example. D shows impact. E adds more impact. F gives modern comparison.',keypoint:'Invention -> Before situation -> Example -> Impact 1 -> Impact 2 -> Modern comparison.'},
+    {id:34,level:'Advanced',sentences:['A. The theory of evolution by natural selection was proposed by Charles Darwin.','B. He published On the Origin of Species in 1859 after years of research.','C. The theory explained how species adapt and change over generations.','D. It faced significant opposition from religious and scientific communities.','E. Over time, however, overwhelming evidence from multiple fields supported it.','F. Today, evolution is the foundational theory of modern biology.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces Darwins theory. B gives publication details. C explains the theory. D shows opposition. E shows validation. F gives current status.',keypoint:'Proposal -> Publication -> Explanation -> Opposition -> Validation -> Current status.'},
+    {id:35,level:'Advanced',sentences:['A. Blockchain technology was originally developed to support cryptocurrencies.','B. It functions as a decentralized and transparent ledger of transactions.','C. Each block contains a record of transactions and is linked to the previous one.','D. This structure makes it extremely difficult to alter historical records.','E. Beyond finance, blockchain is being explored for supply chain management and voting.','F. Critics, however, point to energy consumption and scalability issues.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces origin (cryptocurrencies). B describes function. C explains structure. D shows security benefit. E shows expanded use. F shows criticism.',keypoint:'Origin -> Function -> Structure -> Benefit -> Expanded use -> Criticism.'},
+    {id:36,level:'Advanced',sentences:['A. The concept of human rights has evolved significantly over centuries.','B. The Magna Carta of 1215 is often seen as an early milestone.','C. The Enlightenment further developed ideas of individual liberty and equality.','D. The Universal Declaration of Human Rights was adopted by the UN in 1948.','E. Despite these frameworks, violations persist in many parts of the world.','F. Activists and organizations continue to fight for the protection of these rights.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces evolution of human rights. B gives early milestone. C shows development. D gives modern milestone. E shows ongoing problem. F shows ongoing struggle.',keypoint:'Evolution -> Early milestone -> Development -> Modern milestone -> Problem -> Ongoing struggle.'},
+    {id:37,level:'Advanced',sentences:['A. Neuroplasticity refers to the brains ability to reorganize itself.','B. It was once believed that the adult brain was fixed and unchangeable.','C. Modern research has shown that the brain can form new neural connections throughout life.','D. This discovery has transformed rehabilitation after strokes and injuries.','E. Learning new skills, such as languages or musical instruments, enhances neuroplasticity.','F. Maintaining cognitive health in old age is now linked to continued mental stimulation.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A defines neuroplasticity. B gives old belief. C shows new discovery. D shows application. E gives example. F connects to health.',keypoint:'Definition -> Old belief -> New discovery -> Application -> Example -> Health connection.'},
+    {id:38,level:'Advanced',sentences:['A. The Green Revolution began in the 1960s to address food shortages.','B. High-yield variety seeds, chemical fertilizers, and irrigation were introduced.','C. Crop production increased dramatically in countries like India and Mexico.','D. However, the environmental costs soon became apparent.','E. Soil degradation, water depletion, and loss of biodiversity were major consequences.','F. Today, sustainable agriculture is being promoted as a more balanced approach.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces Green Revolution. B describes methods. C shows success. D shows problem. E gives consequences. F shows modern shift.',keypoint:'Introduction -> Methods -> Success -> Problem -> Consequences -> Modern shift.'},
+    {id:39,level:'Advanced',sentences:['A. The Big Bang theory is the prevailing cosmological model of the universe.','B. It proposes that the universe began as an extremely hot and dense singularity.','C. Approximately 13.8 billion years ago, this singularity expanded rapidly.','D. As the universe cooled, subatomic particles formed atoms.','E. These atoms eventually coalesced into stars and galaxies.','F. Ongoing observations, such as cosmic microwave background radiation, support this theory.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces theory. B describes beginning. C gives timeline. D shows cooling. E shows formation. F gives evidence.',keypoint:'Theory -> Beginning -> Timeline -> Cooling -> Formation -> Evidence.'},
+    {id:40,level:'Advanced',sentences:['A. The feminist movement has undergone several waves since the 19th century.','B. The first wave focused primarily on legal rights, especially suffrage.','C. The second wave expanded to issues like workplace equality and reproductive rights.','D. The third wave addressed diversity and intersectionality within feminism.','E. The fourth wave, emerging in the digital age, uses social media for activism.','F. Each wave has built upon the achievements and limitations of the previous one.'],options:['ABCDEF','ABDCEF','ABDCFE','ACBDEF'],correct:0,explanation:'The correct sequence is ABCDEF. A introduces waves. B describes first wave. C describes second. D describes third. E describes fourth. F gives overarching theme.',keypoint:'Chronological order with numbered waves: 1st -> 2nd -> 3rd -> 4th -> Summary.'},
+    {id:41,level:'Expert',sentences:['A. The Fermi Paradox asks why, given the vast number of stars, we have not detected alien civilizations.','B. One explanation is that intelligent life destroys itself before achieving interstellar communication.','C. Another possibility is that advanced civilizations choose not to communicate with us.','D. The Great Filter theory suggests a critical barrier that most life fails to overcome.','E. Some scientists propose that we are simply looking in the wrong way or at the wrong time.','F. The search for extraterrestrial intelligence continues, but the silence remains profound.','G. Resolving this paradox could fundamentally alter humanitys understanding of its place in the cosmos.'],options:['ABCDEFG','ABDCEFG','ABDCFEG','ACBDEFG'],correct:0,explanation:'The correct sequence is ABCDEFG. A poses the Fermi Paradox. B,C,D,E present various explanations. F notes ongoing search. G concludes with profound significance.',keypoint:'Paradox -> Multiple explanations -> Ongoing search -> Profound significance.'},
+    {id:42,level:'Expert',sentences:['A. The concept of the invisible hand was introduced by Adam Smith in 1776.','B. It describes how self-interest in a free market can lead to socially beneficial outcomes.','C. Critics argue that this theory ignores issues like inequality and market failures.','D. The 2008 financial crisis renewed debates about the limits of unregulated markets.','E. Keynesian economics emerged partly as a response to the perceived shortcomings of laissez-faire.','F. Today, most economies operate as mixed systems, balancing market freedom with regulation.','G. The ongoing tension between these approaches shapes economic policy worldwide.'],options:['ABCDEFG','ABDCEFG','ABDCFEG','ACBDEFG'],correct:0,explanation:'The correct sequence is ABCDEFG. A introduces concept (Adam Smith, 1776). B explains it. C shows criticism. D gives modern example. E shows alternative theory. F shows current state. G gives ongoing tension.',keypoint:'Concept -> Explanation -> Criticism -> Modern example -> Alternative -> Current state -> Ongoing tension.'},
+    {id:43,level:'Expert',sentences:['A. CRISPR-Cas9 is a revolutionary gene-editing technology discovered in bacteria.','B. It allows scientists to make precise changes to DNA with unprecedented ease.','C. Potential applications include curing genetic diseases and improving crop resilience.','D. However, the technology raises profound ethical questions.','E. The possibility of designer babies has sparked international debate.','F. In 2018, a Chinese scientist claimed to have edited human embryos, causing global outrage.','G. Regulatory frameworks are struggling to keep pace with scientific advancement.','H. The future of gene editing will depend on how society balances innovation with ethics.'],options:['ABCDEFGH','ABDCEFGH','ABDCFEGH','ACBDEFGH'],correct:0,explanation:'The correct sequence is ABCDEFGH. A introduces CRISPR. B explains capability. C lists applications. D transitions to ethics. E gives specific example. F provides real incident. G discusses regulatory gap. H concludes with future balance.',keypoint:'Technology -> Capability -> Applications -> Ethical concerns -> Specific example -> Real incident -> Regulatory gap -> Future balance.'},
+    {id:44,level:'Expert',sentences:['A. The concept of sustainable development was formally defined in the Brundtland Report of 1987.','B. It emphasized meeting present needs without compromising future generations.','C. The report highlighted the interconnectedness of economic growth, social equity, and environmental protection.','D. The Millennium Development Goals and later the Sustainable Development Goals built upon this framework.','E. Despite global commitments, progress has been uneven across regions and sectors.','F. Climate change has emerged as the most urgent test of sustainable development principles.','G. Critics argue that current economic models are fundamentally incompatible with true sustainability.','H. Achieving these goals requires unprecedented cooperation between governments, businesses, and civil society.'],options:['ABCDEFGH','ABDCEFGH','ABDCFEGH','ACBDEFGH'],correct:0,explanation:'The correct sequence is ABCDEFGH. A introduces concept. B defines it. C explains interconnectedness. D shows follow-up frameworks. E shows uneven progress. F gives urgent challenge. G shows criticism. H calls for cooperation.',keypoint:'Definition -> Explanation -> Frameworks -> Progress -> Urgent challenge -> Criticism -> Call for cooperation.'},
+    {id:45,level:'Expert',sentences:['A. The nature versus nurture debate has shaped psychology for over a century.','B. Early behaviorists emphasized environmental factors as the primary determinants of behavior.','C. The discovery of DNA and advances in genetics shifted attention to biological influences.','D. Twin and adoption studies have provided evidence for both heredity and environment.','E. Modern understanding recognizes that nature and nurture interact in complex ways.','F. Epigenetics has revealed how environmental factors can influence gene expression.','G. This emerging field bridges the gap between genetic determinism and environmentalism.','H. The debate continues to evolve, but the interactionist perspective is now dominant.'],options:['ABCDEFGH','ABDCEFGH','ABDCFEGH','ACBDEFGH'],correct:0,explanation:'The correct sequence is ABCDEFGH. A introduces debate. B presents nurture side. C presents nature side. D provides evidence. E introduces modern synthesis. F gives mechanism. G explains bridge. H concludes with consensus.',keypoint:'Debate -> Nurture side -> Nature side -> Evidence -> Modern synthesis -> Mechanism -> Bridge -> Current consensus.'}
 ];
 
-let currentQuestion = 0;
-let score = 0;
-let answered = new Array(questions.length).fill(false);
-let selectedOptions = new Array(questions.length).fill(-1);
-let timerInterval;
-let timeLeft = 1200;
-let liveIndex = 0;
-let liveInterval;
+var currentQuestion = 0;
+var score = 0;
+var answered = [];
+var selectedOptions = [];
+var timerInterval;
+var timeLeft = 1800;
+var liveIndex = 0;
+var liveInterval;
 
 function init() {
+    for (var i = 0; i < questions.length; i++) {
+        answered.push(false);
+        selectedOptions.push(-1);
+    }
     renderNav();
     renderQuestion();
     startTimer();
 }
 
 function renderNav() {
-    const nav = document.getElementById('question-nav');
-    let html = '';
-    for (let i = 0; i < questions.length; i++) {
-        let cls = '';
-        if (i === currentQuestion) cls = 'active';
-        else if (answered[i]) {
+    var nav = document.getElementById('question-nav');
+    var html = '';
+    for (var i = 0; i < questions.length; i++) {
+        var cls = '';
+        if (i === currentQuestion) {
+            cls = 'active';
+        } else if (answered[i]) {
             cls = selectedOptions[i] === questions[i].correct ? 'answered' : 'wrong-ans';
         }
-        html += '<button class="q-btn ' + cls + '" onclick="goToQuestion(' + i + ')">' + (i + 1) + '</button>';
+        html = html + '<button class="q-btn ' + cls + '" onclick="goToQuestion(' + i + ')">' + (i + 1) + '</button>';
     }
     nav.innerHTML = html;
 }
 
 function renderQuestion() {
-    const q = questions[currentQuestion];
-    const card = document.getElementById('question-card');
+    var q = questions[currentQuestion];
+    var card = document.getElementById('question-card');
 
-    let sentencesHtml = '';
-    for (let i = 0; i < q.sentences.length; i++) {
-        const s = q.sentences[i];
-        const letter = s.charAt(0);
-        const text = s.substring(3);
-        sentencesHtml += '<div class="sent"><strong>' + letter + '.</strong>' + text + '</div>';
+    var sentencesHtml = '';
+    for (var i = 0; i < q.sentences.length; i++) {
+        var s = q.sentences[i];
+        var letter = s.charAt(0);
+        var text = s.substring(3);
+        sentencesHtml = sentencesHtml + '<div class="sent"><strong>' + letter + '.</strong>' + text + '</div>';
     }
 
-    let optionsHtml = '';
-    for (let i = 0; i < q.options.length; i++) {
-        let optCls = '';
+    var optionsHtml = '';
+    for (var i = 0; i < q.options.length; i++) {
+        var optCls = '';
         if (selectedOptions[currentQuestion] === i) {
             optCls = (i === q.correct) ? 'correct' : 'wrong';
         } else if (answered[currentQuestion] && i === q.correct) {
             optCls = 'correct';
         }
-        optionsHtml += '<div class="option ' + optCls + '" onclick="selectOption(' + i + ')">' +
+        optionsHtml = optionsHtml + '<div class="option ' + optCls + '" onclick="selectOption(' + i + ')">' +
             '<span class="option-letter">' + String.fromCharCode(65 + i) + '</span>' +
             '<span>' + q.options[i] + '</span></div>';
     }
 
-    let explCls = answered[currentQuestion] ? 'show' : '';
+    var explCls = answered[currentQuestion] ? 'show' : '';
 
     card.innerHTML = 
         '<div class="question-header">' +
@@ -378,20 +414,20 @@ function renderQuestion() {
         '<div class="sentences-box">' + sentencesHtml + '</div>' +
         '<div class="options">' + optionsHtml + '</div>' +
         '<div class="explanation ' + explCls + '">' +
-            '<div class="explanation-title">📖 Explanation</div>' +
+            '<div class="explanation-title">&#128214; Explanation</div>' +
             '<div class="explanation-text">' + q.explanation + '</div>' +
-            '<div class="key-point"><strong>💡 Strategy Tip:</strong> ' + q.keypoint + '</div>' +
+            '<div class="key-point"><strong>&#128161; Strategy Tip:</strong> ' + q.keypoint + '</div>' +
         '</div>';
 
     document.getElementById('current').textContent = currentQuestion + 1;
     document.getElementById('score').textContent = score;
 
-    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    var progress = ((currentQuestion + 1) / questions.length) * 100;
     document.getElementById('progress-bar').style.width = progress + '%';
     document.getElementById('progress-text').textContent = Math.round(progress) + '%';
 
     document.getElementById('prev-btn').disabled = currentQuestion === 0;
-    document.getElementById('next-btn').textContent = currentQuestion === questions.length - 1 ? 'Finish 🏁' : 'Next →';
+    document.getElementById('next-btn').textContent = currentQuestion === questions.length - 1 ? 'Finish &#127937;' : 'Next &#8594;';
 
     renderNav();
 }
@@ -438,8 +474,8 @@ function startTimer() {
     clearInterval(timerInterval);
     timerInterval = setInterval(function() {
         timeLeft--;
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
+        var minutes = Math.floor(timeLeft / 60);
+        var seconds = timeLeft % 60;
         document.getElementById('timer').textContent = 
             String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
         if (timeLeft <= 0) {
@@ -451,6 +487,24 @@ function startTimer() {
 
 function showResults() {
     clearInterval(timerInterval);
+
+    var correct = 0, wrong = 0, attempted = 0;
+    for (var i = 0; i < questions.length; i++) {
+        if (answered[i]) {
+            attempted++;
+            if (selectedOptions[i] === questions[i].correct) correct++;
+            else wrong++;
+        }
+    }
+    var accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+
+    // If time is up and not all questions attempted, show extend time popup
+    if (timeLeft <= 0 && attempted < questions.length) {
+        showTimeExtendPopup(correct, wrong, accuracy, attempted);
+        return;
+    }
+
+    // Normal results screen
     document.getElementById('practice-mode').style.display = 'none';
     document.getElementById('live-mode').style.display = 'none';
     document.getElementById('scroll-mode').style.display = 'none';
@@ -458,26 +512,102 @@ function showResults() {
     document.querySelector('.question-nav').style.display = 'none';
     document.querySelector('.mode-toggle').style.display = 'none';
 
-    let correct = 0, wrong = 0, attempted = 0;
-    for (let i = 0; i < questions.length; i++) {
+    document.getElementById('final-score').textContent = correct + '/' + questions.length;
+    document.getElementById('correct-count').textContent = correct;
+    document.getElementById('wrong-count').textContent = wrong;
+    document.getElementById('accuracy').textContent = accuracy + '%';
+
+    var message = '';
+    if (accuracy >= 80) message = '&#127775; Excellent! You have mastered Para Jumbles!';
+    else if (accuracy >= 60) message = '&#9989; Good! Keep practicing to reach mastery!';
+    else if (accuracy >= 40) message = '&#9888;&#65039; Average! Focus on identifying opening and closing sentences!';
+    else message = '&#128218; Needs more practice! Review the strategy tips for each question!';
+
+    document.getElementById('result-message').textContent = message;
+    document.getElementById('result-screen').classList.add('show');
+}
+
+function showTimeExtendPopup(correct, wrong, accuracy, attempted) {
+    var remaining = questions.length - attempted;
+    var popup = document.createElement('div');
+    popup.id = 'time-extend-popup';
+    popup.className = 'time-popup-overlay';
+
+    popup.innerHTML = '<div class="time-popup-box">' +
+        '<div class="time-popup-icon">&#9200;</div>' +
+        '<h2 class="time-popup-title">Time is Up!</h2>' +
+        '<p class="time-popup-text">You have answered <strong>' + attempted + '/' + questions.length + '</strong> questions.<br>' + remaining + ' questions remaining.</p>' +
+        '<div class="time-popup-score">' +
+            '<div class="time-popup-score-num">' + correct + '/' + attempted + '</div>' +
+            '<div class="time-popup-score-label">Correct so far (' + accuracy + '% accuracy)</div>' +
+        '</div>' +
+        '<p style="margin-bottom:1rem;font-weight:600;color:#1e293b;">Need more time?</p>' +
+        '<div class="time-popup-buttons">' +
+            '<button class="time-popup-btn time-popup-btn-green" onclick="extendTime(600)">&#10133; Add 10 Minutes</button>' +
+            '<button class="time-popup-btn time-popup-btn-blue" onclick="extendTime(900)">&#10133; Add 15 Minutes</button>' +
+            '<button class="time-popup-btn time-popup-btn-purple" onclick="extendTime(1800)">&#10133; Add 30 Minutes</button>' +
+            '<button class="time-popup-btn time-popup-btn-white" onclick="finishQuiz()">&#9989; Finish Now & Show Results</button>' +
+        '</div>' +
+    '</div>';
+
+    document.body.appendChild(popup);
+}
+
+function extendTime(minutes) {
+    var popup = document.getElementById('time-extend-popup');
+    if (popup) popup.remove();
+
+    timeLeft = minutes;
+    startTimer();
+
+    // Resume from where user left off
+    document.getElementById('practice-mode').style.display = 'block';
+    document.querySelector('.progress-section').style.display = 'block';
+    document.querySelector('.question-nav').style.display = 'flex';
+    document.querySelector('.mode-toggle').style.display = 'flex';
+
+    // Go to first unanswered question
+    for (var i = 0; i < questions.length; i++) {
+        if (!answered[i]) {
+            currentQuestion = i;
+            break;
+        }
+    }
+
+    renderQuestion();
+}
+
+function finishQuiz() {
+    var popup = document.getElementById('time-extend-popup');
+    if (popup) popup.remove();
+
+    var correct = 0, wrong = 0, attempted = 0;
+    for (var i = 0; i < questions.length; i++) {
         if (answered[i]) {
             attempted++;
             if (selectedOptions[i] === questions[i].correct) correct++;
             else wrong++;
         }
     }
-    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+    var accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+
+    document.getElementById('practice-mode').style.display = 'none';
+    document.getElementById('live-mode').style.display = 'none';
+    document.getElementById('scroll-mode').style.display = 'none';
+    document.querySelector('.progress-section').style.display = 'none';
+    document.querySelector('.question-nav').style.display = 'none';
+    document.querySelector('.mode-toggle').style.display = 'none';
 
     document.getElementById('final-score').textContent = correct + '/' + questions.length;
     document.getElementById('correct-count').textContent = correct;
     document.getElementById('wrong-count').textContent = wrong;
     document.getElementById('accuracy').textContent = accuracy + '%';
 
-    let message = '';
-    if (accuracy >= 80) message = '🌟 Excellent! You have mastered Para Jumbles!';
-    else if (accuracy >= 60) message = '✅ Good! Keep practicing to reach mastery!';
-    else if (accuracy >= 40) message = '⚠️ Average! Focus on identifying opening and closing sentences!';
-    else message = '📚 Needs more practice! Review the strategy tips for each question!';
+    var message = '';
+    if (accuracy >= 80) message = '&#127775; Excellent! You have mastered Para Jumbles!';
+    else if (accuracy >= 60) message = '&#9989; Good! Keep practicing to reach mastery!';
+    else if (accuracy >= 40) message = '&#9888;&#65039; Average! Focus on identifying opening and closing sentences!';
+    else message = '&#128218; Needs more practice! Review the strategy tips for each question!';
 
     document.getElementById('result-message').textContent = message;
     document.getElementById('result-screen').classList.add('show');
@@ -490,9 +620,13 @@ function goToSet2() {
 function restartQuiz() {
     currentQuestion = 0;
     score = 0;
-    answered = new Array(questions.length).fill(false);
-    selectedOptions = new Array(questions.length).fill(-1);
-    timeLeft = 1200;
+    answered = [];
+    selectedOptions = [];
+    for (var i = 0; i < questions.length; i++) {
+        answered.push(false);
+        selectedOptions.push(-1);
+    }
+    timeLeft = 1800;
 
     document.getElementById('practice-mode').style.display = 'block';
     document.querySelector('.progress-section').style.display = 'block';
@@ -500,17 +634,16 @@ function restartQuiz() {
     document.querySelector('.mode-toggle').style.display = 'flex';
     document.getElementById('result-screen').classList.remove('show');
 
-    // Reset toggle buttons
-    const btns = document.querySelectorAll('.toggle-btn');
-    btns.forEach(function(btn) { btn.classList.remove('active'); });
+    var btns = document.querySelectorAll('.toggle-btn');
+    for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
     btns[0].classList.add('active');
 
     init();
 }
 
 function setMode(mode, btn) {
-    const btns = document.querySelectorAll('.toggle-btn');
-    btns.forEach(function(b) { b.classList.remove('active'); });
+    var btns = document.querySelectorAll('.toggle-btn');
+    for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
     btn.classList.add('active');
 
     document.getElementById('practice-mode').style.display = 'none';
@@ -545,44 +678,44 @@ function startLiveMode() {
 }
 
 function showLiveQuestion() {
-    const q = questions[liveIndex];
+    var q = questions[liveIndex];
     document.getElementById('live-question').textContent = (liveIndex + 1) + '. Rearrange the sentences to form a meaningful paragraph:';
 
-    let sentHtml = '';
-    for (let i = 0; i < q.sentences.length; i++) {
-        sentHtml += '<div>' + q.sentences[i] + '</div>';
+    var sentHtml = '';
+    for (var i = 0; i < q.sentences.length; i++) {
+        sentHtml = sentHtml + '<div>' + q.sentences[i] + '</div>';
     }
     document.getElementById('live-sentences').innerHTML = sentHtml;
 
-    let optHtml = '';
-    for (let i = 0; i < q.options.length; i++) {
-        optHtml += '<div class="live-option">' + String.fromCharCode(65 + i) + '. ' + q.options[i] + '</div>';
+    var optHtml = '';
+    for (var i = 0; i < q.options.length; i++) {
+        optHtml = optHtml + '<div class="live-option">' + String.fromCharCode(65 + i) + '. ' + q.options[i] + '</div>';
     }
     document.getElementById('live-options').innerHTML = optHtml;
 
-    document.getElementById('live-answer').textContent = '✅ Correct Answer: ' + String.fromCharCode(65 + q.correct) + '. ' + q.options[q.correct];
-    document.getElementById('live-explanation').innerHTML = '<strong>📖 Explanation:</strong> ' + q.explanation + '<br><br><strong>💡 Tip:</strong> ' + q.keypoint;
+    document.getElementById('live-answer').textContent = '&#9989; Correct Answer: ' + String.fromCharCode(65 + q.correct) + '. ' + q.options[q.correct];
+    document.getElementById('live-explanation').innerHTML = '<strong>&#128214; Explanation:</strong> ' + q.explanation + '<br><br><strong>&#128161; Tip:</strong> ' + q.keypoint;
 }
 
 function startScrollMode() {
-    const content = document.getElementById('scroll-content');
-    let html = '';
-    for (let qIdx = 0; qIdx < questions.length; qIdx++) {
-        const q = questions[qIdx];
-        let sentHtml = '';
-        for (let i = 0; i < q.sentences.length; i++) {
-            sentHtml += '<div>' + q.sentences[i] + '</div>';
+    var content = document.getElementById('scroll-content');
+    var html = '';
+    for (var qIdx = 0; qIdx < questions.length; qIdx++) {
+        var q = questions[qIdx];
+        var sentHtml = '';
+        for (var i = 0; i < q.sentences.length; i++) {
+            sentHtml = sentHtml + '<div>' + q.sentences[i] + '</div>';
         }
-        let optHtml = '';
-        for (let i = 0; i < q.options.length; i++) {
-            optHtml += '<div style="background:#f1f5f9;padding:0.5rem;border-radius:6px;">' + String.fromCharCode(65+i) + '. ' + q.options[i] + '</div>';
+        var optHtml = '';
+        for (var i = 0; i < q.options.length; i++) {
+            optHtml = optHtml + '<div style="background:#f1f5f9;padding:0.5rem;border-radius:6px;">' + String.fromCharCode(65+i) + '. ' + q.options[i] + '</div>';
         }
-        html += '<div class="scroll-item">' +
+        html = html + '<div class="scroll-item">' +
             '<div style="font-weight:700;color:#1e3a8a;margin-bottom:0.5rem;">Q' + q.id + ' [' + q.level + ']: Rearrange the sentences</div>' +
             '<div style="margin-bottom:0.5rem;line-height:1.8;font-size:0.95rem;">' + sentHtml + '</div>' +
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.5rem;">' + optHtml + '</div>' +
-            '<div style="color:#059669;font-weight:700;">✅ ' + String.fromCharCode(65+q.correct) + '. ' + q.options[q.correct] + '</div>' +
-            '<div style="color:#64748b;font-size:0.9rem;margin-top:0.5rem;">💡 ' + q.keypoint + '</div>' +
+            '<div style="color:#059669;font-weight:700;">&#9989; ' + String.fromCharCode(65+q.correct) + '. ' + q.options[q.correct] + '</div>' +
+            '<div style="color:#64748b;font-size:0.9rem;margin-top:0.5rem;">&#128161; ' + q.keypoint + '</div>' +
         '</div>';
     }
     content.innerHTML = html;
