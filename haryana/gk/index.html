@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>हरियाणा सामान्य ज्ञान - Haryana GK for Competitive Exams</title>
+    <title>हरियाणा सामान्य ज्ञान - Haryana GK Study Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,50 +15,26 @@
             --dark: #1a1a2e;
             --light: #f8f9fa;
             --card-bg: #ffffff;
-            --gradient-1: linear-gradient(135deg, #8B1538 0%, #C41E3A 100%);
-            --gradient-2: linear-gradient(135deg, #FF9933 0%, #FFD700 100%);
             --shadow: 0 10px 40px rgba(0,0,0,0.1);
-            --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
             background: var(--light);
             color: var(--dark);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 5px;
         }
 
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.95);
+            top: 0; width: 100%;
+            background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             padding: 1rem 0;
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -67,74 +43,19 @@
             justify-content: space-between;
             align-items: center;
         }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
+        .logo i { font-size: 2rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
             margin-top: 80px;
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, #8B1538 0%, #C41E3A 100%);
             color: white;
             padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -142,32 +63,11 @@
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
-            position: relative;
-            z-index: 1;
         }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero-content h1 span {
-            color: var(--secondary);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
+        .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero-content h1 span { color: var(--secondary); }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95; }
+        .hero-badges { display: flex; gap: 1rem; flex-wrap: wrap; }
         .badge {
             background: rgba(255,255,255,0.2);
             padding: 0.5rem 1rem;
@@ -176,21 +76,19 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.3);
         }
-
         .hero-map {
             background: white;
             border-radius: 20px;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow);
             text-align: center;
         }
-
         .hero-map img {
             max-width: 100%;
             border-radius: 10px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+            display: block;
+            margin: 0 auto;
         }
-
         .map-caption {
             margin-top: 1rem;
             color: var(--primary);
@@ -198,7 +96,7 @@
             font-size: 1.1rem;
         }
 
-        /* Quick Facts Grid */
+        /* Quick Facts */
         .quick-facts {
             max-width: 1200px;
             margin: -3rem auto 0;
@@ -206,71 +104,43 @@
             position: relative;
             z-index: 10;
         }
-
         .facts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
-
         .fact-card {
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
             border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
         }
+        .fact-card:hover { transform: translateY(-10px); }
+        .fact-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
+        .fact-card h3 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .fact-card p { font-weight: 700; font-size: 1.2rem; color: var(--dark); }
+        .fact-card small { color: #666; font-size: 0.85rem; }
 
-        .fact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .fact-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .fact-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .fact-card p {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-
-        .fact-card small {
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        /* Section Styling */
+        /* Sections */
         .section {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .section-header h2 {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 0.5rem;
-            position: relative;
             display: inline-block;
+            position: relative;
         }
-
         .section-header h2::after {
             content: '';
             position: absolute;
@@ -279,23 +149,17 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #FF9933 0%, #FFD700 100%);
             border-radius: 2px;
         }
+        .section-header p { color: #666; margin-top: 1.5rem; font-size: 1.1rem; }
 
-        .section-header p {
-            color: #666;
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* Info Cards */
+        /* Info Grid */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .info-card {
             background: var(--card-bg);
             border-radius: 15px;
@@ -303,83 +167,84 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s;
         }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-        }
-
+        .info-card:hover { transform: translateY(-5px); }
         .info-card-header {
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, #8B1538 0%, #C41E3A 100%);
             color: white;
             padding: 1.5rem;
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
-        .info-card-header i {
-            font-size: 1.5rem;
-        }
-
-        .info-card-header h3 {
-            font-size: 1.2rem;
-        }
-
-        .info-card-body {
-            padding: 1.5rem;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
+        .info-card-header i { font-size: 1.5rem; }
+        .info-card-header h3 { font-size: 1.2rem; }
+        .info-card-body { padding: 1.5rem; }
+        .info-list { list-style: none; }
         .info-list li {
             padding: 0.8rem 0;
             border-bottom: 1px dashed #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
+        .info-list li:last-child { border-bottom: none; }
+        .info-list .label { font-weight: 600; color: var(--primary); }
+        .info-list .value { color: var(--dark); font-weight: 500; text-align: right; }
 
-        .info-list li:last-child {
-            border-bottom: none;
+        /* Map Gallery */
+        .gallery-section {
+            background: linear-gradient(to bottom, #fff5f5, #ffffff);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
         }
-
-        .info-list .label {
-            font-weight: 600;
+        .gallery-container { max-width: 1200px; margin: 0 auto; }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background: #f5f5f5;
+            padding: 1rem;
+            display: block;
+        }
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 700;
             color: var(--primary);
+            background: #fafafa;
+            font-size: 1rem;
         }
 
-        .info-list .value {
-            color: var(--dark);
-            font-weight: 500;
-            text-align: right;
-        }
-
-        /* Geography Section */
+        /* Geography */
         .geo-section {
             background: linear-gradient(to bottom, #fff5f5, #ffffff);
             padding: 4rem 2rem;
             margin: 4rem 0;
         }
-
-        .geo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        .geo-container { max-width: 1200px; margin: 0 auto; }
         .geo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: start;
         }
-
-        .geo-maps {
-            display: grid;
-            gap: 1.5rem;
-        }
-
+        .geo-maps { display: grid; gap: 1.5rem; }
         .map-box {
             background: white;
             border-radius: 15px;
@@ -387,30 +252,21 @@
             box-shadow: var(--shadow);
             text-align: center;
         }
-
         .map-box img {
             max-width: 100%;
             border-radius: 10px;
             margin-bottom: 1rem;
+            border: 2px solid #eee;
+            display: block;
         }
-
-        .map-box h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .map-box p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
+        .map-box h4 { color: var(--primary); margin-bottom: 0.5rem; }
+        .map-box p { font-size: 0.9rem; color: #666; }
         .geo-details {
             background: white;
             border-radius: 20px;
             padding: 2rem;
             box-shadow: var(--shadow);
         }
-
         .geo-details h3 {
             color: var(--primary);
             margin-bottom: 1.5rem;
@@ -419,7 +275,6 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .detail-box {
             background: #f8f9fa;
             border-radius: 10px;
@@ -427,53 +282,27 @@
             margin-bottom: 1rem;
             border-left: 4px solid var(--secondary);
         }
-
-        .detail-box h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+        .detail-box h4 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1rem; }
+        .detail-box p { font-size: 0.95rem; color: #555; }
+        .highlight {
+            background: linear-gradient(120deg, rgba(255,153,51,0.3) 0%, rgba(255,153,51,0.3) 100%);
+            padding: 0 4px;
+            border-radius: 3px;
+            font-weight: 600;
         }
+        .star-mark { color: var(--secondary); }
 
-        .detail-box p, .detail-box ul {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .detail-box ul {
-            padding-left: 1.2rem;
-        }
-
-        .detail-box li {
-            margin-bottom: 0.3rem;
-        }
-
-        /* Practice Questions */
+        /* Quiz */
         .quiz-section {
             background: var(--dark);
             color: white;
             padding: 4rem 2rem;
             margin: 4rem 0;
         }
-
-        .quiz-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .quiz-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .quiz-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .quiz-header h2 span {
-            color: var(--secondary);
-        }
-
+        .quiz-container { max-width: 900px; margin: 0 auto; }
+        .quiz-header { text-align: center; margin-bottom: 3rem; }
+        .quiz-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .quiz-header h2 span { color: var(--secondary); }
         .quiz-card {
             background: rgba(255,255,255,0.05);
             border-radius: 15px;
@@ -481,39 +310,24 @@
             margin-bottom: 1.5rem;
             border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
-            transition: transform 0.3s;
         }
-
-        .quiz-card:hover {
-            transform: scale(1.02);
-            border-color: var(--secondary);
-        }
-
         .quiz-number {
             display: inline-block;
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #FF9933 0%, #FFD700 100%);
             color: var(--dark);
-            width: 35px;
-            height: 35px;
+            width: 35px; height: 35px;
             border-radius: 50%;
             text-align: center;
             line-height: 35px;
             font-weight: 700;
             margin-bottom: 1rem;
         }
-
-        .quiz-question {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
+        .quiz-question { font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500; }
         .quiz-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
-
         .option {
             background: rgba(255,255,255,0.1);
             padding: 1rem;
@@ -522,44 +336,29 @@
             transition: all 0.3s;
             border: 2px solid transparent;
         }
-
         .option:hover {
             background: rgba(255,255,255,0.2);
             border-color: var(--secondary);
         }
-
         .option.correct {
             background: rgba(19, 136, 8, 0.3);
             border-color: var(--accent);
         }
-
         .option.wrong {
             background: rgba(196, 30, 58, 0.3);
             border-color: var(--primary-light);
         }
-
-        .option-label {
-            font-weight: 700;
-            color: var(--secondary);
-            margin-right: 0.5rem;
-        }
-
+        .option-label { font-weight: 700; color: var(--secondary); margin-right: 0.5rem; }
         .show-answer {
             margin-top: 1rem;
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #FF9933 0%, #FFD700 100%);
             color: var(--dark);
             border: none;
             padding: 0.8rem 2rem;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.3s;
         }
-
-        .show-answer:hover {
-            transform: scale(1.05);
-        }
-
         .answer-text {
             margin-top: 1rem;
             padding: 1rem;
@@ -568,16 +367,7 @@
             border-left: 4px solid var(--accent);
             display: none;
         }
-
-        .answer-text.show {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .answer-text.show { display: block; }
 
         /* Footer */
         footer {
@@ -587,97 +377,19 @@
             padding: 2rem;
             border-top: 4px solid var(--secondary);
         }
-
-        footer p {
-            opacity: 0.8;
-        }
-
-        footer .heart {
-            color: var(--primary-light);
-            animation: heartbeat 1.5s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
+        footer p { opacity: 0.8; }
+        .heart { color: var(--primary-light); animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .geo-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .quiz-options {
-                grid-template-columns: 1fr;
-            }
-
-            .facts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Print Styles for Study */
-        @media print {
-            nav, .show-answer, footer {
-                display: none;
-            }
-
-            .hero {
-                margin-top: 0;
-                padding: 2rem;
-            }
-
-            .quiz-card {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-        }
-
-        /* Study Mode Toggle */
-        .study-mode-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--gradient-1);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 999;
-            transition: transform 0.3s;
-        }
-
-        .study-mode-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Highlight important */
-        .highlight {
-            background: linear-gradient(120deg, rgba(255,153,51,0.3) 0%, rgba(255,153,51,0.3) 100%);
-            padding: 0 4px;
-            border-radius: 3px;
-            font-weight: 600;
-        }
-
-        .star-mark {
-            color: var(--secondary);
+            .hero-container { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .geo-grid { grid-template-columns: 1fr; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .image-gallery { grid-template-columns: 1fr; }
         }
     </style>
 <base target="_blank">
@@ -693,9 +405,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#facts">मुख्य तथ्य</a></li>
+                <li><a href="#maps">नक्शे</a></li>
                 <li><a href="#geography">भूगोल</a></li>
-                <li><a href="#boundaries">सीमाएँ</a></li>
-                <li><a href="#rivers">नदियाँ</a></li>
                 <li><a href="#practice">अभ्यास प्रश्न</a></li>
             </ul>
         </div>
@@ -716,8 +427,9 @@
                 </div>
             </div>
             <div class="hero-map">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/India_Haryana_locator_map.svg/800px-India_Haryana_locator_map.svg.png" alt="Haryana Map">
-                <div class="map-caption">हरियाणा का नक्शा | Map of Haryana</div>
+                <!-- EXACT PATH for ravi989642.github.io/haryana/gk/images/ -->
+                <img src="images/haryana-overview.png" alt="Haryana Overview Map" loading="eager">
+                <div class="map-caption">हरियाणा का विस्तृत नक्शा | Detailed Map of Haryana</div>
             </div>
         </div>
     </section>
@@ -776,42 +488,66 @@
         </div>
     </section>
 
-    <!-- Basic Information -->
+    <!-- Map Gallery -->
+    <section class="gallery-section" id="maps">
+        <div class="gallery-container">
+            <div class="section-header">
+                <h2>हरियाणा के नक्शे एवं चित्र</h2>
+                <p>परीक्षा की दृष्टि से महत्वपूर्ण सभी नक्शे एक साथ | All Important Maps for Exam Preparation</p>
+            </div>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="images/haryana-overview.png" alt="Haryana Overview" loading="lazy">
+                    <div class="gallery-caption">मुख्य नक्शा - जिले एवं मुख्य स्थल</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/haryana-locator.png" alt="Haryana Location" loading="lazy">
+                    <div class="gallery-caption">भारत में स्थिति - अक्षांश/देशांतर</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/haryana-districts.png" alt="Haryana Districts" loading="lazy">
+                    <div class="gallery-caption">जिला मानचित्र - 22 जिले एवं मंडल</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/haryana-boundary.png" alt="Haryana Boundaries" loading="lazy">
+                    <div class="gallery-caption">सीमा विवरण - पड़ोसी राज्य एवं जिले</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/haryana-rivers.png" alt="Haryana Rivers" loading="lazy">
+                    <div class="gallery-caption">भौगोलिक/नदी नक्शा - यमुना, घग्गर, सरस्वती</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Basic Info -->
     <section class="section" id="basic">
         <div class="section-header">
             <h2>महत्वपूर्ण जानकारी</h2>
             <p>हरियाणा से संबंधित सभी आवश्यक तथ्य जो हर परीक्षा में पूछे जाते हैं</p>
         </div>
-
         <div class="info-grid">
             <div class="info-card">
-                <div class="info-card-header">
-                    <i class="fas fa-crown"></i>
-                    <h3>प्रशासनिक विवरण</h3>
-                </div>
+                <div class="info-card-header"><i class="fas fa-crown"></i><h3>प्रशासनिक विवरण</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">राज्य का दर्जा</span> <span class="value">17वाँ राज्य</span></li>
-                        <li><span class="label">जिले</span> <span class="value">22 (7 नए जिले 2022 में)</span></li>
+                        <li><span class="label">जिले</span> <span class="value">22 (7 नए 2022 में)</span></li>
                         <li><span class="label">उपमंडल</span> <span class="value">93</span></li>
                         <li><span class="label">तहसील</span> <span class="value">142</span></li>
-                        <li><span class="label">विधानसभा सीटें</span> <span class="value">90</span></li>
-                        <li><span class="label">लोकसभा सीटें</span> <span class="value">10</span></li>
-                        <li><span class="label">राज्यसभा सीटें</span> <span class="value">5</span></li>
+                        <li><span class="label">विधानसभा</span> <span class="value">90 (SC: 17)</span></li>
+                        <li><span class="label">लोकसभा</span> <span class="value">10</span></li>
+                        <li><span class="label">राज्यसभा</span> <span class="value">5</span></li>
                         <li><span class="label">नगर निगम</span> <span class="value">10</span></li>
                     </ul>
                 </div>
             </div>
-
             <div class="info-card">
-                <div class="info-card-header">
-                    <i class="fas fa-mountain"></i>
-                    <h3>भौगोलिक विवरण</h3>
-                </div>
+                <div class="info-card-header"><i class="fas fa-mountain"></i><h3>भौगोलिक विवरण</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
-                        <li><span class="label">अक्षांश</span> <span class="value">27°39' N to 34°09' N</span></li>
-                        <li><span class="label">देशांतर</span> <span class="value">74°27' E to 77°36' E</span></li>
+                        <li><span class="label">अक्षांश</span> <span class="value">27°39'N - 34°09'N</span></li>
+                        <li><span class="label">देशांतर</span> <span class="value">74°27'E - 77°36'E</span></li>
                         <li><span class="label">उच्चतम बिंदु</span> <span class="value">करोहत (1,499 मी)</span></li>
                         <li><span class="label">सबसे ऊँचा पहाड़</span> <span class="value">मोर्नी (1,220 मी)</span></li>
                         <li><span class="label">सबसे बड़ी झील</span> <span class="value">बड़खल (फरीदाबाद)</span></li>
@@ -821,16 +557,12 @@
                     </ul>
                 </div>
             </div>
-
             <div class="info-card">
-                <div class="info-card-header">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>आर्थिक विवरण</h3>
-                </div>
+                <div class="info-card-header"><i class="fas fa-chart-line"></i><h3>आर्थिक विवरण</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
-                        <li><span class="label">प्रति व्यक्ति आय</span> <span class="value">₹2,76,147 (2022-23)</span></li>
-                        <li><span class="label">GDP विकास दर</span> <span class="value">7.1% (2022-23)</span></li>
+                        <li><span class="label">प्रति व्यक्ति आय</span> <span class="value">₹2,76,147</span></li>
+                        <li><span class="label">GDP विकास</span> <span class="value">7.1%</span></li>
                         <li><span class="label">मुख्य फसल</span> <span class="value">गेहूँ, धान, गन्ना</span></li>
                         <li><span class="label">औद्योगिक केंद्र</span> <span class="value">गुरुग्राम, फरीदाबाद</span></li>
                         <li><span class="label">IT हब</span> <span class="value">गुरुग्राम (Cyber City)</span></li>
@@ -850,76 +582,63 @@
                 <h2 style="color: var(--primary);">भौगोलिक विस्तार एवं सीमाएँ</h2>
                 <p>हरियाणा की भौगोलिक स्थिति और पड़ोसी राज्य</p>
             </div>
-
             <div class="geo-grid">
                 <div class="geo-maps">
                     <div class="map-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/India_Haryana_locator_map.svg/600px-India_Haryana_locator_map.svg.png" alt="Haryana Location">
-                        <h4><i class="fas fa-map-marker-alt"></i> भारत में स्थिति</h4>
-                        <p>उत्तर-पश्चिमी भारत में स्थित</p>
+                        <img src="images/haryana-boundary.png" alt="Haryana Boundaries" loading="lazy">
+                        <h4><i class="fas fa-map-marker-alt"></i> सीमा नक्शा</h4>
+                        <p>पड़ोसी राज्यों के साथ सीमाएँ</p>
                     </div>
                     <div class="map-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Haryana_district_map.svg/600px-Haryana_district_map.svg.png" alt="Haryana Districts">
+                        <img src="images/haryana-districts.png" alt="Haryana Districts" loading="lazy">
                         <h4><i class="fas fa-th"></i> जिला मानचित्र</h4>
                         <p>22 जिले - 6 मंडलों में विभाजित</p>
                     </div>
                 </div>
-
                 <div class="geo-details">
                     <h3><i class="fas fa-border-all"></i> सीमाएँ एवं पड़ोसी राज्य</h3>
-
                     <div class="detail-box">
                         <h4><span class="star-mark">★</span> उत्तर में</h4>
                         <p><strong>हिमाचल प्रदेश</strong> - 126 किमी सीमा साझा करता है। शिमला, सोलन, ऊना जिले सीमावर्ती हैं।</p>
                     </div>
-
                     <div class="detail-box">
                         <h4><span class="star-mark">★</span> उत्तर-पूर्व में</h4>
                         <p><strong>उत्तराखंड</strong> - केवल 1 जिला (यमुनानगर) उत्तराखंड के 1 जिले (देहरादून) के साथ सीमा बनाता है। <span class="highlight">कुल सीमा: ~30 किमी</span></p>
                     </div>
-
                     <div class="detail-box">
                         <h4><span class="star-mark">★</span> पूर्व में</h4>
-                        <p><strong>उत्तर प्रदेश</span></strong> - 7 जिले उत्तर प्रदेश के 6 जिलों के साथ सीमा बनाते हैं। मुख्य जिले: सहारनपुर, शामली, बागपत, गौतमबुद्ध नगर, अलीगढ़, मथुरा।</p>
+                        <p><strong>उत्तर प्रदेश</strong> - 7 जिले उत्तर प्रदेश के 6 जिलों के साथ सीमा बनाते हैं। मुख्य जिले: सहारनपुर, शामली, बागपत, गौतमबुद्ध नगर, अलीगढ़, मथुरा।</p>
                     </div>
-
                     <div class="detail-box">
                         <h4><span class="star-mark">★</span> दक्षिण में</h4>
-                        <p><strong>दिल्ली (राष्ट्रीय राजधानी क्षेत्र)</strong> - 3 जिले (गुरुग्राम, फरीदाबाद, झज्जर) दिल्ली की सीमा को छूते हैं।</p>
+                        <p><strong>दिल्ली (NCT)</strong> - 3 जिले (गुरुग्राम, फरीदाबाद, झज्जर) दिल्ली की सीमा को छूते हैं।</p>
                     </div>
-
                     <div class="detail-box">
                         <h4><span class="star-mark">★</span> दक्षिण-पश्चिम में</h4>
                         <p><strong>राजस्थान</strong> - 7 जिले राजस्थान के 4 जिलों के साथ सीमा बनाते हैं। अलवर, भरतपुर, गंगानगर, हनुमानगढ़।</p>
                     </div>
-
                     <div class="detail-box">
                         <h4><span class="star-mark">★</span> पश्चिम में</h4>
                         <p><strong>पंजाब</strong> - 6 जिले पंजाब के 6 जिलों के साथ सीमा बनाते हैं। पटियाला, संगरूर, बठिंडा, फिरोजपुर, अमृतसर।</p>
                     </div>
-
                     <div class="detail-box" style="border-left-color: var(--accent);">
                         <h4><i class="fas fa-calculator"></i> कुल सीमा लंबाई</h4>
-                        <p>हरियाणा की कुल अंतर्राष्ट्रीय/अंतर्राज्यीय सीमा की कुल लंबाई <span class="highlight">2,494 किमी</span> है।</p>
+                        <p>हरियाणा की कुल अंतर्राज्यीय सीमा की कुल लंबाई <span class="highlight">2,494 किमी</span> है।</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rivers Section -->
+    <!-- Rivers -->
     <section class="section" id="rivers">
         <div class="section-header">
             <h2>नदियाँ एवं जलवायु</h2>
             <p>हरियाणा की प्रमुख नदियाँ और जल संसाधन</p>
         </div>
-
         <div class="info-grid">
             <div class="info-card">
-                <div class="info-card-header" style="background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);">
-                    <i class="fas fa-water"></i>
-                    <h3>प्रमुख नदियाँ</h3>
-                </div>
+                <div class="info-card-header" style="background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);"><i class="fas fa-water"></i><h3>प्रमुख नदियाँ</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">यमुना</span> <span class="value">सबसे लंबी (320 किमी)</span></li>
@@ -933,31 +652,23 @@
                     </ul>
                 </div>
             </div>
-
             <div class="info-card">
-                <div class="info-card-header" style="background: linear-gradient(135deg, #43a047 0%, #1b5e20 100%);">
-                    <i class="fas fa-cloud-rain"></i>
-                    <h3>जलवायु विवरण</h3>
-                </div>
+                <div class="info-card-header" style="background: linear-gradient(135deg, #43a047 0%, #1b5e20 100%);"><i class="fas fa-cloud-rain"></i><h3>जलवायु विवरण</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">जलवायु प्रकार</span> <span class="value">उष्णकटिबंधीय महादेशीय</span></li>
                         <li><span class="label">औसत वर्षा</span> <span class="value">450-900 मिमी</span></li>
-                        <li><span class="label">सबसे ठंडा महीना</span> <span class="value">जनवरी (4-10°C)</span></li>
-                        <li><span class="label">सबसे गर्म महीना</span> <span class="value">जून (35-45°C)</span></li>
+                        <li><span class="label">सबसे ठंडा</span> <span class="value">जनवरी (4-10°C)</span></li>
+                        <li><span class="label">सबसे गर्म</span> <span class="value">जून (35-45°C)</span></li>
                         <li><span class="label">मानसून</span> <span class="value">जुलाई-सितंबर</span></li>
                         <li><span class="label">सर्दियाँ</span> <span class="value">दिसंबर-फरवरी</span></li>
-                        <li><span class="label">ग्रीष्म ऋतु</span> <span class="value">मार्च-जून</span></li>
-                        <li><span class="label">हड़ताल का दिन</span> <span class="value">15 मई (सरकारी)</span></li>
+                        <li><span class="label">ग्रीष्म</span> <span class="value">मार्च-जून</span></li>
+                        <li><span class="label">हड़ताल दिवस</span> <span class="value">15 मई (सरकारी)</span></li>
                     </ul>
                 </div>
             </div>
-
             <div class="info-card">
-                <div class="info-card-header" style="background: linear-gradient(135deg, #e53935 0%, #b71c1c 100%);">
-                    <i class="fas fa-dam"></i>
-                    <h3>प्रमुख बांध एवं झीलें</h3>
-                </div>
+                <div class="info-card-header" style="background: linear-gradient(135deg, #e53935 0%, #b71c1c 100%);"><i class="fas fa-dam"></i><h3>बांध एवं झीलें</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">भाखड़ा नांगल</span> <span class="value">सबसे बड़ा (पंजाब साझा)</span></li>
@@ -974,19 +685,15 @@
         </div>
     </section>
 
-    <!-- Culture & History -->
+    <!-- Culture -->
     <section class="section" style="background: linear-gradient(to bottom, #f0f8ff, #ffffff); padding: 4rem 2rem; margin: 4rem 0; border-radius: 30px;">
         <div class="section-header">
             <h2>संस्कृति, खेल एवं विशेष उपाधियाँ</h2>
             <p>हरियाणा की समृद्ध विरासत और विशेष पहचान</p>
         </div>
-
         <div class="info-grid">
             <div class="info-card">
-                <div class="info-card-header" style="background: linear-gradient(135deg, #ff6f00 0%, #e65100 100%);">
-                    <i class="fas fa-theater-masks"></i>
-                    <h3>संस्कृति एवं कला</h3>
-                </div>
+                <div class="info-card-header" style="background: linear-gradient(135deg, #ff6f00 0%, #e65100 100%);"><i class="fas fa-theater-masks"></i><h3>संस्कृति एवं कला</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">लोक नृत्य</span> <span class="value">झुमर, सांझी, लूर</span></li>
@@ -999,12 +706,8 @@
                     </ul>
                 </div>
             </div>
-
             <div class="info-card">
-                <div class="info-card-header" style="background: linear-gradient(135deg, #00897b 0%, #004d40 100%);">
-                    <i class="fas fa-running"></i>
-                    <h3>खेल एवं उपाधियाँ</h3>
-                </div>
+                <div class="info-card-header" style="background: linear-gradient(135deg, #00897b 0%, #004d40 100%);"><i class="fas fa-running"></i><h3>खेल एवं उपाधियाँ</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">उपाधि 1</span> <span class="value">"देश का दूधदारू"</span></li>
@@ -1017,19 +720,15 @@
                     </ul>
                 </div>
             </div>
-
             <div class="info-card">
-                <div class="info-card-header" style="background: linear-gradient(135deg, #8e24aa 0%, #4a148c 100%);">
-                    <i class="fas fa-landmark"></i>
-                    <h3>ऐतिहासिक स्थल</h3>
-                </div>
+                <div class="info-card-header" style="background: linear-gradient(135deg, #8e24aa 0%, #4a148c 100%);"><i class="fas fa-landmark"></i><h3>ऐतिहासिक स्थल</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
                         <li><span class="label">कुरुक्षेत्र</span> <span class="value">महाभारत का युद्धस्थल</span></li>
                         <li><span class="label">पानीपत</span> <span class="value">3 महान युद्ध (1526, 1556, 1761)</span></li>
                         <li><span class="label">हिसार</span> <span class="value">फिरोजशाह तुगलक का किला</span></li>
                         <li><span class="label">रोहतक</span> <span class="value">खिलजी का किला</span></li>
-                        <li><span class="label">थanesar</span> <span class="value">हर्षवर्धन की राजधानी</span></li>
+                        <li><span class="label">थानेसर</span> <span class="value">हर्षवर्धन की राजधानी</span></li>
                         <li><span class="label">पिंजौर</span> <span class="value">मुगल बाग (यादगार)</span></li>
                         <li><span class="label">सिरसा</span> <span class="value">प्राचीन सरस्वती नदी</span></li>
                     </ul>
@@ -1043,7 +742,7 @@
         <div class="quiz-container">
             <div class="quiz-header">
                 <h2><span>अभ्यास</span> प्रश्न</h2>
-                <p>पिछली परीक्षाओं में पूछे गए महत्वपूर्ण प्रश्न | Important Questions from Previous Exams</p>
+                <p>पिछली परीक्षाओं में पूछे गए महत्वपूर्ण प्रश्न</p>
             </div>
 
             <div class="quiz-card">
@@ -1090,7 +789,7 @@
                 <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
                 <div class="answer-text">
                     <strong>सही उत्तर: (c) यमुना नदी</strong><br>
-                    यमुना नदी हरियाणा में लगभग 320 किमी की दूरी तय करती है। यह हरियाणा की पूर्वी सीमा बनाती है और उत्तर प्रदेश से होकर बहती है।
+                    यमुना नदी हरियाणा में लगभग 320 किमी की दूरी तय करती है। यह हरियाणा की पूर्वी सीमा बनाती है।
                 </div>
             </div>
 
@@ -1112,7 +811,7 @@
 
             <div class="quiz-card">
                 <span class="quiz-number">5</span>
-                <div class="quiz-question">"देश का दूधदारू" (Milk Pail of the Country) की उपाधि किसे प्राप्त है?</div>
+                <div class="quiz-question">"देश का दूधदारू" (Milk Pail) की उपाधि किसे प्राप्त है?</div>
                 <div class="quiz-options">
                     <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> पंजाब को</div>
                     <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> उत्तर प्रदेश को</div>
@@ -1128,7 +827,7 @@
 
             <div class="quiz-card">
                 <span class="quiz-number">6</span>
-                <div class="quiz-question">हरियाणा कुल कितने राज्यों/केंद्र शासित प्रदेशों की सीमा से लगा हुआ है?</div>
+                <div class="quiz-question">हरियाणा कुल कितने राज्यों/केंद्र शासित प्रदेशों की सीमा से लगा है?</div>
                 <div class="quiz-options">
                     <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> 4</div>
                     <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> 5</div>
@@ -1170,7 +869,7 @@
                 <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
                 <div class="answer-text">
                     <strong>सही उत्तर: (b) पंचकुला</strong><br>
-                    पंचकुला जिले की साक्षरता दर लगभग 83.4% है, जो राज्य में सबसे अधिक है। गुरुग्राम औद्योगिक राजधानी होने के बावजूद साक्षरता में पीछे है।
+                    पंचकुला जिले की साक्षरता दर लगभग 83.4% है, जो राज्य में सबसे अधिक है।
                 </div>
             </div>
 
@@ -1201,8 +900,8 @@
                 </div>
                 <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
                 <div class="answer-text">
-                    <strong>सही उत्तर: (d) काला तीतर (Black Francolin)</strong><br>
-                    काला तीतर (Francolinus francolinus) हरियाणा का राजकीय पक्षी है। इसे हिंदी में "काला तीतर" कहते हैं। राजकीय पशु: काला हिरण (Blackbuck)।
+                    <strong>सही उत्तर: (d) काला तीतर</strong><br>
+                    काला तीतर (Francolinus francolinus) हरियाणा का राजकीय पक्षी है। राजकीय पशु: काला हिरण (Blackbuck)।
                 </div>
             </div>
 
@@ -1224,7 +923,7 @@
 
             <div class="quiz-card">
                 <span class="quiz-number">12</span>
-                <div class="quiz-question">हरियाणा में कौन सा शहर "साइबर सिटी" (Cyber City) के नाम से प्रसिद्ध है?</div>
+                <div class="quiz-question">हरियाणा में कौन सा शहर "साइबर सिटी" के नाम से प्रसिद्ध है?</div>
                 <div class="quiz-options">
                     <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(a)</span> गुरुग्राम</div>
                     <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> फरीदाबाद</div>
@@ -1243,83 +942,32 @@
     <!-- Footer -->
     <footer>
         <p>Made with <i class="fas fa-heart heart"></i> for Haryana Exam Aspirants</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">© 2024 Haryana GK Study Hub | ravi989642.github.io/haryana</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">© 2024 Haryana GK Study Hub | ravi989642.github.io/haryana/gk</p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">Content based on HSSC, HCS, HTET and other competitive exam syllabi</p>
     </footer>
 
-    <!-- Study Mode Button -->
-    <button class="study-mode-btn" onclick="toggleStudyMode()" title="Toggle Study Mode">
-        <i class="fas fa-book-reader"></i>
-    </button>
-
     <script>
-        // Quiz functionality
         function checkAnswer(element, isCorrect) {
             const card = element.closest('.quiz-card');
             const options = card.querySelectorAll('.option');
-
             options.forEach(opt => {
                 opt.style.pointerEvents = 'none';
-                if(opt.classList.contains('correct-ans')) {
-                    opt.classList.add('correct');
-                }
+                if(opt.classList.contains('correct-ans')) opt.classList.add('correct');
             });
-
-            if(!isCorrect) {
-                element.classList.add('wrong');
-            } else {
-                element.classList.add('correct');
-            }
-
-            // Show answer explanation
-            const answerDiv = card.querySelector('.answer-text');
-            answerDiv.classList.add('show');
+            if(!isCorrect) element.classList.add('wrong');
+            else element.classList.add('correct');
+            card.querySelector('.answer-text').classList.add('show');
         }
-
         function toggleAnswer(btn) {
-            const answerDiv = btn.nextElementSibling;
-            answerDiv.classList.toggle('show');
-            btn.textContent = answerDiv.classList.contains('show') ? 'उत्तर छुपाएँ' : 'उत्तर देखें';
+            const ans = btn.nextElementSibling;
+            ans.classList.toggle('show');
+            btn.textContent = ans.classList.contains('show') ? 'उत्तर छुपाएँ' : 'उत्तर देखें';
         }
-
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
             });
-        });
-
-        // Study mode toggle
-        let studyMode = false;
-        function toggleStudyMode() {
-            studyMode = !studyMode;
-            if(studyMode) {
-                document.body.style.filter = 'sepia(20%) contrast(110%)';
-                document.body.style.background = '#faf8f5';
-            } else {
-                document.body.style.filter = 'none';
-                document.body.style.background = 'var(--light)';
-            }
-        }
-
-        // Add animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        document.querySelectorAll('.fact-card, .info-card, .quiz-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
         });
     </script>
 </body>
