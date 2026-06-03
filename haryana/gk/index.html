@@ -82,13 +82,50 @@
             padding: 1.5rem;
             box-shadow: var(--shadow);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         .hero-map img {
             max-width: 100%;
             border-radius: 10px;
             display: block;
             margin: 0 auto;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
         }
+        .hero-map:hover img { transform: scale(1.02); }
+
+        /* Zoom Hint */
+        .zoom-hint {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(139, 21, 56, 0.9);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 10;
+            animation: pulse-hint 2s infinite;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .hero-map:hover .zoom-hint,
+        .gallery-item:hover .zoom-hint,
+        .map-box:hover .zoom-hint {
+            opacity: 1;
+        }
+        @keyframes pulse-hint {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
         .map-caption {
             margin-top: 1rem;
             color: var(--primary);
@@ -212,16 +249,28 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.3s;
+            position: relative;
         }
         .gallery-item:hover { transform: translateY(-5px); }
-        .gallery-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: contain;
+        .gallery-item .img-wrap {
+            position: relative;
+            overflow: hidden;
             background: #f5f5f5;
             padding: 1rem;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 280px;
         }
+        .gallery-item .img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover .img-wrap img { transform: scale(1.05); }
         .gallery-caption {
             padding: 1rem;
             text-align: center;
@@ -251,14 +300,27 @@
             padding: 1.5rem;
             box-shadow: var(--shadow);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .map-box img {
-            max-width: 100%;
+        .map-box .img-wrap {
+            position: relative;
+            overflow: hidden;
             border-radius: 10px;
             margin-bottom: 1rem;
             border: 2px solid #eee;
-            display: block;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        .map-box .img-wrap img {
+            max-width: 100%;
+            display: block;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        .map-box:hover .img-wrap img { transform: scale(1.05); }
         .map-box h4 { color: var(--primary); margin-bottom: 0.5rem; }
         .map-box p { font-size: 0.9rem; color: #666; }
         .geo-details {
@@ -291,6 +353,97 @@
             font-weight: 600;
         }
         .star-mark { color: var(--secondary); }
+
+        /* ===== LIGHTBOX / POPUP ===== */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 15px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: contain;
+        }
+        .lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px; right: 35px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            width: 50px; height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 10002;
+        }
+        .lightbox-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+            border-color: var(--primary);
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: rgba(139, 21, 56, 0.9);
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            white-space: nowrap;
+            z-index: 10002;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 55px; height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 10002;
+        }
+        .lightbox-nav:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            border-color: var(--secondary);
+        }
+        .lightbox-prev { left: 25px; }
+        .lightbox-next { right: 25px; }
 
         /* Quiz */
         .quiz-section {
@@ -390,6 +543,12 @@
             .quiz-options { grid-template-columns: 1fr; }
             .facts-grid { grid-template-columns: 1fr; }
             .image-gallery { grid-template-columns: 1fr; }
+            .lightbox-img { max-width: 95%; max-height: 70vh; }
+            .lightbox-nav { width: 40px; height: 40px; font-size: 1.3rem; }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+            .lightbox-close { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.8rem; }
+            .zoom-hint { width: 32px; height: 32px; font-size: 0.8rem; }
         }
     </style>
 <base target="_blank">
@@ -427,8 +586,8 @@
                 </div>
             </div>
             <div class="hero-map">
-                <!-- EXACT PATH for ravi989642.github.io/haryana/gk/images/ -->
-                <img src="images/haryana-overview.png" alt="Haryana Overview Map" loading="eager">
+                <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                <img src="/haryana/gk/images/haryana-overview.png" alt="Haryana Overview Map" loading="eager" class="zoomable" data-caption="हरियाणा का विस्तृत नक्शा | Detailed Map of Haryana">
                 <div class="map-caption">हरियाणा का विस्तृत नक्शा | Detailed Map of Haryana</div>
             </div>
         </div>
@@ -487,7 +646,6 @@
             </div>
         </div>
     </section>
-
     <!-- Map Gallery -->
     <section class="gallery-section" id="maps">
         <div class="gallery-container">
@@ -497,23 +655,38 @@
             </div>
             <div class="image-gallery">
                 <div class="gallery-item">
-                    <img src="images/haryana-overview.png" alt="Haryana Overview" loading="lazy">
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                    <div class="img-wrap">
+                        <img src="/haryana/gk/images/haryana-overview.png" alt="Haryana Overview" loading="lazy" class="zoomable" data-caption="मुख्य नक्शा - जिले एवं मुख्य स्थल">
+                    </div>
                     <div class="gallery-caption">मुख्य नक्शा - जिले एवं मुख्य स्थल</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/haryana-locator.png" alt="Haryana Location" loading="lazy">
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                    <div class="img-wrap">
+                        <img src="/haryana/gk/images/haryana-locator.png" alt="Haryana Location" loading="lazy" class="zoomable" data-caption="भारत में स्थिति - अक्षांश/देशांतर">
+                    </div>
                     <div class="gallery-caption">भारत में स्थिति - अक्षांश/देशांतर</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/haryana-districts.png" alt="Haryana Districts" loading="lazy">
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                    <div class="img-wrap">
+                        <img src="/haryana/gk/images/haryana-districts.png" alt="Haryana Districts" loading="lazy" class="zoomable" data-caption="जिला मानचित्र - 22 जिले एवं मंडल">
+                    </div>
                     <div class="gallery-caption">जिला मानचित्र - 22 जिले एवं मंडल</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/haryana-boundary.png" alt="Haryana Boundaries" loading="lazy">
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                    <div class="img-wrap">
+                        <img src="/haryana/gk/images/haryana-boundary.png" alt="Haryana Boundaries" loading="lazy" class="zoomable" data-caption="सीमा विवरण - पड़ोसी राज्य एवं जिले">
+                    </div>
                     <div class="gallery-caption">सीमा विवरण - पड़ोसी राज्य एवं जिले</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/haryana-rivers.png" alt="Haryana Rivers" loading="lazy">
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                    <div class="img-wrap">
+                        <img src="/haryana/gk/images/haryana-rivers.png" alt="Haryana Rivers" loading="lazy" class="zoomable" data-caption="भौगोलिक/नदी नक्शा - यमुना, घग्गर, सरस्वती">
+                    </div>
                     <div class="gallery-caption">भौगोलिक/नदी नक्शा - यमुना, घग्गर, सरस्वती</div>
                 </div>
             </div>
@@ -585,12 +758,18 @@
             <div class="geo-grid">
                 <div class="geo-maps">
                     <div class="map-box">
-                        <img src="images/haryana-boundary.png" alt="Haryana Boundaries" loading="lazy">
+                        <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                        <div class="img-wrap">
+                            <img src="/haryana/gk/images/haryana-boundary.png" alt="Haryana Boundaries" loading="lazy" class="zoomable" data-caption="सीमा नक्शा - पड़ोसी राज्यों के साथ सीमाएँ">
+                        </div>
                         <h4><i class="fas fa-map-marker-alt"></i> सीमा नक्शा</h4>
                         <p>पड़ोसी राज्यों के साथ सीमाएँ</p>
                     </div>
                     <div class="map-box">
-                        <img src="images/haryana-districts.png" alt="Haryana Districts" loading="lazy">
+                        <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+                        <div class="img-wrap">
+                            <img src="/haryana/gk/images/haryana-districts.png" alt="Haryana Districts" loading="lazy" class="zoomable" data-caption="जिला मानचित्र - 22 जिले 6 मंडलों में विभाजित">
+                        </div>
                         <h4><i class="fas fa-th"></i> जिला मानचित्र</h4>
                         <p>22 जिले - 6 मंडलों में विभाजित</p>
                     </div>
@@ -629,7 +808,6 @@
             </div>
         </div>
     </section>
-
     <!-- Rivers -->
     <section class="section" id="rivers">
         <div class="section-header">
@@ -736,7 +914,6 @@
             </div>
         </div>
     </section>
-
     <!-- Practice Questions -->
     <section class="quiz-section" id="practice">
         <div class="quiz-container">
@@ -946,7 +1123,16 @@
         <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">Content based on HSSC, HCS, HTET and other competitive exam syllabi</p>
     </footer>
 
+    <!-- LIGHTBOX POPUP -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-close" onclick="closeLightbox(event)"><i class="fas fa-times"></i></div>
+        <div class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)"><i class="fas fa-chevron-left"></i></div>
+        <img src="" alt="Zoomed Image" class="lightbox-img" id="lightbox-img" onclick="event.stopPropagation()">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <div class="lightbox-nav lightbox-next" onclick="changeImage(1, event)"><i class="fas fa-chevron-right"></i></div>
+    </div>
     <script>
+        // ===== QUIZ FUNCTIONALITY =====
         function checkAnswer(element, isCorrect) {
             const card = element.closest('.quiz-card');
             const options = card.querySelectorAll('.option');
@@ -969,6 +1155,92 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
             });
         });
+
+        // ===== LIGHTBOX FUNCTIONALITY =====
+        let currentImageIndex = 0;
+        let allImages = [];
+        let allCaptions = [];
+
+        function initLightbox() {
+            const zoomables = document.querySelectorAll('.zoomable');
+            zoomables.forEach((img, index) => {
+                allImages.push(img.src);
+                let caption = img.getAttribute('data-caption') || 'Haryana Map';
+                allCaptions.push(caption);
+                img.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openLightbox(index);
+                });
+            });
+        }
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const overlay = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            img.src = allImages[index];
+            caption.textContent = allCaptions[index];
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target !== event.currentTarget && 
+                !event.target.closest('.lightbox-close') && 
+                !event.target.closest('.lightbox-nav')) return;
+            const overlay = document.getElementById('lightbox');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation();
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = allImages.length - 1;
+            if (currentImageIndex >= allImages.length) currentImageIndex = 0;
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                img.src = allImages[currentImageIndex];
+                caption.textContent = allCaptions[currentImageIndex];
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const overlay = document.getElementById('lightbox');
+            if (!overlay.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1, {stopPropagation: ()=>{}});
+            if (e.key === 'ArrowRight') changeImage(1, {stopPropagation: ()=>{}});
+        });
+
+        // Touch swipe for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.getElementById('lightbox').addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        document.getElementById('lightbox').addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) changeImage(1, {stopPropagation: ()=>{}});
+                else changeImage(-1, {stopPropagation: ()=>{}});
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('load', initLightbox);
     </script>
 </body>
 </html>
