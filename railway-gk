@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚂 Railway Exam General Awareness - 12000+ Questions | All Educations Adda</title>
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #c62828;
+            --accent: #ff6f00;
+            --success: #2e7d32;
+            --bg: #f5f5f5;
+            --card: #ffffff;
+            --text: #212121;
+            --text-light: #757575;
+            --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', 'Noto Sans Devanagari', sans-serif; 
+            background: var(--bg); 
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #283593 50%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '🚂';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            right: -1rem;
+            top: -1rem;
+        }
+        .hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .hero .subtitle { font-size: 1.1rem; opacity: 0.95; }
+        .hero .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+        .stat-number { font-size: 1.5rem; font-weight: bold; display: block; }
+        .stat-label { font-size: 0.85rem; opacity: 0.9; }
+        
+        /* Navigation */
+        .nav-bar {
+            background: var(--card);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .nav-bar a {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+        .nav-bar a:hover, .nav-bar a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        
+        /* Subject Cards Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .subject-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+        .subject-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-header {
+            padding: 1.2rem;
+            position: relative;
+            color: white;
+        }
+        .card-header .icon { font-size: 2.5rem; position: absolute; right: 1rem; top: 1rem; opacity: 0.3; }
+        .card-header h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .card-header .q-count { font-size: 0.85rem; opacity: 0.9; }
+        
+        /* Subject color coding */
+        .sub-1 { background: linear-gradient(135deg, #8e24aa, #6a1b9a); } /* Ancient History */
+        .sub-2 { background: linear-gradient(135deg, #5e35b1, #4527a0); } /* Medieval History */
+        .sub-3 { background: linear-gradient(135deg, #3949ab, #283593); } /* Modern History */
+        .sub-4 { background: linear-gradient(135deg, #1e88e5, #1565c0); } /* Polity */
+        .sub-5 { background: linear-gradient(135deg, #039be5, #0277bd); } /* Economics */
+        .sub-6 { background: linear-gradient(135deg, #00897b, #00695c); } /* Geography */
+        .sub-7 { background: linear-gradient(135deg, #43a047, #2e7d32); } /* World Geo */
+        .sub-8 { background: linear-gradient(135deg, #7cb342, #558b2f); } /* Environment */
+        .sub-9 { background: linear-gradient(135deg, #fb8c00, #ef6c00); } /* Science & Tech */
+        .sub-10 { background: linear-gradient(135deg, #f4511e, #d84315); } /* Computer */
+        .sub-11 { background: linear-gradient(135deg, #e53935, #c62828); } /* Art & Culture */
+        .sub-12 { background: linear-gradient(135deg, #8d6e63, #6d4c41); } /* Sports */
+        .sub-13 { background: linear-gradient(135deg, #78909c, #546e7a); } /* Misc */
+        .sub-14 { background: linear-gradient(135deg, #26a69a, #00897b); } /* Awards & Honors */
+        .sub-15 { background: linear-gradient(135deg, #ab47bc, #8e24aa); } /* Books & Authors */
+        .sub-16 { background: linear-gradient(135deg, #5c6bc0, #3949ab); } /* Static GK */
+        
+        .card-body {
+            padding: 1rem;
+        }
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            border-radius: 3px;
+            transition: width 0.5s;
+        }
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        .btn {
+            padding: 0.7rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover { background: #283593; }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover { background: var(--primary); color: white; }
+        
+        /* Topics List inside card */
+        .topics-preview {
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed var(--border);
+        }
+        .topics-preview small {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .topic-tag {
+            background: var(--bg);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        
+        /* Overall Progress Section */
+        .overall-progress {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .progress-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 12px;
+        }
+        .circular-progress {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 0.5rem;
+            position: relative;
+        }
+        .circular-progress svg {
+            transform: rotate(-90deg);
+        }
+        .circular-progress .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Features Banner */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .feature-box {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .feature-box .emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+        .feature-box h4 { margin-bottom: 0.3rem; }
+        .feature-box p { font-size: 0.9rem; color: var(--text-light); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.4rem; }
+            .subjects-grid { grid-template-columns: 1fr; }
+            .card-actions { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>🚂 Railway Exams General Awareness</h1>
+        <p class="subtitle">सम्पूर्ण निचोड़ — Complete PYQ Ebooks with Solutions</p>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">12,000+</span>
+                <span class="stat-label">Total Questions</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">16</span>
+                <span class="stat-label">Subjects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Free Forever</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="attempted-count">0</span>
+                <span class="stat-label">Your Attempted</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <nav class="nav-bar">
+        <a href="#all-subjects" class="active">📚 All Subjects</a>
+        <a href="#history">📜 History</a>
+        <a href="#polity">🏛️ Polity</a>
+        <a href="#geography">🌍 Geography</a>
+        <a href="#science">🔬 Science</a>
+        <a href="#static">📋 Static GK</a>
+        <a href="#progress">📊 My Progress</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-box">
+                <span class="emoji">📖</span>
+                <h4>Complete Coverage</h4>
+                <p>All 16 subjects with detailed topic-wise division</p>
+            </div>
+            <div class="feature-box">
+                <span class="emoji">💡</span>
+                <h4>Extra Knowledge</h4>
+                <p>Related facts & explanations beyond just answers</p>
+            </div>
+            <div class="feature-box">
+                <span class="emoji">⏱️</span>
+                <h4>Exam Mode</h4>
+                <p>Timer-based practice like real Railway exam</p>
+            </div>
+            <div class="feature-box">
+                <span class="emoji">🎯</span>
+                <h4>Smart Revision</h4>
+                <p>Bookmark difficult questions for quick revision</p>
+            </div>
+        </div>
+
+        <!-- Overall Progress -->
+        <div class="overall-progress" id="progress">
+            <h2>📊 Your Overall Progress</h2>
+            <div class="progress-grid" id="overall-stats">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Subjects Grid -->
+        <h2 style="margin: 2rem 0 1rem; font-size: 1.5rem;" id="all-subjects">📚 All 16 Subjects</h2>
+        
+        <div class="subjects-grid" id="subjects-container">
+            <!-- Cards generated by JS -->
+        </div>
+
+    </div>
+
+    <script>
+        // Subject Data
+        const subjects = [
+            {
+                id: 1, name: "Ancient History", nameHi: "प्राचीन इतिहास",
+                totalQ: 481, icon: "🏛️", color: "sub-1",
+                topics: ["Indus Valley", "Vedic Period", "Maurya Empire", "Gupta Empire", "Buddhism", "Jainism"],
+                path: "ancient-history/"
+            },
+            {
+                id: 2, name: "Medieval History", nameHi: "मध्यकालीन इतिहास",
+                totalQ: 441, icon: "⚔️", color: "sub-2",
+                topics: ["Delhi Sultanate", "Mughal Empire", "Vijayanagar", "Bhakti Movement", "Sufism"],
+                path: "medieval-history/"
+            },
+            {
+                id: 3, name: "Modern History", nameHi: "आधुनिक इतिहास",
+                totalQ: 1241, icon: "🇮🇳", color: "sub-3",
+                topics: ["1857 Revolt", "Freedom Struggle", "Gandhi Era", "Independence", "Partition"],
+                path: "modern-history/"
+            },
+            {
+                id: 4, name: "Polity", nameHi: "राजव्यवस्था",
+                totalQ: 2594, icon: "⚖️", color: "sub-4",
+                topics: ["Constitution", "Parliament", "President", "Governor", "Fundamental Rights", "Amendments"],
+                path: "polity/"
+            },
+            {
+                id: 5, name: "Economics", nameHi: "अर्थशास्त्र",
+                totalQ: 986, icon: "💰", color: "sub-5",
+                topics: ["Five Year Plans", "Budget", "Banking", "Poverty", "Unemployment", "GDP"],
+                path: "economics/"
+            },
+            {
+                id: 6, name: "Geography", nameHi: "भूगोल",
+                totalQ: 2240, icon: "🌍", color: "sub-6",
+                topics: ["Physical Geo", "Indian Rivers", "Mountains", "Climate", "Soil", "Minerals"],
+                path: "geography/"
+            },
+            {
+                id: 7, name: "World Geography", nameHi: "विश्व भूगोल",
+                totalQ: 187, icon: "🌐", color: "sub-7",
+                topics: ["Continents", "Oceans", "Deserts", "Boundaries", "Important Lines"],
+                path: "world-geography/"
+            },
+            {
+                id: 8, name: "Environment", nameHi: "पर्यावरण",
+                totalQ: 846, icon: "🌱", color: "sub-8",
+                topics: ["Ecosystem", "Biodiversity", "Climate Change", "Pollution", "National Parks"],
+                path: "environment/"
+            },
+            {
+                id: 9, name: "Science & Technology", nameHi: "विज्ञान और तकनीक",
+                totalQ: 1449, icon: "🔬", color: "sub-9",
+                topics: ["Physics", "Chemistry", "Biology", "Space", "Defense", "Nobel Prize"],
+                path: "science-tech/"
+            },
+            {
+                id: 10, name: "Computer", nameHi: "कंप्यूटर",
+                totalQ: 195, icon: "💻", color: "sub-10",
+                topics: ["Hardware", "Software", "Internet", "MS Office", "Networking", "Cyber Security"],
+                path: "computer/"
+            },
+            {
+                id: 11, name: "Art & Culture", nameHi: "कला और संस्कृति",
+                totalQ: 886, icon: "🎨", color: "sub-11",
+                topics: ["Dance Forms", "Music", "Painting", "Architecture", "Festivals", "Languages"],
+                path: "art-culture/"
+            },
+            {
+                id: 12, name: "Sports", nameHi: "खेल",
+                totalQ: 323, icon: "🏆", color: "sub-12",
+                topics: ["Olympics", "Cricket", "Hockey", "Tennis", "Athletics", "Awards"],
+                path: "sports/"
+            },
+            {
+                id: 13, name: "Miscellaneous", nameHi: "विविध",
+                totalQ: 329, icon: "📦", color: "sub-13",
+                topics: ["Important Days", "Nicknames", "Inventions", "Discoveries", "First in India"],
+                path: "miscellaneous/"
+            },
+            {
+                id: 14, name: "Awards & Honors", nameHi: "पुरस्कार और सम्मान",
+                totalQ: 148, icon: "🏅", color: "sub-14",
+                topics: ["Bharat Ratna", "Padma Awards", "Nobel Prize", "Oscar", "Booker Prize"],
+                path: "awards-honors/"
+            },
+            {
+                id: 15, name: "Books & Authors", nameHi: "पुस्तकें और लेखक",
+                totalQ: 195, icon: "📚", color: "sub-15",
+                topics: ["Indian Authors", "Foreign Authors", "Famous Books", "Autobiographies"],
+                path: "books-authors/"
+            },
+            {
+                id: 16, name: "Static GK", nameHi: "स्थिर सामान्य ज्ञान",
+                totalQ: 1059, icon: "📋", color: "sub-16",
+                topics: ["Census", "High Courts", "Dams", "Airports", "Rivers", "Tribes"],
+                path: "static-gk/"
+            }
+        ];
+
+        // Generate Subject Cards
+        function renderSubjects() {
+            const container = document.getElementById('subjects-container');
+            let html = '';
+            
+            subjects.forEach(sub => {
+                const progress = localStorage.getItem(`progress_${sub.id}`) || 0;
+                const attempted = localStorage.getItem(`attempted_${sub.id}`) || 0;
+                
+                html += `
+                <div class="subject-card" id="sub-${sub.id}">
+                    <div class="card-header ${sub.color}">
+                        <span class="icon">${sub.icon}</span>
+                        <h3>${sub.name}</h3>
+                        <div class="q-count">${sub.nameHi} • ${sub.totalQ} Questions</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${(attempted/sub.totalQ)*100}%"></div>
+                        </div>
+                        <small style="color: var(--text-light); display: block; margin-bottom: 0.5rem;">
+                            ${attempted} / ${sub.totalQ} Attempted
+                        </small>
+                        <div class="card-actions">
+                            <a href="${sub.path}" class="btn btn-primary">📝 Start Practice</a>
+                            <a href="${sub.path}#revision" class="btn btn-outline">🔖 Revision</a>
+                        </div>
+                        <div class="topics-preview">
+                            <small>Key Topics:</small>
+                            <div class="topic-tags">
+                                ${sub.topics.map(t => `<span class="topic-tag">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Overall Stats
+        function renderOverallStats() {
+            const totalQ = subjects.reduce((a, b) => a + b.totalQ, 0);
+            let attempted = 0;
+            subjects.forEach(s => {
+                attempted += parseInt(localStorage.getItem(`attempted_${s.id}`) || 0);
+            });
+            
+            const accuracy = localStorage.getItem('overall_accuracy') || 0;
+            
+            document.getElementById('overall-stats').innerHTML = `
+                <div class="progress-item">
+                    <div class="circular-progress">
+                        <svg width="80" height="80">
+                            <circle cx="40" cy="40" r="35" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="40" cy="40" r="35" fill="none" stroke="#1a237e" stroke-width="8" 
+                                stroke-dasharray="${2 * Math.PI * 35}" 
+                                stroke-dashoffset="${2 * Math.PI * 35 * (1 - attempted/totalQ)}"/>
+                        </svg>
+                        <div class="percentage">${Math.round((attempted/totalQ)*100)}%</div>
+                    </div>
+                    <div>Questions Done</div>
+                    <small>${attempted} / ${totalQ}</small>
+                </div>
+                <div class="progress-item">
+                    <div class="circular-progress">
+                        <svg width="80" height="80">
+                            <circle cx="40" cy="40" r="35" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="40" cy="40" r="35" fill="none" stroke="#2e7d32" stroke-width="8" 
+                                stroke-dasharray="${2 * Math.PI * 35}" 
+                                stroke-dashoffset="${2 * Math.PI * 35 * (1 - accuracy/100)}"/>
+                        </svg>
+                        <div class="percentage">${accuracy}%</div>
+                    </div>
+                    <div>Accuracy</div>
+                    <small>Correct Answers</small>
+                </div>
+                <div class="progress-item">
+                    <div class="circular-progress">
+                        <svg width="80" height="80">
+                            <circle cx="40" cy="40" r="35" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="40" cy="40" r="35" fill="none" stroke="#ff6f00" stroke-width="8" 
+                                stroke-dasharray="${2 * Math.PI * 35}" 
+                                stroke-dashoffset="${2 * Math.PI * 35 * (1 - subjects.filter(s => localStorage.getItem(`completed_${s.id}`)).length/16)}"/>
+                        </svg>
+                        <div class="percentage">${subjects.filter(s => localStorage.getItem(`completed_${s.id}`)).length}/16</div>
+                    </div>
+                    <div>Subjects Completed</div>
+                    <small>Out of 16</small>
+                </div>
+                <div class="progress-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔥</div>
+                    <div>Current Streak</div>
+                    <small>${localStorage.getItem('streak') || 0} Days</small>
+                </div>
+            `;
+            
+            document.getElementById('attempted-count').textContent = attempted;
+        }
+
+        renderSubjects();
+        renderOverallStats();
+    </script>
+</body>
+</html>
