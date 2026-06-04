@@ -45,8 +45,8 @@
         }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
         .logo i { font-size: 2rem; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: color 0.3s; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: color 0.3s; font-size: 0.95rem; }
         .nav-links a:hover { color: var(--primary); }
 
         /* Hero */
@@ -354,96 +354,340 @@
         }
         .star-mark { color: var(--secondary); }
 
-        /* ===== LIGHTBOX / POPUP ===== */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
-            backdrop-filter: blur(10px);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
+        /* ===== SYMBOLS SECTION ===== */
+        .symbols-section {
+            background: linear-gradient(to bottom, #f0fff4, #ffffff);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
         }
-        .lightbox-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .symbols-container { max-width: 1200px; margin: 0 auto; }
+        .symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        .lightbox-img {
-            max-width: 90%;
-            max-height: 85vh;
+        .symbol-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        .symbol-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+        .symbol-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border-radius: 15px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
-            transform: scale(0.7);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            object-fit: contain;
-        }
-        .lightbox-overlay.active .lightbox-img {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 25px; right: 35px;
-            color: white;
-            font-size: 2.5rem;
-            cursor: pointer;
-            width: 50px; height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.3s;
-            border: 2px solid rgba(255,255,255,0.3);
-            z-index: 10002;
-        }
-        .lightbox-close:hover {
-            background: var(--primary);
-            transform: rotate(90deg);
-            border-color: var(--primary);
-        }
-        .lightbox-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
             color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            background: rgba(139, 21, 56, 0.9);
-            padding: 0.7rem 2rem;
-            border-radius: 50px;
-            white-space: nowrap;
-            z-index: 10002;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
-        .lightbox-nav {
+        .symbol-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .symbol-card .sci-name {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .symbol-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .symbol-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #444;
+            border-bottom: 1px dashed #eee;
+        }
+        .symbol-card ul li:last-child { border-bottom: none; }
+        .symbol-card ul li::before {
+            content: '✦';
             position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* ===== ANCIENT NAMES TABLE ===== */
+        .ancient-section {
+            background: linear-gradient(to bottom, #fff8f0, #ffffff);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        .ancient-container { max-width: 1200px; margin: 0 auto; }
+        .table-wrap {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .table-header-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .table-header-bar h3 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-box input {
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-family: inherit;
+            width: 220px;
+            outline: none;
+        }
+        .search-box input::placeholder { color: rgba(255,255,255,0.7); }
+        .search-box i {
+            position: absolute;
+            left: 1rem;
             top: 50%;
             transform: translateY(-50%);
+            color: rgba(255,255,255,0.7);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 2px solid #eee;
+        }
+        .data-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s;
+        }
+        .data-table tr:hover td { background: rgba(139,21,56,0.03); }
+        .name-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .tag-present { background: rgba(19,136,8,0.1); color: var(--accent); }
+        .tag-ancient { background: rgba(196,30,58,0.1); color: var(--primary-light); }
+
+        /* ===== RENAMED SECTION ===== */
+        .renamed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .rename-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--secondary);
+        }
+        .rename-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+        .rename-arrow {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .rename-content { flex: 1; }
+        .rename-old {
+            font-size: 0.9rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: 0.2rem;
+        }
+        .rename-new {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .rename-loc {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 0.2rem;
+        }
+
+        /* ===== NICKNAMES SECTION ===== */
+        .nicknames-section {
+            background: linear-gradient(to bottom, #fff0f5, #ffffff);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        .nicknames-container { max-width: 1200px; margin: 0 auto; }
+        .nicknames-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        .nickname-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+        .nickname-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+        .nickname-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            width: 55px; height: 55px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.3s;
-            border: 2px solid rgba(255,255,255,0.3);
-            z-index: 10002;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
-        .lightbox-nav:hover {
-            background: var(--secondary);
-            color: var(--dark);
-            border-color: var(--secondary);
+        .nickname-content { flex: 1; }
+        .nickname-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
         }
-        .lightbox-prev { left: 25px; }
-        .lightbox-next { right: 25px; }
+        .nickname-place {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .nickname-place i {
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+
+        /* ===== READ MORE FEATURE ===== */
+        .read-more-section {
+            background: linear-gradient(to bottom, #f5f0ff, #ffffff);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        .read-more-container { max-width: 1200px; margin: 0 auto; }
+        .read-more-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        .read-more-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+        .read-more-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .read-more-content {
+            max-height: 120px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            position: relative;
+        }
+        .read-more-content.expanded {
+            max-height: 2000px;
+        }
+        .read-more-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(transparent, white);
+            transition: opacity 0.3s;
+        }
+        .read-more-content.expanded::after {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(139,21,56,0.3);
+        }
+        .read-more-btn i {
+            transition: transform 0.3s ease;
+        }
+        .read-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
 
         /* Quiz */
         .quiz-section {
@@ -543,6 +787,106 @@
             .quiz-options { grid-template-columns: 1fr; }
             .facts-grid { grid-template-columns: 1fr; }
             .image-gallery { grid-template-columns: 1fr; }
+            .symbols-grid { grid-template-columns: 1fr; }
+            .renamed-grid { grid-template-columns: 1fr; }
+            .nicknames-grid { grid-template-columns: 1fr; }
+            .data-table { font-size: 0.85rem; }
+            .data-table th, .data-table td { padding: 0.8rem 1rem; }
+            .table-header-bar { flex-direction: column; align-items: flex-start; }
+            .search-box input { width: 100%; }
+        }
+
+        /* ===== LIGHTBOX / POPUP ===== */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 15px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: contain;
+        }
+        .lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px; right: 35px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            width: 50px; height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 10002;
+        }
+        .lightbox-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+            border-color: var(--primary);
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: rgba(139, 21, 56, 0.9);
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            white-space: nowrap;
+            z-index: 10002;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 55px; height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 10002;
+        }
+        .lightbox-nav:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            border-color: var(--secondary);
+        }
+        .lightbox-prev { left: 25px; }
+        .lightbox-next { right: 25px; }
+        @media (max-width: 768px) {
             .lightbox-img { max-width: 95%; max-height: 70vh; }
             .lightbox-nav { width: 40px; height: 40px; font-size: 1.3rem; }
             .lightbox-prev { left: 10px; }
@@ -550,6 +894,59 @@
             .lightbox-close { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.8rem; }
             .zoom-hint { width: 32px; height: 32px; font-size: 0.8rem; }
         }
+    
+        /* ===== TABLE READ MORE ===== */
+        .table-body-wrap {
+            max-height: 520px;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+            position: relative;
+        }
+        .table-body-wrap.expanded {
+            max-height: 50000px;
+        }
+        .table-body-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, white);
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .table-body-wrap.expanded::after {
+            opacity: 0;
+        }
+        .table-readmore-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem auto;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .table-readmore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(139,21,56,0.3);
+        }
+        .table-readmore-btn i {
+            transition: transform 0.3s ease;
+        }
+        .table-readmore-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
     </style>
 <base target="_blank">
 </head>
@@ -564,6 +961,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#facts">मुख्य तथ्य</a></li>
+                <li><a href="#symbols">राजकीय प्रतीक</a></li>
+                <li><a href="#ancient">प्राचीन नाम</a></li>
+                <li><a href="#nicknames">उपनाम</a></li>
+                <li><a href="#renamed">नाम परिवर्तन</a></li>
                 <li><a href="#maps">नक्शे</a></li>
                 <li><a href="#geography">भूगोल</a></li>
                 <li><a href="#practice">अभ्यास प्रश्न</a></li>
@@ -582,7 +983,9 @@
                     <span class="badge"><i class="fas fa-book-open"></i> HSSC / HCS</span>
                     <span class="badge"><i class="fas fa-graduation-cap"></i> HTET / CET</span>
                     <span class="badge"><i class="fas fa-university"></i> SSC / Banking</span>
-                    <span class="badge"><i class="fas fa-star"></i> Previous Year Questions</span>
+                    <span class="badge"><i class="fas fa-star"></i> State Symbols</span>
+                    <span class="badge"><i class="fas fa-history"></i> Ancient Names</span>
+                    <span class="badge"><i class="fas fa-tags"></i> Nicknames</span>
                 </div>
             </div>
             <div class="hero-map">
@@ -646,6 +1049,326 @@
             </div>
         </div>
     </section>
+
+    <!-- ==================== STATE SYMBOLS SECTION ==================== -->
+    <section class="symbols-section" id="symbols">
+        <div class="symbols-container">
+            <div class="section-header">
+                <h2>हरियाणा के राजकीय प्रतीक</h2>
+                <p>State Symbols of Haryana - परीक्षा में सबसे ज्यादा पूछे जाने वाले प्रश्न</p>
+            </div>
+            <div class="symbols-grid">
+                <div class="symbol-card">
+                    <div class="symbol-icon"><i class="fas fa-monument"></i></div>
+                    <h3>राज्य चिह्न (State Emblem)</h3>
+                    <span class="sci-name">State Emblem</span>
+                    <ul>
+                        <li>अशोक स्तंभ</li>
+                        <li>पानी पर उगता सूरज</li>
+                        <li>कमल का फूल</li>
+                        <li>गेहूँ की बालियाँ</li>
+                    </ul>
+                </div>
+                <div class="symbol-card">
+                    <div class="symbol-icon"><i class="fas fa-tree"></i></div>
+                    <h3>राज्य वृक्ष - पीपल</h3>
+                    <span class="sci-name">Ficus Religiosa (Sacred Fig / Bo Tree)</span>
+                    <ul>
+                        <li>पवित्र पीपल वृक्ष हरियाणा का राज्य वृक्ष घोषित</li>
+                        <li>जड़, छाल, पत्ते और फल सभी भाग उपयोगी</li>
+                        <li>छाल प्रदाह और गर्दन की ग्रंथियों में सूजन में उपयोगी</li>
+                        <li>जड़ की छाल मुखरोग और स्वच्छ श्वास के लिए उपयोगी</li>
+                        <li>जड़ें गठिया रोग के लिए उपयोगी</li>
+                        <li>जड़ को मसूड़ों के रोगों को रोकने के लिए चबाया जाता है</li>
+                    </ul>
+                </div>
+                <div class="symbol-card">
+                    <div class="symbol-icon"><i class="fas fa-spa"></i></div>
+                    <h3>राज्य पुष्प - कमल</h3>
+                    <span class="sci-name">Nelumbo Nucifera (Lotus)</span>
+                    <ul>
+                        <li>उथले पानी में उगने वाला जलीय पौधा</li>
+                        <li>बड़ी तैरती हरी पत्तियां</li>
+                        <li>चमकदार सुगंधित फूल</li>
+                        <li>दो प्रकार: लाल कमल और सफेद कमल</li>
+                        <li>कई पंखुड़ियों वाले तैरते हुए सुंदर फूल</li>
+                    </ul>
+                </div>
+                <div class="symbol-card">
+                    <div class="symbol-icon"><i class="fas fa-paw"></i></div>
+                    <h3>राज्य पशु - कृष्णमृग</h3>
+                    <span class="sci-name">Antilope Cervicapra (Black Buck)</span>
+                    <ul>
+                        <li>मुख्य रूप से भारत में पाया जाता है</li>
+                        <li>पाकिस्तान और नेपाल में भी छोटी आबादी</li>
+                        <li><strong>11 अक्टूबर 1983</strong> को राजकीय पशु घोषित</li>
+                        <li>वक्राकार सींग जिसमें 3-4 मध्यम मोड़</li>
+                        <li>सींग की लंबाई 70 सेमी (28 इंच) तक</li>
+                    </ul>
+                </div>
+                <div class="symbol-card">
+                    <div class="symbol-icon"><i class="fas fa-dove"></i></div>
+                    <h3>राज्य पक्षी - काला तीतर</h3>
+                    <span class="sci-name">Francolinus Francolinus (Black Francolin)</span>
+                    <ul>
+                        <li>फिसिएंटिड कुल का पक्षी</li>
+                        <li>उत्तर और मध्य भारत में व्यापक प्रजनन निवासी</li>
+                        <li><strong>24 मार्च 1972</strong> को राजकीय पक्षी घोषित</li>
+                        <li>टूट पूंछ वाला साहसी पक्षी</li>
+                        <li>सीमावर्ती झीलों, खेत और झाड़ियों के पास पाया जाता है</li>
+                    </ul>
+                </div>
+                <div class="symbol-card">
+                    <div class="symbol-icon"><i class="fas fa-music"></i></div>
+                    <h3>राज्य गीत - जय-जय-जय हरियाणा</h3>
+                    <span class="sci-name">State Song - Jai-Jai-Jai Haryana</span>
+                    <ul>
+                        <li><strong>लेखक:</strong> बाल कृष्ण शर्मा (पानीपत)</li>
+                        <li><strong>गायक:</strong> डॉ. श्याम शर्मा (देवबंध, कैथल)</li>
+                        <li><strong>डायरेक्टर:</strong> मालविका पंडित (रोहतक)</li>
+                        <li><strong>कम्पोजर:</strong> पारस चोपड़ा</li>
+                        <li><strong>अवधि:</strong> 3 मिनट (21 लाइन)</li>
+                        <li><strong>लॉन्च:</strong> 28 मार्च 2025</li>
+                        <li>हरियाणा देश का <strong>11वां राज्य</strong> जिसका खुद का राजकीय गीत है</li>
+                        <li>15 सितंबर 2023 को CM मनोहर लाल खट्टर ने सुझाव दिया</li>
+                        <li>5 सदस्य कमेटी का गठन 19 दिसंबर 2023 को हुआ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table-wrap" style="margin-top: 2rem;">
+                <div class="table-header-bar">
+                    <h3><i class="fas fa-users"></i> राज्य गीत कमेटी सदस्य</h3>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>सदस्य</th><th>पद</th><th>क्षेत्र</th><th>पार्टी</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>लक्ष्मण सिंह यादव</td><td>अध्यक्ष</td><td>रेवाड़ी</td><td>भाजपा</td></tr>
+                        <tr><td>गीता भुक्कल</td><td>सदस्य</td><td>झज्जर</td><td>कांग्रेस</td></tr>
+                        <tr><td>विनोद भ्याणा</td><td>सदस्य</td><td>हांसी</td><td>भाजपा</td></tr>
+                        <tr><td>बलवान सिंह दौलतपुर</td><td>सदस्य</td><td>फतेहाबाद</td><td>कांग्रेस</td></tr>
+                        <tr><td>आदित्य देवीलाल</td><td>सदस्य</td><td>डबवाली</td><td>इनेलो</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ANCIENT NAMES SECTION ==================== -->
+    <section class="ancient-section" id="ancient">
+        <div class="ancient-container">
+            <div class="section-header">
+                <h2>वर्तमान शहरों के प्राचीन नाम</h2>
+                <p>Ancient Names of Current Cities - परीक्षा में अक्सर पूछे जाते हैं</p>
+            </div>
+            <div class="table-wrap">
+                <div class="table-header-bar">
+                    <h3><i class="fas fa-map-marked-alt"></i> शहरों की सूची</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="citySearch" placeholder="शहर खोजें..." onkeyup="searchCities()">
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table" id="citiesTable">
+                        <thead>
+                            <tr><th>क्रम</th><th>वर्तमान नाम</th><th>प्राचीन नाम</th></tr>
+                        </thead>
+                    </table>
+                    <div class="table-body-wrap" id="tableBodyWrap">
+                        <table class="data-table" style="border-top: none;">
+                            <tbody>
+                                <tr><td>1</td><td><span class="name-tag tag-present">कैथल</span></td><td><span class="name-tag tag-ancient">कपिल स्थल</span></td></tr>
+                                <tr><td>2</td><td><span class="name-tag tag-present">जगाधरी</span></td><td><span class="name-tag tag-ancient">युगंधर</span></td></tr>
+                                <tr><td>3</td><td><span class="name-tag tag-present">गोहाना</span></td><td><span class="name-tag tag-ancient">गौध्वना या गवन मोहाना</span></td></tr>
+                                <tr><td>4</td><td><span class="name-tag tag-present">नूंह (नूह)</span></td><td><span class="name-tag tag-ancient">प्रकृतनाक</span></td></tr>
+                                <tr><td>5</td><td><span class="name-tag tag-present">पिंजौर</span></td><td><span class="name-tag tag-ancient">पंचमपुर</span></td></tr>
+                                <tr><td>6</td><td><span class="name-tag tag-present">बहादुरगढ़</span></td><td><span class="name-tag tag-ancient">शारफाबाद</span></td></tr>
+                                <tr><td>7</td><td><span class="name-tag tag-present">जींद</span></td><td><span class="name-tag tag-ancient">जयंतपुरी</span></td></tr>
+                                <tr><td>8</td><td><span class="name-tag tag-present">महम</span></td><td><span class="name-tag tag-ancient">महेष्ठ्य</span></td></tr>
+                                <tr><td>9</td><td><span class="name-tag tag-present">अंबाला</span></td><td><span class="name-tag tag-ancient">अंबालिका</span></td></tr>
+                                <tr><td>10</td><td><span class="name-tag tag-present">रोहतक</span></td><td><span class="name-tag tag-ancient">रोहितिका</span></td></tr>
+                                <tr><td>11</td><td><span class="name-tag tag-present">हिसार</span></td><td><span class="name-tag tag-ancient">इशुकार</span></td></tr>
+                                <tr><td>12</td><td><span class="name-tag tag-present">फतेहाबाद</span></td><td><span class="name-tag tag-ancient">एकदार</span></td></tr>
+                                <tr><td>13</td><td><span class="name-tag tag-present">सफीदों</span></td><td><span class="name-tag tag-ancient">सप्तदमन</span></td></tr>
+                                <tr><td>14</td><td><span class="name-tag tag-present">रेवाड़ी</span></td><td><span class="name-tag tag-ancient">रेवावाती</span></td></tr>
+                                <tr><td>15</td><td><span class="name-tag tag-present">यमुनानगर</span></td><td><span class="name-tag tag-ancient">अब्दुल्लापुर</span></td></tr>
+                                <tr><td>16</td><td><span class="name-tag tag-present">पानीपत</span></td><td><span class="name-tag tag-ancient">पाण्डुप्रस्थ या पनप्रस्थ</span></td></tr>
+                                <tr><td>17</td><td><span class="name-tag tag-present">चुहड़पुर (जींद)</span></td><td><span class="name-tag tag-ancient">चांदपुर</span></td></tr>
+                                <tr><td>18</td><td><span class="name-tag tag-present">टोहा (फतेहाबाद)</span></td><td><span class="name-tag tag-ancient">अजीत नगर</span></td></tr>
+                                <tr><td>19</td><td><span class="name-tag tag-present">थानेसर</span></td><td><span class="name-tag tag-ancient">स्थाण्वीश्वर</span></td></tr>
+                                <tr><td>20</td><td><span class="name-tag tag-present">कालका</span></td><td><span class="name-tag tag-ancient">कालकूट</span></td></tr>
+                                <tr><td>21</td><td><span class="name-tag tag-present">सोनीपत</span></td><td><span class="name-tag tag-ancient">शोणप्रस्थ या स्वर्णप्रस्थ</span></td></tr>
+                                <tr><td>22</td><td><span class="name-tag tag-present">पलवल</span></td><td><span class="name-tag tag-ancient">अपलवा</span></td></tr>
+                                <tr><td>23</td><td><span class="name-tag tag-present">अंबाला</span></td><td><span class="name-tag tag-ancient">अंबालिका</span></td></tr>
+                                <tr><td>24</td><td><span class="name-tag tag-present">नारनौल</span></td><td><span class="name-tag tag-ancient">नरराष्ट्र, नंदीग्राम</span></td></tr>
+                                <tr><td>25</td><td><span class="name-tag tag-present">असंध</span></td><td><span class="name-tag tag-ancient">असंधिवत</span></td></tr>
+                                <tr><td>26</td><td><span class="name-tag tag-present">हांसी</span></td><td><span class="name-tag tag-ancient">आशी</span></td></tr>
+                                <tr><td>27</td><td><span class="name-tag tag-present">गुरुग्राम</span></td><td><span class="name-tag tag-ancient">गुरुग्राम</span></td></tr>
+                                <tr><td>28</td><td><span class="name-tag tag-present">कुरुक्षेत्र</span></td><td><span class="name-tag tag-ancient">शार्यणावत</span></td></tr>
+                                <tr><td>29</td><td><span class="name-tag tag-present">सिरसा</span></td><td><span class="name-tag tag-ancient">शैरिषकम्</span></td></tr>
+                                <tr><td>30</td><td><span class="name-tag tag-present">पेहोवा</span></td><td><span class="name-tag tag-ancient">पुष्यदक</span></td></tr>
+                                <tr><td>31</td><td><span class="name-tag tag-present">महेंद्रगढ़</span></td><td><span class="name-tag tag-ancient">कांगोड़</span></td></tr>
+                                <tr><td>32</td><td><span class="name-tag tag-present">लोहारू</span></td><td><span class="name-tag tag-ancient">लोहारूप</span></td></tr>
+                                <tr><td>33</td><td><span class="name-tag tag-present">बल्लभगढ़</span></td><td><span class="name-tag tag-ancient">बलरामगढ़</span></td></tr>
+                                <tr><td>34</td><td><span class="name-tag tag-present">एलनाबाद</span></td><td><span class="name-tag tag-ancient">खड़ियाल</span></td></tr>
+                                <tr><td>35</td><td><span class="name-tag tag-present">बाबरपुर (पानीपत)</span></td><td><span class="name-tag tag-ancient">नानकपुर</span></td></tr>
+                                <tr><td>36</td><td><span class="name-tag tag-present">किन्नर (हिसार)</span></td><td><span class="name-tag tag-ancient">मैबी नगर</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="table-readmore-btn" id="tableReadMoreBtn" onclick="toggleTableReadMore()">
+                        <i class="fas fa-chevron-down"></i> और देखें (36 शहर)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NICKNAMES SECTION (NEW FROM IMAGES) ==================== -->
+    <section class="nicknames-section" id="nicknames">
+        <div class="nicknames-container">
+            <div class="section-header">
+                <h2>हरियाणा के भौगोलिक क्षेत्रों के उपनाम</h2>
+                <p>Nicknames of Haryana Cities & Regions - परीक्षा में अक्सर पूछे जाते हैं</p>
+            </div>
+            <div class="nicknames-grid" id="nicknamesGrid">
+                <!-- First 20 visible, rest loaded via JS -->
+                <div class="nickname-card"><div class="nickname-num">1</div><div class="nickname-content"><div class="nickname-title">सिटी ऑफ पार्क्स</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> कुरुक्षेत्र</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">2</div><div class="nickname-content"><div class="nickname-title">ब्रास सिटी (पीतल नगरी)</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> रेवाड़ी</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">3</div><div class="nickname-content"><div class="nickname-title">हार्ट ऑफ हरियाणा</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> जींद</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">4</div><div class="nickname-content"><div class="nickname-title">तालाबों व बावड़ियों का शहर</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> नारनौल</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">5</div><div class="nickname-content"><div class="nickname-title">हरियाणा का पेरिस</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> करनाल</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">6</div><div class="nickname-content"><div class="nickname-title">धान का कटोरा</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> करनाल</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">7</div><div class="nickname-content"><div class="nickname-title">बुनकरों का शहर (वीवर सिटी)</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> पानीपत</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">8</div><div class="nickname-content"><div class="nickname-title">साइबर सिटी, मिलेनियम सिटी</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> गुरुग्राम</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">9</div><div class="nickname-content"><div class="nickname-title">पिंक सिटी</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> फतेहाबाद</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">10</div><div class="nickname-content"><div class="nickname-title">मैग्नेट सिटी</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> हिसार</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">11</div><div class="nickname-content"><div class="nickname-title">स्टील सिटी</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> हिसार</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">12</div><div class="nickname-content"><div class="nickname-title">मछलियों का स्वर्ग</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> हथिनीकुंड</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">13</div><div class="nickname-content"><div class="nickname-title">ट्राई-सिटी</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> पंचकुला-चंडीगढ़-मोहाली</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">14</div><div class="nickname-content"><div class="nickname-title">साहित्यकारों का आराध्य स्थल</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> सीही ग्राम</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">15</div><div class="nickname-content"><div class="nickname-title">धर्मनगरी</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> कुरुक्षेत्र</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">16</div><div class="nickname-content"><div class="nickname-title">भारत का क्यूबा</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> भिवानी</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">17</div><div class="nickname-content"><div class="nickname-title">विज्ञान नगरी (साइंस सिटी)</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> अंबाला</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">18</div><div class="nickname-content"><div class="nickname-title">वीरभूमि, भारत का इज़राइल</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> रेवाड़ी</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">19</div><div class="nickname-content"><div class="nickname-title">हैंडलूम का शहर</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> पानीपत</div></div></div>
+                <div class="nickname-card"><div class="nickname-num">20</div><div class="nickname-content"><div class="nickname-title">उपकरणों का शहर (एप्रेस सिटी)</div><div class="nickname-place"><i class="fas fa-map-marker-alt"></i> अंबाला</div></div></div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="read-more-btn" id="loadMoreNicknames" onclick="loadMoreNicknames()">
+                    <i class="fas fa-chevron-down"></i> और देखें (45+ उपनाम)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== READ MORE: SPECIAL NOTES ==================== -->
+    <section class="read-more-section" id="special-notes">
+        <div class="read-more-container">
+            <div class="section-header">
+                <h2>विशेष जानकारी</h2>
+                <p>Special Information about Haryana Cities - विस्तृत विवरण</p>
+            </div>
+
+            <div class="read-more-card">
+                <h3><i class="fas fa-info-circle"></i> छोटी काशी, एजुकेशन सिटी और अन्य उपनाम</h3>
+                <div class="read-more-content" id="content1">
+                    <p style="margin-bottom: 1rem;"><strong>भिवानी को मंदिरों की अधिकता के कारण तथा कैथल को नवग्रह कुंडों के कारण छोटी काशी कहा जाता है।</strong></p>
+                    <p style="margin-bottom: 1rem;">इसी प्रकार <strong>सोनीपत को कुंडली में स्थापित राजीव गांधी एजुकेशन सिटी</strong> के कारण एजुकेशन सिटी तथा <strong>रोहतक को शिक्षण संस्थानों की अधिकता</strong> के कारण एजुकेशन सिटी कहा जाता है।</p>
+                    <p style="margin-bottom: 1rem;">वर्तमान में हरियाणा सरकार ने <strong>पंचकुला में भी एजुकेशन सिटी</strong> बनाने का निर्णय लिया है। अतः पंचकुला को भी एजुकेशन सिटी कहा जा सकता है।</p>
+                    <p><strong>तीनों नाम विकल्प में होने पर प्रथम वरीयता रोहतक को, दूसरी वरीयता सोनीपत को तथा फिर पंचकुला को देनी चाहिए।</strong></p>
+                </div>
+                <button class="read-more-btn" onclick="toggleReadMore('content1', this)">
+                    <i class="fas fa-chevron-down"></i> पूरा पढ़ें
+                </button>
+            </div>
+
+            <div class="read-more-card">
+                <h3><i class="fas fa-landmark"></i> हरियाणा के प्रमुख उपनाम - विस्तृत सूची</h3>
+                <div class="read-more-content" id="content2">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.95rem;">
+                        <div><strong>66.</strong> सरस्वती नगर → सिरसा</div>
+                        <div><strong>67.</strong> वन नगरी, संत नगरी → सिरसा</div>
+                        <div><strong>68.</strong> गेटवे ऑफ हरियाणा (प्रवेश द्वार) → बहादुरगढ़</div>
+                        <div><strong>69.</strong> दिल्ली का लोह द्वार → बल्लभगढ़ (बलरामगढ़)</div>
+                        <div><strong>70.</strong> हरियाणा की वित्तीय राजधानी → गुरुग्राम</div>
+                        <div><strong>71.</strong> हरियाणा की राजनीतिक राजधानी → रोहतक</div>
+                        <div><strong>72.</strong> हरियाणा की सांस्कृतिक राजधानी → कुरुक्षेत्र</div>
+                        <div><strong>73.</strong> हरियाणा की औद्योगिक राजधानी → फरीदाबाद</div>
+                        <div><strong>74.</strong> हरियाणा की दूसरी वित्तीय (आर्थिक) राजधानी → पंचकुला</div>
+                        <div><strong>75.</strong> मिल्क सिटी (दूध नगरी) → जींद</div>
+                        <div><strong>76.</strong> सिटी ऑफ मिल्क → रोहतक</div>
+                        <div><strong>77.</strong> हरियाणा का सिंहद्वार → बहादुरगढ़ का किला</div>
+                        <div><strong>78.</strong> रानी की खिड़की → कलसिया रियासत का किला</div>
+                        <div><strong>79.</strong> अहीरवाल का लंदन → रेवाड़ी</div>
+                        <div><strong>80.</strong> कास्ट ऑफ कॉटन → पानीपत</div>
+                        <div><strong>81.</strong> ड्यूक ऑफ वेलिंगटन ऑफ मुगल एरा → हिसार</div>
+                        <div><strong>82.</strong> हिमाचल का प्रवेश द्वार → भीमा देवी मंदिर, पिंजौर</div>
+                        <div><strong>83.</strong> नारनौल का साइन बोर्ड → चोर गुंबद</div>
+                        <div><strong>84.</strong> पीर फकीरों की धरती → तावड़ू</div>
+                        <div><strong>85.</strong> केरल ऑफ हरियाणा → रोहतक</div>
+                    </div>
+                </div>
+                <button class="read-more-btn" onclick="toggleReadMore('content2', this)">
+                    <i class="fas fa-chevron-down"></i> पूरा पढ़ें
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== RENAMED CITIES SECTION ==================== -->
+    <section class="section" id="renamed">
+        <div class="section-header">
+            <h2>हाल में बदले गए नाम</h2>
+            <p>Recently Renamed Places in Haryana</p>
+        </div>
+        <div class="renamed-grid">
+            <div class="rename-card">
+                <div class="rename-content">
+                    <div class="rename-old">सद्दीकी नगर</div>
+                    <div class="rename-new">मुस्तफाबाद</div>
+                    <div class="rename-loc">📍 यमुनानगर</div>
+                </div>
+                <i class="fas fa-arrow-right rename-arrow"></i>
+            </div>
+            <div class="rename-card">
+                <div class="rename-content">
+                    <div class="rename-old">दुर्जनपुर</div>
+                    <div class="rename-new">सज्जनपुर</div>
+                    <div class="rename-loc">📍 भिवानी</div>
+                </div>
+                <i class="fas fa-arrow-right rename-arrow"></i>
+            </div>
+            <div class="rename-card">
+                <div class="rename-content">
+                    <div class="rename-old">मोहम्मदाबाद</div>
+                    <div class="rename-new">प्रेमसुख नगर</div>
+                    <div class="rename-loc">📍 सोनीपत</div>
+                </div>
+                <i class="fas fa-arrow-right rename-arrow"></i>
+            </div>
+            <div class="rename-card">
+                <div class="rename-content">
+                    <div class="rename-old">मोहम्मदपुर माजरा</div>
+                    <div class="rename-new">बिरहड़ माजरा</div>
+                    <div class="rename-loc">📍 झज्जर</div>
+                </div>
+                <i class="fas fa-arrow-right rename-arrow"></i>
+            </div>
+            <div class="rename-card">
+                <div class="rename-content">
+                    <div class="rename-old">खिजराबाद</div>
+                    <div class="rename-new">प्रताप नगर</div>
+                    <div class="rename-loc">📍 यमुनानगर</div>
+                </div>
+                <i class="fas fa-arrow-right rename-arrow"></i>
+            </div>
+        </div>
+    </section>
+
     <!-- Map Gallery -->
     <section class="gallery-section" id="maps">
         <div class="gallery-container">
@@ -808,6 +1531,7 @@
             </div>
         </div>
     </section>
+
     <!-- Rivers -->
     <section class="section" id="rivers">
         <div class="section-header">
@@ -864,13 +1588,13 @@
     </section>
 
     <!-- Culture -->
-    <section class="section" style="background: linear-gradient(to bottom, #f0f8ff, #ffffff); padding: 4rem 2rem; margin: 4rem 0; border-radius: 30px;">
-        <div class="section-header">
+    <section class="section" style="background: linear-gradient(to bottom, #f0f8ff, #ffffff); padding: 4rem 2rem; margin: 4rem auto; border-radius: 30px; max-width: 1200px; text-align: center;">
+        <div class="section-header" style="text-align: center;">
             <h2>संस्कृति, खेल एवं विशेष उपाधियाँ</h2>
             <p>हरियाणा की समृद्ध विरासत और विशेष पहचान</p>
         </div>
-        <div class="info-grid">
-            <div class="info-card">
+        <div class="info-grid" style="text-align: left;">
+            <div class="info-card" style="text-align: left;">
                 <div class="info-card-header" style="background: linear-gradient(135deg, #ff6f00 0%, #e65100 100%);"><i class="fas fa-theater-masks"></i><h3>संस्कृति एवं कला</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
@@ -884,7 +1608,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="info-card">
+            <div class="info-card" style="text-align: left;">
                 <div class="info-card-header" style="background: linear-gradient(135deg, #00897b 0%, #004d40 100%);"><i class="fas fa-running"></i><h3>खेल एवं उपाधियाँ</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
@@ -898,7 +1622,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="info-card">
+            <div class="info-card" style="text-align: left;">
                 <div class="info-card-header" style="background: linear-gradient(135deg, #8e24aa 0%, #4a148c 100%);"><i class="fas fa-landmark"></i><h3>ऐतिहासिक स्थल</h3></div>
                 <div class="info-card-body">
                     <ul class="info-list">
@@ -914,12 +1638,13 @@
             </div>
         </div>
     </section>
+
     <!-- Practice Questions -->
     <section class="quiz-section" id="practice">
         <div class="quiz-container">
             <div class="quiz-header">
                 <h2><span>अभ्यास</span> प्रश्न</h2>
-                <p>पिछली परीक्षाओं में पूछे गए महत्वपूर्ण प्रश्न</p>
+                <p>पिछली परीक्षाओं में पूछे गए महत्वपूर्ण प्रश्न + नए प्रतीक/नाम प्रश्न</p>
             </div>
 
             <div class="quiz-card">
@@ -1113,14 +1838,174 @@
                     गुरुग्राम (पहले गुड़गांव) भारत का दूसरा सबसे बड़ा IT केंद्र (बैंगलोर के बाद) है। यहाँ DLF Cyber City, Golf Course Road और numerous MNCs हैं।
                 </div>
             </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">13</span>
+                <div class="quiz-question">कृष्णमृग (काला हिरण) को राजकीय पशु कब घोषित किया गया?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> 24 मार्च 1972</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(b)</span> 11 अक्टूबर 1983</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> 1 नवंबर 1966</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> 28 मार्च 2025</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (b) 11 अक्टूबर 1983</strong><br>
+                    कृष्णमृग (Antilope Cervicapra) को 11 अक्टूबर 1983 को हरियाणा का राजकीय पशु घोषित किया गया। इसके वक्राकार सींग 70 सेमी तक लंबे होते हैं।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">14</span>
+                <div class="quiz-question">हिसार का प्राचीन नाम क्या था?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> रोहितिका</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(b)</span> इशुकार</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> शैरिषकम्</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> कालकूट</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (b) इशुकार</strong><br>
+                    हिसार का प्राचीन नाम इशुकार था। हरियाणा के कई शहरों के प्राचीन नाम परीक्षा में अक्सर पूछे जाते हैं।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">15</span>
+                <div class="quiz-question">हरियाणा के राज्य गीत 'जय-जय-जय हरियाणा' के लेखक कौन हैं?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> डॉ. श्याम शर्मा</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> पारस चोपड़ा</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(c)</span> बाल कृष्ण शर्मा</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> मालविका पंडित</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (c) बाल कृष्ण शर्मा</strong><br>
+                    बाल कृष्ण शर्मा (पानीपत) राज्य गीत के लेखक हैं। गायक: डॉ. श्याम शर्मा (देवबंध, कैथल), कम्पोजर: पारस चोपड़ा, डायरेक्टर: मालविका पंडित (रोहतक)।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">16</span>
+                <div class="quiz-question">पानीपत का प्राचीन नाम क्या था?</div>
+                <div class="quiz-options">
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(a)</span> पाण्डुप्रस्थ</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> शोणप्रस्थ</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> अपलवा</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> कपिल स्थल</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (a) पाण्डुप्रस्थ</strong><br>
+                    पानीपत का प्राचीन नाम पाण्डुप्रस्थ या पनप्रस्थ था। यहाँ 3 महान युद्ध (1526, 1556, 1761) हुए जो भारतीय इतिहास को बदल गए।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">17</span>
+                <div class="quiz-question">काला तीतर (Black Francolin) को राजकीय पक्षी कब घोषित किया गया?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> 11 अक्टूबर 1983</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(b)</span> 24 मार्च 1972</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> 1 नवंबर 1966</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> 15 अगस्त 1947</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (b) 24 मार्च 1972</strong><br>
+                    काला तीतर (Francolinus francolinus) को 24 मार्च 1972 को राजकीय पक्षी घोषित किया गया। यह फिसिएंटिड कुल का पक्षी है।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">18</span>
+                <div class="quiz-question">कुरुक्षेत्र का प्राचीन नाम क्या था?</div>
+                <div class="quiz-options">
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(a)</span> शार्यणावत</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> स्थाण्वीश्वर</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> रेवावाती</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> कांगोड़</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (a) शार्यणावत</strong><br>
+                    कुरुक्षेत्र का प्राचीन नाम शार्यणावत था। यह महाभारत युद्ध का प्रसिद्ध स्थल है और ब्रह्म सरोवर यहाँ स्थित है।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">19</span>
+                <div class="quiz-question">हरियाणा का राज्य गीत का लॉन्च कब हुआ?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> 15 सितंबर 2023</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> 19 दिसंबर 2023</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(c)</span> 28 मार्च 2025</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> 1 नवंबर 2024</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (c) 28 मार्च 2025</strong><br>
+                    हरियाणा का राज्य गीत 28 मार्च 2025 को लॉन्च हुआ। हरियाणा देश का 11वां राज्य है जिसका अपना राजकीय गीत है।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">20</span>
+                <div class="quiz-question">कैथल का प्राचीन नाम क्या था?</div>
+                <div class="quiz-options">
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(a)</span> कपिल स्थल</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(b)</span> कालकूट</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> अंबालिका</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> जयंतपुरी</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (a) कपिल स्थल</strong><br>
+                    कैथल का प्राचीन नाम कपिल स्थल था। यह हरियाणा के प्रमुख शहरों में से एक है और ऐतिहासिक महत्व रखता है।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">21</span>
+                <div class="quiz-question">कमल का वैज्ञानिक नाम क्या है?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> Ficus Religiosa</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(b)</span> Nelumbo Nucifera</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> Antilope Cervicapra</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> Francolinus Francolinus</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (b) Nelumbo Nucifera</strong><br>
+                    कमल (Nelumbo Nucifera) हरियाणा का राज्य पुष्प है। Ficus Religiosa = पीपल (वृक्ष), Antilope Cervicapra = कृष्णमृग (पशु), Francolinus Francolinus = काला तीतर (पक्षी)।
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <span class="quiz-number">22</span>
+                <div class="quiz-question">सोनीपत का प्राचीन नाम क्या था?</div>
+                <div class="quiz-options">
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(a)</span> पाण्डुप्रस्थ</div>
+                    <div class="option correct-ans" onclick="checkAnswer(this, true)"><span class="option-label">(b)</span> शोणप्रस्थ या स्वर्णप्रस्थ</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(c)</span> अपलवा</div>
+                    <div class="option" onclick="checkAnswer(this, false)"><span class="option-label">(d)</span> कपिल स्थल</div>
+                </div>
+                <button class="show-answer" onclick="toggleAnswer(this)">उत्तर देखें</button>
+                <div class="answer-text">
+                    <strong>सही उत्तर: (b) शोणप्रस्थ या स्वर्णप्रस्थ</strong><br>
+                    सोनीपत का प्राचीन नाम शोणप्रस्थ या स्वर्णप्रस्थ था। यह दिल्ली-चंडीगढ़ राजमार्ग पर स्थित एक महत्वपूर्ण शहर है।
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>Made with <i class="fas fa-heart heart"></i> for Haryana Exam Aspirants</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">© 2024 Haryana GK Study Hub | ravi989642.github.io/haryana/gk</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">Content based on HSSC, HCS, HTET and other competitive exam syllabi</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">© 2025 Haryana GK Study Hub | Complete Study Material</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">Content based on HSSC, HCS, HTET and other competitive exam syllabi | Updated with State Symbols, Ancient Names & Nicknames</p>
     </footer>
 
     <!-- LIGHTBOX POPUP -->
@@ -1131,6 +2016,7 @@
         <div class="lightbox-caption" id="lightbox-caption"></div>
         <div class="lightbox-nav lightbox-next" onclick="changeImage(1, event)"><i class="fas fa-chevron-right"></i></div>
     </div>
+
     <script>
         // ===== QUIZ FUNCTIONALITY =====
         function checkAnswer(element, isCorrect) {
@@ -1143,6 +2029,8 @@
             if(!isCorrect) element.classList.add('wrong');
             else element.classList.add('correct');
             card.querySelector('.answer-text').classList.add('show');
+            const btn = card.querySelector('.show-answer');
+            if(btn) btn.textContent = 'उत्तर छुपाएँ';
         }
         function toggleAnswer(btn) {
             const ans = btn.nextElementSibling;
@@ -1155,6 +2043,107 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
             });
         });
+
+        // ===== SEARCH CITIES =====
+        function searchCities() {
+            const input = document.getElementById('citySearch').value.toLowerCase();
+            const table = document.getElementById('citiesTable');
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            for (let row of rows) {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            }
+        }
+
+        // ===== READ MORE TOGGLE =====
+        function toggleReadMore(contentId, btn) {
+            const content = document.getElementById(contentId);
+            content.classList.toggle('expanded');
+            btn.classList.toggle('expanded');
+            const isExpanded = content.classList.contains('expanded');
+            btn.innerHTML = isExpanded ? '<i class="fas fa-chevron-up"></i> कम देखें' : '<i class="fas fa-chevron-down"></i> पूरा पढ़ें';
+        }
+
+        // ===== TABLE READ MORE =====
+        function toggleTableReadMore() {
+            const wrap = document.getElementById('tableBodyWrap');
+            const btn = document.getElementById('tableReadMoreBtn');
+            wrap.classList.toggle('expanded');
+            btn.classList.toggle('expanded');
+            const isExpanded = wrap.classList.contains('expanded');
+            btn.innerHTML = isExpanded ? '<i class="fas fa-chevron-up"></i> कम देखें' : '<i class="fas fa-chevron-down"></i> और देखें (36 शहर)';
+        }
+
+        // ===== LOAD MORE NICKNAMES =====
+        const moreNicknames = [
+            {num: 21, title: 'मंदिरों की नगरी', place: 'भिवानी'},
+            {num: 22, title: 'एजुकेशन सिटी', place: 'रोहतक व सोनीपत'},
+            {num: 23, title: 'औद्योगिक नगरी', place: 'फरीदाबाद'},
+            {num: 24, title: 'कोल सेंटर ऑफ हरियाणा', place: 'गुरुग्राम'},
+            {num: 25, title: 'मेडीसिटी', place: 'गुरुग्राम'},
+            {num: 26, title: 'पेपरसिटी', place: 'यमुनानगर'},
+            {num: 27, title: 'शुगर सिटी', place: 'पलवल व रोहतक'},
+            {num: 28, title: 'पेट्रोकेमिकल हब', place: 'पानीपत'},
+            {num: 29, title: 'नैनोसिटी', place: 'रायपुर (पंचकुला)'},
+            {num: 30, title: 'इलेक्ट्रॉनिक सिटी', place: 'गुरुग्राम'},
+            {num: 31, title: 'मनोरजन सिटी', place: 'गुरुग्राम'},
+            {num: 32, title: 'सिटी ऑफ कॉटन', place: 'फलवल'},
+            {num: 33, title: 'शहीदों का शहर', place: 'झज्जर'},
+            {num: 34, title: 'धमार्थ न्यासों का शहर', place: 'भिवानी'},
+            {num: 35, title: 'नदियों/नहरों का नगर', place: 'टोहाना'},
+            {num: 36, title: 'सिटी ऑफ बार हरिरोज', place: 'भिवानी'},
+            {num: 37, title: 'मिक्की सिटी', place: 'अंबाला'},
+            {num: 38, title: 'गुड़खड़ियों का शहर', place: 'कैथल'},
+            {num: 39, title: 'धनाढ्य लोगों की नगरी', place: 'बेरी'},
+            {num: 40, title: 'शिल्पकारों (क्राफ्ट्समैन) का कुंभ', place: 'सूरजकुंड'},
+            {num: 41, title: 'गोल्डन सिटी', place: 'सोनीपत'},
+            {num: 42, title: 'सैनिकों का घर', place: 'रेवाड़ी'},
+            {num: 43, title: 'हरियाणा का ताजमहल', place: 'शेख चिल्ली का मकबरा'},
+            {num: 44, title: 'उत्तर भारत का नंदन वन', place: 'यादवेंद्र उद्यान'},
+            {num: 45, title: 'उत्तर भारत का खजुराहो', place: 'भीमा देवी मंदिर'},
+            {num: 46, title: 'मुगल का दीप', place: 'थानेसर'},
+            {num: 47, title: 'हरियाणा का चेरापुंजी', place: 'छछरौली (यमुनानगर)'},
+            {num: 48, title: 'हरियाणा का खनिजों का भंडार', place: 'महेंद्रगढ़'},
+            {num: 49, title: 'पक्षियों का स्वर्ग', place: 'सुल्तानपुर झील'},
+            {num: 50, title: 'वैदिक सभ्यता का पालना', place: 'कुरुक्षेत्र'},
+            {num: 51, title: 'लघु हरिद्वार', place: 'पांडु-पिंडारा'},
+            {num: 52, title: 'हरियाणा का गया, पशु नगरी', place: 'पेहोवा'},
+            {num: 53, title: 'सरस्वती नगरी', place: 'पिंजौर'},
+            {num: 54, title: '360 बावड़ियों का शहर', place: 'पिंजौर'},
+            {num: 55, title: '360 तीर्थों का शहर', place: 'कुरुक्षेत्र'},
+            {num: 56, title: '68 तीर्थों का संगम', place: 'हाट गांव (जींद)'},
+            {num: 57, title: 'अमर शहीदों का गांव', place: 'तिगांव (फरीदाबाद)'},
+            {num: 58, title: 'लघु महासागर (Miniature Ocean)', place: 'ब्रह्मसरोवर'},
+            {num: 59, title: 'सम्राहलियों का शहर', place: 'कुरुक्षेत्र'},
+            {num: 60, title: 'गीता की जन्मस्थली', place: 'पानीपत'},
+            {num: 61, title: 'मेडीसन हब', place: 'यमुनानगर, जगाधरी'},
+            {num: 62, title: 'जुड़वां शहर (ट्विन सिटी)', place: 'कर्नाल'},
+            {num: 63, title: 'एग्रो हब', place: 'छोटी काशी'},
+            {num: 64, title: 'हॉकी का गढ़', place: 'भिवानी व कैथल'},
+            {num: 65, title: 'दिल्ली सल्तनत का ताजमहल', place: 'शाहबाद (कुरुक्षेत्र)'},
+            {num: 66, title: 'गुजरी महल', place: 'हिसार'}
+        ];
+
+        let nicknamesLoaded = false;
+        function loadMoreNicknames() {
+            if (nicknamesLoaded) return;
+            const grid = document.getElementById('nicknamesGrid');
+            moreNicknames.forEach(n => {
+                const card = document.createElement('div');
+                card.className = 'nickname-card';
+                card.style.animation = 'fadeIn 0.5s ease';
+                card.innerHTML = `
+                    <div class="nickname-num">${n.num}</div>
+                    <div class="nickname-content">
+                        <div class="nickname-title">${n.title}</div>
+                        <div class="nickname-place"><i class="fas fa-map-marker-alt"></i> ${n.place}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            nicknamesLoaded = true;
+            document.getElementById('loadMoreNicknames').style.display = 'none';
+        }
 
         // ===== LIGHTBOX FUNCTIONALITY =====
         let currentImageIndex = 0;
