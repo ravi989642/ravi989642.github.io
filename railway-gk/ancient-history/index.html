@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ Ancient History - Railway GK | All Educations Adda</title>
+    <style>
+        /* Same CSS variables as main page */
+        :root {
+            --primary: #1a237e; --secondary: #c62828; --accent: #ff6f00;
+            --success: #2e7d32; --bg: #f5f5f5; --card: #ffffff;
+            --text: #212121; --text-light: #757575; --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Noto Sans Devanagari', sans-serif; background: var(--bg); }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--card);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .breadcrumb a { color: var(--primary); text-decoration: none; }
+        .breadcrumb span { color: var(--text-light); margin: 0 0.5rem; }
+        
+        /* Subject Hero */
+        .sub-hero {
+            background: linear-gradient(135deg, #8e24aa, #6a1b9a);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .sub-hero h1 { font-size: 1.6rem; }
+        .sub-hero p { opacity: 0.9; margin-top: 0.5rem; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        
+        /* Topic Tabs */
+        .topic-tabs {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+        .topic-tab {
+            padding: 0.6rem 1.2rem;
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .topic-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .topic-tab:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+        
+        /* Sets Grid */
+        .sets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .set-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .set-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+        .set-card.completed { border-left: 4px solid var(--success); }
+        .set-card.locked { opacity: 0.6; pointer-events: none; }
+        
+        .set-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        .set-number {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .set-status {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            background: var(--bg);
+        }
+        .set-status.done { background: #e8f5e9; color: var(--success); }
+        
+        .set-info h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+        .set-info p { font-size: 0.85rem; color: var(--text-light); }
+        
+        .set-meta {
+            display: flex;
+            gap: 1rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .set-meta span { display: flex; align-items: center; gap: 0.3rem; }
+        
+        .btn-start {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-start:hover { background: #283593; }
+        .btn-start:disabled { background: var(--text-light); cursor: not-allowed; }
+        
+        /* Question Page Styles (hidden by default, shown in quiz mode) */
+        .quiz-container {
+            display: none;
+            background: var(--card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .timer {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .question-box {
+            margin-bottom: 1.5rem;
+        }
+        .question-number {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .option {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .option:hover { border-color: var(--primary); background: #f5f5f5; }
+        .option.selected { border-color: var(--primary); background: #e8eaf6; }
+        .option.correct { border-color: var(--success); background: #e8f5e9; }
+        .option.wrong { border-color: var(--secondary); background: #ffebee; }
+        
+        .option-label {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-light);
+        }
+        .option.selected .option-label { background: var(--primary); color: white; }
+        
+        /* Explanation Box */
+        .explanation {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        .explanation.show { display: block; }
+        .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
+        .explanation p { font-size: 0.95rem; line-height: 1.6; }
+        .extra-facts {
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed #ffcc80;
+        }
+        .extra-facts h5 { color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.3rem; }
+        .extra-facts ul { margin-left: 1.2rem; font-size: 0.9rem; }
+        
+        /* Navigation Buttons */
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+        .btn-nav {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .btn-prev { background: var(--bg); color: var(--text); }
+        .btn-check { background: var(--accent); color: white; }
+        .btn-next { background: var(--primary); color: white; }
+        .btn-bookmark {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn-bookmark.active { background: var(--secondary); color: white; }
+        
+        /* Question Palette */
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 10px;
+        }
+        .palette-btn {
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .palette-btn.unattempted { background: white; border: 1px solid var(--border); }
+        .palette-btn.attempted { background: var(--primary); color: white; }
+        .palette-btn.correct { background: var(--success); color: white; }
+        .palette-btn.wrong { background: var(--secondary); color: white; }
+        .palette-btn.bookmarked { box-shadow: 0 0 0 2px var(--accent); }
+        .palette-btn.current { box-shadow: 0 0 0 3px var(--accent); }
+        
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        .result-emoji { font-size: 4rem; margin-bottom: 1rem; }
+        .result-score { font-size: 3rem; font-weight: bold; color: var(--primary); }
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .result-item {
+            background: var(--bg);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        .result-item .number { font-size: 1.5rem; font-weight: bold; }
+        .result-item .label { font-size: 0.85rem; color: var(--text-light); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sets-grid { grid-template-columns: 1fr; }
+            .result-details { grid-template-columns: 1fr; }
+            .palette { grid-template-columns: repeat(5, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container" style="padding: 0;">
+            <a href="../../">🏠 Home</a>
+            <span>›</span>
+            <a href="../">🚂 Railway GK</a>
+            <span>›</span>
+            <strong>🏛️ Ancient History</strong>
+        </div>
+    </div>
+
+    <!-- Subject Header -->
+    <section class="sub-hero">
+        <h1>🏛️ Ancient History — प्राचीन इतिहास</h1>
+        <p>481 Questions • 12 Topic Sets • 25 Questions per Set</p>
+    </section>
+
+    <div class="container">
+
+        <!-- Topic Filter Tabs -->
+        <div class="topic-tabs">
+            <div class="topic-tab active" data-topic="all">📚 All Sets</div>
+            <div class="topic-tab" data-topic="indus">🏺 Indus Valley</div>
+            <div class="topic-tab" data-topic="vedic">📖 Vedic Period</div>
+            <div class="topic-tab" data-topic="maurya">👑 Maurya Empire</div>
+            <div class="topic-tab" data-topic="gupta">🛕 Gupta Period</div>
+            <div class="topic-tab" data-topic="religion">🕉️ Buddhism & Jainism</div>
+        </div>
+
+        <!-- Sets Grid -->
+        <div class="sets-grid" id="sets-container">
+            <!-- Generated by JS -->
+        </div>
+
+        <!-- Quiz Container (Hidden initially) -->
+        <div class="quiz-container" id="quiz-box">
+            <div class="quiz-header">
+                <div>
+                    <h3>Set 1: Indus Valley Civilization</h3>
+                    <small>Question <span id="current-q">1</span> of <span id="total-q">25</span></small>
+                </div>
+                <div class="timer" id="timer">25:00</div>
+            </div>
+
+            <!-- Question Palette -->
+            <div class="palette" id="question-palette"></div>
+
+            <!-- Question Area -->
+            <div class="question-box" id="question-area">
+                <div class="question-number">Q.1</div>
+                <div class="question-text" id="q-text">
+                    हड़प्पा सभ्यता का प्रमुख नगर कौन-सा था जो अब पाकिस्तान में स्थित है?
+                </div>
+                <div class="options" id="options-area">
+                    <div class="option" data-opt="a">
+                        <span class="option-label">A</span>
+                        <span>मोहनजोदड़ो</span>
+                    </div>
+                    <div class="option" data-opt="b">
+                        <span class="option-label">B</span>
+                        <span>हड़प्पा</span>
+                    </div>
+                    <div class="option" data-opt="c">
+                        <span class="option-label">C</span>
+                        <span>लothal</span>
+                    </div>
+                    <div class="option" data-opt="d">
+                        <span class="option-label">D</span>
+                        <span>कालीबंगा</span>
+                    </div>
+                </div>
+                
+                <!-- Explanation (Hidden until check) -->
+                <div class="explanation" id="explanation-box">
+                    <h4>💡 Explanation</h4>
+                    <p id="exp-text">मोहनजोदड़ो हड़प्पा सभ्यता का सबसे बड़ा नगर था। यह सिंध प्रांत (वर्तमान पाकिस्तान) में स्थित था। इसे "मृतकों का टीला" (Mound of the Dead) भी कहा जाता है।</p>
+                    <div class="extra-facts">
+                        <h5>📌 Related Facts (याद रखें):</h5>
+                        <ul>
+                            <li>मोहनजोदड़ो की खोज 1922 में R.D. Banerjee ने की थी</li>
+                            <li>यहाँ विशाल स्नानागार (Great Bath) मिला है — संभवतः अनुष्ठानिक स्नान के लिए</li>
+                            <li>मोहनजोदड़ो में "ग्रेनरी" (अन्न भंडार) भी मिला है</li>
+                            <li>हड़प्पा सभ्यता की अवधि: 3300-1300 BCE</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Navigation -->
+            <div class="quiz-nav">
+                <button class="btn-nav btn-prev" id="btn-prev">← Previous</button>
+                <button class="btn-bookmark" id="btn-bookmark" onclick="toggleBookmark()">🔖 Bookmark</button>
+                <button class="btn-nav btn-check" id="btn-check" onclick="checkAnswer()">✓ Check Answer</button>
+                <button class="btn-nav btn-next" id="btn-next" onclick="nextQuestion()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen" id="result-box">
+            <div class="result-emoji" id="result-emoji">🎉</div>
+            <h2>Test Completed!</h2>
+            <div class="result-score" id="final-score">20/25</div>
+            <div class="result-details">
+                <div class="result-item">
+                    <div class="number" id="res-correct">20</div>
+                    <div class="label">✅ Correct</div>
+                </div>
+                <div class="result-item">
+                    <div class="number" id="res-wrong">5</div>
+                    <div class="label">❌ Wrong</div>
+                </div>
+                <div class="result-item">
+                    <div class="number" id="res-time">18:30</div>
+                    <div class="label">⏱️ Time Taken</div>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <button class="btn-start" onclick="reviewWrong()" style="width: auto; display: inline-block; margin: 0.5rem;">🔍 Review Wrong Answers</button>
+                <button class="btn-start" onclick="nextSet()" style="width: auto; display: inline-block; margin: 0.5rem; background: var(--success);">Next Set →</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Sample Data for Sets
+        const sets = [
+            { id: 1, topic: "indus", name: "Indus Valley Basics", nameHi: "सिंधु घाटी सभ्यता", qCount: 25, time: 25, difficulty: "Easy", completed: false, locked: false },
+            { id: 2, topic: "indus", name: "Indus Valley Advanced", nameHi: "सिंधु घाटी — विस्तृत", qCount: 25, time: 25, difficulty: "Medium", completed: false, locked: true },
+            { id: 3, topic: "vedic", name: "Rigvedic Period", nameHi: "ऋग्वैदिक काल", qCount: 25, time: 25, difficulty: "Easy", completed: false, locked: true },
+            { id: 4, topic: "vedic", name: "Later Vedic Period", nameHi: "उत्तरवैदिक काल", qCount: 25, time: 25, difficulty: "Medium", completed: false, locked: true },
+            { id: 5, topic: "maurya", name: "Chandragupta Maurya", nameHi: "चंद्रगुप्त मौर्य", qCount: 25, time: 25, difficulty: "Medium", completed: false, locked: true },
+            { id: 6, topic: "maurya", name: "Ashoka the Great", nameHi: "सम्राट अशोक", qCount: 25, time: 25, difficulty: "Hard", completed: false, locked: true },
+            { id: 7, topic: "gupta", name: "Gupta Golden Age", nameHi: "गुप्त स्वर्णयुग", qCount: 25, time: 25, difficulty: "Medium", completed: false, locked: true },
+            { id: 8, topic: "religion", name: "Buddhism Basics", nameHi: "बौद्ध धर्म", qCount: 25, time: 25, difficulty: "Easy", completed: false, locked: true },
+            { id: 9, topic: "religion", name: "Jainism & Buddhism", nameHi: "जैन धर्म और बौद्ध धर्म", qCount: 25, time: 25, difficulty: "Medium", completed: false, locked: true },
+            { id: 10, topic: "indus", name: "Harappa Sites", nameHi: "हड़प्पा स्थल", qCount: 25, time: 25, difficulty: "Hard", completed: false, locked: true },
+            { id: 11, topic: "vedic", name: "Vedic Literature", nameHi: "वैदिक साहित्य", qCount: 25, time: 25, difficulty: "Hard", completed: false, locked: true },
+            { id: 12, topic: "all", name: "Mixed Ancient History", nameHi: "मिश्रित प्राचीन इतिहास", qCount: 25, time: 25, difficulty: "Mixed", completed: false, locked: true }
+        ];
+
+        let currentSet = null;
+        let currentQuestion = 0;
+        let answers = {};
+        let bookmarks = new Set();
+        let timerInterval;
+
+        function renderSets(filter = 'all') {
+            const container = document.getElementById('sets-container');
+            const filtered = filter === 'all' ? sets : sets.filter(s => s.topic === filter);
+            
+            container.innerHTML = filtered.map(set => `
+                <div class="set-card ${set.completed ? 'completed' : ''} ${set.locked ? 'locked' : ''}">
+                    <div class="set-header">
+                        <div class="set-number">${set.id}</div>
+                        <span class="set-status ${set.completed ? 'done' : ''}">
+                            ${set.completed ? '✅ Done' : set.locked ? '🔒 Locked' : '🆕 New'}
+                        </span>
+                    </div>
+                    <div class="set-info">
+                        <h3>${set.name}</h3>
+                        <p>${set.nameHi}</p>
+                    </div>
+                    <div class="set-meta">
+                        <span>📝 ${set.qCount} Q</span>
+                        <span>⏱️ ${set.time} min</span>
+                        <span>📊 ${set.difficulty}</span>
+                    </div>
+                    <button class="btn-start" ${set.locked ? 'disabled' : ''} onclick="startSet(${set.id})">
+                        ${set.completed ? '↻ Re-attempt' : set.locked ? 'Complete Previous First' : '▶ Start Set'}
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Tab switching
+        document.querySelectorAll('.topic-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.topic-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                renderSets(this.dataset.topic);
+            });
+        });
+
+        function startSet(setId) {
+            currentSet = sets.find(s => s.id === setId);
+            currentQuestion = 0;
+            answers = {};
+            bookmarks.clear();
+            
+            document.getElementById('sets-container').style.display = 'none';
+            document.querySelector('.topic-tabs').style.display = 'none';
+            document.getElementById('quiz-box').style.display = 'block';
+            
+            startTimer(currentSet.time * 60);
+            renderQuestion();
+            renderPalette();
+        }
+
+        function renderQuestion() {
+            // This would load from your JSON data
+            document.getElementById('current-q').textContent = currentQuestion + 1;
+            document.getElementById('total-q').textContent = currentSet.qCount;
+            
+            // Reset options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'wrong');
+            });
+            document.getElementById('explanation-box').classList.remove('show');
+            
+            // Update palette
+            updatePalette();
+        }
+
+        function renderPalette() {
+            const palette = document.getElementById('question-palette');
+            palette.innerHTML = '';
+            for(let i = 0; i < currentSet.qCount; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'palette-btn unattempted';
+                btn.textContent = i + 1;
+                btn.onclick = () => jumpToQuestion(i);
+                palette.appendChild(btn);
+            }
+        }
+
+        function updatePalette() {
+            const buttons = document.querySelectorAll('.palette-btn');
+            buttons.forEach((btn, idx) => {
+                btn.classList.remove('current', 'attempted', 'bookmarked');
+                if(idx === currentQuestion) btn.classList.add('current');
+                if(answers[idx] !== undefined) btn.classList.add('attempted');
+                if(bookmarks.has(idx)) btn.classList.add('bookmarked');
+            });
+        }
+
+        // Option selection
+        document.querySelectorAll('.option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                if(this.classList.contains('correct') || this.classList.contains('wrong')) return;
+                document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                answers[currentQuestion] = this.dataset.opt;
+                updatePalette();
+            });
+        });
+
+        function checkAnswer() {
+            // Show correct/wrong styling
+            const selected = document.querySelector('.option.selected');
+            if(!selected) { alert('Please select an option first!'); return; }
+            
+            // Mock correct answer is 'a' for demo
+            const correct = 'a';
+            const userAns = selected.dataset.opt;
+            
+            document.querySelectorAll('.option').forEach(opt => {
+                if(opt.dataset.opt === correct) opt.classList.add('correct');
+                else if(opt === selected && userAns !== correct) opt.classList.add('wrong');
+            });
+            
+            document.getElementById('explanation-box').classList.add('show');
+        }
+
+        function nextQuestion() {
+            if(currentQuestion < currentSet.qCount - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            clearInterval(timerInterval);
+            document.getElementById('quiz-box').style.display = 'none';
+            document.getElementById('result-box').style.display = 'block';
+            
+            // Calculate score
+            const correct = Object.values(answers).filter(a => a === 'a').length; // Mock
+            document.getElementById('final-score').textContent = `${correct}/${currentSet.qCount}`;
+            document.getElementById('res-correct').textContent = correct;
+            document.getElementById('res-wrong').textContent = currentSet.qCount - correct;
+            
+            // Save progress
+            localStorage.setItem(`set_${currentSet.id}_completed`, 'true');
+            localStorage.setItem(`set_${currentSet.id}_score`, correct);
+        }
+
+        function startTimer(seconds) {
+            let remaining = seconds;
+            timerInterval = setInterval(() => {
+                remaining--;
+                const mins = Math.floor(remaining / 60);
+                const secs = remaining % 60;
+                document.getElementById('timer').textContent = 
+                    `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+                if(remaining <= 0) { clearInterval(timerInterval); showResults(); }
+            }, 1000);
+        }
+
+        function toggleBookmark() {
+            if(bookmarks.has(currentQuestion)) bookmarks.delete(currentQuestion);
+            else bookmarks.add(currentQuestion);
+            updatePalette();
+            document.getElementById('btn-bookmark').classList.toggle('active');
+        }
+
+        function jumpToQuestion(idx) {
+            currentQuestion = idx;
+            renderQuestion();
+        }
+
+        // Initialize
+        renderSets();
+    </script>
+</body>
+</html>
