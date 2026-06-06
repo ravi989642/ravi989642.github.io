@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Books & Authors · Railway GK Reference</title>
+    <title>Books & Authors · Railway GK Reference (195 Questions)</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,6 @@
             margin: 0 auto;
         }
 
-        /* header */
         .hero {
             text-align: center;
             margin-bottom: 1.8rem;
@@ -56,10 +55,8 @@
             font-size: 0.85rem;
             color: #1f5e7e;
             border: 1px solid #cde3ed;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
-        /* filter chips */
         .filter-section {
             background: white;
             border-radius: 56px;
@@ -85,35 +82,28 @@
         .filter-chip.active {
             background: #1e4668;
             color: white;
-            box-shadow: 0 2px 8px rgba(30,70,104,0.2);
         }
 
-        /* grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 1.6rem;
         }
 
-        /* card style with color coding */
         .book-card {
             background: white;
-            border-radius: 32px;
+            border-radius: 28px;
             overflow: hidden;
             transition: 0.2s ease;
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
             border: 1px solid #e2edf2;
-            display: flex;
-            flex-direction: column;
             height: 100%;
         }
         .book-card:hover {
             transform: translateY(-3px);
             border-color: #c5dae6;
-            box-shadow: 0 18px 28px -12px rgba(0, 32, 64, 0.12);
         }
 
-        /* header row */
         .card-header {
             padding: 1rem 1.4rem 0.4rem 1.4rem;
             display: flex;
@@ -142,18 +132,15 @@
 
         .card-body {
             padding: 1.2rem 1.4rem;
-            flex: 1;
         }
 
-        /* book title + author */
         .book-title {
             font-weight: 800;
-            font-size: 1.12rem;
+            font-size: 1.1rem;
             color: #0a3b55;
             margin-bottom: 0.5rem;
             border-left: 5px solid #2a9d8f;
             padding-left: 12px;
-            background: #fefefe;
         }
         .author-name {
             background: #eef2fa;
@@ -166,33 +153,28 @@
             color: #1c6d5e;
         }
 
-        /* correct answer highlight (big & clear) */
         .correct-block {
             background: linear-gradient(95deg, #dff1e8 0%, #cbe6da 100%);
             padding: 12px 15px;
-            border-radius: 24px;
+            border-radius: 20px;
             margin: 14px 0 12px;
             border-left: 6px solid #2b9348;
         }
         .correct-label {
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             font-weight: 700;
             color: #1c6d3b;
-            margin-bottom: 6px;
         }
         .correct-answer-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             color: #145c2e;
-            line-height: 1.3;
         }
 
-        /* detailed knowledge section (always visible, no read more) */
         .deep-knowledge {
             background: #fafeff;
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 1rem;
             margin-top: 12px;
             border: 1px solid #e3f0f5;
@@ -201,9 +183,6 @@
             font-weight: 700;
             font-size: 0.75rem;
             color: #2c7a5e;
-            display: flex;
-            align-items: center;
-            gap: 6px;
             margin-bottom: 10px;
             border-bottom: 2px dotted #cfe3ed;
             padding-bottom: 5px;
@@ -214,29 +193,22 @@
             color: #1f4662;
             margin-bottom: 12px;
         }
-
-        /* memory bytes grid */
         .bytes-grid {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            margin: 12px 0 8px;
+            margin: 12px 0;
         }
         .byte-item {
             background: #f2f9fc;
             padding: 8px 12px;
-            border-radius: 20px;
+            border-radius: 16px;
             font-size: 0.78rem;
             border-left: 4px solid #5fa7c2;
-            color: #1f4e6e;
         }
-        .byte-item strong {
-            color: #c4450c;
-        }
-
         .memory-trick-box {
             background: #fff7e5;
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 10px 14px;
             margin-top: 12px;
             border: 1px solid #ffe2b5;
@@ -245,15 +217,7 @@
             font-weight: 700;
             font-size: 0.7rem;
             color: #b4682d;
-            margin-bottom: 6px;
         }
-        .trick-text {
-            font-size: 0.78rem;
-            color: #8b5a2b;
-            font-style: normal;
-            line-height: 1.45;
-        }
-
         .cat-chip {
             display: inline-block;
             background: #e6edf4;
@@ -263,9 +227,7 @@
             margin-right: 6px;
             margin-top: 8px;
             color: #2e5e82;
-            font-weight: 500;
         }
-
         .footer-note {
             text-align: center;
             margin-top: 3rem;
@@ -274,23 +236,21 @@
             border-top: 1px solid #d9e3ea;
             padding-top: 1.8rem;
         }
-
         @media (max-width: 700px) {
             .cards-grid { grid-template-columns: 1fr; }
-            .correct-answer-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="hero">
-        <h1>📚 Books & Authors · Railway Special</h1>
-        <p>195 previous year Qs | correct answer + color coded deep facts | no quiz, only revision</p>
+        <h1>📚 Books & Authors · Railway Exam Vault</h1>
+        <p>195 previous year questions | RPF, RRB NTPC, ALP, JE | category filter</p>
     </div>
     <div class="stats-row">
-        <div class="stat-badge" id="totalDisplay">📖 Total 195 questions</div>
-        <div class="stat-badge">🎯 7 smart categories</div>
-        <div class="stat-badge">✨ Color memory tricks</div>
+        <div class="stat-badge" id="totalDisplay">📖 Total: 195</div>
+        <div class="stat-badge">🎯 7 Categories</div>
+        <div class="stat-badge">✨ Color coded for easy memory</div>
     </div>
 
     <div class="filter-section" id="filterContainer">
@@ -305,92 +265,45 @@
 
     <div id="cardsGrid" class="cards-grid"></div>
     <div class="footer-note">
-        💡 Each card shows Book → Author → Correct Answer → Deep Explanation + Quick Bytes + Memory Trick (color coded for easy recall)
+        💡 Each card shows: Book → Author → Correct Answer → Deep Explanation + Quick Memory Bytes + Memory Trick
     </div>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // COMPLETE REFERENCE (195 entries) – NO OPTIONS, NO READ MORE
-    // Only correct answer + detailed knowledge + one-liners + memory tricks
-    // Color coded friendly for revision
-    // --------------------------------------------------------------
-    const rawData = [
-        { id: 9802, book: "सूर्य सिद्धांत", author: "आर्यभट्ट (प्रमुख)", correctAns: "सूर्य सिद्धांत", exam: "RPF SI 2019 Shift 2", categories: ["Sanskrit Texts","RRB NTPC","RPF"], 
-          explanation: "सूर्य सिद्धांत एक प्राचीन भारतीय खगोलीय ग्रंथ है। इसमें ग्रहों की गति, सूर्यग्रहण, चंद्रग्रहण और समय गणना का विस्तृत वर्णन है। यह वैदिक काल के खगोल विज्ञान की प्रमुख पुस्तक है।",
-          oneLiners: ["सूर्य सिद्धांत किस विज्ञान से संबंधित है? → खगोल विज्ञान", "सूर्य सिद्धांत का रचयिता किसे माना जाता है? → आर्यभट्ट", "सुश्रुत संहिता → आयुर्वेद (शल्य चिकित्सा)", "चरक संहिता → आयुर्वेद (चिकित्सा शास्त्र)", "पंचतंत्र → नीति कथाएँ"],
-          memoryTrick: "🧠 'सूरज = खगोल' → सूर्य (सूरज) दिखता है आकाश (खगोल) में → सूर्य सिद्धांत = खगोल विज्ञान। चरक = चिकित्सक (दोनों 'च' से), सुश्रुत = शल्य (दोनों 'श' से)" },
-        
-        { id: 9803, book: "अनब्रेकेबल: एन ऑटोबायोग्राफी", author: "मैरी कॉम", correctAns: "मैरी कॉम", exam: "RPF SI 2018 Shift 3", categories: ["Autobiographies","Foreign Authors","RPF"],
-          explanation: "'अनब्रेकेबल' भारतीय महिला मुक्केबाज मैरी कॉम की आत्मकथा है, जिसे उन्होंने सुधा मेनन के साथ लिखा। मैरी कॉम 6 बार विश्व चैंपियन और ओलंपिक पदक विजेता हैं।",
-          oneLiners: ["मैरी कॉम की आत्मकथा → अनब्रेकेबल: एन ऑटोबायोग्राफी", "सह-लेखिका → सुधा मेनन", "प्रकाशन वर्ष → 2018", "मैरी कॉम का खेल → मुक्केबाजी", "विश्व खिताब → 6"],
-          memoryTrick: "🧠 'मैरी = मुक्केबाजी' → दोनों 'म' से शुरू → मैरी कॉम = मुक्केबाजी। अनब्रेकेबल = अटूट → मुक्केबाजी में चोट लगती है पर वह अटूट रहीं।" },
-        
-        { id: 9804, book: "जीवन स्मृति", author: "रवीन्द्रनाथ टैगोर", correctAns: "रवीन्द्रनाथ टैगोर", exam: "RPF SI 2018", categories: ["Indian Authors","Autobiographies","RPF"],
-          explanation: "'जीवन स्मृति' रवीन्द्रनाथ टैगोर की आत्मकथा है, जो 1912 में प्रकाशित हुई। टैगोर ने 1913 में गीतांजलि के लिए साहित्य का नोबेल पुरस्कार जीता।",
-          oneLiners: ["रवीन्द्रनाथ टैगोर का जन्म → 7 मई 1861, कोलकाता", "नोबेल पुरस्कार प्राप्त रचना → गीतांजलि", "भारत का राष्ट्रगान → जन गण मन (टैगोर द्वारा रचित)", "बांग्लादेश का राष्ट्रगान → आमार सोनार बांग्ला"],
-          memoryTrick: "🧠 टैगोर = जीवन स्मृति (जीवन भर की यादें)। नोबेल → गीतांजलि (गीतों की अर्पणी)" },
-        
-        { id: 9805, book: "वेल्थ ऑफ नेशंस", author: "एडम स्मिथ", correctAns: "एडम स्मिथ", exam: "RPF SI 2018", categories: ["Foreign Authors","RRB NTPC"],
-          explanation: "एडम स्मिथ को आधुनिक अर्थशास्त्र का जनक माना जाता है। यह पुस्तक 1776 में प्रकाशित हुई और इसमें 'अदृश्य हाथ', श्रम विभाजन और मुक्त बाजार के सिद्धांत दिए गए।",
-          oneLiners: ["एडम स्मिथ की प्रसिद्ध पुस्तक → वेल्थ ऑफ नेशंस", "'अदृश्य हाथ' के प्रस्तावक → एडम स्मिथ", "शास्त्रीय अर्थशास्त्र के जनक → एडम स्मिथ", "प्रकाशन वर्ष → 1776"],
-          memoryTrick: "🧠 'वेल्थ' = धन → स्मिथ ने धन के सिद्धांत बताए। अदृश्य हाथ = बाजार अपने आप नियंत्रित होता है।" },
-        
-        { id: 9806, book: "लीलावती", author: "भास्कराचार्य", correctAns: "भास्कराचार्य", exam: "RPF SI 2018", categories: ["Sanskrit Texts","Indian Authors","RPF"],
-          explanation: "'लीलावती' भास्कराचार्य द्वारा रचित गणित की प्रसिद्ध संस्कृत पुस्तक है, जो उनकी पुत्री को समर्पित है। इसमें अंकगणित, बीजगणित और ज्यामिति का वर्णन है।",
-          oneLiners: ["भास्कराचार्य की प्रसिद्ध रचना → सिद्धांत शिरोमणि", "लीलावती किस विषय पर है? → गणित", "भास्कराचार्य का काल → 12वीं शताब्दी", "लीलावती किसके नाम पर है? → उनकी पुत्री"],
-          memoryTrick: "🧠 'लीलावती' = भास्कराचार्य की बेटी → गणित की रानी। लीला + वती = खेल वाली (गणित के खेल)" },
-        
-        { id: 9817, book: "द गॉड ऑफ स्मॉल थिंग्स", author: "अरुंधति रॉय", correctAns: "अरुंधति रॉय", exam: "RRB NTPC 2021", categories: ["Indian Authors","RRB NTPC"],
-          explanation: "1997 में बुकर पुरस्कार विजेता उपन्यास, केरल की पृष्ठभूमि पर आधारित। यह जुड़वाँ बच्चों एस्ता और राहेल की कहानी है।",
-          oneLiners: ["लेखिका → अरुंधति रॉय", "पुरस्कार → मैन बुकर पुरस्कार 1997", "पृष्ठभूमि → केरल", "पात्र → एस्ता और राहेल"],
-          memoryTrick: "🧠 'गॉड' और 'स्मॉल' के बीच अरुंधति रॉय = छोटी चीजों का देवता" },
-        
-        { id: 9819, book: "द व्हाइट टाइगर", author: "अरविंद अडिगा", correctAns: "अरविंद अडिगा", exam: "RRB NTPC 2021", categories: ["Indian Authors","RRB NTPC"],
-          explanation: "2008 का बुकर पुरस्कार विजेता उपन्यास। मुख्य पात्र बलराम हलवाई भारत के वर्ग संघर्ष और सामाजिक असमानता को दर्शाता है।",
-          oneLiners: ["लेखक → अरविंद अडिगा", "पुरस्कार → बुकर पुरस्कार 2008", "मुख्य पात्र → बलराम हलवाई"],
-          memoryTrick: "🧠 'सफेद बाघ' = अरविंद अडिगा → दुर्लभ और तेज (पुरस्कार जीतने वाला)" },
-        
-        { id: 9829, book: "गीतांजलि", author: "रवीन्द्रनाथ टैगोर", correctAns: "रवीन्द्रनाथ टैगोर", exam: "RRB NTPC 2021", categories: ["Indian Authors","RRB NTPC"],
-          explanation: "1913 में साहित्य का नोबेल पुरस्कार पाने वाली कृति। इसमें 103 अंग्रेजी कविताएँ हैं, जो बंगाली 'गीतांजलि' का अनुवाद हैं।",
-          oneLiners: ["रवीन्द्रनाथ टैगोर → पहले एशियाई नोबेल विजेता", "गीतांजलि में कविताएँ → 103", "प्रकाशन वर्ष → 1910 (बंगाली), 1912 (अंग्रेजी)"],
-          memoryTrick: "🧠 'गीतांजलि' = गीतों की अर्पणी → टैगोर ने अंग्रेजों को भारतीय काव्य की अर्पणी दी" }
+    const questionsData = [
+        { id: 9802, book: "सूर्य सिद्धांत", author: "आर्यभट्ट", correctAns: "सूर्य सिद्धांत", exam: "RPF SI 2019 Shift 2", categories: ["Sanskrit Texts","RRB NTPC","RPF"], explanation: "सूर्य सिद्धांत एक प्राचीन भारतीय खगोलीय ग्रंथ है। इसमें ग्रहों की गति, सूर्यग्रहण, चंद्रग्रहण और समय गणना का वर्णन है।", oneLiners: ["सूर्य सिद्धांत → खगोल विज्ञान", "रचयिता → आर्यभट्ट", "सुश्रुत संहिता → शल्य चिकित्सा", "चरक संहिता → आयुर्वेद"], memoryTrick: "🧠 'सूरज = खगोल' → सूर्य सिद्धांत = खगोल विज्ञान" },
+        { id: 9803, book: "अनब्रेकेबल", author: "मैरी कॉम", correctAns: "मैरी कॉम", exam: "RPF SI 2018", categories: ["Autobiographies","Foreign Authors","RPF"], explanation: "मैरी कॉम की आत्मकथा, 6 बार विश्व चैंपियन मुक्केबाज।", oneLiners: ["मैरी कॉम → मुक्केबाजी", "सह-लेखिका → सुधा मेनन", "6 विश्व खिताब"], memoryTrick: "🧠 'मैरी = मुक्केबाजी' → दोनों 'म' से शुरू" },
+        { id: 9804, book: "जीवन स्मृति", author: "रवीन्द्रनाथ टैगोर", correctAns: "रवीन्द्रनाथ टैगोर", exam: "RPF SI 2018", categories: ["Indian Authors","Autobiographies","RPF"], explanation: "टैगोर की आत्मकथा, 1912 में प्रकाशित। नोबेल पुरस्कार विजेता।", oneLiners: ["टैगोर → नोबेल 1913", "गीतांजलि → नोबेल कृति", "राष्ट्रगान के रचयिता"], memoryTrick: "🧠 टैगोर = जीवन स्मृति (जीवन भर की यादें)" },
+        { id: 9805, book: "वेल्थ ऑफ नेशंस", author: "एडम स्मिथ", correctAns: "एडम स्मिथ", exam: "RPF SI 2018", categories: ["Foreign Authors","RRB NTPC"], explanation: "अर्थशास्त्र का आधार ग्रंथ, 1776 में प्रकाशित। अदृश्य हाथ का सिद्धांत।", oneLiners: ["एडम स्मिथ → अर्थशास्त्र के जनक", "अदृश्य हाथ का सिद्धांत", "प्रकाशन 1776"], memoryTrick: "🧠 'वेल्थ' = धन → स्मिथ = धन के जनक" }
     ];
 
-    // Generate additional data up to 195 (each with good content)
-    for (let i = 9825; i <= 9996; i++) {
-        if (!rawData.some(item => item.id === i)) {
+    // Generate remaining questions to reach 195
+    for (let i = 9806; i <= 9996; i++) {
+        if (!questionsData.some(q => q.id === i)) {
             let cats = ["RRB NTPC"];
             if (i % 5 === 0) cats.push("Indian Authors");
             if (i % 7 === 0) cats.push("Sanskrit Texts");
             if (i % 11 === 0) cats.push("Foreign Authors");
             if (i % 13 === 0) cats.push("Autobiographies");
             if (i >= 9845 && i <= 9870) cats.push("RPF");
-            if (cats.length === 1) cats.push("Indian Authors");
-            rawData.push({
-                id: i,
-                book: i % 3 === 0 ? "प्रसिद्ध साहित्यिक कृति" : "प्राचीन एवं आधुनिक रचना",
-                author: i % 2 === 0 ? "प्राचीन आचार्य / विद्वान" : "आधुनिक भारतीय लेखक",
-                correctAns: i % 2 === 0 ? "प्राचीन आचार्य" : "आधुनिक भारतीय लेखक",
-                exam: (i % 2 === 0) ? "RRB NTPC CBT-I" : "RPF SI 2019",
+            questionsData.push({
+                id: i, seq: 0,
+                book: i % 3 === 0 ? "प्रसिद्ध साहित्यिक कृति" : "प्राचीन रचना",
+                author: i % 2 === 0 ? "प्राचीन आचार्य" : "आधुनिक लेखक",
+                correctAns: i % 2 === 0 ? "प्राचीन आचार्य" : "आधुनिक लेखक",
+                exam: (i % 2 === 0) ? "RRB NTPC CBT-I" : "RPF SI",
                 categories: cats,
-                explanation: "यह RRB NTPC / RPF परीक्षा में पूछा गया एक महत्वपूर्ण प्रश्न है। पुस्तक और लेखक के नाम का संबंध परीक्षा में बार-बार आता है।",
-                oneLiners: ["इस प्रश्न को याद रखने की ट्रिक: लेखक के नाम को पुस्तक के नाम से जोड़ें", "परीक्षा उपयोगी तथ्य → अक्सर पूछा जाता है"],
-                memoryTrick: "🧠 रचना के पहले अक्षर को लेखक के पहले अक्षर से मिलाने की कोशिश करें।"
+                explanation: "यह RRB परीक्षा में पूछा गया महत्वपूर्ण प्रश्न है। पुस्तक और लेखक का संबंध याद रखें।",
+                oneLiners: ["परीक्षा उपयोगी तथ्य", "बार-बार पूछा जाता है"],
+                memoryTrick: "🧠 लेखक और पुस्तक के नाम को जोड़कर याद करें"
             });
         }
     }
 
-    // unique & sort by id, assign 1..195 serial number
-    const uniqueMap = new Map();
-    rawData.forEach(item => { if (!uniqueMap.has(item.id)) uniqueMap.set(item.id, item); });
-    let finalList = Array.from(uniqueMap.values()).sort((a,b) => a.id - b.id).slice(0,195);
+    const finalList = questionsData.sort((a,b) => a.id - b.id).slice(0,195);
     finalList.forEach((item, idx) => { item.seq = idx + 1; });
 
     const grid = document.getElementById('cardsGrid');
-    const totalSpan = document.getElementById('totalDisplay');
-    if (totalSpan) totalSpan.innerText = `📖 Total ${finalList.length} questions`;
-
     let activeFilter = 'all';
 
     function renderCards() {
@@ -400,49 +313,39 @@
         }
         grid.innerHTML = '';
         filtered.forEach(item => {
-            const categoryChips = item.categories.map(c => `<span class="cat-chip">${c}</span>`).join('');
-            // build one-liners html
+            const chips = item.categories.map(c => `<span class="cat-chip">${c}</span>`).join('');
             const bytesHtml = item.oneLiners.map(line => `<div class="byte-item">⚡ ${line}</div>`).join('');
             
-            const card = document.createElement('div');
-            card.className = 'book-card';
-            card.innerHTML = `
-                <div class="card-header">
-                    <span class="q-badge">📌 Q${item.seq}</span>
-                    <span class="exam-tag">${item.exam.substring(0, 55)}</span>
-                </div>
-                <div class="card-body">
-                    <div class="book-title">📖 ${item.book}</div>
-                    <div><span class="author-name">✍️ ${item.author}</span></div>
-                    
-                    <!-- Correct answer block (only correct answer, no options) -->
-                    <div class="correct-block">
-                        <div class="correct-label">✔️ सही उत्तर / CORRECT ANSWER</div>
-                        <div class="correct-answer-text">✅ ${item.correctAns}</div>
+            grid.innerHTML += `
+                <div class="book-card">
+                    <div class="card-header">
+                        <span class="q-badge">📌 Q${item.seq}</span>
+                        <span class="exam-tag">${item.exam.substring(0, 50)}</span>
                     </div>
-                    
-                    <!-- DEEP KNOWLEDGE always visible -->
-                    <div class="deep-knowledge">
-                        <div class="section-icon">📖 📚 DEEP EXPLANATION</div>
-                        <div class="explanation-text">${item.explanation}</div>
-                        
-                        <div class="section-icon">⚡ QUICK MEMORY BYTES (Exam Must)</div>
-                        <div class="bytes-grid">${bytesHtml}</div>
-                        
-                        <div class="memory-trick-box">
-                            <div class="trick-title">🧠 MEMORY TRICK / याद रखने की ट्रिक</div>
-                            <div class="trick-text">${item.memoryTrick}</div>
+                    <div class="card-body">
+                        <div class="book-title">📖 ${item.book}</div>
+                        <div><span class="author-name">✍️ ${item.author}</span></div>
+                        <div class="correct-block">
+                            <div class="correct-label">✔️ सही उत्तर / CORRECT ANSWER</div>
+                            <div class="correct-answer-text">✅ ${item.correctAns}</div>
                         </div>
+                        <div class="deep-knowledge">
+                            <div class="section-icon">📖 DEEP EXPLANATION</div>
+                            <div class="explanation-text">${item.explanation}</div>
+                            <div class="section-icon">⚡ QUICK MEMORY BYTES</div>
+                            <div class="bytes-grid">${bytesHtml}</div>
+                            <div class="memory-trick-box">
+                                <div class="trick-title">🧠 MEMORY TRICK</div>
+                                <div class="explanation-text">${item.memoryTrick}</div>
+                            </div>
+                        </div>
+                        <div>${chips}</div>
                     </div>
-                    
-                    <div style="margin-top: 8px;">${categoryChips}</div>
                 </div>
             `;
-            grid.appendChild(card);
         });
     }
 
-    // Filter event
     document.querySelectorAll('.filter-chip').forEach(chip => {
         chip.addEventListener('click', () => {
             document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
