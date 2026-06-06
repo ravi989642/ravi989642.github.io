@@ -310,7 +310,7 @@
         function loadSetFile(setId) {
             return new Promise((resolve, reject) => {
                 const script = document.createElement('script');
-                script.src = `set${setId}.js?t=${Date.now()}`; // Add timestamp to avoid cache
+                script.src = `questions/set${setId}.js?t=${Date.now()}`; // Add timestamp to avoid cache
                 script.onload = () => {
                     console.log(`✅ Loaded set${setId}.js`);
                     resolve();
