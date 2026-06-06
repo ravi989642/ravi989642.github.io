@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>🏛️ Ancient History — प्राचीन इतिहास | Railway GK | All Educations Adda</title>
+    <title>🏛️ Ancient History — प्राचीन इतिहास | Railway GK</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #1a237e;
             --primary-dark: #0d1b4e;
@@ -23,58 +18,26 @@
             --text-mid: #334155;
             --text-light: #64748b;
             --border: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
         }
-
         body {
             font-family: 'Segoe UI', 'Inter', system-ui, 'Noto Sans Devanagari', sans-serif;
             background: var(--bg-light);
             color: var(--text-dark);
-            line-height: 1.5;
         }
-
         .breadcrumb {
             background: var(--card);
             padding: 0.9rem 1.5rem;
             border-bottom: 1px solid var(--border);
-            font-size: 0.9rem;
         }
-
-        .breadcrumb a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        .breadcrumb span {
-            color: var(--text-light);
-            margin: 0 0.4rem;
-        }
-
+        .breadcrumb a { text-decoration: none; color: var(--primary); }
         .subject-hero {
             background: linear-gradient(135deg, #8e24aa, #6a1b9a);
             color: white;
             padding: 2rem 1.5rem;
             text-align: center;
         }
-
-        .subject-hero h1 {
-            font-size: 1.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subject-hero p {
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem;
-        }
-
+        .subject-hero h1 { font-size: 1.9rem; margin-bottom: 0.5rem; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem 1rem; }
         .topic-filters {
             display: flex;
             flex-wrap: wrap;
@@ -83,7 +46,6 @@
             border-bottom: 1px solid var(--border);
             padding-bottom: 0.8rem;
         }
-
         .filter-chip {
             padding: 0.5rem 1.2rem;
             background: var(--card);
@@ -91,54 +53,31 @@
             border-radius: 40px;
             cursor: pointer;
             font-size: 0.9rem;
-            font-weight: 500;
             transition: all 0.2s;
             color: var(--text-mid);
         }
-
-        .filter-chip.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-
+        .filter-chip.active { background: var(--primary); border-color: var(--primary); color: white; }
         .sets-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
             gap: 1.6rem;
-            margin-top: 0.5rem;
         }
-
         .set-card {
             background: var(--card);
             border-radius: 1.25rem;
-            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
             transition: all 0.25s;
             overflow: hidden;
         }
-
-        .set-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .set-card.locked {
-            opacity: 0.7;
-            background: #f1f5f9;
-        }
-
-        .set-card.completed {
-            border-left: 5px solid var(--success);
-        }
-
+        .set-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .set-card.locked { opacity: 0.7; background: #f1f5f9; }
+        .set-card.completed { border-left: 5px solid #2e7d32; }
         .set-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 1.2rem 0.5rem 1.2rem;
         }
-
         .set-id {
             width: 36px;
             height: 36px;
@@ -150,57 +89,26 @@
             justify-content: center;
             font-weight: bold;
         }
-
         .set-badge {
             font-size: 0.7rem;
             padding: 0.2rem 0.7rem;
             border-radius: 20px;
             background: #eef2ff;
             color: var(--primary);
-            font-weight: 600;
         }
-
-        .set-badge.done {
-            background: #e8f5e9;
-            color: var(--success);
-        }
-
-        .set-badge.locked-badge {
-            background: #e2e8f0;
-            color: #475569;
-        }
-
-        .set-title {
-            padding: 0 1.2rem;
-        }
-
-        .set-title h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .set-title p {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
+        .set-badge.done { background: #e8f5e9; color: #2e7d32; }
+        .set-title { padding: 0 1.2rem; }
+        .set-title h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .set-title p { font-size: 0.8rem; color: var(--text-light); }
         .set-meta {
             display: flex;
             gap: 1rem;
             padding: 0.8rem 1.2rem;
             font-size: 0.8rem;
-            color: var(--text-mid);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             margin: 0.8rem 0;
         }
-
-        .set-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
         .btn-set {
             margin: 0.8rem 1.2rem 1.2rem 1.2rem;
             width: calc(100% - 2.4rem);
@@ -211,28 +119,15 @@
             cursor: pointer;
             background: var(--primary);
             color: white;
-            transition: all 0.2s;
-            font-size: 0.9rem;
         }
-
-        .btn-set:disabled {
-            background: #cbd5e1;
-            cursor: not-allowed;
-            color: #475569;
-        }
-
-        .btn-set:hover:not(:disabled) {
-            background: var(--primary-dark);
-        }
-
-        /* Quiz Modal */
+        .btn-set:disabled { background: #cbd5e1; cursor: not-allowed; }
         .quiz-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0,0,0,0.85);
             z-index: 1000;
             display: none;
             justify-content: center;
@@ -240,23 +135,13 @@
             overflow-y: auto;
             padding: 1rem;
         }
-
         .quiz-card {
             max-width: 750px;
             width: 100%;
             background: white;
             border-radius: 28px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
             position: relative;
-            animation: fadeIn 0.2s ease;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
         .quiz-header {
             background: var(--primary);
             color: white;
@@ -265,24 +150,16 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            border-radius: 28px 28px 0 0;
         }
-
         .quiz-timer {
             background: var(--secondary);
             padding: 0.3rem 1rem;
             border-radius: 40px;
             font-weight: bold;
             font-family: monospace;
-            font-size: 1.2rem;
         }
-
-        .quiz-body {
-            padding: 1.5rem;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
+        .quiz-body { padding: 1.5rem; max-height: 70vh; overflow-y: auto; }
         .palette-grid {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -292,7 +169,6 @@
             border-radius: 20px;
             margin-bottom: 1.5rem;
         }
-
         .palette-btn {
             aspect-ratio: 1;
             border: none;
@@ -300,74 +176,33 @@
             background: white;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.15s;
             border: 1px solid var(--border);
         }
-
-        .palette-btn.current {
-            background: var(--accent);
-            color: white;
-            border: none;
-            transform: scale(1.02);
-        }
-
-        .palette-btn.attempted {
-            background: var(--primary);
-            color: white;
-        }
-
-        .palette-btn.bookmarked {
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-
+        .palette-btn.current { background: var(--accent); color: white; }
+        .palette-btn.attempted { background: var(--primary); color: white; }
+        .palette-btn.bookmarked { box-shadow: 0 0 0 2px var(--accent); }
         .question-text {
             background: #f8fafc;
             padding: 1rem;
             border-radius: 16px;
-            font-size: 1.05rem;
-            margin: 0.5rem 0 1rem 0;
+            margin: 1rem 0;
             border-left: 4px solid var(--primary);
         }
-
-        .options-area {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin: 1rem 0;
-        }
-
+        .options-area { display: flex; flex-direction: column; gap: 0.8rem; margin: 1rem 0; }
         .option-item {
             padding: 0.9rem;
             border: 2px solid var(--border);
             border-radius: 14px;
             cursor: pointer;
-            transition: all 0.15s;
             display: flex;
             align-items: center;
             gap: 12px;
             background: white;
         }
-
-        .option-item:hover {
-            border-color: var(--primary);
-            background: #eef2ff;
-        }
-
-        .option-item.selected {
-            border-color: var(--primary);
-            background: #e8eaf6;
-        }
-
-        .option-item.correct-highlight {
-            border-color: var(--success);
-            background: #e8f5e9;
-        }
-
-        .option-item.wrong-highlight {
-            border-color: var(--secondary);
-            background: #ffebee;
-        }
-
+        .option-item:hover { border-color: var(--primary); background: #eef2ff; }
+        .option-item.selected { border-color: var(--primary); background: #e8eaf6; }
+        .option-item.correct-highlight { border-color: #2e7d32; background: #e8f5e9; }
+        .option-item.wrong-highlight { border-color: var(--secondary); background: #ffebee; }
         .explanation-box {
             display: none;
             background: #fff8e1;
@@ -376,20 +211,14 @@
             margin-top: 1rem;
             border-left: 5px solid var(--accent);
         }
-
-        .explanation-box.show {
-            display: block;
-        }
-
+        .explanation-box.show { display: block; }
         .quiz-actions {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
             gap: 0.8rem;
             margin-top: 1.5rem;
         }
-
         .quiz-btn {
             padding: 0.6rem 1.2rem;
             border: none;
@@ -398,21 +227,12 @@
             cursor: pointer;
             background: #e2e8f0;
         }
-
-        .quiz-btn.primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .quiz-btn.accent {
-            background: var(--accent);
-            color: white;
-        }
-
+        .quiz-btn.primary { background: var(--primary); color: white; }
+        .quiz-btn.accent { background: var(--accent); color: white; }
         .close-icon {
             position: absolute;
             top: 1rem;
-            right: 1.2rem;
+            right: 1rem;
             background: rgba(0,0,0,0.3);
             width: 32px;
             height: 32px;
@@ -423,30 +243,13 @@
             cursor: pointer;
             color: white;
             font-weight: bold;
-            font-size: 1.2rem;
             z-index: 10;
         }
-
-        .result-screen {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .result-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
-        }
-
+        .result-screen { text-align: center; padding: 2rem; }
+        .result-stats { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; }
         @media (max-width: 550px) {
-            .palette-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
-            .quiz-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .palette-grid { grid-template-columns: repeat(5, 1fr); }
+            .quiz-header { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -472,9 +275,8 @@
             <div class="filter-chip" data-filter="gupta">🛕 Gupta Period</div>
             <div class="filter-chip" data-filter="religion">🕉️ Buddhism & Jainism</div>
         </div>
-
         <div class="sets-grid" id="setsGrid">
-            <div style="text-align: center; padding: 2rem;">Loading sets...</div>
+            <div style="text-align: center; padding: 2rem;">📚 Loading 12 Sets... Please wait</div>
         </div>
     </div>
 
@@ -482,10 +284,7 @@
         <div class="quiz-card">
             <div class="close-icon" onclick="closeQuiz()">✕</div>
             <div class="quiz-header">
-                <div>
-                    <strong id="quizSetTitle">Loading...</strong><br>
-                    <small>प्रश्न <span id="currentQNumber">1</span> / <span id="totalQCount">25</span></small>
-                </div>
+                <div><strong id="quizSetTitle">Loading...</strong><br><small>प्रश्न <span id="currentQNumber">1</span> / <span id="totalQCount">25</span></small></div>
                 <div class="quiz-timer" id="timerDisplay">25:00</div>
             </div>
             <div class="quiz-body" id="quizBody"></div>
@@ -504,37 +303,36 @@
         let timerInterval = null;
         let timeSeconds = 0;
         let quizActive = false;
+        let setsLoaded = 0;
+        const totalSets = 12;
 
-        // Load all set files dynamically
-        const setFiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        let loadedSets = 0;
-
-        function loadAllSets() {
-            setFiles.forEach(setId => {
+        // Function to load all set files sequentially
+        function loadSetFile(setId) {
+            return new Promise((resolve, reject) => {
                 const script = document.createElement('script');
-                script.src = `questions/set${setId}.js`;
+                script.src = `questions/set${setId}.js?t=${Date.now()}`; // Add timestamp to avoid cache
                 script.onload = () => {
-                    loadedSets++;
-                    if (loadedSets === setFiles.length) {
-                        buildSetsFromWindow();
-                        renderSets();
-                    }
+                    console.log(`✅ Loaded set${setId}.js`);
+                    resolve();
                 };
                 script.onerror = () => {
-                    console.warn(`Failed to load set${setId}.js`);
-                    loadedSets++;
-                    if (loadedSets === setFiles.length) {
-                        buildSetsFromWindow();
-                        renderSets();
-                    }
+                    console.error(`❌ Failed to load set${setId}.js`);
+                    reject();
                 };
                 document.head.appendChild(script);
             });
         }
 
-        function buildSetsFromWindow() {
+        // Load all sets in order
+        async function loadAllSets() {
+            const setIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            for (const id of setIds) {
+                await loadSetFile(id);
+            }
+            // After all loaded, build sets from window.setsData
             if (window.setsData) {
                 allSets = Object.values(window.setsData).sort((a, b) => a.id - b.id);
+                console.log("All sets loaded:", allSets.length);
                 // Load progress from localStorage
                 const saved = localStorage.getItem("ancient_history_progress_v2");
                 if (saved) {
@@ -546,7 +344,6 @@
                         }
                     });
                 } else {
-                    // First time: only set 1 unlocked
                     allSets.forEach((set, idx) => {
                         set.completed = false;
                         set.locked = idx !== 0;
@@ -559,6 +356,10 @@
                     }
                 }
                 saveProgressToLocal();
+                renderSets();
+            } else {
+                console.error("window.setsData is undefined!");
+                document.getElementById("setsGrid").innerHTML = '<div style="text-align: center; padding: 2rem; color: red;">❌ Error: Questions files not loading. Please check if all set1.js to set12.js files exist in the "questions" folder.</div>';
             }
         }
 
@@ -574,7 +375,6 @@
             let set = allSets.find(s => s.id === setId);
             if (set && !set.completed) {
                 set.completed = true;
-                // unlock next set
                 let nextSet = allSets.find(s => s.id === setId + 1);
                 if (nextSet && nextSet.locked) {
                     nextSet.locked = false;
@@ -588,7 +388,7 @@
             let filtered = currentFilter === "all" ? allSets : allSets.filter(s => s.topic === currentFilter);
             const container = document.getElementById("setsGrid");
             if (!filtered.length) {
-                container.innerHTML = `<div style="text-align: center; padding: 2rem;">No sets found for this topic.</div>`;
+                container.innerHTML = `<div style="text-align: center; padding: 2rem;">⚠️ No sets found for this topic.</div>`;
                 return;
             }
             container.innerHTML = filtered.map(set => {
@@ -632,10 +432,7 @@
 
         // Quiz functions
         function stopTimer() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
+            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
         }
 
         function startTimer(seconds) {
@@ -645,20 +442,12 @@
                 let mins = Math.floor(timeSeconds / 60);
                 let secs = timeSeconds % 60;
                 timerEl.textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
-                if (timeSeconds <= 0) {
-                    stopTimer();
-                    finishQuiz(true);
-                }
+                if (timeSeconds <= 0) { stopTimer(); finishQuiz(true); }
             }
             updateDisplay();
             timerInterval = setInterval(() => {
-                if (timeSeconds > 0 && quizActive) {
-                    timeSeconds--;
-                    updateDisplay();
-                } else if (timeSeconds <= 0) {
-                    stopTimer();
-                    finishQuiz(true);
-                }
+                if (timeSeconds > 0 && quizActive) { timeSeconds--; updateDisplay(); }
+                else if (timeSeconds <= 0) { stopTimer(); finishQuiz(true); }
             }, 1000);
         }
 
@@ -682,7 +471,6 @@
             document.getElementById("totalQCount").innerText = currentQuestions.length;
             const bodyDiv = document.getElementById("quizBody");
             
-            // Palette
             let paletteHtml = `<div class="palette-grid" id="paletteGrid">`;
             for (let i = 0; i < currentQuestions.length; i++) {
                 let extraClass = "";
@@ -699,11 +487,7 @@
                 let optText = q.options[letter] || `Option ${letter.toUpperCase()}`;
                 let isSelected = (userAnswers[currentIndex] === letter);
                 let selectedClass = isSelected ? "selected" : "";
-                optionsHtml += `
-                    <div class="option-item ${selectedClass}" data-opt="${letter}">
-                        <strong>${letter.toUpperCase()}.</strong> ${optText}
-                    </div>
-                `;
+                optionsHtml += `<div class="option-item ${selectedClass}" data-opt="${letter}"><strong>${letter.toUpperCase()}.</strong> ${optText}</div>`;
             });
             optionsHtml += `</div>`;
 
@@ -712,56 +496,30 @@
                 extraHtml = `<div style="margin-top:8px; font-size:0.85rem; color:#b45309;"><strong>📌 अतिरिक्त तथ्य:</strong><ul>${q.extra_facts.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
             }
 
-            let explanationHtml = `<div class="explanation-box" id="expBox">
-                <strong>💡 व्याख्या / Explanation:</strong><br>
-                <span id="expText">${q.explanation || "उत्तर देखने के लिए 'जाँच करें' दबाएँ"}</span>
-                ${extraHtml}
-            </div>`;
+            let explanationHtml = `<div class="explanation-box" id="expBox"><strong>💡 व्याख्या:</strong><br><span id="expText">${q.explanation || "उत्तर देखने के लिए 'जाँच करें' दबाएँ"}</span>${extraHtml}</div>`;
 
-            let actionsHtml = `
-                <div class="quiz-actions">
-                    <button class="quiz-btn" id="prevBtn" ${currentIndex===0 ? 'disabled' : ''}>◀ पिछला</button>
-                    <button class="quiz-btn accent" id="bookmarkBtn">🔖 ${bookmarked.has(currentIndex) ? 'बुकमार्क हटाएँ' : 'बुकमार्क करें'}</button>
-                    <button class="quiz-btn primary" id="checkBtn">✓ जाँच करें</button>
-                    <button class="quiz-btn" id="nextBtn">अगला ▶</button>
-                </div>
-            `;
+            let actionsHtml = `<div class="quiz-actions">
+                <button class="quiz-btn" id="prevBtn" ${currentIndex===0 ? 'disabled' : ''}>◀ पिछला</button>
+                <button class="quiz-btn accent" id="bookmarkBtn">🔖 ${bookmarked.has(currentIndex) ? 'बुकमार्क हटाएँ' : 'बुकमार्क करें'}</button>
+                <button class="quiz-btn primary" id="checkBtn">✓ जाँच करें</button>
+                <button class="quiz-btn" id="nextBtn">अगला ▶</button>
+            </div>`;
             bodyDiv.innerHTML = paletteHtml + `<div class="question-text">${q.question_hi}</div>` + optionsHtml + explanationHtml + actionsHtml;
 
-            // Attach events
             document.querySelectorAll(".palette-btn").forEach(btn => {
-                btn.addEventListener("click", (e) => {
-                    let idx = parseInt(btn.dataset.qidx);
-                    if (!isNaN(idx)) {
-                        currentIndex = idx;
-                        renderQuizUI();
-                    }
-                });
+                btn.addEventListener("click", () => { currentIndex = parseInt(btn.dataset.qidx); renderQuizUI(); });
             });
             document.querySelectorAll(".option-item").forEach(opt => {
-                opt.addEventListener("click", () => {
-                    if (!quizActive) return;
-                    let selectedLetter = opt.dataset.opt;
-                    userAnswers[currentIndex] = selectedLetter;
-                    renderQuizUI();
-                });
+                opt.addEventListener("click", () => { if (!quizActive) return; userAnswers[currentIndex] = opt.dataset.opt; renderQuizUI(); });
             });
-            document.getElementById("prevBtn").addEventListener("click", () => {
-                if (currentIndex > 0) { currentIndex--; renderQuizUI(); }
-            });
-            document.getElementById("nextBtn").addEventListener("click", () => {
-                if (currentIndex + 1 < currentQuestions.length) { currentIndex++; renderQuizUI(); }
-                else { finishQuiz(false); }
-            });
+            document.getElementById("prevBtn").addEventListener("click", () => { if (currentIndex > 0) { currentIndex--; renderQuizUI(); } });
+            document.getElementById("nextBtn").addEventListener("click", () => { if (currentIndex + 1 < currentQuestions.length) { currentIndex++; renderQuizUI(); } else { finishQuiz(false); } });
             document.getElementById("checkBtn").addEventListener("click", () => {
-                if (!quizActive) return;
                 const qData = currentQuestions[currentIndex];
                 const userChoice = userAnswers[currentIndex];
                 const correctAns = qData.correct;
-                const expBox = document.getElementById("expBox");
-                const expTextSpan = document.getElementById("expText");
-                expTextSpan.innerHTML = qData.explanation || "सही उत्तर: " + correctAns.toUpperCase();
-                expBox.classList.add("show");
+                document.getElementById("expText").innerHTML = qData.explanation || `सही उत्तर: ${correctAns.toUpperCase()}`;
+                document.getElementById("expBox").classList.add("show");
                 document.querySelectorAll(".option-item").forEach(opt => {
                     opt.classList.remove("correct-highlight", "wrong-highlight");
                     if (opt.dataset.opt === correctAns) opt.classList.add("correct-highlight");
@@ -780,43 +538,26 @@
             stopTimer();
             quizActive = false;
             let correctCount = 0;
-            currentQuestions.forEach((q, idx) => {
-                if (userAnswers[idx] === q.correct) correctCount++;
-            });
+            currentQuestions.forEach((q, idx) => { if (userAnswers[idx] === q.correct) correctCount++; });
             const total = currentQuestions.length;
-            const scorePercent = Math.round((correctCount/total)*100);
             if (!activeSet.completed) {
                 activeSet.completed = true;
                 let nextSet = allSets.find(s => s.id === activeSet.id + 1);
-                if (nextSet && nextSet.locked) {
-                    nextSet.locked = false;
-                }
+                if (nextSet && nextSet.locked) nextSet.locked = false;
                 saveProgressToLocal();
                 renderSets();
             }
             const bodyDiv = document.getElementById("quizBody");
-            bodyDiv.innerHTML = `
-                <div class="result-screen">
-                    <div style="font-size:3rem;">${scorePercent >= 60 ? '🎉🏆' : '📚✨'}</div>
-                    <h3>सेट पूर्ण! Set Completed</h3>
-                    <div class="result-stats">
-                        <div><strong>✅ सही:</strong> ${correctCount}</div>
-                        <div><strong>❌ गलत:</strong> ${total - correctCount}</div>
-                        <div><strong>📊 शुद्धता:</strong> ${scorePercent}%</div>
-                    </div>
-                    <button class="quiz-btn primary" id="closeResultBtn" style="margin-top:1rem;">✖ बंद करें</button>
-                    ${ (activeSet.id < allSets.length && !allSets.find(s=>s.id===activeSet.id+1)?.locked) ? `<button class="quiz-btn" id="nextSetBtn" style="background:#2e7d32; color:white; margin-left:0.8rem;">▶ अगला सेट</button>` : '' }
-                </div>
-            `;
+            bodyDiv.innerHTML = `<div class="result-screen"><div style="font-size:3rem;">${correctCount >= 12 ? '🎉🏆' : '📚✨'}</div>
+                <h3>सेट पूर्ण!</h3><div class="result-stats"><div><strong>✅ सही:</strong> ${correctCount}</div>
+                <div><strong>❌ गलत:</strong> ${total - correctCount}</div>
+                <div><strong>📊 शुद्धता:</strong> ${Math.round((correctCount/total)*100)}%</div></div>
+                <button class="quiz-btn primary" id="closeResultBtn">✖ बंद करें</button>
+                ${(activeSet.id < allSets.length && !allSets.find(s=>s.id===activeSet.id+1)?.locked) ? `<button class="quiz-btn" id="nextSetBtn" style="background:#2e7d32; color:white;">▶ अगला सेट</button>` : ''}</div>`;
             document.getElementById("closeResultBtn")?.addEventListener("click", () => closeQuiz());
             document.getElementById("nextSetBtn")?.addEventListener("click", () => {
                 let next = allSets.find(s => s.id === activeSet.id + 1);
-                if (next && !next.locked) {
-                    closeQuiz();
-                    startQuiz(next);
-                } else {
-                    closeQuiz();
-                }
+                if (next && !next.locked) { closeQuiz(); startQuiz(next); } else { closeQuiz(); }
             });
         }
 
@@ -837,7 +578,7 @@
             });
         });
 
-        // Initialize
+        // Start loading
         loadAllSets();
         window.closeQuiz = closeQuiz;
     </script>
