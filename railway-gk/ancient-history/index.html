@@ -3,52 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>🏛️ Ancient History — प्राचीन इतिहास | Railway GK</title>
+    <title>🏛️ Ancient History — प्राचीन इतिहास | Railway GK | All Educations Adda</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #1a237e;
             --primary-dark: #0d1b4e;
             --secondary: #c62828;
             --accent: #ff6f00;
             --success: #2e7d32;
-            --bg: #f8fafc;
+            --bg-light: #f8fafc;
             --card: #ffffff;
-            --text: #0f172a;
+            --text-dark: #0f172a;
+            --text-mid: #334155;
             --text-light: #64748b;
             --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
         }
+
         body {
-            font-family: 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Segoe UI', 'Inter', system-ui, 'Noto Sans Devanagari', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.5;
         }
+
         .breadcrumb {
             background: var(--card);
             padding: 0.9rem 1.5rem;
             border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
         }
+
         .breadcrumb a {
             text-decoration: none;
             color: var(--primary);
+            font-weight: 500;
         }
+
+        .breadcrumb span {
+            color: var(--text-light);
+            margin: 0 0.4rem;
+        }
+
         .subject-hero {
             background: linear-gradient(135deg, #8e24aa, #6a1b9a);
             color: white;
             padding: 2rem 1.5rem;
             text-align: center;
         }
-        .subject-hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem 1rem; }
-        
+
+        .subject-hero h1 {
+            font-size: 1.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-hero p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+
         .topic-filters {
             display: flex;
             flex-wrap: wrap;
             gap: 0.7rem;
             margin-bottom: 2rem;
-            padding-bottom: 0.8rem;
             border-bottom: 1px solid var(--border);
+            padding-bottom: 0.8rem;
         }
+
         .filter-chip {
             padding: 0.5rem 1.2rem;
             background: var(--card);
@@ -56,33 +91,54 @@
             border-radius: 40px;
             cursor: pointer;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.2s;
+            color: var(--text-mid);
         }
+
         .filter-chip.active {
             background: var(--primary);
             border-color: var(--primary);
             color: white;
         }
+
         .sets-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 1.5rem;
+            gap: 1.6rem;
+            margin-top: 0.5rem;
         }
+
         .set-card {
             background: var(--card);
             border-radius: 1.25rem;
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
+            transition: all 0.25s;
             overflow: hidden;
-            transition: transform 0.2s;
         }
-        .set-card:hover { transform: translateY(-3px); }
-        .set-card.locked { opacity: 0.7; background: #f1f5f9; }
-        .set-card.completed { border-left: 5px solid var(--success); }
+
+        .set-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .set-card.locked {
+            opacity: 0.7;
+            background: #f1f5f9;
+        }
+
+        .set-card.completed {
+            border-left: 5px solid var(--success);
+        }
+
         .set-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 1rem 1.2rem 0.5rem 1.2rem;
         }
+
         .set-id {
             width: 36px;
             height: 36px;
@@ -94,26 +150,57 @@
             justify-content: center;
             font-weight: bold;
         }
+
         .set-badge {
             font-size: 0.7rem;
             padding: 0.2rem 0.7rem;
             border-radius: 20px;
             background: #eef2ff;
             color: var(--primary);
+            font-weight: 600;
         }
-        .set-badge.done { background: #e8f5e9; color: var(--success); }
-        .set-title { padding: 0 1.2rem; }
-        .set-title h3 { font-size: 1rem; margin-bottom: 0.2rem; }
-        .set-title p { font-size: 0.8rem; color: var(--text-light); }
+
+        .set-badge.done {
+            background: #e8f5e9;
+            color: var(--success);
+        }
+
+        .set-badge.locked-badge {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .set-title {
+            padding: 0 1.2rem;
+        }
+
+        .set-title h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .set-title p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
         .set-meta {
             display: flex;
             gap: 1rem;
             padding: 0.8rem 1.2rem;
             font-size: 0.8rem;
+            color: var(--text-mid);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             margin: 0.8rem 0;
         }
+
+        .set-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
         .btn-set {
             margin: 0.8rem 1.2rem 1.2rem 1.2rem;
             width: calc(100% - 2.4rem);
@@ -124,18 +211,28 @@
             cursor: pointer;
             background: var(--primary);
             color: white;
+            transition: all 0.2s;
+            font-size: 0.9rem;
         }
+
         .btn-set:disabled {
             background: #cbd5e1;
             cursor: not-allowed;
+            color: #475569;
         }
+
+        .btn-set:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        /* Quiz Modal */
         .quiz-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1000;
             display: none;
             justify-content: center;
@@ -143,13 +240,23 @@
             overflow-y: auto;
             padding: 1rem;
         }
+
         .quiz-card {
             max-width: 750px;
             width: 100%;
             background: white;
             border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
             position: relative;
+            animation: fadeIn 0.2s ease;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         .quiz-header {
             background: var(--primary);
             color: white;
@@ -158,16 +265,24 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            border-radius: 28px 28px 0 0;
+            gap: 0.8rem;
         }
+
         .quiz-timer {
             background: var(--secondary);
             padding: 0.3rem 1rem;
             border-radius: 40px;
             font-weight: bold;
             font-family: monospace;
+            font-size: 1.2rem;
         }
-        .quiz-body { padding: 1.5rem; max-height: 70vh; overflow-y: auto; }
+
+        .quiz-body {
+            padding: 1.5rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
         .palette-grid {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -177,39 +292,82 @@
             border-radius: 20px;
             margin-bottom: 1.5rem;
         }
+
         .palette-btn {
             aspect-ratio: 1;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             background: white;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.15s;
             border: 1px solid var(--border);
         }
-        .palette-btn.current { background: var(--accent); color: white; }
-        .palette-btn.attempted { background: var(--primary); color: white; }
-        .palette-btn.bookmarked { box-shadow: 0 0 0 2px var(--accent); }
+
+        .palette-btn.current {
+            background: var(--accent);
+            color: white;
+            border: none;
+            transform: scale(1.02);
+        }
+
+        .palette-btn.attempted {
+            background: var(--primary);
+            color: white;
+        }
+
+        .palette-btn.bookmarked {
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
         .question-text {
             background: #f8fafc;
             padding: 1rem;
             border-radius: 16px;
-            margin: 1rem 0;
+            font-size: 1.05rem;
+            margin: 0.5rem 0 1rem 0;
             border-left: 4px solid var(--primary);
-            font-size: 1rem;
         }
-        .options-area { display: flex; flex-direction: column; gap: 0.8rem; margin: 1rem 0; }
+
+        .options-area {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
         .option-item {
             padding: 0.9rem;
             border: 2px solid var(--border);
             border-radius: 14px;
             cursor: pointer;
+            transition: all 0.15s;
             display: flex;
+            align-items: center;
             gap: 12px;
+            background: white;
         }
-        .option-item:hover { border-color: var(--primary); background: #eef2ff; }
-        .option-item.selected { border-color: var(--primary); background: #e8eaf6; }
-        .option-item.correct-highlight { border-color: var(--success); background: #e8f5e9; }
-        .option-item.wrong-highlight { border-color: var(--secondary); background: #ffebee; }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: #eef2ff;
+        }
+
+        .option-item.selected {
+            border-color: var(--primary);
+            background: #e8eaf6;
+        }
+
+        .option-item.correct-highlight {
+            border-color: var(--success);
+            background: #e8f5e9;
+        }
+
+        .option-item.wrong-highlight {
+            border-color: var(--secondary);
+            background: #ffebee;
+        }
+
         .explanation-box {
             display: none;
             background: #fff8e1;
@@ -218,14 +376,20 @@
             margin-top: 1rem;
             border-left: 5px solid var(--accent);
         }
-        .explanation-box.show { display: block; }
+
+        .explanation-box.show {
+            display: block;
+        }
+
         .quiz-actions {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            align-items: center;
             gap: 0.8rem;
             margin-top: 1.5rem;
         }
+
         .quiz-btn {
             padding: 0.6rem 1.2rem;
             border: none;
@@ -234,12 +398,21 @@
             cursor: pointer;
             background: #e2e8f0;
         }
-        .quiz-btn.primary { background: var(--primary); color: white; }
-        .quiz-btn.accent { background: var(--accent); color: white; }
+
+        .quiz-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .quiz-btn.accent {
+            background: var(--accent);
+            color: white;
+        }
+
         .close-icon {
             position: absolute;
             top: 1rem;
-            right: 1rem;
+            right: 1.2rem;
             background: rgba(0,0,0,0.3);
             width: 32px;
             height: 32px;
@@ -250,13 +423,30 @@
             cursor: pointer;
             color: white;
             font-weight: bold;
+            font-size: 1.2rem;
             z-index: 10;
         }
-        .result-screen { text-align: center; padding: 2rem; }
-        .result-stats { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; }
+
+        .result-screen {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .result-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
         @media (max-width: 550px) {
-            .palette-grid { grid-template-columns: repeat(5, 1fr); }
-            .quiz-header { flex-direction: column; align-items: flex-start; }
+            .palette-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            .quiz-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -270,7 +460,7 @@
 
     <section class="subject-hero">
         <h1>🏛️ Ancient History — प्राचीन इतिहास</h1>
-        <p>481 Questions • 12 Topic Sets • 25 Questions per Set</p>
+        <p>481+ Questions • 12 Topic Sets • 25+ Questions per Set</p>
     </section>
 
     <div class="container">
@@ -283,43 +473,31 @@
             <div class="filter-chip" data-filter="religion">🕉️ Buddhism & Jainism</div>
         </div>
 
-        <div class="sets-grid" id="setsGrid"></div>
+        <div class="sets-grid" id="setsGrid">
+            <div style="text-align: center; padding: 2rem;">Loading sets...</div>
+        </div>
     </div>
 
     <div id="quizModal" class="quiz-modal">
         <div class="quiz-card">
             <div class="close-icon" onclick="closeQuiz()">✕</div>
             <div class="quiz-header">
-                <div><strong id="quizSetTitle">Loading...</strong><br><small>प्रश्न <span id="currentQNumber">1</span> / <span id="totalQCount">25</span></small></div>
+                <div>
+                    <strong id="quizSetTitle">Loading...</strong><br>
+                    <small>प्रश्न <span id="currentQNumber">1</span> / <span id="totalQCount">25</span></small>
+                </div>
                 <div class="quiz-timer" id="timerDisplay">25:00</div>
             </div>
             <div class="quiz-body" id="quizBody"></div>
         </div>
     </div>
 
-    <script src="questions.js"></script>
     <script>
-        // Load sets data from questionsDB
-        let setsData = [];
-        for (let key in questionsDB) {
-            let set = questionsDB[key];
-            setsData.push({
-                id: set.id,
-                topic: set.topic,
-                name: set.name,
-                nameHi: set.nameHi,
-                qCount: set.questions.length,
-                time: 25,
-                difficulty: set.difficulty,
-                completed: false,
-                locked: key != 1,
-                questions: set.questions
-            });
-        }
-        if (setsData.length > 0) setsData[0].locked = false;
-
+        // Global state
+        let allSets = [];
         let currentFilter = "all";
         let activeSet = null;
+        let currentQuestions = [];
         let currentIndex = 0;
         let userAnswers = {};
         let bookmarked = new Set();
@@ -327,125 +505,267 @@
         let timeSeconds = 0;
         let quizActive = false;
 
-        function saveProgress() {
-            let progress = {};
-            setsData.forEach(set => { progress[set.id] = { completed: set.completed, locked: set.locked }; });
-            localStorage.setItem("ancient_history_progress", JSON.stringify(progress));
+        // Load all set files dynamically
+        const setFiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        let loadedSets = 0;
+
+        function loadAllSets() {
+            setFiles.forEach(setId => {
+                const script = document.createElement('script');
+                script.src = `questions/set${setId}.js`;
+                script.onload = () => {
+                    loadedSets++;
+                    if (loadedSets === setFiles.length) {
+                        buildSetsFromWindow();
+                        renderSets();
+                    }
+                };
+                script.onerror = () => {
+                    console.warn(`Failed to load set${setId}.js`);
+                    loadedSets++;
+                    if (loadedSets === setFiles.length) {
+                        buildSetsFromWindow();
+                        renderSets();
+                    }
+                };
+                document.head.appendChild(script);
+            });
         }
 
-        function loadProgress() {
-            let saved = localStorage.getItem("ancient_history_progress");
-            if (saved) {
-                let progress = JSON.parse(saved);
-                setsData.forEach(set => {
-                    if (progress[set.id]) {
-                        set.completed = progress[set.id].completed;
-                        set.locked = progress[set.id].locked;
-                    }
-                });
-                for (let i = 1; i < setsData.length; i++) {
-                    if (setsData[i-1].completed && setsData[i].locked === true) setsData[i].locked = false;
+        function buildSetsFromWindow() {
+            if (window.setsData) {
+                allSets = Object.values(window.setsData).sort((a, b) => a.id - b.id);
+                // Load progress from localStorage
+                const saved = localStorage.getItem("ancient_history_progress_v2");
+                if (saved) {
+                    const progress = JSON.parse(saved);
+                    allSets.forEach(set => {
+                        if (progress[set.id]) {
+                            set.completed = progress[set.id].completed;
+                            set.locked = progress[set.id].locked;
+                        }
+                    });
+                } else {
+                    // First time: only set 1 unlocked
+                    allSets.forEach((set, idx) => {
+                        set.completed = false;
+                        set.locked = idx !== 0;
+                    });
                 }
+                // Auto-unlock logic
+                for (let i = 1; i < allSets.length; i++) {
+                    if (allSets[i-1].completed && allSets[i].locked === true) {
+                        allSets[i].locked = false;
+                    }
+                }
+                saveProgressToLocal();
+            }
+        }
+
+        function saveProgressToLocal() {
+            let progress = {};
+            allSets.forEach(set => {
+                progress[set.id] = { completed: set.completed, locked: set.locked };
+            });
+            localStorage.setItem("ancient_history_progress_v2", JSON.stringify(progress));
+        }
+
+        function markSetCompleted(setId, score, total) {
+            let set = allSets.find(s => s.id === setId);
+            if (set && !set.completed) {
+                set.completed = true;
+                // unlock next set
+                let nextSet = allSets.find(s => s.id === setId + 1);
+                if (nextSet && nextSet.locked) {
+                    nextSet.locked = false;
+                }
+                saveProgressToLocal();
+                renderSets();
             }
         }
 
         function renderSets() {
-            let filtered = currentFilter === "all" ? setsData : setsData.filter(s => s.topic === currentFilter);
+            let filtered = currentFilter === "all" ? allSets : allSets.filter(s => s.topic === currentFilter);
             const container = document.getElementById("setsGrid");
-            container.innerHTML = filtered.map(set => `
-                <div class="set-card ${set.locked ? 'locked' : ''} ${set.completed ? 'completed' : ''}">
-                    <div class="set-header">
-                        <div class="set-id">${set.id}</div>
-                        <div class="set-badge ${set.completed ? 'done' : ''}">${set.completed ? '✅ Done' : (set.locked ? '🔒 Locked' : '🆕 New')}</div>
+            if (!filtered.length) {
+                container.innerHTML = `<div style="text-align: center; padding: 2rem;">No sets found for this topic.</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(set => {
+                let lockedStatus = set.locked;
+                let completedClass = set.completed ? "completed" : "";
+                let badgeText = set.completed ? "✅ Done" : (set.locked ? "🔒 Locked" : "🆕 New");
+                let badgeClass = set.completed ? "done" : (set.locked ? "locked-badge" : "");
+                let btnDisabled = set.locked ? "disabled" : "";
+                let btnText = set.completed ? "↻ Re-attempt" : "▶ Start Set";
+                return `
+                    <div class="set-card ${lockedStatus ? 'locked' : ''} ${completedClass}">
+                        <div class="set-header">
+                            <div class="set-id">${set.id}</div>
+                            <div class="set-badge ${badgeClass}">${badgeText}</div>
+                        </div>
+                        <div class="set-title">
+                            <h3>${set.name}</h3>
+                            <p>${set.nameHi}</p>
+                        </div>
+                        <div class="set-meta">
+                            <span>📝 ${set.totalQuestions || set.questions?.length || 0} Q</span>
+                            <span>⏱️ 25 min</span>
+                            <span>📊 ${set.difficulty || "Medium"}</span>
+                        </div>
+                        <button class="btn-set" data-id="${set.id}" ${btnDisabled}>${btnText}</button>
                     </div>
-                    <div class="set-title">
-                        <h3>${set.name}</h3>
-                        <p>${set.nameHi}</p>
-                    </div>
-                    <div class="set-meta">
-                        <span>📝 ${set.qCount} Q</span>
-                        <span>⏱️ ${set.time} min</span>
-                        <span>📊 ${set.difficulty}</span>
-                    </div>
-                    <button class="btn-set" data-id="${set.id}" ${set.locked ? 'disabled' : ''}>${set.completed ? '↻ Re-attempt' : '▶ Start Set'}</button>
-                </div>
-            `).join("");
+                `;
+            }).join("");
             document.querySelectorAll(".btn-set").forEach(btn => {
-                btn.addEventListener("click", () => startQuiz(parseInt(btn.dataset.id)));
+                btn.addEventListener("click", (e) => {
+                    let setId = parseInt(btn.dataset.id);
+                    let targetSet = allSets.find(s => s.id === setId);
+                    if (targetSet && !targetSet.locked) {
+                        startQuiz(targetSet);
+                    } else if (targetSet && targetSet.locked) {
+                        alert("⚠️ पहले पिछला सेट पूरा करें! Complete previous set first.");
+                    }
+                });
             });
         }
 
-        function startQuiz(setId) {
-            activeSet = setsData.find(s => s.id === setId);
-            if (!activeSet || activeSet.locked) return;
+        // Quiz functions
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function startTimer(seconds) {
+            timeSeconds = seconds;
+            const timerEl = document.getElementById("timerDisplay");
+            function updateDisplay() {
+                let mins = Math.floor(timeSeconds / 60);
+                let secs = timeSeconds % 60;
+                timerEl.textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+                if (timeSeconds <= 0) {
+                    stopTimer();
+                    finishQuiz(true);
+                }
+            }
+            updateDisplay();
+            timerInterval = setInterval(() => {
+                if (timeSeconds > 0 && quizActive) {
+                    timeSeconds--;
+                    updateDisplay();
+                } else if (timeSeconds <= 0) {
+                    stopTimer();
+                    finishQuiz(true);
+                }
+            }, 1000);
+        }
+
+        function startQuiz(set) {
+            activeSet = set;
+            currentQuestions = [...set.questions];
             currentIndex = 0;
             userAnswers = {};
             bookmarked.clear();
             quizActive = true;
             stopTimer();
-            startTimer(activeSet.time * 60);
+            startTimer(25 * 60);
             renderQuizUI();
             document.getElementById("quizModal").style.display = "flex";
         }
 
-        function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
-        function startTimer(seconds) {
-            timeSeconds = seconds;
-            const timerEl = document.getElementById("timerDisplay");
-            function update() {
-                let mins = Math.floor(timeSeconds / 60);
-                let secs = timeSeconds % 60;
-                timerEl.textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
-                if (timeSeconds <= 0) { stopTimer(); finishQuiz(true); }
-            }
-            update();
-            timerInterval = setInterval(() => { if (timeSeconds > 0 && quizActive) { timeSeconds--; update(); } }, 1000);
-        }
-
         function renderQuizUI() {
-            const q = activeSet.questions[currentIndex];
+            const q = currentQuestions[currentIndex];
             document.getElementById("quizSetTitle").innerHTML = `${activeSet.name} — ${activeSet.nameHi}`;
             document.getElementById("currentQNumber").innerText = currentIndex + 1;
-            document.getElementById("totalQCount").innerText = activeSet.questions.length;
+            document.getElementById("totalQCount").innerText = currentQuestions.length;
             const bodyDiv = document.getElementById("quizBody");
+            
+            // Palette
             let paletteHtml = `<div class="palette-grid" id="paletteGrid">`;
-            for (let i = 0; i < activeSet.questions.length; i++) {
-                let cls = "";
-                if (i === currentIndex) cls = "current";
-                else if (userAnswers[i] !== undefined) cls = "attempted";
-                if (bookmarked.has(i)) cls += " bookmarked";
-                paletteHtml += `<button class="palette-btn ${cls}" data-qidx="${i}">${i+1}</button>`;
+            for (let i = 0; i < currentQuestions.length; i++) {
+                let extraClass = "";
+                if (i === currentIndex) extraClass = "current";
+                else if (userAnswers[i] !== undefined) extraClass = "attempted";
+                let bookmarkClass = bookmarked.has(i) ? "bookmarked" : "";
+                paletteHtml += `<button class="palette-btn ${extraClass} ${bookmarkClass}" data-qidx="${i}">${i+1}</button>`;
             }
             paletteHtml += `</div>`;
+
             let optionsHtml = `<div class="options-area" id="optionsArea">`;
-            ["a","b","c","d"].forEach(letter => {
-                let optText = q.options[letter];
-                let isSelected = userAnswers[currentIndex] === letter;
-                optionsHtml += `<div class="option-item ${isSelected ? 'selected' : ''}" data-opt="${letter}"><strong>${letter.toUpperCase()}.</strong> ${optText}</div>`;
+            const optLetters = ["a","b","c","d"];
+            optLetters.forEach(letter => {
+                let optText = q.options[letter] || `Option ${letter.toUpperCase()}`;
+                let isSelected = (userAnswers[currentIndex] === letter);
+                let selectedClass = isSelected ? "selected" : "";
+                optionsHtml += `
+                    <div class="option-item ${selectedClass}" data-opt="${letter}">
+                        <strong>${letter.toUpperCase()}.</strong> ${optText}
+                    </div>
+                `;
             });
             optionsHtml += `</div>`;
-            let explanationHtml = `<div class="explanation-box" id="expBox"><strong>💡 व्याख्या:</strong><br><span id="expText">${q.explanation || 'उत्तर जाँचें'}</span></div>`;
-            let actionsHtml = `<div class="quiz-actions">
-                <button class="quiz-btn" id="prevBtn" ${currentIndex===0 ? 'disabled' : ''}>◀ पिछला</button>
-                <button class="quiz-btn accent" id="bookmarkBtn">🔖 ${bookmarked.has(currentIndex) ? 'बुकमार्क हटाएँ' : 'बुकमार्क करें'}</button>
-                <button class="quiz-btn primary" id="checkBtn">✓ जाँच करें</button>
-                <button class="quiz-btn" id="nextBtn">अगला ▶</button>
+
+            let extraHtml = "";
+            if (q.extra_facts && q.extra_facts.length) {
+                extraHtml = `<div style="margin-top:8px; font-size:0.85rem; color:#b45309;"><strong>📌 अतिरिक्त तथ्य:</strong><ul>${q.extra_facts.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
+            }
+
+            let explanationHtml = `<div class="explanation-box" id="expBox">
+                <strong>💡 व्याख्या / Explanation:</strong><br>
+                <span id="expText">${q.explanation || "उत्तर देखने के लिए 'जाँच करें' दबाएँ"}</span>
+                ${extraHtml}
             </div>`;
+
+            let actionsHtml = `
+                <div class="quiz-actions">
+                    <button class="quiz-btn" id="prevBtn" ${currentIndex===0 ? 'disabled' : ''}>◀ पिछला</button>
+                    <button class="quiz-btn accent" id="bookmarkBtn">🔖 ${bookmarked.has(currentIndex) ? 'बुकमार्क हटाएँ' : 'बुकमार्क करें'}</button>
+                    <button class="quiz-btn primary" id="checkBtn">✓ जाँच करें</button>
+                    <button class="quiz-btn" id="nextBtn">अगला ▶</button>
+                </div>
+            `;
             bodyDiv.innerHTML = paletteHtml + `<div class="question-text">${q.question_hi}</div>` + optionsHtml + explanationHtml + actionsHtml;
-            document.querySelectorAll(".palette-btn").forEach(btn => btn.addEventListener("click", (e) => { currentIndex = parseInt(btn.dataset.qidx); renderQuizUI(); }));
-            document.querySelectorAll(".option-item").forEach(opt => opt.addEventListener("click", () => { if (!quizActive) return; userAnswers[currentIndex] = opt.dataset.opt; renderQuizUI(); }));
-            document.getElementById("prevBtn").addEventListener("click", () => { if (currentIndex > 0) { currentIndex--; renderQuizUI(); } });
-            document.getElementById("nextBtn").addEventListener("click", () => { if (currentIndex + 1 < activeSet.questions.length) { currentIndex++; renderQuizUI(); } else { finishQuiz(false); } });
+
+            // Attach events
+            document.querySelectorAll(".palette-btn").forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    let idx = parseInt(btn.dataset.qidx);
+                    if (!isNaN(idx)) {
+                        currentIndex = idx;
+                        renderQuizUI();
+                    }
+                });
+            });
+            document.querySelectorAll(".option-item").forEach(opt => {
+                opt.addEventListener("click", () => {
+                    if (!quizActive) return;
+                    let selectedLetter = opt.dataset.opt;
+                    userAnswers[currentIndex] = selectedLetter;
+                    renderQuizUI();
+                });
+            });
+            document.getElementById("prevBtn").addEventListener("click", () => {
+                if (currentIndex > 0) { currentIndex--; renderQuizUI(); }
+            });
+            document.getElementById("nextBtn").addEventListener("click", () => {
+                if (currentIndex + 1 < currentQuestions.length) { currentIndex++; renderQuizUI(); }
+                else { finishQuiz(false); }
+            });
             document.getElementById("checkBtn").addEventListener("click", () => {
-                let qData = activeSet.questions[currentIndex];
-                let userAns = userAnswers[currentIndex];
-                let expBox = document.getElementById("expBox");
-                document.getElementById("expText").innerHTML = qData.explanation || `सही उत्तर: ${qData.correct.toUpperCase()}`;
+                if (!quizActive) return;
+                const qData = currentQuestions[currentIndex];
+                const userChoice = userAnswers[currentIndex];
+                const correctAns = qData.correct;
+                const expBox = document.getElementById("expBox");
+                const expTextSpan = document.getElementById("expText");
+                expTextSpan.innerHTML = qData.explanation || "सही उत्तर: " + correctAns.toUpperCase();
                 expBox.classList.add("show");
                 document.querySelectorAll(".option-item").forEach(opt => {
                     opt.classList.remove("correct-highlight", "wrong-highlight");
-                    if (opt.dataset.opt === qData.correct) opt.classList.add("correct-highlight");
-                    if (userAns && opt.dataset.opt === userAns && userAns !== qData.correct) opt.classList.add("wrong-highlight");
+                    if (opt.dataset.opt === correctAns) opt.classList.add("correct-highlight");
+                    if (userChoice && opt.dataset.opt === userChoice && userChoice !== correctAns) opt.classList.add("wrong-highlight");
                 });
             });
             document.getElementById("bookmarkBtn").addEventListener("click", () => {
@@ -456,33 +776,69 @@
         }
 
         function finishQuiz(isTimeout) {
-            stopTimer(); quizActive = false;
-            let correct = 0;
-            activeSet.questions.forEach((q, idx) => { if (userAnswers[idx] === q.correct) correct++; });
-            if (!activeSet.completed && correct >= 10) {
+            if (!quizActive) return;
+            stopTimer();
+            quizActive = false;
+            let correctCount = 0;
+            currentQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct) correctCount++;
+            });
+            const total = currentQuestions.length;
+            const scorePercent = Math.round((correctCount/total)*100);
+            if (!activeSet.completed) {
                 activeSet.completed = true;
-                if (activeSet.id < setsData.length) setsData[activeSet.id].locked = false;
-                saveProgress();
+                let nextSet = allSets.find(s => s.id === activeSet.id + 1);
+                if (nextSet && nextSet.locked) {
+                    nextSet.locked = false;
+                }
+                saveProgressToLocal();
                 renderSets();
             }
             const bodyDiv = document.getElementById("quizBody");
-            bodyDiv.innerHTML = `<div class="result-screen"><div style="font-size:3rem;">${correct >= 12 ? '🎉🏆' : '📚👍'}</div>
-                <h3>सेट पूर्ण!</h3><div class="result-stats"><div><strong>✅ सही:</strong> ${correct}</div>
-                <div><strong>❌ गलत:</strong> ${activeSet.questions.length - correct}</div>
-                <div><strong>📊 शुद्धता:</strong> ${Math.round((correct/activeSet.questions.length)*100)}%</div></div>
-                <button class="quiz-btn primary" onclick="closeQuiz()">✖ बंद करें</button></div>`;
+            bodyDiv.innerHTML = `
+                <div class="result-screen">
+                    <div style="font-size:3rem;">${scorePercent >= 60 ? '🎉🏆' : '📚✨'}</div>
+                    <h3>सेट पूर्ण! Set Completed</h3>
+                    <div class="result-stats">
+                        <div><strong>✅ सही:</strong> ${correctCount}</div>
+                        <div><strong>❌ गलत:</strong> ${total - correctCount}</div>
+                        <div><strong>📊 शुद्धता:</strong> ${scorePercent}%</div>
+                    </div>
+                    <button class="quiz-btn primary" id="closeResultBtn" style="margin-top:1rem;">✖ बंद करें</button>
+                    ${ (activeSet.id < allSets.length && !allSets.find(s=>s.id===activeSet.id+1)?.locked) ? `<button class="quiz-btn" id="nextSetBtn" style="background:#2e7d32; color:white; margin-left:0.8rem;">▶ अगला सेट</button>` : '' }
+                </div>
+            `;
+            document.getElementById("closeResultBtn")?.addEventListener("click", () => closeQuiz());
+            document.getElementById("nextSetBtn")?.addEventListener("click", () => {
+                let next = allSets.find(s => s.id === activeSet.id + 1);
+                if (next && !next.locked) {
+                    closeQuiz();
+                    startQuiz(next);
+                } else {
+                    closeQuiz();
+                }
+            });
         }
 
-        function closeQuiz() { stopTimer(); quizActive = false; document.getElementById("quizModal").style.display = "none"; renderSets(); }
-
-        document.querySelectorAll(".filter-chip").forEach(chip => chip.addEventListener("click", () => {
-            document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
-            chip.classList.add("active");
-            currentFilter = chip.dataset.filter;
+        function closeQuiz() {
+            stopTimer();
+            quizActive = false;
+            document.getElementById("quizModal").style.display = "none";
             renderSets();
-        }));
-        loadProgress();
-        renderSets();
+        }
+
+        // Filter chips
+        document.querySelectorAll(".filter-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+                chip.classList.add("active");
+                currentFilter = chip.dataset.filter;
+                renderSets();
+            });
+        });
+
+        // Initialize
+        loadAllSets();
         window.closeQuiz = closeQuiz;
     </script>
 </body>
