@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RRB COMPUTER PYQ NOTEBOOK | Topper Revision Notes</title>
+    <title>RRB COMPUTER PYQ NOTEBOOK | Smart Revision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -14,44 +14,40 @@
         }
 
         body {
-            background: #fef9e8;  /* warm paper-like background */
-            background-image: radial-gradient(#f0e5d2 1px, transparent 1px);
-            background-size: 28px 28px;
+            background: #f0f4f8;
+            background-image: linear-gradient(145deg, #f8fafc 0%, #eef2f6 100%);
             font-family: 'Nunito', 'Inter', sans-serif;
-            color: #1e2a3a;
+            color: #1a2c3e;
             line-height: 1.5;
         }
 
-        /* container */
+        /* Study Notes Style - Clean, Colorful, High Contrast */
         .notebook-container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 1.5rem 2rem 3rem;
         }
 
-        /* header with sticky notes style */
+        /* Header with colorful gradient */
         .revision-header {
-            background: linear-gradient(135deg, #fff6e0, #fff0d0);
-            border-radius: 2rem;
-            padding: 1.8rem 2rem;
-            box-shadow: 0 12px 25px -12px rgba(0,0,0,0.1);
-            border-left: 12px solid #ff914d;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 1.5rem;
+            padding: 2rem 2rem;
+            box-shadow: 0 15px 35px -12px rgba(0,0,0,0.2);
             margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            background: linear-gradient(120deg, #c4450c, #f7b05e);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #ffffff;
             letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* colored badges & tags */
         .badge-topic {
-            background: #eef2ff;
+            background: #e8f0fe;
             padding: 0.25rem 0.9rem;
             border-radius: 30px;
             font-size: 0.7rem;
@@ -76,24 +72,24 @@
             font-weight: bold;
         }
 
-        /* question card (coaching notes style) */
+        /* Question Card - Like Premium Coaching Notes */
         .question-note {
             background: #ffffff;
-            border-radius: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-radius: 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: all 0.2s;
-            border: 1px solid #ffe2bf;
+            border: 1px solid #e2e8f0;
             overflow: hidden;
         }
         .question-note:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
         }
         .note-header {
-            background: #fffaf0;
-            padding: 1rem 1.5rem;
-            border-bottom: 2px solid #ffe0b5;
+            background: #fafcff;
+            padding: 0.9rem 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -101,12 +97,14 @@
         }
         .question-text {
             padding: 1.2rem 1.5rem;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 500;
-            background: #fffdf9;
-            line-height: 1.5;
+            background: #ffffff;
+            line-height: 1.55;
+            color: #1e293b;
         }
-        /* highlight style for technical terms */
+
+        /* Smart Highlighting System */
         .hl-cpu { background: #dbeafe; color: #1e3a8a; font-weight: 700; border-radius: 12px; padding: 0 6px; display: inline-block; }
         .hl-ram { background: #f3e8ff; color: #6b21a5; font-weight: 700; border-radius: 12px; padding: 0 6px; }
         .hl-rom { background: #ffedd5; color: #b45309; font-weight: 700; border-radius: 12px; padding: 0 6px; }
@@ -114,38 +112,39 @@
         .hl-virus { background: #ffe4e4; color: #b91c1c; border-radius: 12px; padding: 0 6px; font-weight: 700; }
         .hl-key { background: #fef9c3; color: #854d0e; border-radius: 12px; padding: 0 6px; font-family: monospace; font-weight: bold; }
         .hl-unit { background: #d1fae5; color: #065f46; border-radius: 12px; padding: 0 6px; }
+        .hl-def { background: #e0f2fe; color: #0369a1; border-radius: 12px; padding: 0 6px; font-weight: 600; }
 
         .options-area {
             padding: 0.5rem 1.5rem 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.7rem;
+            gap: 0.6rem;
         }
         .opt-item {
-            background: #fbfbfb;
-            border: 1px solid #f0e2cf;
-            border-radius: 60px;
-            padding: 0.6rem 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.7rem 1rem;
             transition: 0.1s;
             cursor: pointer;
             font-weight: 500;
         }
         .opt-item:hover {
-            background: #fff2e2;
-            border-color: #fdba74;
+            background: #f1f5f9;
+            border-color: #cbd5e1;
         }
         .opt-item.correct-selected {
-            background: #d9f99d;
-            border-left: 8px solid #4caf50;
+            background: #bbf7d0;
+            border-left: 8px solid #22c55e;
             font-weight: bold;
         }
         .opt-item.wrong-selected {
-            background: #ffdddd;
-            border-left: 8px solid #e53e3e;
+            background: #fee2e2;
+            border-left: 8px solid #ef4444;
             text-decoration: line-through;
         }
 
-        /* memory box + revision extras */
+        /* Memory Boxes - Sticky Notes Style */
         .memory-box {
             background: #fffbeb;
             border-radius: 1rem;
@@ -166,12 +165,12 @@
             background: #eef2ff;
             padding: 0.4rem 1rem;
             border-radius: 60px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             display: inline-block;
         }
 
         .btn-reveal {
-            background: #ffedd5;
+            background: #fef3c7;
             border: none;
             padding: 0.4rem 1.2rem;
             border-radius: 40px;
@@ -181,20 +180,21 @@
             transition: 0.1s;
         }
         .btn-reveal:hover {
-            background: #ffd9a5;
+            background: #fde68a;
         }
 
-        /* filters side */
+        /* Filter Bar */
         .filter-strip {
             background: white;
             border-radius: 60px;
-            padding: 0.6rem 1rem;
+            padding: 0.6rem 1.2rem;
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             align-items: center;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
         }
         .filter-chip {
             background: #f1f5f9;
@@ -203,8 +203,9 @@
             font-size: 0.8rem;
             font-weight: 500;
             cursor: pointer;
+            transition: 0.1s;
         }
-        .filter-chip.active {
+        .filter-chip.active, .filter-chip:hover {
             background: #fb923c;
             color: white;
         }
@@ -215,40 +216,56 @@
             font-size: 0.8rem;
             cursor: pointer;
             transition: 0.1s;
+            border: 1px solid #fed7aa;
         }
         .topic-pill.active, .topic-pill:hover {
             background: #f97316;
             color: white;
+            border-color: #f97316;
         }
 
-        /* progress */
+        /* Progress Card */
         .progress-card {
-            background: #fef3c7;
-            padding: 0.8rem 1.2rem;
+            background: linear-gradient(135deg, #fff9e8, #fff4e0);
+            padding: 0.8rem 1.5rem;
             border-radius: 60px;
             display: inline-flex;
-            gap: 1rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
             margin-bottom: 1.5rem;
+            border: 1px solid #ffe0b5;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
 
         @media (max-width: 700px) {
             .notebook-container { padding: 1rem; }
-            .question-text { font-size: 1rem; }
+            .question-text { font-size: 0.95rem; }
         }
-        .save-icon { cursor: pointer; font-size: 1.3rem; }
-        .bookmarked { color: #eab308; }
+        .save-icon { cursor: pointer; font-size: 1.2rem; transition: 0.1s; }
+        .save-icon:hover { transform: scale(1.1); }
+        
+        input, select {
+            border-radius: 40px !important;
+            border: 1px solid #e2e8f0 !important;
+            padding: 0.5rem 1rem !important;
+            background: white !important;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #f97316 !important;
+            box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+        }
     </style>
 </head>
 <body>
 
 <div class="notebook-container">
-    <!-- header with handwritten style -->
+    <!-- Header -->
     <div class="revision-header">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
             <div>
-                <h1><i class="fas fa-book-open"></i> RRB Computer PYQ Notebook</h1>
-                <p class="mt-1 text-amber-800"><i class="fas fa-graduation-cap"></i> Topper's Revision Notes | 150+ Most Repeated Questions</p>
+                <h1><i class="fas fa-graduation-cap"></i> RRB Computer PYQ Master</h1>
+                <p class="mt-1" style="color: #cbd5e1;"><i class="fas fa-star-of-life"></i> Most Repeated Railway Computer Questions | Topper's Revision Notes</p>
             </div>
             <div class="flex gap-3 mt-2">
                 <span class="badge-topic"><i class="far fa-clock"></i> Last Minute Revision</span>
@@ -257,21 +274,21 @@
         </div>
     </div>
 
-    <!-- stats & quick actions -->
+    <!-- Stats -->
     <div class="progress-card">
         <span><i class="fas fa-check-circle text-green-600"></i> Attempted: <strong id="attemptCount">0</strong></span>
         <span><i class="fas fa-chart-line text-orange-500"></i> Accuracy: <strong id="accuracyVal">0%</strong></span>
         <span><i class="fas fa-bookmark text-yellow-600"></i> Saved: <strong id="savedCount">0</strong></span>
-        <span><i class="fas fa-bolt"></i> XP: <strong id="xpPoints">0</strong></span>
+        <span><i class="fas fa-bolt text-purple-600"></i> XP: <strong id="xpPoints">0</strong></span>
         <button id="revisionOnlyBtn" class="filter-chip" style="background:#ffedd5;">📘 Revision Mode (Saved)</button>
         <button id="resetAllBtn" class="filter-chip">⟳ Show All</button>
     </div>
 
-    <!-- smart filter row -->
+    <!-- Filters -->
     <div class="filter-strip">
-        <i class="fas fa-filter"></i>
-        <input type="text" id="searchBox" placeholder="🔍 Search keyword, shortcut, topic..." style="border:1px solid #ffd7a5; border-radius:40px; padding:0.4rem 1rem; width:200px;">
-        <select id="topicSelect" style="background:#fff7ed; border-radius:40px; padding:0.4rem 0.8rem;">
+        <i class="fas fa-filter text-orange-500"></i>
+        <input type="text" id="searchBox" placeholder="🔍 Search keyword, shortcut, topic...">
+        <select id="topicSelect">
             <option value="all">📚 All Topics</option>
         </select>
         <div id="quickFilters" class="flex gap-2">
@@ -281,95 +298,72 @@
         </div>
     </div>
 
-    <!-- Topic grid pills -->
+    <!-- Topic Pills -->
     <div id="topicPills" class="flex flex-wrap gap-2 mb-5"></div>
-
-    <!-- Questions container (notes) -->
+    
+    <!-- Questions Container -->
     <div id="questionsList"></div>
 </div>
 
+<!-- Load external data.js file -->
+<script src="data.js"></script>
+
 <script>
-    // ---------- COMPUTER PYQ DATABASE (150+ sample with high memory highlights) ----------
-    const masterQuestions = [
-        { id:1, text:"वह भौतिक स्थान जहाँ कंप्यूटर जानकारी स्टोर करता है, __________ कहलाता है।", options:["मॉडेम","हार्ड डिस्क","वाई-फाई","POP"], correct:"हार्ड डिस्क", topic:"Hardware", year:"RRB ALP 2019", explanation:"हार्ड डिस्क = स्थायी चुंबकीय भंडारण।", trick:"HDD → Non-volatile", repeated:true, memoryNote:"📌 Non-volatile memory", importantTerms:["हार्ड डिस्क","स्थायी"] },
-        { id:2,text:"________ तारों की मदद से कंप्यूटर नेटवर्क जोड़ने का सबसे साधारण तरीका।", options:["LAN","Wi-Fi","ईथरनेट","इंटरनेट"], correct:"ईथरनेट", topic:"Networking", year:"RRB ALP 2019", explanation:"Ethernet (IEEE 802.3) LAN के लिए मानक।", trick:"RJ45, twisted pair cable", repeated:true, memoryNote:"LAN technology" },
-        { id:3,text:"______ एक उच्च गति भंडारण तंत्र है।", options:["इंटरफेस","बोर्ड","कैशे","होस्ट"], correct:"कैशे", topic:"Memory Devices", year:"RRB ALP 2019", explanation:"Cache (SRAM) CPU के निकट fastest memory।", trick:"L1, L2, L3", repeated:true, memoryNote:"Cache = temporary speed booster" },
-        { id:4,text:"______ एक सॉफ्टवेयर जो निजी नेटवर्क की सुरक्षा बनाए रखता है।", options:["मालवेयर","एन्क्रिप्शन","फायरवॉल","क्लिकबेट"], correct:"फायरवॉल", topic:"Cyber Security", year:"RRB ALP", explanation:"Firewall monitors incoming/outgoing traffic.", trick:"Digital wall", repeated:true, memoryNote:"Blocks unauthorized access" },
-        { id:5,text:"JPEG का पूर्ण रूप __________ है।", options:["Joint Program Experts","Joint Photographic Experts Group","Joint Photo Engine","None"], correct:"Joint Photographic Experts Group", topic:"Computer Fundamentals", year:"RRB ALP", explanation:"Image compression standard", trick:".jpg", memoryNote:"Lossy compression" },
-        { id:6,text:"SMPS का विस्तृत रूप?", options:["Switch Mode Power Supply","Simple Mode Power Supply","Storage Mode Power Supply","None"], correct:"Switch Mode Power Supply", topic:"Hardware", year:"RRB ALP", explanation:"Power supply unit in CPU", trick:"Switching regulator", memoryNote:"Efficient power conversion" },
-        { id:7,text:"RAM एक _______ होती है।", options:["सॉफ्टवेयर","CPU रजिस्टर","अस्थायी मेमोरी","स्थायी मेमोरी"], correct:"अस्थायी मेमोरी", topic:"Memory Devices", year:"RRB ALP", explanation:"Volatile → data lost on power off", trick:"RAM = रैंडम एक्सेस", memoryNote:"Temporary, fast" },
-        { id:8,text:"वर्ल्ड वाइड वेब का आविष्कारक?", options:["टिम बर्नर्स-ली","रॉबर्ट कहन","विंट सर्फ","एंटोनियो मेउची"], correct:"टिम बर्नर्स-ली", topic:"Internet", year:"RRB ALP", explanation:"Invented WWW at CERN (1989)", trick:"Father of WWW", memoryNote:"HTTP, HTML" },
-        { id:9,text:"कंप्यूटर माउस के आविष्कारक?", options:["जॉन बैकस","चार्ल्स बैबेज","डगलस एंजेलबार्ट","साइमन कोल्टन"], correct:"डगलस एंजेलबार्ट", topic:"Hardware", year:"RRB NTPC", explanation:"First mouse prototype 1964", trick:"X-Y position indicator", memoryNote:"Douglas Engelbart" },
-        { id:10,text:"MS Word में पेस्ट करने की शॉर्टकट कुंजी?", options:["Ctrl+V","Ctrl+Z","Alt+R","Alt+F4"], correct:"Ctrl+V", topic:"Shortcut Keys", year:"RRB NTPC", explanation:"Paste from clipboard", trick:"V for paste", memoryNote:"Ctrl+C = Copy, Ctrl+V = Paste" },
-        { id:11,text:"CPU को कंप्यूटर का ________ कहते हैं।", options:["हार्ड डिस्क","मस्तिष्क","मॉनिटर","माउस"], correct:"मस्तिष्क", topic:"Computer Fundamentals", year:"RRB NTPC", explanation:"Central Processing Unit controls everything", trick:"Brain of PC", memoryNote:"ALU + CU" },
-        { id:12,text:"सबसे बड़ा नेटवर्क कौन सा है?", options:["MAN","WAN","इंट्रानेट","इंटरनेट"], correct:"इंटरनेट", topic:"Networking", year:"RRB NTPC", explanation:"Network of networks", trick:"Global network", memoryNote:"WWW" },
-        { id:13,text:"BIOS का पूर्ण रूप?", options:["Basic Input Output System","Binary Input Output Storage","Basic Internal Output","Board Setup"], correct:"Basic Input Output System", topic:"Computer Fundamentals", year:"RRB NTPC", explanation:"Firmware for booting", trick:"POST test", memoryNote:"Stored in ROM" },
-        { id:14,text:"निबल (Nibble) क्या है?", options:["हाफ बाइट","टेराबाइट","गीगाबाइट","किलोबाइट"], correct:"हाफ बाइट", topic:"Memory Devices", year:"RRB NTPC", explanation:"4 bits = 1 nibble", trick:"2 nibbles = 1 byte", memoryNote:"4 bits" },
-        { id:15,text:"Trojan Horse किसका रूप है?", options:["Slammer worm","Virus attack","Service attack","Melissa"], correct:"Virus attack", topic:"Cyber Security", year:"RRB NTPC", explanation:"Malware disguised as legitimate software", trick:"मैलवेयर", memoryNote:"Don't open unknown attachments" },
-        { id:16,text:"ASCII काका पूरा नाम?", options:["American Standard Code for Information Interchange","Advanced Code","All Standard Code","None"], correct:"American Standard Code for Information Interchange", topic:"Computer Fundamentals", year:"RRB ALP", explanation:"7-bit character encoding", trick:"A=65", memoryNote:"128 characters" },
-        { id:17,text:"LAN का पूर्ण रूप?", options:["Local Area Network","Large Area Network","Linked Access Node","None"], correct:"Local Area Network", topic:"Networking", year:"RRB ALP", explanation:"Small geographic network like office", trick:"Ethernet/WiFi", memoryNote:"High speed" },
-        { id:18,text:"MS Excel में nested function का अर्थ?", options:["Function inside function","Macro","Loop","Array"], correct:"Function inside function", topic:"MS Office", year:"RRB NTPC", explanation:"Nesting = एक फंक्शन के अंदर दूसरा", trick:"=IF(SUM(...))", memoryNote:"up to 64 levels" },
-        { id:19,text:"फायरवॉल का मुख्य कार्य?", options:["आग बुझाना","नेटवर्क सुरक्षा","डाटा कम्प्रेशन","प्रिंटिंग"], correct:"नेटवर्क सुरक्षा", topic:"Cyber Security", year:"RRB ALP", explanation:"Monitors traffic", trick:"Cyber shield", memoryNote:"Block malware" },
-        { id:20,text:"पहला सुपर कंप्यूटर कौनसा था?", options:["CRAY-1","PARAM 8000","ENIAC","IBM 701"], correct:"CRAY-1", topic:"Generations", year:"RRB NTPC", explanation:"1976, vector processing", trick:"Seymour Cray", memoryNote:"80 MFLOPS" }
-    ];
-    // Generate more questions to reach 150+ (mock sample but high quality)
-    for(let i=21; i<=155; i++){
-        let topics = ["Hardware","Software","OS","MS Office","Internet","Shortcut Keys","Memory Devices"];
-        let topicRand = topics[i%7];
-        masterQuestions.push({
-            id:i, text:`RRB PYQ ${i}: ${i%3===0?"ALU कार्य करता है?":"मेमोरी यूनिट कौन सी है?"} ${i%2===0?"कंप्यूटर की स्पीड नैनोसेकंड में मापी जाती है।":"किलोबाइट 1024 बाइट का होता है।"}`,
-            options:["1 KB = 1024 bytes","ALU = Arithmetic Logic","CPU = Brain","All the above"], correct: i%2===0?"1 KB = 1024 bytes":"ALU = Arithmetic Logic",
-            topic:topicRand, year:"RRB PYQ", explanation:"Important concept", trick:"Short trick here", memoryNote:"याद रखें 1024"
-        });
+    // ==================== APPLICATION STATE ====================
+    // Use the global variable 'rrbComputerPYQs' from data.js
+    // Fallback to empty array if not loaded
+    let questionsData = (typeof rrbComputerPYQs !== 'undefined' && Array.isArray(rrbComputerPYQs)) 
+        ? rrbComputerPYQs 
+        : [];
+
+    // If no data loaded, show error
+    if(questionsData.length === 0) {
+        document.getElementById('questionsList').innerHTML = '<div class="bg-red-100 p-4 rounded-xl text-center">⚠️ Error: data.js not found or empty. Make sure data.js file is in same folder with variable "rrbComputerPYQs"</div>';
     }
-    // additional shortcut keys set
-    masterQuestions.push({ id:156, text:"Ctrl + C का उपयोग किसके लिए होता है?", options:["Copy","Cut","Paste","Undo"], correct:"Copy", topic:"Shortcut Keys", year:"RRB NTPC", explanation:"Copy selected text/object", trick:"C for Copy", memoryNote:"Ctrl+Ins also copy" });
-    masterQuestions.push({ id:157, text:"Ctrl + Z का कार्य?", options:["Redo","Undo","Save","Print"], correct:"Undo", topic:"Shortcut Keys", year:"RRB ALP", explanation:"Undo last action", trick:"Go back", memoryNote:"Ctrl+Y = Redo" });
-    masterQuestions.push({ id:158, text:"विंडोज में Alt+Tab का उपयोग?", options:["Switch between apps","Close window","Open menu","Restart"], correct:"Switch between apps", topic:"Shortcut Keys", year:"RRB NTPC", explanation:"Task switcher", trick:"Tab to change window", memoryNote:"Alt+Shift+Tab reverse" });
-    masterQuestions.push({ id:159, text:"WWW का पूरा नाम?", options:["World Wide Web","Web Wide World","World Web Wide","None"], correct:"World Wide Web", topic:"Internet", year:"RRB ALP", explanation:"Global information system", trick:"Tim Berners-Lee", memoryNote:"HTTP" });
-    masterQuestions.push({ id:160, text:"CPU का पूरा नाम?", options:["Central Processing Unit","Computer Personal Unit","Central Program Unit","None"], correct:"Central Processing Unit", topic:"Hardware", year:"RRB NTPC", explanation:"Brain of computer", trick:"ALU + CU", memoryNote:"Processor" });
-    
-    const questions = masterQuestions;
+
     let userAnswers = JSON.parse(localStorage.getItem('notebookAnswers')) || {};
     let savedSet = new Set(JSON.parse(localStorage.getItem('notebookSaved')) || []);
     let xpPoints = parseInt(localStorage.getItem('notebookXP')) || 0;
-    let currentFilter = "all"; // all, repeated, shortcut, memory
+    let currentFilter = "all";
     let currentTopic = "all";
     let searchTerm = "";
     let revisionOnly = false;
 
-    // Helper: smart highlight text
+    // Smart highlighting function
     function applyHighlighting(text){
         let t = text;
-        t = t.replace(/\bCPU\b/gi, '<span class="hl-cpu">CPU</span>');
-        t = t.replace(/\bRAM\b/gi, '<span class="hl-ram">RAM</span>');
-        t = t.replace(/\bROM\b/gi, '<span class="hl-rom">ROM</span>');
-        t = t.replace(/\bWWW\b/gi, '<span class="hl-www">WWW</span>');
-        t = t.replace(/\bVirus\b/gi, '<span class="hl-virus">Virus</span>');
-        t = t.replace(/\bCtrl\+[A-Z]\b/gi, match => `<span class="hl-key">${match}</span>`);
-        t = t.replace(/\b(GB|MB|KB|TB|Nibble|bit|byte)\b/gi, '<span class="hl-unit">$1</span>');
-        t = t.replace(/\b(हार्ड डिस्क|Firewall|Cache|SMPS|BIOS|ALU)\b/gi, '<span class="hl-ram">$1</span>');
+        const terms = [
+            { pattern: /\bCPU\b/gi, class: 'hl-cpu' },
+            { pattern: /\bRAM\b/gi, class: 'hl-ram' },
+            { pattern: /\bROM\b/gi, class: 'hl-rom' },
+            { pattern: /\bWWW\b/gi, class: 'hl-www' },
+            { pattern: /\b(वायरस|Virus|Trojan|Malware|मालवेयर)\b/gi, class: 'hl-virus' },
+            { pattern: /\b(Ctrl\+[A-Z]|F[0-9]{1,2}|Alt\+[A-Z0-9])\b/gi, class: 'hl-key' },
+            { pattern: /\b(GB|MB|KB|TB|Nibble|बाइट|bit|पेटाबाइट|टेराबाइट)\b/gi, class: 'hl-unit' },
+            { pattern: /\b(हार्ड डिस्क|Firewall|Cache|SMPS|BIOS|ALU|माइक्रोप्रोसेसर|कैशे)\b/gi, class: 'hl-def' }
+        ];
+        terms.forEach(term => {
+            t = t.replace(term.pattern, match => `<span class="${term.class}">${match}</span>`);
+        });
         return t;
     }
 
     function getFilteredQuestions(){
-        let filtered = [...questions];
-        if(revisionOnly){
-            filtered = filtered.filter(q => savedSet.has(q.id));
+        let filtered = [...questionsData];
+        if(revisionOnly) filtered = filtered.filter(q => savedSet.has(q.id));
+        if(currentTopic !== "all") filtered = filtered.filter(q => q.topic === currentTopic);
+        if(searchTerm) {
+            const term = searchTerm.toLowerCase();
+            filtered = filtered.filter(q => 
+                q.text.toLowerCase().includes(term) || 
+                q.options.some(opt=>opt.toLowerCase().includes(term)) || 
+                q.topic.toLowerCase().includes(term) ||
+                (q.memoryTip && q.memoryTip.toLowerCase().includes(term))
+            );
         }
-        if(currentTopic !== "all"){
-            filtered = filtered.filter(q => q.topic === currentTopic);
-        }
-        if(searchTerm){
-            filtered = filtered.filter(q => q.text.toLowerCase().includes(searchTerm) || q.options.some(opt=>opt.toLowerCase().includes(searchTerm)) || q.topic.toLowerCase().includes(searchTerm));
-        }
-        if(currentFilter === "repeated"){
-            filtered = filtered.filter(q => q.repeated === true);
-        } else if(currentFilter === "shortcut"){
-            filtered = filtered.filter(q => q.topic === "Shortcut Keys");
-        } else if(currentFilter === "memory"){
-            filtered = filtered.filter(q => q.topic === "Memory Devices");
-        }
+        if(currentFilter === "repeated") filtered = filtered.filter(q => q.repeated === true);
+        else if(currentFilter === "shortcut") filtered = filtered.filter(q => q.topic === "Shortcut Keys");
+        else if(currentFilter === "memory") filtered = filtered.filter(q => q.topic === "Memory Devices");
         return filtered;
     }
 
@@ -377,7 +371,7 @@
         let attempted = Object.keys(userAnswers).length;
         let correct = 0;
         for(let [id, ans] of Object.entries(userAnswers)){
-            let q = questions.find(qq => qq.id == id);
+            let q = questionsData.find(qq => qq.id == id);
             if(q && q.correct === ans) correct++;
         }
         let acc = attempted ? Math.round((correct/attempted)*100) : 0;
@@ -393,7 +387,14 @@
     function renderQuestions(){
         const filtered = getFilteredQuestions();
         const container = document.getElementById('questionsList');
+        if(!container) return;
         container.innerHTML = '';
+        
+        if(filtered.length === 0){
+            container.innerHTML = '<div class="bg-gray-100 p-8 rounded-2xl text-center text-gray-500"><i class="fas fa-search"></i> No questions match your filter. Try resetting filters.</div>';
+            return;
+        }
+
         filtered.forEach(q => {
             const userChoice = userAnswers[q.id];
             const isSaved = savedSet.has(q.id);
@@ -401,25 +402,26 @@
             card.className = 'question-note';
             card.innerHTML = `
                 <div class="note-header">
-                    <div><span class="badge-topic"><i class="fas fa-microchip"></i> ${q.topic}</span> <span class="year-badge ml-2">${q.year}</span> ${q.repeated ? '<span class="repeated-pyq ml-2"><i class="fas fa-fire"></i> MOST REPEATED</span>' : ''}</div>
+                    <div><span class="badge-topic"><i class="fas fa-microchip"></i> ${q.topic}</span> <span class="year-badge ml-2">${q.year || 'RRB PYQ'}</span> ${q.repeated ? '<span class="repeated-pyq ml-2"><i class="fas fa-fire"></i> MOST REPEATED</span>' : ''}</div>
                     <div><i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark save-icon" data-id="${q.id}" style="cursor:pointer; color:#eab308;"></i></div>
                 </div>
                 <div class="question-text">${applyHighlighting(q.text)}</div>
                 <div class="options-area" data-qid="${q.id}">
                     ${q.options.map(opt => `<div class="opt-item" data-opt="${opt.replace(/"/g, '&quot;')}">${applyHighlighting(opt)}</div>`).join('')}
                 </div>
-                <div class="flex justify-between px-6 pb-2">
+                <div class="flex justify-between items-center px-6 pb-3 flex-wrap gap-2">
                     <button class="btn-reveal reveal-btn" data-id="${q.id}"><i class="fas fa-eye"></i> Show Answer & Trick</button>
-                    <span class="one-liner"><i class="fas fa-lightbulb"></i> ${q.memoryNote || "RRB एक्सपेक्टेड"}</span>
+                    <span class="one-liner"><i class="fas fa-lightbulb text-yellow-600"></i> ${q.memoryTip || "📌 RRB Important Concept"}</span>
                 </div>
                 <div id="extra-${q.id}" class="memory-box hidden">
-                    <div><i class="fas fa-check-circle text-green-600"></i> <strong>✅ उत्तर:</strong> ${q.correct}</div>
-                    <div><i class="fas fa-info-circle"></i> <strong>📖 व्याख्या:</strong> ${q.explanation}</div>
-                    <div class="trick-box"><i class="fas fa-magic"></i> <strong>📌 TRICK / Shortcut:</strong> ${q.trick || "याद रखें: " + (q.memoryNote || "Important PYQ")}</div>
-                    <div class="mt-1"><i class="fas fa-graduation-cap"></i> <strong>एक लाइनर:</strong> ${q.memoryNote || q.explanation.substring(0,80)}</div>
+                    <div><i class="fas fa-check-circle text-green-600"></i> <strong>✅ सही उत्तर:</strong> ${q.correct}</div>
+                    <div><i class="fas fa-info-circle text-blue-600"></i> <strong>📖 व्याख्या:</strong> ${q.explanation || "यह RRB परीक्षा में बार-बार पूछा गया प्रश्न है।"}</div>
+                    <div class="trick-box"><i class="fas fa-magic text-purple-600"></i> <strong>📌 TRICK / याद रखें:</strong> ${q.memoryTip || "इसे नोट करें और बार-बार दोहराएं"}</div>
+                    ${q.trick ? `<div class="mt-2"><i class="fas fa-brain"></i> <strong>Shortcut:</strong> ${q.trick}</div>` : ''}
                 </div>
             `;
             container.appendChild(card);
+            
             if(userChoice){
                 const optsDiv = card.querySelector(`.options-area`);
                 const items = optsDiv.querySelectorAll('.opt-item');
@@ -433,7 +435,7 @@
                     }
                 });
                 const extraDiv = document.getElementById(`extra-${q.id}`);
-                extraDiv.classList.remove('hidden');
+                if(extraDiv) extraDiv.classList.remove('hidden');
             }
         });
         attachOptionEvents();
@@ -447,28 +449,38 @@
             el.addEventListener('click', optHandler);
         });
     }
+
     function optHandler(e){
-        if(revisionOnly) return;
+        if(revisionOnly) {
+            alert("⚠️ Revision Mode is ON. Disable to attempt questions.");
+            return;
+        }
         const optDiv = e.currentTarget;
         const optText = optDiv.dataset.opt;
         const qid = parseInt(optDiv.closest('.options-area').dataset.qid);
-        const q = questions.find(qq => qq.id === qid);
-        if(userAnswers[qid]) return;
+        const q = questionsData.find(qq => qq.id === qid);
+        if(userAnswers[qid]) {
+            alert("You have already answered this question. Reset your progress to reattempt.");
+            return;
+        }
         userAnswers[qid] = optText;
         if(optText === q.correct){
             xpPoints += 10;
+            // Show brief feedback
         } else {
             xpPoints = Math.max(0, xpPoints-2);
         }
         updateStatsUI();
         renderQuestions();
     }
+
     function attachSaveEvents(){
         document.querySelectorAll('.save-icon').forEach(icon => {
             icon.removeEventListener('click', saveHandler);
             icon.addEventListener('click', saveHandler);
         });
     }
+
     function saveHandler(e){
         const qid = parseInt(e.currentTarget.dataset.id);
         if(savedSet.has(qid)) savedSet.delete(qid);
@@ -476,12 +488,14 @@
         updateStatsUI();
         renderQuestions();
     }
+
     function attachRevealEvents(){
         document.querySelectorAll('.reveal-btn').forEach(btn => {
             btn.removeEventListener('click', revealHandler);
             btn.addEventListener('click', revealHandler);
         });
     }
+
     function revealHandler(e){
         const qid = parseInt(e.currentTarget.dataset.id);
         const extraDiv = document.getElementById(`extra-${qid}`);
@@ -489,30 +503,44 @@
         else extraDiv.classList.add('hidden');
     }
 
-    // filter event handlers
-    document.getElementById('revisionOnlyBtn').addEventListener('click', () => { revisionOnly = true; renderQuestions(); updateStatsUI(); });
-    document.getElementById('resetAllBtn').addEventListener('click', () => { revisionOnly = false; currentTopic="all"; currentFilter="all"; searchTerm=""; document.getElementById('searchBox').value=""; document.getElementById('topicSelect').value="all"; renderQuestions(); });
-    document.getElementById('searchBox').addEventListener('input', (e) => { searchTerm = e.target.value.toLowerCase(); renderQuestions(); });
-    document.getElementById('topicSelect').addEventListener('change', (e) => { currentTopic = e.target.value; renderQuestions(); });
+    // Filter Event Listeners
+    document.getElementById('revisionOnlyBtn')?.addEventListener('click', () => { revisionOnly = true; renderQuestions(); updateStatsUI(); });
+    document.getElementById('resetAllBtn')?.addEventListener('click', () => { 
+        revisionOnly = false; currentTopic="all"; currentFilter="all"; searchTerm=""; 
+        document.getElementById('searchBox').value=""; 
+        document.getElementById('topicSelect').value="all"; 
+        renderQuestions(); 
+    });
+    document.getElementById('searchBox')?.addEventListener('input', (e) => { searchTerm = e.target.value.toLowerCase(); renderQuestions(); });
+    document.getElementById('topicSelect')?.addEventListener('change', (e) => { currentTopic = e.target.value; renderQuestions(); });
     document.querySelectorAll('[data-filter]').forEach(el => {
-        el.addEventListener('click', (e) => {
-            currentFilter = e.currentTarget.dataset.filter;
-            renderQuestions();
+        el.addEventListener('click', (e) => { 
+            currentFilter = e.currentTarget.dataset.filter; 
+            renderQuestions(); 
         });
     });
-    // populate topics
-    const topicsSet = new Set(questions.map(q => q.topic));
-    const topicSelect = document.getElementById('topicSelect');
-    const topicPills = document.getElementById('topicPills');
-    topicsSet.forEach(t => {
-        let opt = document.createElement('option'); opt.value=t; opt.innerText=t;
-        topicSelect.appendChild(opt);
-        let pill = document.createElement('div'); pill.className='topic-pill'; pill.innerText=t;
-        pill.addEventListener('click', () => { currentTopic = t; renderQuestions(); });
-        topicPills.appendChild(pill);
-    });
-    renderQuestions();
-    updateStatsUI();
+
+    // Populate topics from actual data
+    if(questionsData.length > 0){
+        const topicsSet = new Set(questionsData.map(q => q.topic));
+        const topicSelect = document.getElementById('topicSelect');
+        const topicPills = document.getElementById('topicPills');
+        topicsSet.forEach(t => {
+            let opt = document.createElement('option'); opt.value=t; opt.innerText=t;
+            topicSelect.appendChild(opt);
+            let pill = document.createElement('div'); pill.className='topic-pill'; pill.innerText=t;
+            pill.addEventListener('click', () => { currentTopic = t; renderQuestions(); });
+            topicPills.appendChild(pill);
+        });
+    }
+
+    // Initial render
+    if(questionsData.length > 0){
+        renderQuestions();
+        updateStatsUI();
+    } else {
+        document.getElementById('questionsList').innerHTML = '<div class="bg-yellow-50 p-8 rounded-2xl text-center"><i class="fas fa-database"></i> Loading questions... Make sure data.js is in the same folder and contains "rrbComputerPYQs" array.</div>';
+    }
 </script>
 </body>
 </html>
