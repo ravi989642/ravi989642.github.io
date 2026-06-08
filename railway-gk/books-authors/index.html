@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Books & Authors · Railway GK Reference (195 Questions)</title>
+    <title>📚 Books & Authors · Railway Exam Vault</title>
     <style>
         * {
             margin: 0;
@@ -12,350 +12,424 @@
         }
 
         body {
-            background: #f0f7fc;
-            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, Roboto, sans-serif;
-            padding: 2rem 1rem;
-            color: #1a2e3f;
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f8fafc 0%, #eef2f7 100%);
+            color: #0f172a;
+            padding: 1.5rem;
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
+        /* Header Section */
         .hero {
-            text-align: center;
-            margin-bottom: 1.8rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: "📖";
+            font-size: 12rem;
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
         .hero h1 {
             font-size: 2rem;
-            background: linear-gradient(135deg, #0f3b2c, #1e5a7a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        .hero p {
-            color: #2d6a4f;
+
+        .hero h1 span {
+            background: #f59e0b;
+            font-size: 1rem;
+            padding: 4px 14px;
+            border-radius: 40px;
             font-weight: 500;
-            margin-top: 0.3rem;
         }
 
         .stats-row {
             display: flex;
+            gap: 1.2rem;
+            margin-top: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.2rem 0 1rem;
-        }
-        .stat-badge {
-            background: white;
-            padding: 0.4rem 1.2rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #1f5e7e;
-            border: 1px solid #cde3ed;
         }
 
-        .filter-section {
+        .stat-badge {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Filter Tabs */
+        .filter-bar {
             background: white;
-            border-radius: 56px;
-            padding: 0.7rem 1.2rem;
-            margin-bottom: 2rem;
+            border-radius: 80px;
+            padding: 0.6rem;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
-            border: 1px solid #e2edf2;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
         }
-        .filter-chip {
-            background: #eef3f8;
-            padding: 0.45rem 1.2rem;
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.2rem;
             border-radius: 40px;
-            font-size: 0.8rem;
             font-weight: 600;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.2s;
-            color: #2c5a7a;
-            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            color: #334155;
+            font-family: inherit;
         }
-        .filter-chip.active {
-            background: #1e4668;
+
+        .filter-btn:hover {
+            background: #f1f5f9;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: #1e293b;
             color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 1.6rem;
+        /* Question Grid */
+        .questions-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .book-card {
+        /* Card */
+        .question-card {
             background: white;
-            border-radius: 28px;
+            border-radius: 1.5rem;
             overflow: hidden;
-            transition: 0.2s ease;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-            border: 1px solid #e2edf2;
-            height: 100%;
+            transition: all 0.25s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 1px solid #e9edf2;
         }
-        .book-card:hover {
+
+        .question-card:hover {
             transform: translateY(-3px);
-            border-color: #c5dae6;
+            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.12);
+            border-color: #cbd5e1;
         }
 
         .card-header {
-            padding: 1rem 1.4rem 0.4rem 1.4rem;
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #eef2ff;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
             flex-wrap: wrap;
-            gap: 8px;
-            border-bottom: 3px solid #eaf1f7;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
         }
-        .q-badge {
-            background: #e2edf6;
-            font-weight: 800;
+
+        .q-id {
+            font-weight: 700;
+            background: #e6f0ff;
+            padding: 4px 14px;
+            border-radius: 40px;
             font-size: 0.75rem;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            color: #1e5a7a;
+            color: #1e40af;
         }
-        .exam-tag {
-            font-size: 0.68rem;
-            background: #fef3e2;
-            color: #b4621a;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-weight: 600;
+
+        .q-exam {
+            font-size: 0.7rem;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: #475569;
         }
+
+        .category-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .cat-tag {
+            font-size: 0.65rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .cat-tag.sanskrit { background: #fef3c7; color: #92400e; }
+        .cat-tag.indian { background: #dcfce7; color: #166534; }
+        .cat-tag.foreign { background: #e0f2fe; color: #0369a1; }
+        .cat-tag.autobiography { background: #fce7f3; color: #9d174d; }
+        .cat-tag.rrb { background: #ffe4e6; color: #be123c; }
+        .cat-tag.rpf { background: #e9e9ff; color: #3730a3; }
 
         .card-body {
-            padding: 1.2rem 1.4rem;
+            padding: 1.5rem;
         }
 
-        .book-title {
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #0a3b55;
-            margin-bottom: 0.5rem;
-            border-left: 5px solid #2a9d8f;
-            padding-left: 12px;
-        }
-        .author-name {
-            background: #eef2fa;
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin: 5px 0 8px;
-            color: #1c6d5e;
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            line-height: 1.4;
         }
 
-        .correct-block {
-            background: linear-gradient(95deg, #dff1e8 0%, #cbe6da 100%);
-            padding: 12px 15px;
-            border-radius: 20px;
-            margin: 14px 0 12px;
-            border-left: 6px solid #2b9348;
-        }
-        .correct-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: #1c6d3b;
-        }
-        .correct-answer-text {
-            font-size: 1rem;
-            font-weight: 800;
-            color: #145c2e;
-        }
-
-        .deep-knowledge {
-            background: #fafeff;
-            border-radius: 20px;
+        .details {
+            background: #f1f5f9;
             padding: 1rem;
-            margin-top: 12px;
-            border: 1px solid #e3f0f5;
+            border-radius: 1rem;
+            margin: 0.75rem 0;
         }
-        .section-icon {
-            font-weight: 700;
-            font-size: 0.75rem;
-            color: #2c7a5e;
-            margin-bottom: 10px;
-            border-bottom: 2px dotted #cfe3ed;
-            padding-bottom: 5px;
-        }
-        .explanation-text {
-            font-size: 0.82rem;
-            line-height: 1.55;
-            color: #1f4662;
-            margin-bottom: 12px;
-        }
-        .bytes-grid {
+
+        .detail-row {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin: 12px 0;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
         }
-        .byte-item {
-            background: #f2f9fc;
-            padding: 8px 12px;
-            border-radius: 16px;
-            font-size: 0.78rem;
-            border-left: 4px solid #5fa7c2;
-        }
-        .memory-trick-box {
-            background: #fff7e5;
-            border-radius: 16px;
-            padding: 10px 14px;
-            margin-top: 12px;
-            border: 1px solid #ffe2b5;
-        }
-        .trick-title {
+
+        .label {
             font-weight: 700;
-            font-size: 0.7rem;
-            color: #b4682d;
+            min-width: 90px;
+            color: #334155;
         }
-        .cat-chip {
-            display: inline-block;
-            background: #e6edf4;
+
+        .answer {
+            color: #065f46;
+            font-weight: 600;
+            background: #d1fae5;
+            padding: 2px 8px;
             border-radius: 20px;
-            font-size: 0.6rem;
-            padding: 0.2rem 0.7rem;
-            margin-right: 6px;
-            margin-top: 8px;
-            color: #2e5e82;
+            display: inline-block;
         }
-        .footer-note {
+
+        .explanation {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #2d3a4b;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 0.75rem;
+        }
+
+        /* empty state */
+        .empty-state {
+            text-align: center;
+            padding: 4rem;
+            background: white;
+            border-radius: 2rem;
+            color: #64748b;
+        }
+
+        footer {
             text-align: center;
             margin-top: 3rem;
-            font-size: 0.75rem;
-            color: #6c8da3;
-            border-top: 1px solid #d9e3ea;
-            padding-top: 1.8rem;
+            padding: 1.5rem;
+            color: #5b6e8c;
+            font-size: 0.8rem;
         }
-        @media (max-width: 700px) {
-            .cards-grid { grid-template-columns: 1fr; }
+
+        @media (max-width: 680px) {
+            body { padding: 1rem; }
+            .hero h1 { font-size: 1.5rem; }
+            .filter-bar { border-radius: 28px; }
+            .filter-btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
+            .question-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="hero">
-        <h1>📚 Books & Authors · Railway Exam Vault</h1>
-        <p>195 previous year questions | RPF, RRB NTPC, ALP, JE | category filter</p>
-    </div>
-    <div class="stats-row">
-        <div class="stat-badge" id="totalDisplay">📖 Total: 195</div>
-        <div class="stat-badge">🎯 7 Categories</div>
-        <div class="stat-badge">✨ Color coded for easy memory</div>
-    </div>
-
-    <div class="filter-section" id="filterContainer">
-        <div class="filter-chip active" data-filter="all">✨ All</div>
-        <div class="filter-chip" data-filter="Indian Authors">🇮🇳 Indian Authors</div>
-        <div class="filter-chip" data-filter="Foreign Authors">🌍 Foreign Authors</div>
-        <div class="filter-chip" data-filter="Autobiographies">📖 Autobiographies</div>
-        <div class="filter-chip" data-filter="Sanskrit Texts">🕉️ Sanskrit Texts</div>
-        <div class="filter-chip" data-filter="RRB NTPC">🚂 RRB NTPC</div>
-        <div class="filter-chip" data-filter="RPF">🛡️ RPF</div>
+        <h1>
+            📚 Books & Authors 
+            <span>Railway Exam Vault</span>
+        </h1>
+        <div class="stats-row">
+            <div class="stat-badge">📖 Total: <span id="totalCount">0</span></div>
+            <div class="stat-badge">🎯 7 Categories</div>
+            <div class="stat-badge">✨ Color coded for easy memory</div>
+        </div>
     </div>
 
-    <div id="cardsGrid" class="cards-grid"></div>
-    <div class="footer-note">
-        💡 Each card shows: Book → Author → Correct Answer → Deep Explanation + Quick Memory Bytes + Memory Trick
+    <!-- Dynamic filter tabs will be inserted here -->
+    <div class="filter-bar" id="filterContainer"></div>
+
+    <!-- Questions will be injected here -->
+    <div id="questionsContainer" class="questions-grid">
+        <div class="empty-state">📌 Loading 195+ previous year questions...</div>
     </div>
+    <footer>
+        ⚡ Based on RPF SI, RRB NTPC, ALP, JE PYQs | 📖 सभी प्रश्न पिछली परीक्षाओं पर आधारित
+    </footer>
 </div>
 
-<script>
-    const questionsData = [
-        { id: 9802, book: "सूर्य सिद्धांत", author: "आर्यभट्ट", correctAns: "सूर्य सिद्धांत", exam: "RPF SI 2019 Shift 2", categories: ["Sanskrit Texts","RRB NTPC","RPF"], explanation: "सूर्य सिद्धांत एक प्राचीन भारतीय खगोलीय ग्रंथ है। इसमें ग्रहों की गति, सूर्यग्रहण, चंद्रग्रहण और समय गणना का वर्णन है।", oneLiners: ["सूर्य सिद्धांत → खगोल विज्ञान", "रचयिता → आर्यभट्ट", "सुश्रुत संहिता → शल्य चिकित्सा", "चरक संहिता → आयुर्वेद"], memoryTrick: "🧠 'सूरज = खगोल' → सूर्य सिद्धांत = खगोल विज्ञान" },
-        { id: 9803, book: "अनब्रेकेबल", author: "मैरी कॉम", correctAns: "मैरी कॉम", exam: "RPF SI 2018", categories: ["Autobiographies","Foreign Authors","RPF"], explanation: "मैरी कॉम की आत्मकथा, 6 बार विश्व चैंपियन मुक्केबाज।", oneLiners: ["मैरी कॉम → मुक्केबाजी", "सह-लेखिका → सुधा मेनन", "6 विश्व खिताब"], memoryTrick: "🧠 'मैरी = मुक्केबाजी' → दोनों 'म' से शुरू" },
-        { id: 9804, book: "जीवन स्मृति", author: "रवीन्द्रनाथ टैगोर", correctAns: "रवीन्द्रनाथ टैगोर", exam: "RPF SI 2018", categories: ["Indian Authors","Autobiographies","RPF"], explanation: "टैगोर की आत्मकथा, 1912 में प्रकाशित। नोबेल पुरस्कार विजेता।", oneLiners: ["टैगोर → नोबेल 1913", "गीतांजलि → नोबेल कृति", "राष्ट्रगान के रचयिता"], memoryTrick: "🧠 टैगोर = जीवन स्मृति (जीवन भर की यादें)" },
-        { id: 9805, book: "वेल्थ ऑफ नेशंस", author: "एडम स्मिथ", correctAns: "एडम स्मिथ", exam: "RPF SI 2018", categories: ["Foreign Authors","RRB NTPC"], explanation: "अर्थशास्त्र का आधार ग्रंथ, 1776 में प्रकाशित। अदृश्य हाथ का सिद्धांत।", oneLiners: ["एडम स्मिथ → अर्थशास्त्र के जनक", "अदृश्य हाथ का सिद्धांत", "प्रकाशन 1776"], memoryTrick: "🧠 'वेल्थ' = धन → स्मिथ = धन के जनक" }
-    ];
+<!-- Data file (must be in same folder) -->
+<script src="data.js"></script>
 
-    // Generate remaining questions to reach 195
-    for (let i = 9806; i <= 9996; i++) {
-        if (!questionsData.some(q => q.id === i)) {
-            let cats = ["RRB NTPC"];
-            if (i % 5 === 0) cats.push("Indian Authors");
-            if (i % 7 === 0) cats.push("Sanskrit Texts");
-            if (i % 11 === 0) cats.push("Foreign Authors");
-            if (i % 13 === 0) cats.push("Autobiographies");
-            if (i >= 9845 && i <= 9870) cats.push("RPF");
-            questionsData.push({
-                id: i, seq: 0,
-                book: i % 3 === 0 ? "प्रसिद्ध साहित्यिक कृति" : "प्राचीन रचना",
-                author: i % 2 === 0 ? "प्राचीन आचार्य" : "आधुनिक लेखक",
-                correctAns: i % 2 === 0 ? "प्राचीन आचार्य" : "आधुनिक लेखक",
-                exam: (i % 2 === 0) ? "RRB NTPC CBT-I" : "RPF SI",
-                categories: cats,
-                explanation: "यह RRB परीक्षा में पूछा गया महत्वपूर्ण प्रश्न है। पुस्तक और लेखक का संबंध याद रखें।",
-                oneLiners: ["परीक्षा उपयोगी तथ्य", "बार-बार पूछा जाता है"],
-                memoryTrick: "🧠 लेखक और पुस्तक के नाम को जोड़कर याद करें"
+<script>
+    (function() {
+        // Ensure questionsData exists (from data.js)
+        if (typeof questionsData === 'undefined') {
+            document.getElementById('questionsContainer').innerHTML = '<div class="empty-state">❌ data.js not found. Please ensure data.js is in the same directory.</div>';
+            return;
+        }
+
+        // ----- Helper: get unique categories from all questions -----
+        const allQuestions = questionsData;
+        const uniqueCategoriesSet = new Set();
+        allQuestions.forEach(q => {
+            if (q.category && Array.isArray(q.category)) {
+                q.category.forEach(cat => uniqueCategoriesSet.add(cat));
+            }
+        });
+        // sort and add "✨ All" as first option
+        let categoryList = Array.from(uniqueCategoriesSet).sort();
+        // Prettify some category names if needed
+        const categoryMap = {
+            "Sanskrit Texts": "🕉️ Sanskrit Texts",
+            "Indian Authors": "🇮🇳 Indian Authors",
+            "Foreign Authors": "🌍 Foreign Authors",
+            "Autobiographies": "📖 Autobiographies",
+            "RRB NTPC": "🚂 RRB NTPC",
+            "RPF": "🛡️ RPF"
+        };
+        const displayCategories = ["✨ All", ...categoryList.map(c => categoryMap[c] || c)];
+
+        // current active filter (store the raw category value, for 'All' it's null)
+        let activeFilterRaw = null; // null means ALL
+
+        // function to assign proper raw category from display text
+        function getRawCategoryFromDisplay(displayText) {
+            if (displayText === "✨ All") return null;
+            // reverse mapping
+            for (let [raw, pretty] of Object.entries(categoryMap)) {
+                if (pretty === displayText) return raw;
+            }
+            return displayText; // fallback
+        }
+
+        // Render filter buttons
+        const filterContainer = document.getElementById('filterContainer');
+        function renderFilters() {
+            filterContainer.innerHTML = '';
+            displayCategories.forEach(displayCat => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                if ((activeFilterRaw === null && displayCat === "✨ All") || 
+                    (activeFilterRaw !== null && categoryMap[activeFilterRaw] === displayCat)) {
+                    btn.classList.add('active');
+                }
+                btn.textContent = displayCat;
+                btn.addEventListener('click', () => {
+                    activeFilterRaw = getRawCategoryFromDisplay(displayCat);
+                    renderFilters();    // re-render active style
+                    renderQuestions();  // re-render cards
+                });
+                filterContainer.appendChild(btn);
             });
         }
-    }
 
-    const finalList = questionsData.sort((a,b) => a.id - b.id).slice(0,195);
-    finalList.forEach((item, idx) => { item.seq = idx + 1; });
-
-    const grid = document.getElementById('cardsGrid');
-    let activeFilter = 'all';
-
-    function renderCards() {
-        let filtered = finalList;
-        if (activeFilter !== 'all') {
-            filtered = finalList.filter(item => item.categories.includes(activeFilter));
-        }
-        grid.innerHTML = '';
-        filtered.forEach(item => {
-            const chips = item.categories.map(c => `<span class="cat-chip">${c}</span>`).join('');
-            const bytesHtml = item.oneLiners.map(line => `<div class="byte-item">⚡ ${line}</div>`).join('');
+        // Render question cards
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            let filtered = [...allQuestions];
             
-            grid.innerHTML += `
-                <div class="book-card">
-                    <div class="card-header">
-                        <span class="q-badge">📌 Q${item.seq}</span>
-                        <span class="exam-tag">${item.exam.substring(0, 50)}</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="book-title">📖 ${item.book}</div>
-                        <div><span class="author-name">✍️ ${item.author}</span></div>
-                        <div class="correct-block">
-                            <div class="correct-label">✔️ सही उत्तर / CORRECT ANSWER</div>
-                            <div class="correct-answer-text">✅ ${item.correctAns}</div>
+            if (activeFilterRaw !== null) {
+                filtered = filtered.filter(q => q.category && q.category.includes(activeFilterRaw));
+            }
+            
+            // update total count in hero
+            document.getElementById('totalCount').innerText = filtered.length;
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty-state">🧐 No questions match this category. Try another filter!</div>';
+                return;
+            }
+            
+            let html = '';
+            filtered.forEach(q => {
+                // create category tags with proper styling
+                let catsHtml = '';
+                if (q.category && Array.isArray(q.category)) {
+                    catsHtml = q.category.map(cat => {
+                        let extraClass = '';
+                        if (cat === 'Sanskrit Texts') extraClass = 'sanskrit';
+                        else if (cat === 'Indian Authors') extraClass = 'indian';
+                        else if (cat === 'Foreign Authors') extraClass = 'foreign';
+                        else if (cat === 'Autobiographies') extraClass = 'autobiography';
+                        else if (cat === 'RRB NTPC') extraClass = 'rrb';
+                        else if (cat === 'RPF') extraClass = 'rpf';
+                        return `<span class="cat-tag ${extraClass}">${cat}</span>`;
+                    }).join('');
+                }
+                
+                // exam source (default if missing)
+                const examInfo = q.exam || (q.id ? `RRB NTPC / RPF Shift` : 'PYQ');
+                
+                html += `
+                    <div class="question-card">
+                        <div class="card-header">
+                            <div class="q-id">📌 Q${q.id}</div>
+                            <div class="q-exam">${examInfo}</div>
+                            <div class="category-tags">${catsHtml}</div>
                         </div>
-                        <div class="deep-knowledge">
-                            <div class="section-icon">📖 DEEP EXPLANATION</div>
-                            <div class="explanation-text">${item.explanation}</div>
-                            <div class="section-icon">⚡ QUICK MEMORY BYTES</div>
-                            <div class="bytes-grid">${bytesHtml}</div>
-                            <div class="memory-trick-box">
-                                <div class="trick-title">🧠 MEMORY TRICK</div>
-                                <div class="explanation-text">${item.memoryTrick}</div>
+                        <div class="card-body">
+                            <div class="question-text">📖 ${q.text || q.book ? q.book : 'प्रश्न'}</div>
+                            <div class="details">
+                                <div class="detail-row">
+                                    <span class="label">✍️ लेखक / AUTHOR :</span>
+                                    <span>${q.author || '—'}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">📚 पुस्तक / BOOK :</span>
+                                    <span>${q.book || '—'}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">✔️ सही उत्तर :</span>
+                                    <span class="answer">${q.answer || q.author || '✓'}</span>
+                                </div>
+                                ${q.explanation ? `<div class="explanation">📖 DEEP EXPLANATION<br>${q.explanation}</div>` : ''}
                             </div>
                         </div>
-                        <div>${chips}</div>
                     </div>
-                </div>
-            `;
-        });
-    }
-
-    document.querySelectorAll('.filter-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            activeFilter = chip.getAttribute('data-filter');
-            renderCards();
-        });
-    });
-
-    renderCards();
+                `;
+            });
+            container.innerHTML = html;
+        }
+        
+        // initial rendering
+        renderFilters();
+        renderQuestions();
+    })();
 </script>
 </body>
 </html>
