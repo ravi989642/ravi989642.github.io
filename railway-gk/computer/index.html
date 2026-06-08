@@ -3,334 +3,1035 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RRB COMPUTER PYQ NOTEBOOK | Smart Revision</title>
+    <title>RRB Computer PYQ Notebook | Smart Revision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1e3c72;
+            --primary-light: #2a5298;
+            --accent: #f97316;
+            --accent-light: #ffedd5;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --bg: #f0f4f8;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --sidebar-width: 280px;
         }
 
         body {
-            background: #f0f4f8;
+            background: var(--bg);
             background-image: linear-gradient(145deg, #f8fafc 0%, #eef2f6 100%);
             font-family: 'Nunito', 'Inter', sans-serif;
-            color: #1a2c3e;
+            color: var(--text);
             line-height: 1.5;
         }
 
-        /* Study Notes Style - Clean, Colorful, High Contrast */
+        /* ========== SIDEBAR NAVIGATION ========== */
+        .app-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-header p {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+        }
+
+        .nav-tree {
+            padding: 1rem 0;
+        }
+
+        .nav-topic {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-topic-header {
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-topic-header:hover {
+            background: rgba(255,255,255,0.05);
+            border-left-color: var(--accent);
+        }
+
+        .nav-topic-header.active {
+            background: rgba(249, 115, 22, 0.15);
+            border-left-color: var(--accent);
+            color: #fdba74;
+        }
+
+        .nav-topic-header i.toggle-icon {
+            transition: transform 0.2s;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .nav-topic-header.expanded i.toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        .nav-subtopics {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0,0,0,0.15);
+        }
+
+        .nav-subtopics.open {
+            max-height: 500px;
+        }
+
+        .nav-subtopic {
+            padding: 0.5rem 1.5rem 0.5rem 2.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 2px solid transparent;
+        }
+
+        .nav-subtopic:hover {
+            color: white;
+            background: rgba(255,255,255,0.03);
+            border-left-color: #60a5fa;
+        }
+
+        .nav-subtopic.active {
+            color: #60a5fa;
+            background: rgba(96, 165, 250, 0.1);
+            border-left-color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .subtopic-count {
+            background: rgba(255,255,255,0.1);
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: center;
+        }
+
+        /* Mobile sidebar toggle */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 200;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            min-width: 0;
+        }
+
         .notebook-container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 1.5rem 2rem 3rem;
         }
 
-        /* Header with colorful gradient */
+        /* Header */
         .revision-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border-radius: 1.5rem;
-            padding: 2rem 2rem;
+            padding: 2rem 2.5rem;
             box-shadow: 0 15px 35px -12px rgba(0,0,0,0.2);
             margin-bottom: 2rem;
             border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .revision-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: -0.5px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .header-subtitle {
+            color: #cbd5e1;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            position: relative;
         }
 
         .badge-topic {
-            background: #e8f0fe;
-            padding: 0.25rem 0.9rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.35rem 1rem;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #1e40af;
-            display: inline-block;
-        }
-        .year-badge {
-            background: #fef3c7;
-            color: #b45309;
-            border-radius: 20px;
-            padding: 0.2rem 0.8rem;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        .repeated-pyq {
-            background: #ffedd5;
-            color: #ea580c;
-            border-left: 4px solid #f97316;
-            padding: 0.2rem 0.7rem;
-            border-radius: 0 20px 20px 0;
-            font-weight: bold;
+            color: #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* Question Card - Like Premium Coaching Notes */
-        .question-note {
-            background: #ffffff;
-            border-radius: 1.2rem;
+        .repeated-pyq {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            border-radius: 20px;
+            padding: 0.35rem 1rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: inline-flex;
+        }
+
+        .breadcrumb .active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .breadcrumb i {
+            font-size: 0.6rem;
+            color: #cbd5e1;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-chip {
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .stat-chip i { font-size: 0.9rem; }
+        .stat-chip .text-green { color: var(--success); }
+        .stat-chip .text-orange { color: var(--accent); }
+        .stat-chip .text-yellow { color: #eab308; }
+        .stat-chip .text-purple { color: #9333ea; }
+        .stat-chip .text-blue { color: #3b82f6; }
+        .stat-chip .text-red { color: var(--danger); }
+
+        .btn-filter {
+            background: #fff7ed;
+            border: 1px solid #ffedd5;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #c2410c;
+            cursor: pointer;
             transition: all 0.2s;
-            border: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-filter:hover, .btn-filter.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+        }
+
+        /* Search & Filter Strip */
+        .filter-strip {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        input, select {
+            border-radius: 40px !important;
+            border: 1px solid var(--border) !important;
+            padding: 0.6rem 1rem 0.6rem 2.5rem !important;
+            background: #f8fafc !important;
+            width: 100%;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        select {
+            padding-left: 1rem !important;
+            cursor: pointer;
+        }
+
+        .filter-chip {
+            background: #f1f5f9;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .filter-chip:hover {
+            background: #e2e8f0;
+        }
+
+        .filter-chip.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+        }
+
+        /* Subtopic Section Header */
+        .subtopic-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .subtopic-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .subtopic-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .subtopic-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .subtopic-meta {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-left: auto;
+            background: #f1f5f9;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Question Cards */
+        .question-note {
+            background: var(--card);
+            border-radius: 1.2rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: all 0.25s ease;
+            border: 1px solid var(--border);
             overflow: hidden;
         }
+
         .question-note:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.12);
+            border-color: #cbd5e1;
         }
+
         .note-header {
-            background: #fafcff;
+            background: linear-gradient(135deg, #fafcff, #f8fafc);
             padding: 0.9rem 1.5rem;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid var(--border);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            gap: 0.5rem;
         }
+
+        .note-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .year-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border-radius: 20px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .subtopic-badge {
+            background: #e0e7ff;
+            color: #4338ca;
+            border-radius: 20px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .difficulty-badge {
+            background: #f3f4f6;
+            color: #6b7280;
+            border-radius: 20px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .difficulty-easy { background: #dcfce7; color: #166534; }
+        .difficulty-medium { background: #fef9c3; color: #854d0e; }
+        .difficulty-hard { background: #fee2e2; color: #991b1b; }
+
         .question-text {
-            padding: 1.2rem 1.5rem;
+            padding: 1.25rem 1.5rem;
             font-size: 1.05rem;
             font-weight: 500;
-            background: #ffffff;
-            line-height: 1.55;
-            color: #1e293b;
+            background: var(--card);
+            line-height: 1.6;
+            color: var(--text);
         }
 
-        /* Smart Highlighting System */
-        .hl-cpu { background: #dbeafe; color: #1e3a8a; font-weight: 700; border-radius: 12px; padding: 0 6px; display: inline-block; }
-        .hl-ram { background: #f3e8ff; color: #6b21a5; font-weight: 700; border-radius: 12px; padding: 0 6px; }
-        .hl-rom { background: #ffedd5; color: #b45309; font-weight: 700; border-radius: 12px; padding: 0 6px; }
-        .hl-www { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: #2dd4bf; font-weight: 700; }
-        .hl-virus { background: #ffe4e4; color: #b91c1c; border-radius: 12px; padding: 0 6px; font-weight: 700; }
-        .hl-key { background: #fef9c3; color: #854d0e; border-radius: 12px; padding: 0 6px; font-family: monospace; font-weight: bold; }
-        .hl-unit { background: #d1fae5; color: #065f46; border-radius: 12px; padding: 0 6px; }
-        .hl-def { background: #e0f2fe; color: #0369a1; border-radius: 12px; padding: 0 6px; font-weight: 600; }
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
 
+        /* Options */
         .options-area {
             padding: 0.5rem 1.5rem 1rem;
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
         }
+
         .opt-item {
             background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
-            padding: 0.7rem 1rem;
-            transition: 0.1s;
+            padding: 0.85rem 1.1rem;
+            transition: all 0.15s;
             cursor: pointer;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
+
         .opt-item:hover {
             background: #f1f5f9;
             border-color: #cbd5e1;
-        }
-        .opt-item.correct-selected {
-            background: #bbf7d0;
-            border-left: 8px solid #22c55e;
-            font-weight: bold;
-        }
-        .opt-item.wrong-selected {
-            background: #fee2e2;
-            border-left: 8px solid #ef4444;
-            text-decoration: line-through;
+            transform: translateX(4px);
         }
 
-        /* Memory Boxes - Sticky Notes Style */
-        .memory-box {
-            background: #fffbeb;
-            border-radius: 1rem;
-            margin: 0.5rem 1.5rem 1.5rem;
-            padding: 1rem;
-            border-left: 6px solid #f59e0b;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        .opt-item.correct-selected {
+            background: #bbf7d0;
+            border-color: var(--success);
+            border-left: 6px solid var(--success);
+            font-weight: bold;
+            color: #166534;
         }
-        .trick-box {
-            background: #e6f7f0;
-            border-left: 6px solid #10b981;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin-top: 0.7rem;
+
+        .opt-item.wrong-selected {
+            background: #fee2e2;
+            border-color: var(--danger);
+            border-left: 6px solid var(--danger);
+            text-decoration: line-through;
+            color: #991b1b;
         }
+
+        .opt-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .opt-item:hover .opt-letter {
+            background: var(--primary);
+            color: white;
+        }
+
+        .opt-item.correct-selected .opt-letter {
+            background: var(--success);
+            color: white;
+        }
+
+        .opt-item.wrong-selected .opt-letter {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1.5rem 1rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn-reveal {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #b45309;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        .btn-reveal:hover {
+            background: linear-gradient(135deg, #fde68a, #fcd34d);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.25);
+        }
+
         .one-liner {
             font-family: monospace;
             background: #eef2ff;
             padding: 0.4rem 1rem;
             border-radius: 60px;
             font-size: 0.8rem;
-            display: inline-block;
-        }
-
-        .btn-reveal {
-            background: #fef3c7;
-            border: none;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-weight: bold;
-            color: #b45309;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-        .btn-reveal:hover {
-            background: #fde68a;
-        }
-
-        /* Filter Bar */
-        .filter-strip {
-            background: white;
-            border-radius: 60px;
-            padding: 0.6rem 1.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-        .filter-chip {
-            background: #f1f5f9;
-            padding: 0.4rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-        .filter-chip.active, .filter-chip:hover {
-            background: #fb923c;
-            color: white;
-        }
-        .topic-pill {
-            background: #fff3e3;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.1s;
-            border: 1px solid #fed7aa;
-        }
-        .topic-pill.active, .topic-pill:hover {
-            background: #f97316;
-            color: white;
-            border-color: #f97316;
-        }
-
-        /* Progress Card */
-        .progress-card {
-            background: linear-gradient(135deg, #fff9e8, #fff4e0);
-            padding: 0.8rem 1.5rem;
-            border-radius: 60px;
             display: inline-flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            border: 1px solid #ffe0b5;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            align-items: center;
+            gap: 0.4rem;
+            color: #4338ca;
+            font-weight: 600;
+        }
+
+        .save-icon {
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.2s;
+            color: #cbd5e1;
+        }
+
+        .save-icon:hover {
+            transform: scale(1.15);
+            color: #eab308;
+        }
+
+        .save-icon.saved {
+            color: #eab308;
+        }
+
+        /* Memory / Explanation Box */
+        .memory-box {
+            background: linear-gradient(135deg, #fffbeb, #fff7ed);
+            border-radius: 1rem;
+            margin: 0 1.5rem 1.25rem;
+            padding: 1.25rem;
+            border-left: 5px solid #f59e0b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            display: none;
+        }
+
+        .memory-box.visible {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .memory-box .answer-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .memory-box .answer-row .correct-ans {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .trick-box {
+            background: #e6f7f0;
+            border-left: 4px solid #10b981;
+            padding: 0.9rem 1rem;
+            border-radius: 0.75rem;
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .explanation-text {
+            color: #475569;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        /* Smart Highlighting */
+        .hl-cpu { background: #dbeafe; color: #1e3a8a; font-weight: 700; border-radius: 6px; padding: 0 4px; }
+        .hl-ram { background: #f3e8ff; color: #6b21a5; font-weight: 700; border-radius: 6px; padding: 0 4px; }
+        .hl-rom { background: #ffedd5; color: #b45309; font-weight: 700; border-radius: 6px; padding: 0 4px; }
+        .hl-www { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: #2dd4bf; font-weight: 700; }
+        .hl-virus { background: #ffe4e4; color: #b91c1c; border-radius: 6px; padding: 0 4px; font-weight: 700; }
+        .hl-key { background: #fef9c3; color: #854d0e; border-radius: 6px; padding: 0 4px; font-family: monospace; font-weight: bold; }
+        .hl-unit { background: #d1fae5; color: #065f46; border-radius: 6px; padding: 0 4px; font-weight: 600; }
+        .hl-def { background: #e0f2fe; color: #0369a1; border-radius: 6px; padding: 0 4px; font-weight: 600; }
+
+        /* Empty State */
+        .empty-state {
+            background: white;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+        }
+
+        /* Progress Ring */
+        .progress-ring-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .progress-ring {
+            width: 50px;
+            height: 50px;
+        }
+
+        .progress-ring circle {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .notebook-container {
+                padding: 1rem;
+            }
+            .revision-header {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 700px) {
-            .notebook-container { padding: 1rem; }
             .question-text { font-size: 0.95rem; }
+            .filter-strip { padding: 0.75rem; }
+            .subtopic-header { flex-wrap: wrap; }
+            .subtopic-meta { margin-left: 0; width: 100%; margin-top: 0.5rem; }
         }
-        .save-icon { cursor: pointer; font-size: 1.2rem; transition: 0.1s; }
-        .save-icon:hover { transform: scale(1.1); }
-        
-        input, select {
-            border-radius: 40px !important;
-            border: 1px solid #e2e8f0 !important;
-            padding: 0.5rem 1rem !important;
-            background: white !important;
+
+        /* Overlay for mobile sidebar */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
         }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #f97316 !important;
-            box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Scrollbar styling */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.3);
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-<div class="notebook-container">
-    <!-- Header -->
-    <div class="revision-header">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
-            <div>
-                <h1><i class="fas fa-graduation-cap"></i> RRB Computer PYQ Master</h1>
-                <p class="mt-1" style="color: #cbd5e1;"><i class="fas fa-star-of-life"></i> Most Repeated Railway Computer Questions | Topper's Revision Notes</p>
-            </div>
-            <div class="flex gap-3 mt-2">
-                <span class="badge-topic"><i class="far fa-clock"></i> Last Minute Revision</span>
-                <span class="repeated-pyq"><i class="fas fa-star"></i> RRB FAVORITE</span>
-            </div>
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-graduation-cap"></i> Study Planner</h2>
+            <p>RRB Computer PYQ Master</p>
         </div>
-    </div>
 
-    <!-- Stats -->
-    <div class="progress-card">
-        <span><i class="fas fa-check-circle text-green-600"></i> Attempted: <strong id="attemptCount">0</strong></span>
-        <span><i class="fas fa-chart-line text-orange-500"></i> Accuracy: <strong id="accuracyVal">0%</strong></span>
-        <span><i class="fas fa-bookmark text-yellow-600"></i> Saved: <strong id="savedCount">0</strong></span>
-        <span><i class="fas fa-bolt text-purple-600"></i> XP: <strong id="xpPoints">0</strong></span>
-        <button id="revisionOnlyBtn" class="filter-chip" style="background:#ffedd5;">📘 Revision Mode (Saved)</button>
-        <button id="resetAllBtn" class="filter-chip">⟳ Show All</button>
-    </div>
-
-    <!-- Filters -->
-    <div class="filter-strip">
-        <i class="fas fa-filter text-orange-500"></i>
-        <input type="text" id="searchBox" placeholder="🔍 Search keyword, shortcut, topic...">
-        <select id="topicSelect">
-            <option value="all">📚 All Topics</option>
-        </select>
-        <div id="quickFilters" class="flex gap-2">
-            <span data-filter="repeated" class="filter-chip">⭐ Most Repeated PYQ</span>
-            <span data-filter="shortcut" class="filter-chip">⌨️ Shortcut Keys</span>
-            <span data-filter="memory" class="filter-chip">🧠 Memory Units</span>
+        <div class="nav-tree" id="navTree">
+            <!-- Dynamically populated -->
         </div>
-    </div>
 
-    <!-- Topic Pills -->
-    <div id="topicPills" class="flex flex-wrap gap-2 mb-5"></div>
-    
-    <!-- Questions Container -->
-    <div id="questionsList"></div>
+        <div class="sidebar-footer">
+            <div style="margin-bottom: 0.5rem;">
+                <div class="progress-ring-container" style="justify-content: center; margin-bottom: 0.5rem;">
+                    <svg class="progress-ring" viewBox="0 0 50 50">
+                        <circle cx="25" cy="25" r="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                        <circle id="progressCircle" cx="25" cy="25" r="20" fill="none" stroke="#f97316" stroke-width="4" 
+                            stroke-dasharray="125.6" stroke-dashoffset="125.6" stroke-linecap="round" transform="rotate(-90 25 25)"/>
+                    </svg>
+                    <div style="text-align: left;">
+                        <div style="font-weight: 700; font-size: 1rem;" id="progressPercent">0%</div>
+                        <div style="font-size: 0.7rem; color: #94a3b8;">Completed</div>
+                    </div>
+                </div>
+            </div>
+            <p>Tap topics to filter by subcategory</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="notebook-container">
+            <!-- Header -->
+            <div class="revision-header">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: flex-start; gap: 1rem;">
+                    <div>
+                        <h1><i class="fas fa-book-open"></i> RRB Computer PYQ Master</h1>
+                        <p class="header-subtitle"><i class="fas fa-star-of-life"></i> Most Repeated Railway Computer Questions | Topper's Revision Notes</p>
+                    </div>
+                    <div class="header-badges">
+                        <span class="badge-topic"><i class="far fa-clock"></i> Last Minute Revision</span>
+                        <span class="repeated-pyq"><i class="fas fa-star"></i> RRB FAVORITE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb" id="breadcrumb">
+                <span><i class="fas fa-home"></i> All Topics</span>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-bar">
+                <div class="stat-chip"><i class="fas fa-check-circle text-green"></i> Attempted: <strong id="attemptCount">0</strong></div>
+                <div class="stat-chip"><i class="fas fa-chart-line text-orange"></i> Accuracy: <strong id="accuracyVal">0%</strong></div>
+                <div class="stat-chip"><i class="fas fa-bookmark text-yellow"></i> Saved: <strong id="savedCount">0</strong></div>
+                <div class="stat-chip"><i class="fas fa-bolt text-purple"></i> XP: <strong id="xpPoints">0</strong></div>
+                <div class="stat-chip"><i class="fas fa-layer-group text-blue"></i> Topics: <strong id="topicCount">0</strong></div>
+                <div class="stat-chip"><i class="fas fa-sitemap text-red"></i> Subtopics: <strong id="subtopicCount">0</strong></div>
+                <button id="revisionOnlyBtn" class="btn-filter">📘 Revision Mode</button>
+                <button id="resetAllBtn" class="btn-filter" style="background:#f1f5f9; color:#475569; border-color:#e2e8f0;">⟳ Show All</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-strip">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchBox" placeholder="Search keyword, shortcut, topic, subtopic...">
+                </div>
+                <select id="topicSelect">
+                    <option value="all">📚 All Topics</option>
+                </select>
+                <select id="subtopicSelect">
+                    <option value="all">📂 All Subtopics</option>
+                </select>
+                <div id="quickFilters" class="flex gap-2" style="display:flex; flex-wrap:wrap;">
+                    <span data-filter="repeated" class="filter-chip">⭐ Most Repeated</span>
+                    <span data-filter="shortcut" class="filter-chip">⌨️ Shortcuts</span>
+                    <span data-filter="memory" class="filter-chip">🧠 Memory</span>
+                    <span data-filter="unsolved" class="filter-chip">❓ Unsolved</span>
+                    <span data-filter="saved" class="filter-chip">🔖 Saved</span>
+                </div>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="questionsList"></div>
+        </div>
+    </main>
 </div>
 
 <!-- Load external data.js file -->
 <script src="data.js"></script>
 
 <script>
-    // ==================== APPLICATION STATE ====================
-    // Use the global variable 'rrbComputerPYQs' from data.js
-    // Fallback to empty array if not loaded
+    // ==================== DATA & STATE ====================
     let questionsData = (typeof rrbComputerPYQs !== 'undefined' && Array.isArray(rrbComputerPYQs)) 
         ? rrbComputerPYQs 
         : [];
-
-    // If no data loaded, show error
-    if(questionsData.length === 0) {
-        document.getElementById('questionsList').innerHTML = '<div class="bg-red-100 p-4 rounded-xl text-center">⚠️ Error: data.js not found or empty. Make sure data.js file is in same folder with variable "rrbComputerPYQs"</div>';
-    }
 
     let userAnswers = JSON.parse(localStorage.getItem('notebookAnswers')) || {};
     let savedSet = new Set(JSON.parse(localStorage.getItem('notebookSaved')) || []);
     let xpPoints = parseInt(localStorage.getItem('notebookXP')) || 0;
     let currentFilter = "all";
     let currentTopic = "all";
+    let currentSubtopic = "all";
     let searchTerm = "";
     let revisionOnly = false;
+    let expandedTopics = new Set();
 
-    // Smart highlighting function
-    function applyHighlighting(text){
+    // ==================== DATA STRUCTURE HELPERS ====================
+    function getTopicSubtopicMap() {
+        const map = {};
+        questionsData.forEach(q => {
+            const topic = q.topic || 'General';
+            const subtopic = q.subtopic || 'General';
+            if (!map[topic]) map[topic] = new Set();
+            map[topic].add(subtopic);
+        });
+        // Convert sets to sorted arrays
+        const result = {};
+        Object.keys(map).sort().forEach(topic => {
+            result[topic] = Array.from(map[topic]).sort();
+        });
+        return result;
+    }
+
+    function getSubtopicColor(subtopic) {
+        const colors = [
+            'linear-gradient(135deg, #3b82f6, #2563eb)',
+            'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+            'linear-gradient(135deg, #ec4899, #db2777)',
+            'linear-gradient(135deg, #f59e0b, #d97706)',
+            'linear-gradient(135deg, #10b981, #059669)',
+            'linear-gradient(135deg, #ef4444, #dc2626)',
+            'linear-gradient(135deg, #06b6d4, #0891b2)',
+            'linear-gradient(135deg, #84cc16, #65a30d)',
+        ];
+        let hash = 0;
+        for (let i = 0; i < subtopic.length; i++) {
+            hash = subtopic.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return colors[Math.abs(hash) % colors.length];
+    }
+
+    function getSubtopicIcon(subtopic) {
+        const iconMap = {
+            'CPU': 'fa-microchip',
+            'Memory': 'fa-memory',
+            'RAM': 'fa-memory',
+            'ROM': 'fa-compact-disc',
+            'Storage': 'fa-hdd',
+            'Input': 'fa-keyboard',
+            'Output': 'fa-desktop',
+            'Internet': 'fa-globe',
+            'Networking': 'fa-network-wired',
+            'Software': 'fa-code',
+            'Hardware': 'fa-server',
+            'OS': 'fa-windows',
+            'MS Office': 'fa-file-word',
+            'Shortcut': 'fa-keyboard',
+            'Virus': 'fa-bug',
+            'Security': 'fa-shield-alt',
+            'History': 'fa-history',
+            'Full Form': 'fa-font',
+            'Number System': 'fa-calculator',
+            'Data': 'fa-database',
+        };
+        const lower = subtopic.toLowerCase();
+        for (const [key, icon] of Object.entries(iconMap)) {
+            if (lower.includes(key.toLowerCase())) return icon;
+        }
+        return 'fa-folder';
+    }
+
+    // ==================== SMART HIGHLIGHTING ====================
+    function applyHighlighting(text) {
+        if (!text) return '';
         let t = text;
         const terms = [
             { pattern: /\bCPU\b/gi, class: 'hl-cpu' },
@@ -338,9 +1039,9 @@
             { pattern: /\bROM\b/gi, class: 'hl-rom' },
             { pattern: /\bWWW\b/gi, class: 'hl-www' },
             { pattern: /\b(वायरस|Virus|Trojan|Malware|मालवेयर)\b/gi, class: 'hl-virus' },
-            { pattern: /\b(Ctrl\+[A-Z]|F[0-9]{1,2}|Alt\+[A-Z0-9])\b/gi, class: 'hl-key' },
+            { pattern: /\b(Ctrl\+[A-Z]|F[0-9]{1,2}|Alt\+[A-Z0-9]|Shift\+[A-Z])\b/gi, class: 'hl-key' },
             { pattern: /\b(GB|MB|KB|TB|Nibble|बाइट|bit|पेटाबाइट|टेराबाइट)\b/gi, class: 'hl-unit' },
-            { pattern: /\b(हार्ड डिस्क|Firewall|Cache|SMPS|BIOS|ALU|माइक्रोप्रोसेसर|कैशे)\b/gi, class: 'hl-def' }
+            { pattern: /\b(हार्ड डिस्क|Firewall|Cache|SMPS|BIOS|ALU|माइक्रोप्रोसेसर|कैशे|मदरबोर्ड|Motherboard)\b/gi, class: 'hl-def' }
         ];
         terms.forEach(term => {
             t = t.replace(term.pattern, match => `<span class="${term.class}">${match}</span>`);
@@ -348,198 +1049,556 @@
         return t;
     }
 
-    function getFilteredQuestions(){
+    // ==================== FILTERING ====================
+    function getFilteredQuestions() {
         let filtered = [...questionsData];
-        if(revisionOnly) filtered = filtered.filter(q => savedSet.has(q.id));
-        if(currentTopic !== "all") filtered = filtered.filter(q => q.topic === currentTopic);
-        if(searchTerm) {
+
+        if (revisionOnly) filtered = filtered.filter(q => savedSet.has(q.id));
+        if (currentTopic !== "all") filtered = filtered.filter(q => (q.topic || 'General') === currentTopic);
+        if (currentSubtopic !== "all") filtered = filtered.filter(q => (q.subtopic || 'General') === currentSubtopic);
+
+        if (searchTerm) {
             const term = searchTerm.toLowerCase();
             filtered = filtered.filter(q => 
                 q.text.toLowerCase().includes(term) || 
-                q.options.some(opt=>opt.toLowerCase().includes(term)) || 
-                q.topic.toLowerCase().includes(term) ||
-                (q.memoryTip && q.memoryTip.toLowerCase().includes(term))
+                q.options.some(opt => opt.toLowerCase().includes(term)) || 
+                (q.topic && q.topic.toLowerCase().includes(term)) ||
+                (q.subtopic && q.subtopic.toLowerCase().includes(term)) ||
+                (q.memoryTip && q.memoryTip.toLowerCase().includes(term)) ||
+                (q.explanation && q.explanation.toLowerCase().includes(term))
             );
         }
-        if(currentFilter === "repeated") filtered = filtered.filter(q => q.repeated === true);
-        else if(currentFilter === "shortcut") filtered = filtered.filter(q => q.topic === "Shortcut Keys");
-        else if(currentFilter === "memory") filtered = filtered.filter(q => q.topic === "Memory Devices");
+
+        if (currentFilter === "repeated") filtered = filtered.filter(q => q.repeated === true);
+        else if (currentFilter === "shortcut") filtered = filtered.filter(q => q.topic === "Shortcut Keys" || q.subtopic === "Shortcut");
+        else if (currentFilter === "memory") filtered = filtered.filter(q => q.topic === "Memory Devices" || q.subtopic === "Memory");
+        else if (currentFilter === "unsolved") filtered = filtered.filter(q => !userAnswers[q.id]);
+        else if (currentFilter === "saved") filtered = filtered.filter(q => savedSet.has(q.id));
+
         return filtered;
     }
 
-    function updateStatsUI(){
+    // ==================== SIDEBAR RENDERING ====================
+    function renderSidebar() {
+        const navTree = document.getElementById('navTree');
+        if (!navTree) return;
+
+        const map = getTopicSubtopicMap();
+        navTree.innerHTML = '';
+
+        // "All Topics" item
+        const allItem = document.createElement('div');
+        allItem.className = 'nav-topic-header' + (currentTopic === 'all' ? ' active' : '');
+        allItem.innerHTML = `<span><i class="fas fa-th-large"></i> All Topics</span>`;
+        allItem.onclick = () => { 
+            currentTopic = 'all'; 
+            currentSubtopic = 'all';
+            expandedTopics.clear();
+            renderSidebar(); 
+            renderQuestions(); 
+            updateBreadcrumb();
+        };
+        navTree.appendChild(allItem);
+
+        Object.entries(map).forEach(([topic, subtopics]) => {
+            const topicDiv = document.createElement('div');
+            topicDiv.className = 'nav-topic';
+
+            const isActive = currentTopic === topic;
+            const isExpanded = expandedTopics.has(topic) || isActive;
+
+            const header = document.createElement('div');
+            header.className = 'nav-topic-header' + (isActive ? ' active' : '') + (isExpanded ? ' expanded' : '');
+            const totalQs = questionsData.filter(q => (q.topic || 'General') === topic).length;
+            header.innerHTML = `
+                <span><i class="fas fa-folder${isExpanded ? '-open' : ''}"></i> ${topic}</span>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span class="subtopic-count">${totalQs}</span>
+                    <i class="fas fa-chevron-right toggle-icon"></i>
+                </div>
+            `;
+
+            header.onclick = () => {
+                if (isExpanded) {
+                    expandedTopics.delete(topic);
+                } else {
+                    expandedTopics.add(topic);
+                }
+                renderSidebar();
+            };
+
+            // Click on text to filter by topic
+            header.querySelector('span').onclick = (e) => {
+                e.stopPropagation();
+                currentTopic = topic;
+                currentSubtopic = 'all';
+                expandedTopics.add(topic);
+                renderSidebar();
+                renderQuestions();
+                updateBreadcrumb();
+            };
+
+            topicDiv.appendChild(header);
+
+            const subList = document.createElement('div');
+            subList.className = 'nav-subtopics' + (isExpanded ? ' open' : '');
+
+            subtopics.forEach(sub => {
+                const count = questionsData.filter(q => (q.topic || 'General') === topic && (q.subtopic || 'General') === sub).length;
+                const subEl = document.createElement('div');
+                subEl.className = 'nav-subtopic' + (currentTopic === topic && currentSubtopic === sub ? ' active' : '');
+                subEl.innerHTML = `<span>${sub}</span><span class="subtopic-count">${count}</span>`;
+                subEl.onclick = () => {
+                    currentTopic = topic;
+                    currentSubtopic = sub;
+                    renderSidebar();
+                    renderQuestions();
+                    updateBreadcrumb();
+                    if (window.innerWidth <= 1024) toggleSidebar();
+                };
+                subList.appendChild(subEl);
+            });
+
+            topicDiv.appendChild(subList);
+            navTree.appendChild(topicDiv);
+        });
+    }
+
+    // ==================== BREADCRUMB ====================
+    function updateBreadcrumb() {
+        const bc = document.getElementById('breadcrumb');
+        if (!bc) return;
+
+        let html = '<span style="cursor:pointer;" onclick="resetAll()"><i class="fas fa-home"></i> All Topics</span>';
+
+        if (currentTopic !== 'all') {
+            html += ' <i class="fas fa-chevron-right"></i> <span class="active">' + currentTopic + '</span>';
+        }
+        if (currentSubtopic !== 'all') {
+            html += ' <i class="fas fa-chevron-right"></i> <span class="active">' + currentSubtopic + '</span>';
+        }
+        if (searchTerm) {
+            html += ' <i class="fas fa-chevron-right"></i> <span class="active">Search: "' + searchTerm + '"</span>';
+        }
+        if (currentFilter !== 'all') {
+            const filterNames = { repeated: 'Most Repeated', shortcut: 'Shortcuts', memory: 'Memory', unsolved: 'Unsolved', saved: 'Saved' };
+            html += ' <i class="fas fa-chevron-right"></i> <span class="active">' + (filterNames[currentFilter] || currentFilter) + '</span>';
+        }
+
+        bc.innerHTML = html;
+    }
+
+    // ==================== STATS & PROGRESS ====================
+    function updateStatsUI() {
         let attempted = Object.keys(userAnswers).length;
         let correct = 0;
-        for(let [id, ans] of Object.entries(userAnswers)){
+        for (let [id, ans] of Object.entries(userAnswers)) {
             let q = questionsData.find(qq => qq.id == id);
-            if(q && q.correct === ans) correct++;
+            if (q && q.correct === ans) correct++;
         }
-        let acc = attempted ? Math.round((correct/attempted)*100) : 0;
+        let acc = attempted ? Math.round((correct / attempted) * 100) : 0;
+
+        // Progress ring
+        const totalQs = questionsData.length;
+        const percent = totalQs ? Math.round((attempted / totalQs) * 100) : 0;
+        const circle = document.getElementById('progressCircle');
+        if (circle) {
+            const circumference = 2 * Math.PI * 20; // r=20
+            const offset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
         document.getElementById('attemptCount').innerText = attempted;
-        document.getElementById('accuracyVal').innerText = acc+"%";
+        document.getElementById('accuracyVal').innerText = acc + "%";
         document.getElementById('savedCount').innerText = savedSet.size;
         document.getElementById('xpPoints').innerText = xpPoints;
+        document.getElementById('progressPercent').innerText = percent + "%";
+
+        const map = getTopicSubtopicMap();
+        document.getElementById('topicCount').innerText = Object.keys(map).length;
+        let subCount = 0;
+        Object.values(map).forEach(arr => subCount += arr.length);
+        document.getElementById('subtopicCount').innerText = subCount;
+
         localStorage.setItem('notebookAnswers', JSON.stringify(userAnswers));
         localStorage.setItem('notebookSaved', JSON.stringify([...savedSet]));
         localStorage.setItem('notebookXP', xpPoints);
     }
 
-    function renderQuestions(){
+    // ==================== QUESTION RENDERING ====================
+    function renderQuestions() {
         const filtered = getFilteredQuestions();
         const container = document.getElementById('questionsList');
-        if(!container) return;
+        if (!container) return;
         container.innerHTML = '';
-        
-        if(filtered.length === 0){
-            container.innerHTML = '<div class="bg-gray-100 p-8 rounded-2xl text-center text-gray-500"><i class="fas fa-search"></i> No questions match your filter. Try resetting filters.</div>';
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-search"></i>
+                    <h3>No Questions Found</h3>
+                    <p>Try adjusting your filters or search terms. Click "Show All" to reset.</p>
+                </div>`;
             return;
         }
 
-        filtered.forEach(q => {
-            const userChoice = userAnswers[q.id];
-            const isSaved = savedSet.has(q.id);
-            const card = document.createElement('div');
-            card.className = 'question-note';
-            card.innerHTML = `
-                <div class="note-header">
-                    <div><span class="badge-topic"><i class="fas fa-microchip"></i> ${q.topic}</span> <span class="year-badge ml-2">${q.year || 'RRB PYQ'}</span> ${q.repeated ? '<span class="repeated-pyq ml-2"><i class="fas fa-fire"></i> MOST REPEATED</span>' : ''}</div>
-                    <div><i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark save-icon" data-id="${q.id}" style="cursor:pointer; color:#eab308;"></i></div>
-                </div>
-                <div class="question-text">${applyHighlighting(q.text)}</div>
-                <div class="options-area" data-qid="${q.id}">
-                    ${q.options.map(opt => `<div class="opt-item" data-opt="${opt.replace(/"/g, '&quot;')}">${applyHighlighting(opt)}</div>`).join('')}
-                </div>
-                <div class="flex justify-between items-center px-6 pb-3 flex-wrap gap-2">
-                    <button class="btn-reveal reveal-btn" data-id="${q.id}"><i class="fas fa-eye"></i> Show Answer & Trick</button>
-                    <span class="one-liner"><i class="fas fa-lightbulb text-yellow-600"></i> ${q.memoryTip || "📌 RRB Important Concept"}</span>
-                </div>
-                <div id="extra-${q.id}" class="memory-box hidden">
-                    <div><i class="fas fa-check-circle text-green-600"></i> <strong>✅ सही उत्तर:</strong> ${q.correct}</div>
-                    <div><i class="fas fa-info-circle text-blue-600"></i> <strong>📖 व्याख्या:</strong> ${q.explanation || "यह RRB परीक्षा में बार-बार पूछा गया प्रश्न है।"}</div>
-                    <div class="trick-box"><i class="fas fa-magic text-purple-600"></i> <strong>📌 TRICK / याद रखें:</strong> ${q.memoryTip || "इसे नोट करें और बार-बार दोहराएं"}</div>
-                    ${q.trick ? `<div class="mt-2"><i class="fas fa-brain"></i> <strong>Shortcut:</strong> ${q.trick}</div>` : ''}
-                </div>
-            `;
-            container.appendChild(card);
-            
-            if(userChoice){
-                const optsDiv = card.querySelector(`.options-area`);
-                const items = optsDiv.querySelectorAll('.opt-item');
-                items.forEach(item => {
-                    if(item.dataset.opt === userChoice){
-                        if(userChoice === q.correct) item.classList.add('correct-selected');
-                        else item.classList.add('wrong-selected');
-                    }
-                    if(item.dataset.opt === q.correct && userChoice !== q.correct){
-                        item.classList.add('correct-selected');
-                    }
+        // Group by subtopic if showing a topic or all
+        const groupBySubtopic = currentSubtopic === 'all';
+
+        if (groupBySubtopic) {
+            const groups = {};
+            filtered.forEach(q => {
+                const sub = q.subtopic || 'General';
+                if (!groups[sub]) groups[sub] = [];
+                groups[sub].push(q);
+            });
+
+            Object.entries(groups).forEach(([subtopic, questions]) => {
+                const section = document.createElement('div');
+                section.className = 'subtopic-section';
+
+                const color = getSubtopicColor(subtopic);
+                const icon = getSubtopicIcon(subtopic);
+                const solvedCount = questions.filter(q => userAnswers[q.id]).length;
+
+                section.innerHTML = `
+                    <div class="subtopic-header">
+                        <div class="subtopic-icon" style="background: ${color};">
+                            <i class="fas ${icon}"></i>
+                        </div>
+                        <div>
+                            <div class="subtopic-title">${subtopic}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-light);">${questions.length} questions</div>
+                        </div>
+                        <div class="subtopic-meta">
+                            <i class="fas fa-check-circle text-green"></i> ${solvedCount}/${questions.length} Solved
+                        </div>
+                    </div>
+                `;
+
+                questions.forEach((q, idx) => {
+                    section.appendChild(createQuestionCard(q, idx + 1));
                 });
-                const extraDiv = document.getElementById(`extra-${q.id}`);
-                if(extraDiv) extraDiv.classList.remove('hidden');
-            }
-        });
+
+                container.appendChild(section);
+            });
+        } else {
+            // Flat list when specific subtopic selected
+            filtered.forEach((q, idx) => {
+                container.appendChild(createQuestionCard(q, idx + 1));
+            });
+        }
+
         attachOptionEvents();
         attachSaveEvents();
         attachRevealEvents();
     }
 
-    function attachOptionEvents(){
+    function createQuestionCard(q, number) {
+        const userChoice = userAnswers[q.id];
+        const isSaved = savedSet.has(q.id);
+        const card = document.createElement('div');
+        card.className = 'question-note';
+
+        const diffClass = q.difficulty ? `difficulty-${q.difficulty}` : '';
+        const diffText = q.difficulty ? q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1) : '';
+
+        card.innerHTML = `
+            <div class="note-header">
+                <div class="note-badges">
+                    <span class="year-badge">${q.year || 'RRB PYQ'}</span>
+                    ${q.subtopic ? `<span class="subtopic-badge"><i class="fas fa-tag"></i> ${q.subtopic}</span>` : ''}
+                    ${q.repeated ? '<span class="repeated-pyq"><i class="fas fa-fire"></i> MOST REPEATED</span>' : ''}
+                    ${diffText ? `<span class="difficulty-badge ${diffClass}">${diffText}</span>` : ''}
+                </div>
+                <div>
+                    <i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark save-icon ${isSaved ? 'saved' : ''}" data-id="${q.id}"></i>
+                </div>
+            </div>
+            <div class="question-text">
+                <span class="question-number">${number}</span>
+                ${applyHighlighting(q.text)}
+            </div>
+            <div class="options-area" data-qid="${q.id}">
+                ${q.options.map((opt, i) => `
+                    <div class="opt-item" data-opt="${opt.replace(/"/g, '&quot;')}">
+                        <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
+                        <span>${applyHighlighting(opt)}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="action-bar">
+                <button class="btn-reveal reveal-btn" data-id="${q.id}">
+                    <i class="fas fa-eye"></i> Show Answer & Trick
+                </button>
+                <span class="one-liner">
+                    <i class="fas fa-lightbulb text-yellow-600"></i> ${q.memoryTip || "📌 RRB Important Concept"}
+                </span>
+            </div>
+            <div id="extra-${q.id}" class="memory-box">
+                <div class="answer-row">
+                    <i class="fas fa-check-circle text-green"></i>
+                    <strong>✅ Correct Answer:</strong> 
+                    <span class="correct-ans">${q.correct}</span>
+                </div>
+                <div class="explanation-text">
+                    <i class="fas fa-info-circle text-blue-600"></i>
+                    <strong>Explanation:</strong> ${q.explanation || "This is a frequently asked question in RRB exams."}
+                </div>
+                <div class="trick-box">
+                    <i class="fas fa-magic text-purple-600"></i>
+                    <strong>Memory Trick:</strong> ${q.memoryTip || "Note this down and revise regularly."}
+                </div>
+                ${q.trick ? `<div class="explanation-text" style="margin-top:0.75rem;">
+                    <i class="fas fa-brain"></i>
+                    <strong>Shortcut:</strong> ${q.trick}
+                </div>` : ''}
+            </div>
+        `;
+
+        // Apply answer state
+        if (userChoice) {
+            const optsDiv = card.querySelector('.options-area');
+            const items = optsDiv.querySelectorAll('.opt-item');
+            items.forEach(item => {
+                if (item.dataset.opt === userChoice) {
+                    if (userChoice === q.correct) item.classList.add('correct-selected');
+                    else item.classList.add('wrong-selected');
+                }
+                if (item.dataset.opt === q.correct && userChoice !== q.correct) {
+                    item.classList.add('correct-selected');
+                }
+            });
+            const extraDiv = card.querySelector(`#extra-${q.id}`);
+            if (extraDiv) extraDiv.classList.add('visible');
+        }
+
+        return card;
+    }
+
+    // ==================== EVENT HANDLERS ====================
+    function attachOptionEvents() {
         document.querySelectorAll('.opt-item').forEach(el => {
             el.removeEventListener('click', optHandler);
             el.addEventListener('click', optHandler);
         });
     }
 
-    function optHandler(e){
-        if(revisionOnly) {
-            alert("⚠️ Revision Mode is ON. Disable to attempt questions.");
+    function optHandler(e) {
+        if (revisionOnly) {
+            showToast("⚠️ Revision Mode is ON. Disable to attempt questions.");
             return;
         }
         const optDiv = e.currentTarget;
         const optText = optDiv.dataset.opt;
         const qid = parseInt(optDiv.closest('.options-area').dataset.qid);
         const q = questionsData.find(qq => qq.id === qid);
-        if(userAnswers[qid]) {
-            alert("You have already answered this question. Reset your progress to reattempt.");
+        if (userAnswers[qid]) {
+            showToast("You have already answered this. Reset progress to reattempt.");
             return;
         }
         userAnswers[qid] = optText;
-        if(optText === q.correct){
+        if (optText === q.correct) {
             xpPoints += 10;
-            // Show brief feedback
+            showToast("✅ Correct! +10 XP");
         } else {
-            xpPoints = Math.max(0, xpPoints-2);
+            xpPoints = Math.max(0, xpPoints - 2);
+            showToast("❌ Wrong! -2 XP. Correct answer revealed.");
         }
         updateStatsUI();
         renderQuestions();
     }
 
-    function attachSaveEvents(){
+    function attachSaveEvents() {
         document.querySelectorAll('.save-icon').forEach(icon => {
             icon.removeEventListener('click', saveHandler);
             icon.addEventListener('click', saveHandler);
         });
     }
 
-    function saveHandler(e){
+    function saveHandler(e) {
         const qid = parseInt(e.currentTarget.dataset.id);
-        if(savedSet.has(qid)) savedSet.delete(qid);
-        else savedSet.add(qid);
+        if (savedSet.has(qid)) {
+            savedSet.delete(qid);
+            showToast("🔖 Removed from saved");
+        } else {
+            savedSet.add(qid);
+            showToast("🔖 Saved for revision!");
+        }
         updateStatsUI();
         renderQuestions();
     }
 
-    function attachRevealEvents(){
+    function attachRevealEvents() {
         document.querySelectorAll('.reveal-btn').forEach(btn => {
             btn.removeEventListener('click', revealHandler);
             btn.addEventListener('click', revealHandler);
         });
     }
 
-    function revealHandler(e){
+    function revealHandler(e) {
         const qid = parseInt(e.currentTarget.dataset.id);
         const extraDiv = document.getElementById(`extra-${qid}`);
-        if(extraDiv.classList.contains('hidden')) extraDiv.classList.remove('hidden');
-        else extraDiv.classList.add('hidden');
+        if (extraDiv.classList.contains('visible')) {
+            extraDiv.classList.remove('visible');
+        } else {
+            extraDiv.classList.add('visible');
+        }
     }
 
-    // Filter Event Listeners
-    document.getElementById('revisionOnlyBtn')?.addEventListener('click', () => { revisionOnly = true; renderQuestions(); updateStatsUI(); });
-    document.getElementById('resetAllBtn')?.addEventListener('click', () => { 
-        revisionOnly = false; currentTopic="all"; currentFilter="all"; searchTerm=""; 
-        document.getElementById('searchBox').value=""; 
-        document.getElementById('topicSelect').value="all"; 
-        renderQuestions(); 
+    function showToast(message) {
+        // Simple toast notification
+        const existing = document.querySelector('.toast-notification');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s ease;
+            font-size: 0.9rem;
+        `;
+        toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) translateY(20px)';
+            setTimeout(() => toast.remove(), 300);
+        }, 2500);
+    }
+
+    // ==================== FILTERS & CONTROLS ====================
+    function resetAll() {
+        revisionOnly = false;
+        currentTopic = "all";
+        currentSubtopic = "all";
+        currentFilter = "all";
+        searchTerm = "";
+        expandedTopics.clear();
+        document.getElementById('searchBox').value = "";
+        document.getElementById('topicSelect').value = "all";
+        document.getElementById('subtopicSelect').value = "all";
+        document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('active'));
+        document.getElementById('revisionOnlyBtn').classList.remove('active');
+        renderSidebar();
+        renderQuestions();
+        updateBreadcrumb();
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('open');
+        document.getElementById('sidebarOverlay').classList.toggle('active');
+    }
+
+    // Event Listeners
+    document.getElementById('revisionOnlyBtn')?.addEventListener('click', function() {
+        revisionOnly = !revisionOnly;
+        this.classList.toggle('active');
+        renderQuestions();
+        updateBreadcrumb();
     });
-    document.getElementById('searchBox')?.addEventListener('input', (e) => { searchTerm = e.target.value.toLowerCase(); renderQuestions(); });
-    document.getElementById('topicSelect')?.addEventListener('change', (e) => { currentTopic = e.target.value; renderQuestions(); });
+
+    document.getElementById('resetAllBtn')?.addEventListener('click', resetAll);
+
+    document.getElementById('searchBox')?.addEventListener('input', (e) => {
+        searchTerm = e.target.value.toLowerCase();
+        renderQuestions();
+        updateBreadcrumb();
+    });
+
+    document.getElementById('topicSelect')?.addEventListener('change', (e) => {
+        currentTopic = e.target.value;
+        currentSubtopic = "all";
+        populateSubtopicSelect();
+        if (currentTopic !== 'all') expandedTopics.add(currentTopic);
+        renderSidebar();
+        renderQuestions();
+        updateBreadcrumb();
+    });
+
+    document.getElementById('subtopicSelect')?.addEventListener('change', (e) => {
+        currentSubtopic = e.target.value;
+        renderQuestions();
+        updateBreadcrumb();
+    });
+
     document.querySelectorAll('[data-filter]').forEach(el => {
-        el.addEventListener('click', (e) => { 
-            currentFilter = e.currentTarget.dataset.filter; 
-            renderQuestions(); 
+        el.addEventListener('click', (e) => {
+            const filter = e.currentTarget.dataset.filter;
+            if (currentFilter === filter) {
+                currentFilter = "all";
+                e.currentTarget.classList.remove('active');
+            } else {
+                currentFilter = filter;
+                document.querySelectorAll('[data-filter]').forEach(f => f.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+            }
+            renderQuestions();
+            updateBreadcrumb();
         });
     });
 
-    // Populate topics from actual data
-    if(questionsData.length > 0){
-        const topicsSet = new Set(questionsData.map(q => q.topic));
-        const topicSelect = document.getElementById('topicSelect');
-        const topicPills = document.getElementById('topicPills');
-        topicsSet.forEach(t => {
-            let opt = document.createElement('option'); opt.value=t; opt.innerText=t;
-            topicSelect.appendChild(opt);
-            let pill = document.createElement('div'); pill.className='topic-pill'; pill.innerText=t;
-            pill.addEventListener('click', () => { currentTopic = t; renderQuestions(); });
-            topicPills.appendChild(pill);
+    // ==================== DROPDOWNS ====================
+    function populateTopicSelect() {
+        const select = document.getElementById('topicSelect');
+        if (!select) return;
+        // Keep first option
+        select.innerHTML = '<option value="all">📚 All Topics</option>';
+        const topics = [...new Set(questionsData.map(q => q.topic || 'General'))].sort();
+        topics.forEach(t => {
+            const opt = document.createElement('option');
+            opt.value = t;
+            opt.innerText = t;
+            select.appendChild(opt);
         });
     }
 
-    // Initial render
-    if(questionsData.length > 0){
+    function populateSubtopicSelect() {
+        const select = document.getElementById('subtopicSelect');
+        if (!select) return;
+        select.innerHTML = '<option value="all">📂 All Subtopics</option>';
+
+        let subtopics = [];
+        if (currentTopic === 'all') {
+            subtopics = [...new Set(questionsData.map(q => q.subtopic || 'General'))].sort();
+        } else {
+            subtopics = [...new Set(questionsData.filter(q => (q.topic || 'General') === currentTopic).map(q => q.subtopic || 'General'))].sort();
+        }
+
+        subtopics.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s;
+            opt.innerText = s;
+            select.appendChild(opt);
+        });
+    }
+
+    // ==================== INITIALIZATION ====================
+    if (questionsData.length === 0) {
+        document.getElementById('questionsList').innerHTML = `
+            <div class="empty-state" style="border-left: 4px solid #ef4444;">
+                <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                <h3>data.js Not Found</h3>
+                <p>Make sure <code>data.js</code> is in the same folder and contains the <code>rrbComputerPYQs</code> array with <code>topic</code> and <code>subtopic</code> fields for each question.</p>
+            </div>`;
+    } else {
+        populateTopicSelect();
+        populateSubtopicSelect();
+        renderSidebar();
         renderQuestions();
         updateStatsUI();
-    } else {
-        document.getElementById('questionsList').innerHTML = '<div class="bg-yellow-50 p-8 rounded-2xl text-center"><i class="fas fa-database"></i> Loading questions... Make sure data.js is in the same folder and contains "rrbComputerPYQs" array.</div>';
+        updateBreadcrumb();
     }
 </script>
 </body>
