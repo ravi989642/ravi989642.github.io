@@ -97,6 +97,7 @@
             color: var(--primary);
         }
         .set-badge.done { background: #e8f5e9; color: #2e7d32; }
+        .set-badge.locked-badge { background: #e2e8f0; color: #64748b; }
         .set-title { padding: 0 1.2rem; }
         .set-title h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
         .set-title p { font-size: 0.8rem; color: var(--text-light); }
@@ -121,6 +122,7 @@
             color: white;
         }
         .btn-set:disabled { background: #cbd5e1; cursor: not-allowed; }
+        .btn-set:hover:not(:disabled) { background: var(--primary-dark); }
         .quiz-modal {
             position: fixed;
             top: 0;
@@ -141,6 +143,8 @@
             background: white;
             border-radius: 28px;
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .quiz-header {
             background: var(--primary);
@@ -151,6 +155,9 @@
             align-items: center;
             flex-wrap: wrap;
             border-radius: 28px 28px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 5;
         }
         .quiz-timer {
             background: var(--secondary);
@@ -159,7 +166,7 @@
             font-weight: bold;
             font-family: monospace;
         }
-        .quiz-body { padding: 1.5rem; max-height: 70vh; overflow-y: auto; }
+        .quiz-body { padding: 1.5rem; }
         .palette-grid {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -177,9 +184,11 @@
             font-weight: bold;
             cursor: pointer;
             border: 1px solid var(--border);
+            transition: all 0.2s;
         }
-        .palette-btn.current { background: var(--accent); color: white; }
-        .palette-btn.attempted { background: var(--primary); color: white; }
+        .palette-btn:hover { transform: scale(1.05); }
+        .palette-btn.current { background: var(--accent); color: white; border-color: var(--accent); }
+        .palette-btn.attempted { background: var(--primary); color: white; border-color: var(--primary); }
         .palette-btn.bookmarked { box-shadow: 0 0 0 2px var(--accent); }
         .question-text {
             background: #f8fafc;
@@ -187,6 +196,8 @@
             border-radius: 16px;
             margin: 1rem 0;
             border-left: 4px solid var(--primary);
+            font-size: 1.05rem;
+            line-height: 1.5;
         }
         .options-area { display: flex; flex-direction: column; gap: 0.8rem; margin: 1rem 0; }
         .option-item {
@@ -198,8 +209,9 @@
             align-items: center;
             gap: 12px;
             background: white;
+            transition: all 0.2s;
         }
-        .option-item:hover { border-color: var(--primary); background: #eef2ff; }
+        .option-item:hover { border-color: var(--primary); background: #eef2ff; transform: translateX(5px); }
         .option-item.selected { border-color: var(--primary); background: #e8eaf6; }
         .option-item.correct-highlight { border-color: #2e7d32; background: #e8f5e9; }
         .option-item.wrong-highlight { border-color: var(--secondary); background: #ffebee; }
@@ -210,8 +222,16 @@
             border-radius: 16px;
             margin-top: 1rem;
             border-left: 5px solid var(--accent);
+            line-height: 1.5;
         }
         .explanation-box.show { display: block; }
+        .extra-facts-list {
+            margin-top: 0.8rem;
+            padding-left: 1.2rem;
+            color: #b45309;
+            font-size: 0.9rem;
+        }
+        .extra-facts-list li { margin: 0.3rem 0; }
         .quiz-actions {
             display: flex;
             flex-wrap: wrap;
@@ -226,14 +246,18 @@
             font-weight: 600;
             cursor: pointer;
             background: #e2e8f0;
+            transition: all 0.2s;
         }
+        .quiz-btn:hover { transform: scale(1.02); opacity: 0.9; }
+        .quiz-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .quiz-btn.primary { background: var(--primary); color: white; }
         .quiz-btn.accent { background: var(--accent); color: white; }
         .close-icon {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0.8rem;
+            right: 0;
+            float: right;
+            background: rgba(0,0,0,0.5);
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -243,20 +267,26 @@
             cursor: pointer;
             color: white;
             font-weight: bold;
-            z-index: 10;
+            z-index: 20;
+            margin-right: 0.8rem;
+            margin-top: 0.8rem;
         }
+        .close-icon:hover { background: rgba(0,0,0,0.7); }
         .result-screen { text-align: center; padding: 2rem; }
-        .result-stats { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; }
+        .result-stats { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .result-stats div { background: #f1f5f9; padding: 1rem; border-radius: 16px; min-width: 100px; }
         @media (max-width: 550px) {
             .palette-grid { grid-template-columns: repeat(5, 1fr); }
-            .quiz-header { flex-direction: column; align-items: flex-start; }
+            .quiz-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
         }
+        .loading-spinner { text-align: center; padding: 2rem; font-size: 1.2rem; color: var(--primary); }
+        .error-message { color: red; text-align: center; padding: 2rem; }
     </style>
 </head>
 <body>
 
     <div class="breadcrumb">
-        <a href="../index.html">🏠 Home</a> <span>›</span>
+        <a href="#">🏠 Home</a> <span>›</span>
         <a href="#">🚂 Railway GK</a> <span>›</span>
         <strong>🏛️ Ancient History — प्राचीन इतिहास</strong>
     </div>
@@ -276,13 +306,13 @@
             <div class="filter-chip" data-filter="religion">🕉️ Buddhism & Jainism</div>
         </div>
         <div class="sets-grid" id="setsGrid">
-            <div style="text-align: center; padding: 2rem;">📚 Loading 12 Sets... Please wait</div>
+            <div class="loading-spinner">📚 Loading 12 Sets... Please wait</div>
         </div>
     </div>
 
     <div id="quizModal" class="quiz-modal">
         <div class="quiz-card">
-            <div class="close-icon" onclick="closeQuiz()">✕</div>
+            <div class="close-icon" onclick="window.closeQuiz()">✕</div>
             <div class="quiz-header">
                 <div><strong id="quizSetTitle">Loading...</strong><br><small>प्रश्न <span id="currentQNumber">1</span> / <span id="totalQCount">25</span></small></div>
                 <div class="quiz-timer" id="timerDisplay">25:00</div>
@@ -303,36 +333,50 @@
         let timerInterval = null;
         let timeSeconds = 0;
         let quizActive = false;
-        let setsLoaded = 0;
-        const totalSets = 12;
 
-        // Function to load all set files sequentially
+        // Function to load set file from questions folder
         function loadSetFile(setId) {
             return new Promise((resolve, reject) => {
+                // Check if already loaded
+                if (window.setsData && window.setsData[setId]) {
+                    resolve();
+                    return;
+                }
                 const script = document.createElement('script');
-                script.src = `questions/set${setId}.js?t=${Date.now()}`; // Add timestamp to avoid cache
+                script.src = `questions/set${setId}.js?t=${Date.now()}`;
                 script.onload = () => {
-                    console.log(`✅ Loaded set${setId}.js`);
+                    console.log(`✅ Loaded questions/set${setId}.js`);
                     resolve();
                 };
                 script.onerror = () => {
-                    console.error(`❌ Failed to load set${setId}.js`);
-                    reject();
+                    console.error(`❌ Failed to load questions/set${setId}.js`);
+                    reject(new Error(`questions/set${setId}.js not found`));
                 };
                 document.head.appendChild(script);
             });
         }
 
-        // Load all sets in order
+        // Load all sets
         async function loadAllSets() {
             const setIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            
             for (const id of setIds) {
-                await loadSetFile(id);
+                try {
+                    await loadSetFile(id);
+                } catch (e) {
+                    console.warn(`Set ${id} load failed`);
+                }
             }
-            // After all loaded, build sets from window.setsData
+            
             if (window.setsData) {
                 allSets = Object.values(window.setsData).sort((a, b) => a.id - b.id);
                 console.log("All sets loaded:", allSets.length);
+                
+                if (allSets.length === 0) {
+                    document.getElementById("setsGrid").innerHTML = '<div class="error-message">❌ कोई सेट नहीं मिला। कृपया questions/set1.js से set12.js फाइलें रखें।</div>';
+                    return;
+                }
+                
                 // Load progress from localStorage
                 const saved = localStorage.getItem("ancient_history_progress_v2");
                 if (saved) {
@@ -349,46 +393,34 @@
                         set.locked = idx !== 0;
                     });
                 }
+                
                 // Auto-unlock logic
                 for (let i = 1; i < allSets.length; i++) {
                     if (allSets[i-1].completed && allSets[i].locked === true) {
                         allSets[i].locked = false;
                     }
                 }
+                
                 saveProgressToLocal();
                 renderSets();
             } else {
-                console.error("window.setsData is undefined!");
-                document.getElementById("setsGrid").innerHTML = '<div style="text-align: center; padding: 2rem; color: red;">❌ Error: Questions files not loading. Please check if all set1.js to set12.js files exist in the "questions" folder.</div>';
+                document.getElementById("setsGrid").innerHTML = '<div class="error-message">❌ Error: Questions files not loading. Please check if questions/set1.js to set12.js files exist.</div>';
             }
         }
 
         function saveProgressToLocal() {
             let progress = {};
             allSets.forEach(set => {
-                progress[set.id] = { completed: set.completed, locked: set.locked };
+                progress[set.id] = { completed: set.completed || false, locked: set.locked };
             });
             localStorage.setItem("ancient_history_progress_v2", JSON.stringify(progress));
-        }
-
-        function markSetCompleted(setId, score, total) {
-            let set = allSets.find(s => s.id === setId);
-            if (set && !set.completed) {
-                set.completed = true;
-                let nextSet = allSets.find(s => s.id === setId + 1);
-                if (nextSet && nextSet.locked) {
-                    nextSet.locked = false;
-                }
-                saveProgressToLocal();
-                renderSets();
-            }
         }
 
         function renderSets() {
             let filtered = currentFilter === "all" ? allSets : allSets.filter(s => s.topic === currentFilter);
             const container = document.getElementById("setsGrid");
             if (!filtered.length) {
-                container.innerHTML = `<div style="text-align: center; padding: 2rem;">⚠️ No sets found for this topic.</div>`;
+                container.innerHTML = `<div class="loading-spinner">⚠️ No sets found for this topic.</div>`;
                 return;
             }
             container.innerHTML = filtered.map(set => {
@@ -406,7 +438,7 @@
                         </div>
                         <div class="set-title">
                             <h3>${set.name}</h3>
-                            <p>${set.nameHi}</p>
+                            <p>${set.nameHi || ''}</p>
                         </div>
                         <div class="set-meta">
                             <span>📝 ${set.totalQuestions || set.questions?.length || 0} Q</span>
@@ -466,7 +498,7 @@
 
         function renderQuizUI() {
             const q = currentQuestions[currentIndex];
-            document.getElementById("quizSetTitle").innerHTML = `${activeSet.name} — ${activeSet.nameHi}`;
+            document.getElementById("quizSetTitle").innerHTML = `${activeSet.name} — ${activeSet.nameHi || ''}`;
             document.getElementById("currentQNumber").innerText = currentIndex + 1;
             document.getElementById("totalQCount").innerText = currentQuestions.length;
             const bodyDiv = document.getElementById("quizBody");
@@ -493,10 +525,10 @@
 
             let extraHtml = "";
             if (q.extra_facts && q.extra_facts.length) {
-                extraHtml = `<div style="margin-top:8px; font-size:0.85rem; color:#b45309;"><strong>📌 अतिरिक्त तथ्य:</strong><ul>${q.extra_facts.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
+                extraHtml = `<ul class="extra-facts-list">${q.extra_facts.map(f => `<li>${f}</li>`).join('')}</ul>`;
             }
 
-            let explanationHtml = `<div class="explanation-box" id="expBox"><strong>💡 व्याख्या:</strong><br><span id="expText">${q.explanation || "उत्तर देखने के लिए 'जाँच करें' दबाएँ"}</span>${extraHtml}</div>`;
+            let explanationHtml = `<div class="explanation-box" id="expBox"><strong>💡 व्याख्या / Explanation:</strong><br><span id="expText">${q.explanation || "उत्तर देखने के लिए 'जाँच करें' दबाएँ"}</span>${extraHtml}</div>`;
 
             let actionsHtml = `<div class="quiz-actions">
                 <button class="quiz-btn" id="prevBtn" ${currentIndex===0 ? 'disabled' : ''}>◀ पिछला</button>
@@ -504,7 +536,7 @@
                 <button class="quiz-btn primary" id="checkBtn">✓ जाँच करें</button>
                 <button class="quiz-btn" id="nextBtn">अगला ▶</button>
             </div>`;
-            bodyDiv.innerHTML = paletteHtml + `<div class="question-text">${q.question_hi}</div>` + optionsHtml + explanationHtml + actionsHtml;
+            bodyDiv.innerHTML = paletteHtml + `<div class="question-text"><strong>प्रश्न ${currentIndex+1}:</strong> ${q.question_hi}</div>` + optionsHtml + explanationHtml + actionsHtml;
 
             document.querySelectorAll(".palette-btn").forEach(btn => {
                 btn.addEventListener("click", () => { currentIndex = parseInt(btn.dataset.qidx); renderQuizUI(); });
@@ -518,7 +550,8 @@
                 const qData = currentQuestions[currentIndex];
                 const userChoice = userAnswers[currentIndex];
                 const correctAns = qData.correct;
-                document.getElementById("expText").innerHTML = qData.explanation || `सही उत्तर: ${correctAns.toUpperCase()}`;
+                let expText = qData.explanation || `सही उत्तर: ${correctAns.toUpperCase()}`;
+                document.getElementById("expText").innerHTML = expText;
                 document.getElementById("expBox").classList.add("show");
                 document.querySelectorAll(".option-item").forEach(opt => {
                     opt.classList.remove("correct-highlight", "wrong-highlight");
@@ -548,7 +581,7 @@
                 renderSets();
             }
             const bodyDiv = document.getElementById("quizBody");
-            bodyDiv.innerHTML = `<div class="result-screen"><div style="font-size:3rem;">${correctCount >= 12 ? '🎉🏆' : '📚✨'}</div>
+            bodyDiv.innerHTML = `<div class="result-screen"><div style="font-size:3rem;">${correctCount >= Math.floor(total/2) ? '🎉🏆' : '📚✨'}</div>
                 <h3>सेट पूर्ण!</h3><div class="result-stats"><div><strong>✅ सही:</strong> ${correctCount}</div>
                 <div><strong>❌ गलत:</strong> ${total - correctCount}</div>
                 <div><strong>📊 शुद्धता:</strong> ${Math.round((correctCount/total)*100)}%</div></div>
@@ -567,6 +600,8 @@
             document.getElementById("quizModal").style.display = "none";
             renderSets();
         }
+        
+        window.closeQuiz = closeQuiz;
 
         // Filter chips
         document.querySelectorAll(".filter-chip").forEach(chip => {
@@ -580,7 +615,6 @@
 
         // Start loading
         loadAllSets();
-        window.closeQuiz = closeQuiz;
     </script>
 </body>
 </html>
