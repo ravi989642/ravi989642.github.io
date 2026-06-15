@@ -827,16 +827,17 @@
                     </div>
                 `;
             }).join("");
-            document.querySelectorAll(".btn-set").forEach(btn => {
-                btn.addEventListener("click", (e) => {
-                    let setId = parseInt(btn.dataset.id);
-                    let targetSet = allSets.find(s => s.id === setId);
-                    if (targetSet && !targetSet.locked) {
-                        startQuiz(targetSet);
-                    } else if (targetSet && targetSet.locked) {
-                        alert("⚠️ पहले पिछला सेट पूरा करें! Complete previous set first.");
-                    }
-                });
+            // Event delegation for dynamically created set cards
+            document.getElementById("setsGrid").addEventListener("click", (e) => {
+                const btn = e.target.closest(".btn-set");
+                if (!btn) return;
+                let setId = parseInt(btn.dataset.id);
+                let targetSet = allSets.find(s => s.id === setId);
+                if (targetSet && !targetSet.locked) {
+                    startQuiz(targetSet);
+                } else if (targetSet && targetSet.locked) {
+                    alert("⚠️ पहले पिछला सेट पूरा करें! Complete previous set first.");
+                }
             });
         }
 
