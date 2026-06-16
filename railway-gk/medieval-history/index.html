@@ -124,7 +124,7 @@
         .btn-set:disabled { background: #cbd5e1; cursor: not-allowed; }
         .btn-set:hover:not(:disabled) { background: var(--primary-dark); }
 
-        /* QUIZ MODAL */
+        /* QUIZ MODAL - SAME AS BEFORE */
         .quiz-modal {
             position: fixed;
             top: 0;
@@ -276,6 +276,31 @@
             .palette-grid { grid-template-columns: repeat(5, 1fr); }
             .quiz-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
         }
+        /* Debug console */
+        #debugConsole {
+            background: #1a1a2e;
+            color: #00ff88;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+        #debugConsole.show { display: block; }
+        .debug-toggle {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .debug-toggle:hover { background: #555; }
     </style>
 </head>
 <body>
@@ -306,6 +331,8 @@
         <div class="sets-grid" id="setsGrid">
             <div class="loading-spinner">📚 Loading 12 Sets... Please wait</div>
         </div>
+        <button class="debug-toggle" onclick="toggleDebug()">🔧 Toggle Debug Console</button>
+        <div id="debugConsole" class=""></div>
     </div>
 
     <div id="quizModal" class="quiz-modal">
@@ -321,28 +348,69 @@
 
     <script>
         // ============================================================
-        // FUNCTION TO LOAD SET FILE
+        // DEBUG CONSOLE
+        // ============================================================
+        let debugLogs = [];
+
+        function debugLog(msg) {
+            debugLogs.push(msg);
+            const el = document.getElementById('debugConsole');
+            el.innerHTML = debugLogs.join('<br>');
+            el.scrollTop = el.scrollHeight;
+            console.log(msg);
+        }
+
+        function toggleDebug() {
+            const el = document.getElementById('debugConsole');
+            el.classList.toggle('show');
+        }
+
+        // ============================================================
+        // LOAD SET FILE
         // ============================================================
         function loadSetFile(setId) {
             return new Promise((resolve, reject) => {
-                // Check if already loaded
                 if (window.setsData && window.setsData[setId]) {
+                    debugLog(`✅ Set ${setId} already loaded in window.setsData`);
                     resolve();
                     return;
                 }
                 const script = document.createElement('script');
                 script.src = `questions/set${setId}.js?t=${Date.now()}`;
                 script.onload = () => {
-                    console.log(`✅ Loaded set${setId}.js`);
+                    debugLog(`✅ Loaded questions/set${setId}.js`);
+                    if (window.setsData && window.setsData[setId]) {
+                        debugLog(`✅ window.setsData[${setId}] registered successfully`);
+                    } else {
+                        debugLog(`⚠️ window.setsData[${setId}] NOT registered!`);
+                    }
                     resolve();
                 };
                 script.onerror = () => {
-                    console.error(`❌ Failed to load set${setId}.js`);
+                    debugLog(`❌ Failed to load questions/set${setId}.js`);
                     reject();
                 };
                 document.head.appendChild(script);
             });
         }
+
+        // ============================================================
+        // SET METADATA - ALL 12 SETS
+        // ============================================================
+        const setMetaData = [
+            { id: 1, name: "Slave Dynasty (Mamluk)", nameHi: "मामलूक वंश / ग़ुलाम वंश", topic: "slave", difficulty: "Easy" },
+            { id: 2, name: "Khilji Dynasty", nameHi: "खिलजी वंश", topic: "khilji", difficulty: "Medium" },
+            { id: 3, name: "Tughlaq Dynasty", nameHi: "तुगलक वंश", topic: "tughlaq", difficulty: "Medium" },
+            { id: 4, name: "Sayyid & Lodi Dynasty", nameHi: "सैयद और लोदी वंश", topic: "sayyid-lodi", difficulty: "Medium" },
+            { id: 5, name: "Mughal Empire (Babur to Akbar)", nameHi: "मुगल साम्राज्य (बाबर से अकबर)", topic: "mughal", difficulty: "Medium" },
+            { id: 6, name: "Jahangir, Shah Jahan & Aurangzeb", nameHi: "जहांगीर, शाहजहाँ और औरंगजेब", topic: "mughal", difficulty: "Hard" },
+            { id: 7, name: "Later Mughals", nameHi: "उत्तर मुगल", topic: "mughal", difficulty: "Hard" },
+            { id: 8, name: "Vijayanagar & Bahmani Kingdom", nameHi: "विजयनगर और बहमनी साम्राज्य", topic: "vijayanagar", difficulty: "Medium" },
+            { id: 9, name: "Bhakti & Sufi Movement", nameHi: "भक्ति और सूफी आंदोलन", topic: "bhakti-sufi", difficulty: "Easy" },
+            { id: 10, name: "Maratha Empire", nameHi: "मराठा साम्राज्य", topic: "maratha", difficulty: "Hard" },
+            { id: 11, name: "South Indian Dynasties", nameHi: "दक्षिण भारतीय राजवंश", topic: "south", difficulty: "Medium" },
+            { id: 12, name: "Miscellaneous Medieval", nameHi: "विविध मध्यकालीन", topic: "all", difficulty: "Mixed" }
+        ];
 
         // ============================================================
         // MAIN APP
@@ -358,60 +426,63 @@
         let timeSeconds = 0;
         let quizActive = false;
 
-        // Define all 12 sets with their metadata
-        const setMetaData = [
-            { id: 1, name: "Slave Dynasty (Mamluk)", nameHi: "मामलूक वंश / ग़ुलाम वंश", topic: "slave", difficulty: "Easy", totalQuestions: 40 },
-            { id: 2, name: "Khilji Dynasty", nameHi: "खिलजी वंश", topic: "khilji", difficulty: "Medium", totalQuestions: 35 },
-            { id: 3, name: "Tughlaq Dynasty", nameHi: "तुगलक वंश", topic: "tughlaq", difficulty: "Medium", totalQuestions: 35 },
-            { id: 4, name: "Sayyid & Lodi Dynasty", nameHi: "सैयद और लोदी वंश", topic: "sayyid-lodi", difficulty: "Medium", totalQuestions: 25 },
-            { id: 5, name: "Mughal Empire (Babur to Akbar)", nameHi: "मुगल साम्राज्य (बाबर से अकबर)", topic: "mughal", difficulty: "Medium", totalQuestions: 40 },
-            { id: 6, name: "Jahangir, Shah Jahan & Aurangzeb", nameHi: "जहांगीर, शाहजहाँ और औरंगजेब", topic: "mughal", difficulty: "Hard", totalQuestions: 35 },
-            { id: 7, name: "Later Mughals", nameHi: "उत्तर मुगल", topic: "mughal", difficulty: "Hard", totalQuestions: 30 },
-            { id: 8, name: "Vijayanagar & Bahmani Kingdom", nameHi: "विजयनगर और बहमनी साम्राज्य", topic: "vijayanagar", difficulty: "Medium", totalQuestions: 35 },
-            { id: 9, name: "Bhakti & Sufi Movement", nameHi: "भक्ति और सूफी आंदोलन", topic: "bhakti-sufi", difficulty: "Easy", totalQuestions: 30 },
-            { id: 10, name: "Maratha Empire", nameHi: "मराठा साम्राज्य", topic: "maratha", difficulty: "Hard", totalQuestions: 30 },
-            { id: 11, name: "South Indian Dynasties", nameHi: "दक्षिण भारतीय राजवंश", topic: "south", difficulty: "Medium", totalQuestions: 35 },
-            { id: 12, name: "Miscellaneous Medieval", nameHi: "विविध मध्यकालीन", topic: "all", difficulty: "Mixed", totalQuestions: 35 }
-        ];
-
         async function loadAllSets() {
-            // Load each set file
-            for (const meta of setMetaData) {
+            debugLog('🔄 Starting to load all sets...');
+
+            // FIRST: Load Set 1 (important)
+            try {
+                await loadSetFile(1);
+            } catch(e) {
+                debugLog('⚠️ Set 1 load failed, will create fallback');
+            }
+
+            // THEN: Load Sets 2-12
+            for (let id = 2; id <= 12; id++) {
                 try {
-                    await loadSetFile(meta.id);
+                    await loadSetFile(id);
                 } catch(e) {
-                    console.warn(`Set ${meta.id} not found, creating dummy`);
+                    debugLog(`⚠️ Set ${id} not found`);
                 }
             }
 
             // Build allSets from window.setsData
             if (window.setsData) {
                 allSets = Object.values(window.setsData).sort((a, b) => a.id - b.id);
+                debugLog(`✅ Found ${allSets.length} sets in window.setsData`);
+            } else {
+                allSets = [];
+                debugLog('❌ window.setsData is undefined!');
             }
 
-            // If some sets missing, create from metadata
+            // For any missing sets, create from metadata
             for (const meta of setMetaData) {
                 let existing = allSets.find(s => s.id === meta.id);
                 if (!existing) {
-                    const dummySet = {
+                    debugLog(`⚠️ Set ${meta.id} not found, creating fallback`);
+                    const fallbackSet = {
                         id: meta.id,
                         name: meta.name,
                         nameHi: meta.nameHi,
                         topic: meta.topic,
                         difficulty: meta.difficulty,
-                        totalQuestions: meta.totalQuestions,
+                        totalQuestions: 0,
                         locked: true,
                         completed: false,
                         questions: []
                     };
-                    allSets.push(dummySet);
+                    allSets.push(fallbackSet);
                     if (!window.setsData) window.setsData = {};
-                    window.setsData[meta.id] = dummySet;
+                    window.setsData[meta.id] = fallbackSet;
                 }
             }
 
             allSets.sort((a, b) => a.id - b.id);
-            console.log("Total sets loaded:", allSets.length);
+
+            // Log each set's question count
+            allSets.forEach(set => {
+                const qCount = set.questions ? set.questions.length : 0;
+                debugLog(`📚 Set ${set.id}: ${set.name} - ${qCount} questions`);
+            });
 
             // Load progress
             const saved = localStorage.getItem("medieval_history_progress_v2");
@@ -424,22 +495,28 @@
                             set.locked = progress[set.id].locked;
                         }
                     });
-                } catch(e) {}
+                    debugLog('✅ Progress loaded from localStorage');
+                } catch(e) {
+                    debugLog('⚠️ Failed to parse progress');
+                }
             } else {
                 allSets.forEach((set, idx) => {
                     set.completed = false;
                     set.locked = idx !== 0;
                 });
+                debugLog('🆕 No saved progress, setting defaults');
             }
 
             // Auto-unlock
             for (let i = 1; i < allSets.length; i++) {
                 if (allSets[i-1].completed && allSets[i].locked) {
                     allSets[i].locked = false;
+                    debugLog(`🔓 Set ${allSets[i].id} unlocked (Set ${allSets[i-1].id} completed)`);
                 }
             }
 
             renderSets();
+            debugLog('✅ All sets loaded and rendered!');
         }
 
         function saveProgress() {
@@ -466,8 +543,7 @@
                 let badgeClass = completed ? "done" : (locked ? "locked-badge" : "");
                 let btnDisabled = locked ? "disabled" : "";
                 let btnText = completed ? "↻ Re-attempt" : "▶ Start Set";
-                let questionCount = (set.questions) ? set.questions.length : 0;
-                let displayQ = set.totalQuestions || questionCount;
+                let qCount = set.questions ? set.questions.length : 0;
 
                 return `
                     <div class="set-card ${locked ? 'locked' : ''} ${completed ? 'completed' : ''}">
@@ -480,7 +556,7 @@
                             <p>${set.nameHi || ''}</p>
                         </div>
                         <div class="set-meta">
-                            <span>📝 ${displayQ} Q</span>
+                            <span>📝 ${qCount} Q</span>
                             <span>⏱️ 25 min</span>
                             <span>📊 ${set.difficulty || "Medium"}</span>
                         </div>
@@ -488,6 +564,10 @@
                     </div>
                 `;
             }).join("");
+
+            // Update debug info
+            const totalQ = allSets.reduce((sum, s) => sum + (s.questions ? s.questions.length : 0), 0);
+            debugLog(`📊 Total questions across all sets: ${totalQ}`);
         }
 
         // Event delegation for set cards
@@ -502,8 +582,9 @@
             let targetSet = allSets.find(s => s.id === setId);
             if (targetSet && targetSet.questions && targetSet.questions.length > 0) {
                 startQuiz(targetSet);
-            } else if (targetSet && (!targetSet.questions || targetSet.questions.length === 0)) {
-                alert(`⚠️ Set ${setId} में कोई questions नहीं हैं। कृपया set${setId}.js file check करें।`);
+            } else if (targetSet) {
+                alert(`⚠️ Set ${setId} में कोई questions नहीं हैं।\nकृपया set${setId}.js file check करें।`);
+                debugLog(`⚠️ Set ${setId} has ${targetSet.questions ? targetSet.questions.length : 0} questions`);
             }
         });
 
@@ -553,6 +634,7 @@
             startTimer(25 * 60);
             renderQuizUI();
             document.getElementById("quizModal").style.display = "flex";
+            debugLog(`▶️ Quiz started: Set ${set.id} - ${currentQuestions.length} questions`);
         }
 
         function renderQuizUI() {
@@ -641,6 +723,7 @@
                 if (nextSet && nextSet.locked) nextSet.locked = false;
                 saveProgress();
                 renderSets();
+                debugLog(`✅ Set ${activeSet.id} completed! Next set ${nextSet ? nextSet.id : 'none'} unlocked.`);
             }
 
             alert(`🎉 सेट पूर्ण!\n✅ सही: ${correctCount}\n❌ गलत: ${total - correctCount}\n📊 शुद्धता: ${Math.round((correctCount/total)*100)}%`);
