@@ -214,7 +214,9 @@
     <div class="filter-chip" data-filter="bhakti-sufi">🕊️ Bhakti & Sufi</div>
     <div class="filter-chip" data-filter="maratha">⚔️ Maratha</div>
   </div>
-  <div class="sets-grid" id="setsGrid"></div>
+  <div class="sets-grid" id="setsGrid">
+    <div class="loading-spinner">📚 Loading 12 Sets... Please wait</div>
+  </div>
 </div>
 
 <!-- QUIZ MODAL - SSC DESIGN -->
@@ -301,57 +303,46 @@
 
 <script>
 // ============================================================
-// FIX: Directly embed Set 1 data (40 questions from your set1.js)
-// ============================================================
-const set1Data = {
-  id: 1,
-  name: "Slave Dynasty (Mamluk)",
-  nameHi: "मामलूक वंश / ग़ुलाम वंश",
-  topic: "slave",
-  difficulty: "Easy",
-  totalQuestions: 40,
-  questions: [] // Will be populated below
-};
-
-// Copy your 40 questions from set1.js here
-// For brevity, I'm adding first 5. You can copy all 40 from your set1.js
-const sampleQuestions = [
-  {
-    question_hi: "दिल्ली सल्तनत का पहला शासक कौन था?",
-    options: { a: "इल्तुतमिश", b: "कुतुबुद्दीन ऐबक", c: "बलबन", d: "रजिया सुल्तान" },
-    correct: "b",
-    explanation: "कुतुबुद्दीन ऐबक दिल्ली सल्तनत के पहले शासक थे।",
-    extra_facts: ["☛ 'लखबख्श' (सहस्र दानी) भी कहते थे", "☛ कुतुब मीनार की नींव रखी"]
-  },
-  {
-    question_hi: "कुतुबुद्दीन ऐबक की मृत्यु कैसे हुई?",
-    options: { a: "युद्ध में", b: "चौगान (पोलो) खेलते समय", c: "बीमारी से", d: "हत्या से" },
-    correct: "b",
-    explanation: "1210 ईस्वी में चौगान खेलते समय घोड़े से गिरकर।",
-    extra_facts: ["☛ चौगान = पोलो", "☛ मृत्यु लाहौर में"]
-  }
-  // ... add remaining 38 questions here from your set1.js
-];
-
-set1Data.questions = sampleQuestions;
-
-// Register in window.setsData
-window.setsData = {};
-window.setsData[1] = set1Data;
-
-// ============================================================
-// Set 2-12: Load from questions/ folder
+// FUNCTION TO LOAD SET FILE FROM questions/ FOLDER
 // ============================================================
 function loadSetFile(setId) {
   return new Promise((resolve, reject) => {
-    if (window.setsData[setId]) { resolve(); return; }
+    // Check if already loaded
+    if (window.setsData && window.setsData[setId]) {
+      resolve();
+      return;
+    }
     const script = document.createElement('script');
     script.src = `questions/set${setId}.js?t=${Date.now()}`;
-    script.onload = () => { resolve(); };
-    script.onerror = () => { reject(); };
+    script.onload = () => {
+      console.log(`✅ Loaded set${setId}.js`);
+      resolve();
+    };
+    script.onerror = () => {
+      console.error(`❌ Failed to load set${setId}.js`);
+      reject();
+    };
     document.head.appendChild(script);
   });
 }
+
+// ============================================================
+// SET METADATA (for display purposes)
+// ============================================================
+const setMetaData = [
+  { id: 1, name: "Slave Dynasty (Mamluk)", nameHi: "मामलूक वंश / ग़ुलाम वंश", topic: "slave", difficulty: "Easy" },
+  { id: 2, name: "Khilji Dynasty", nameHi: "खिलजी वंश", topic: "khilji", difficulty: "Medium" },
+  { id: 3, name: "Tughlaq Dynasty", nameHi: "तुगलक वंश", topic: "tughlaq", difficulty: "Medium" },
+  { id: 4, name: "Sayyid & Lodi Dynasty", nameHi: "सैयद और लोदी वंश", topic: "sayyid-lodi", difficulty: "Medium" },
+  { id: 5, name: "Mughal Empire (Babur to Akbar)", nameHi: "मुगल साम्राज्य (बाबर से अकबर)", topic: "mughal", difficulty: "Medium" },
+  { id: 6, name: "Jahangir, Shah Jahan & Aurangzeb", nameHi: "जहांगीर, शाहजहाँ और औरंगजेब", topic: "mughal", difficulty: "Hard" },
+  { id: 7, name: "Later Mughals", nameHi: "उत्तर मुगल", topic: "mughal", difficulty: "Hard" },
+  { id: 8, name: "Vijayanagar & Bahmani", nameHi: "विजयनगर और बहमनी", topic: "vijayanagar", difficulty: "Medium" },
+  { id: 9, name: "Bhakti & Sufi Movement", nameHi: "भक्ति और सूफी आंदोलन", topic: "bhakti-sufi", difficulty: "Easy" },
+  { id: 10, name: "Maratha Empire", nameHi: "मराठा साम्राज्य", topic: "maratha", difficulty: "Hard" },
+  { id: 11, name: "South Indian Dynasties", nameHi: "दक्षिण भारतीय राजवंश", topic: "south", difficulty: "Medium" },
+  { id: 12, name: "Miscellaneous Medieval", nameHi: "विविध मध्यकालीन", topic: "all", difficulty: "Mixed" }
+];
 
 // ============================================================
 // MAIN APP
@@ -368,76 +359,74 @@ let timeSeconds = 0;
 let quizActive = false;
 let checkedQuestions = new Set();
 
-const setMetaData = [
-  { id: 1, name: "Slave Dynasty (Mamluk)", nameHi: "मामलूक वंश", topic: "slave", difficulty: "Easy" },
-  { id: 2, name: "Khilji Dynasty", nameHi: "खिलजी वंश", topic: "khilji", difficulty: "Medium" },
-  { id: 3, name: "Tughlaq Dynasty", nameHi: "तुगलक वंश", topic: "tughlaq", difficulty: "Medium" },
-  { id: 4, name: "Sayyid & Lodi Dynasty", nameHi: "सैयद और लोदी वंश", topic: "sayyid-lodi", difficulty: "Medium" },
-  { id: 5, name: "Mughal Empire (Babur to Akbar)", nameHi: "मुगल साम्राज्य", topic: "mughal", difficulty: "Medium" },
-  { id: 6, name: "Jahangir, Shah Jahan & Aurangzeb", nameHi: "जहांगीर, शाहजहाँ, औरंगजेब", topic: "mughal", difficulty: "Hard" },
-  { id: 7, name: "Later Mughals", nameHi: "उत्तर मुगल", topic: "mughal", difficulty: "Hard" },
-  { id: 8, name: "Vijayanagar & Bahmani", nameHi: "विजयनगर और बहमनी", topic: "vijayanagar", difficulty: "Medium" },
-  { id: 9, name: "Bhakti & Sufi Movement", nameHi: "भक्ति और सूफी आंदोलन", topic: "bhakti-sufi", difficulty: "Easy" },
-  { id: 10, name: "Maratha Empire", nameHi: "मराठा साम्राज्य", topic: "maratha", difficulty: "Hard" },
-  { id: 11, name: "South Indian Dynasties", nameHi: "दक्षिण भारतीय राजवंश", topic: "south", difficulty: "Medium" },
-  { id: 12, name: "Miscellaneous Medieval", nameHi: "विविध मध्यकालीन", topic: "all", difficulty: "Mixed" }
-];
-
 async function loadAllSets() {
-  // Set 1 already loaded via embedded data
-  allSets = [set1Data];
-  
-  // Load sets 2-12
-  for (let id = 2; id <= 12; id++) {
+  // Load ALL sets from questions/ folder
+  const setIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  for (const id of setIds) {
     try {
       await loadSetFile(id);
-      if (window.setsData[id]) {
-        allSets.push(window.setsData[id]);
-      }
     } catch(e) {
-      // Create fallback
-      const meta = setMetaData.find(m => m.id === id);
-      const fallback = {
-        id: id,
-        name: meta ? meta.name : `Set ${id}`,
-        nameHi: meta ? meta.nameHi : `सेट ${id}`,
-        topic: meta ? meta.topic : "all",
-        difficulty: meta ? meta.difficulty : "Medium",
-        totalQuestions: 0,
-        locked: true,
-        questions: []
-      };
-      window.setsData[id] = fallback;
-      allSets.push(fallback);
+      console.warn(`Set ${id} not found`);
     }
   }
-  
+
+  // Build allSets from window.setsData
+  if (window.setsData) {
+    allSets = Object.values(window.setsData).sort((a, b) => a.id - b.id);
+  } else {
+    allSets = [];
+  }
+
+  // If any set missing, create fallback from metadata
+  for (const meta of setMetaData) {
+    let existing = allSets.find(s => s.id === meta.id);
+    if (!existing) {
+      const fallback = {
+        id: meta.id,
+        name: meta.name,
+        nameHi: meta.nameHi,
+        topic: meta.topic,
+        difficulty: meta.difficulty,
+        totalQuestions: 0,
+        locked: true,
+        completed: false,
+        questions: []
+      };
+      allSets.push(fallback);
+      if (!window.setsData) window.setsData = {};
+      window.setsData[meta.id] = fallback;
+    }
+  }
+
   allSets.sort((a, b) => a.id - b.id);
-  
-  // Load progress
+  console.log("✅ Total sets loaded:", allSets.length);
+
+  // Load progress from localStorage
   const saved = localStorage.getItem("medieval_history_progress_v2");
   if (saved) {
-    const progress = JSON.parse(saved);
-    allSets.forEach(set => {
-      if (progress[set.id]) {
-        set.completed = progress[set.id].completed;
-        set.locked = progress[set.id].locked;
-      }
-    });
+    try {
+      const progress = JSON.parse(saved);
+      allSets.forEach(set => {
+        if (progress[set.id]) {
+          set.completed = progress[set.id].completed;
+          set.locked = progress[set.id].locked;
+        }
+      });
+    } catch(e) {}
   } else {
     allSets.forEach((set, idx) => {
       set.completed = false;
       set.locked = idx !== 0;
     });
   }
-  
-  // Auto-unlock
+
+  // Auto-unlock logic
   for (let i = 1; i < allSets.length; i++) {
     if (allSets[i-1].completed && allSets[i].locked) {
       allSets[i].locked = false;
     }
   }
-  
+
   renderSets();
 }
 
@@ -452,17 +441,26 @@ function saveProgress() {
 function renderSets() {
   let filtered = currentFilter === "all" ? allSets : allSets.filter(s => s.topic === currentFilter);
   const container = document.getElementById("setsGrid");
+
+  if (!filtered.length) {
+    container.innerHTML = '<div class="loading-spinner">⚠️ No sets found.</div>';
+    return;
+  }
+
   container.innerHTML = filtered.map(set => {
     const locked = !!set.locked;
     const completed = !!set.completed;
     const qCount = set.questions ? set.questions.length : 0;
+    const badgeText = completed ? "✅ Done" : (locked ? "🔒 Locked" : "🆕 New");
+    const badgeClass = completed ? "done" : (locked ? "locked-badge" : "");
+    const btnDisabled = locked ? "disabled" : "";
+    const btnText = completed ? "↻ Re-attempt" : "▶ Start Set";
+
     return `
       <div class="set-card ${locked ? 'locked' : ''} ${completed ? 'completed' : ''}">
         <div class="set-header">
           <div class="set-id">${set.id}</div>
-          <div class="set-badge ${completed ? 'done' : (locked ? 'locked-badge' : '')}">
-            ${completed ? '✅ Done' : (locked ? '🔒 Locked' : '🆕 New')}
-          </div>
+          <div class="set-badge ${badgeClass}">${badgeText}</div>
         </div>
         <div class="set-title">
           <h3>${set.name}</h3>
@@ -471,24 +469,23 @@ function renderSets() {
         <div class="set-meta">
           <span>📝 ${qCount} Q</span>
           <span>⏱️ 25 min</span>
-          <span>📊 ${set.difficulty || 'Medium'}</span>
+          <span>📊 ${set.difficulty || "Medium"}</span>
         </div>
-        <button class="btn-set" data-id="${set.id}" ${locked ? 'disabled' : ''}>
-          ${completed ? '↻ Re-attempt' : '▶ Start Set'}
-        </button>
+        <button class="btn-set" data-id="${set.id}" ${btnDisabled}>${btnText}</button>
       </div>
     `;
-  }).join('');
-  
-  document.querySelectorAll('.btn-set').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = parseInt(btn.dataset.id);
-      const set = allSets.find(s => s.id === id);
-      if (set && !set.locked && set.questions && set.questions.length > 0) {
-        startQuiz(set);
-      } else if (set && set.locked) {
-        alert('⚠️ पहले पिछला सेट पूरा करें!');
-      } else if (set && (!set.questions || set.questions.length === 0)) {
+  }).join("");
+
+  // Attach click events
+  document.querySelectorAll(".btn-set").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const id = parseInt(this.dataset.id);
+      const target = allSets.find(s => s.id === id);
+      if (target && !target.locked && target.questions && target.questions.length > 0) {
+        startQuiz(target);
+      } else if (target && target.locked) {
+        alert("⚠️ पहले पिछला सेट पूरा करें!");
+      } else if (target && (!target.questions || target.questions.length === 0)) {
         alert(`⚠️ Set ${id} में कोई questions नहीं हैं!`);
       }
     });
@@ -496,10 +493,10 @@ function renderSets() {
 }
 
 // Filter chips
-document.querySelectorAll('.filter-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
+document.querySelectorAll(".filter-chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
     currentFilter = chip.dataset.filter;
     renderSets();
   });
@@ -512,13 +509,13 @@ function stopTimer() {
 
 function startTimer(seconds) {
   timeSeconds = seconds;
-  const timerEl = document.getElementById('timerDisplay');
-  const updateDisplay = () => {
+  const timerEl = document.getElementById("timerDisplay");
+  function updateDisplay() {
     const mins = Math.floor(timeSeconds / 60);
     const secs = timeSeconds % 60;
     timerEl.textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
     if (timeSeconds <= 0) { stopTimer(); autoSubmit(); }
-  };
+  }
   updateDisplay();
   timerInterval = setInterval(() => {
     if (timeSeconds > 0 && quizActive) { timeSeconds--; updateDisplay(); }
@@ -529,7 +526,10 @@ function startTimer(seconds) {
 function startQuiz(set) {
   activeSet = set;
   currentQuestions = [...set.questions];
-  if (!currentQuestions.length) { alert('No questions!'); return; }
+  if (!currentQuestions.length) {
+    alert("⚠️ इस सेट में कोई questions नहीं हैं!");
+    return;
+  }
   currentIndex = 0;
   userAnswers = {};
   markedForReview.clear();
@@ -537,56 +537,56 @@ function startQuiz(set) {
   quizActive = true;
   stopTimer();
   startTimer(25 * 60);
-  
-  document.getElementById('quizTitle').innerHTML = `SET ${set.id}: ${set.name} <small>${set.nameHi || ''}</small>`;
-  document.getElementById('quizModal').style.display = 'block';
+
+  document.getElementById("quizTitle").innerHTML = `SET ${set.id}: ${set.name} <small>${set.nameHi || ''}</small>`;
+  document.getElementById("quizModal").style.display = "block";
   renderQuizUI();
 }
 
 function renderQuizUI() {
   const q = currentQuestions[currentIndex];
   if (!q) return;
-  
-  document.getElementById('questionText').innerHTML = `<strong>प्रश्न ${currentIndex+1}:</strong> ${q.question_hi}`;
-  document.getElementById('totalQCount').textContent = currentQuestions.length;
-  document.getElementById('currentQNumber').textContent = currentIndex + 1;
-  
-  const optLetters = ['a','b','c','d'];
-  let optsHtml = '';
+
+  document.getElementById("questionText").innerHTML = `<strong>प्रश्न ${currentIndex+1}:</strong> ${q.question_hi}`;
+  document.getElementById("totalQCount").textContent = currentQuestions.length;
+  document.getElementById("currentQNumber").textContent = currentIndex + 1;
+
+  const optLetters = ["a","b","c","d"];
+  let optsHtml = "";
   optLetters.forEach(letter => {
     let optText = q.options[letter] || `Option ${letter.toUpperCase()}`;
     let isSelected = (userAnswers[currentIndex] === letter);
     let isChecked = checkedQuestions.has(currentIndex);
     let isCorrect = (letter === q.correct);
-    let extraClass = '';
+    let extraClass = "";
     if (isChecked) {
-      if (isCorrect) extraClass = 'correct';
-      else if (isSelected && !isCorrect) extraClass = 'wrong';
+      if (isCorrect) extraClass = "correct";
+      else if (isSelected && !isCorrect) extraClass = "wrong";
     } else if (isSelected) {
-      extraClass = 'selected';
+      extraClass = "selected";
     }
     optsHtml += `<div class="option ${extraClass}" data-opt="${letter}"><div class="opt-prefix">${letter.toUpperCase()}</div><div>${optText}</div></div>`;
   });
-  document.getElementById('optionsContainer').innerHTML = optsHtml;
-  
-  const expBox = document.getElementById('expBox');
+  document.getElementById("optionsContainer").innerHTML = optsHtml;
+
+  const expBox = document.getElementById("expBox");
   if (checkedQuestions.has(currentIndex)) {
-    document.getElementById('expText').textContent = q.explanation || `सही उत्तर: ${q.correct.toUpperCase()}`;
-    let extraHtml = '';
+    document.getElementById("expText").textContent = q.explanation || `सही उत्तर: ${q.correct.toUpperCase()}`;
+    let extraHtml = "";
     if (q.extra_facts && q.extra_facts.length) {
-      extraHtml = q.extra_facts.map(f => `<li>${f}</li>`).join('');
+      extraHtml = q.extra_facts.map(f => `<li>${f}</li>`).join("");
     }
-    document.getElementById('extraFacts').innerHTML = extraHtml;
-    expBox.classList.add('show');
+    document.getElementById("extraFacts").innerHTML = extraHtml;
+    expBox.classList.add("show");
   } else {
-    expBox.classList.remove('show');
+    expBox.classList.remove("show");
   }
-  
+
   renderPalette();
   updateSummaryStats();
-  
-  document.querySelectorAll('.option').forEach(opt => {
-    opt.addEventListener('click', function() {
+
+  document.querySelectorAll(".option").forEach(opt => {
+    opt.addEventListener("click", function() {
       if (!quizActive || checkedQuestions.has(currentIndex)) return;
       userAnswers[currentIndex] = this.dataset.opt;
       renderQuizUI();
@@ -595,16 +595,16 @@ function renderQuizUI() {
 }
 
 function renderPalette() {
-  const paletteGrid = document.getElementById('paletteGrid');
-  paletteGrid.innerHTML = '';
+  const paletteGrid = document.getElementById("paletteGrid");
+  paletteGrid.innerHTML = "";
   for (let i = 0; i < currentQuestions.length; i++) {
-    const btn = document.createElement('button');
-    btn.classList.add('q-btn');
-    if (markedForReview.has(i)) btn.classList.add('marked-status');
-    else if (userAnswers[i] !== undefined) btn.classList.add('answered-status');
-    if (i === currentIndex) btn.classList.add('current');
+    const btn = document.createElement("button");
+    btn.classList.add("q-btn");
+    if (markedForReview.has(i)) btn.classList.add("marked-status");
+    else if (userAnswers[i] !== undefined) btn.classList.add("answered-status");
+    if (i === currentIndex) btn.classList.add("current");
     btn.textContent = i+1;
-    btn.addEventListener('click', () => { currentIndex = i; renderQuizUI(); });
+    btn.addEventListener("click", () => { currentIndex = i; renderQuizUI(); });
     paletteGrid.appendChild(btn);
   }
 }
@@ -612,14 +612,14 @@ function renderPalette() {
 function updateSummaryStats() {
   const attempted = Object.keys(userAnswers).length;
   const marked = markedForReview.size;
-  document.getElementById('attemptedCount').textContent = attempted;
-  document.getElementById('markedCount').textContent = marked;
-  document.getElementById('remainingCount').textContent = currentQuestions.length - attempted;
+  document.getElementById("attemptedCount").textContent = attempted;
+  document.getElementById("markedCount").textContent = marked;
+  document.getElementById("remainingCount").textContent = currentQuestions.length - attempted;
 }
 
 function moveToNext() {
   if (currentIndex + 1 < currentQuestions.length) { currentIndex++; renderQuizUI(); }
-  else alert('📌 Last Question! Press SUBMIT.');
+  else alert("📌 Last Question! Press SUBMIT.");
 }
 
 function moveToPrev() {
@@ -627,7 +627,7 @@ function moveToPrev() {
 }
 
 function saveAndNext() {
-  if (userAnswers[currentIndex] === undefined) { alert('⚠️ पहले कोई उत्तर चुनें!'); return; }
+  if (userAnswers[currentIndex] === undefined) { alert("⚠️ पहले कोई उत्तर चुनें!"); return; }
   moveToNext();
 }
 
@@ -644,14 +644,14 @@ function clearResponse() {
 }
 
 function checkAnswer() {
-  if (userAnswers[currentIndex] === undefined) { alert('⚠️ पहले उत्तर चुनें!'); return; }
+  if (userAnswers[currentIndex] === undefined) { alert("⚠️ पहले उत्तर चुनें!"); return; }
   checkedQuestions.add(currentIndex);
   renderQuizUI();
 }
 
 function autoSubmit() {
   stopTimer();
-  alert('⏰ Time\'s Up!');
+  alert("⏰ Time's Up! Generating answer key.");
   generateResult();
 }
 
@@ -659,66 +659,98 @@ function generateResult() {
   stopTimer();
   quizActive = false;
   let correct = 0;
-  let html = '';
+  let html = "";
+
   currentQuestions.forEach((q, i) => {
     const ans = userAnswers[i];
     const isCorrect = (ans !== undefined && ans === q.correct);
     if (isCorrect) correct++;
-    const statusClass = isCorrect ? 'correct-answer' : (ans === undefined ? 'unattempted' : 'wrong-answer');
-    const icon = isCorrect ? '✅' : (ans === undefined ? '⚠️' : '❌');
-    const userLetter = ans !== undefined ? ans.toUpperCase() : 'Not Attempted';
+    const statusClass = isCorrect ? "correct-answer" : (ans === undefined ? "unattempted" : "wrong-answer");
+    const icon = isCorrect ? "✅" : (ans === undefined ? "⚠️" : "❌");
+    const userLetter = ans !== undefined ? ans.toUpperCase() : "Not Attempted";
+    const correctLetter = q.correct.toUpperCase();
+    const correctOption = q.options[q.correct] || "";
+    let extraFactsHtml = "";
+    if (q.extra_facts && q.extra_facts.length) {
+      extraFactsHtml = q.extra_facts.map(f => `☛ ${f}`).join("<br>");
+    }
+
     html += `
       <div class="question-review ${statusClass}">
         <div class="q-review-text">${icon} <strong>Q${i+1}. ${q.question_hi}</strong></div>
         <div class="review-details">
           <span class="your-answer">📌 Your Answer: ${userLetter}</span>
-          <span class="correct-answer-badge">🎯 Correct: ${q.correct.toUpperCase()}</span>
+          <span class="correct-answer-badge">🎯 Correct: ${correctLetter}. ${correctOption}</span>
         </div>
-        <div class="knowledge-point">💡 ${q.explanation || 'No explanation'}</div>
+        <div class="knowledge-point">
+          💡 <strong>KNOWLEDGE BOOST:</strong> ${q.explanation || ""}<br><br>
+          ${extraFactsHtml}
+        </div>
       </div>
     `;
   });
-  
-  document.getElementById('detailedAnswersContainer').innerHTML = html;
+
+  document.getElementById("detailedAnswersContainer").innerHTML = html;
+
   const total = currentQuestions.length;
-  document.getElementById('verdictText').textContent = correct >= total/2 ? '🌟 GOOD! 🌟' : '📚 NEED REVISION 📚';
-  document.getElementById('scoreSummaryArea').innerHTML = `
+  const attemptedFinal = Object.keys(userAnswers).length;
+  const incorrectCount = attemptedFinal - correct;
+  const percentage = ((correct/total)*100).toFixed(1);
+
+  let verdictMsg = "";
+  if (correct === total) verdictMsg = "🏆 PERFECT SCORE! 🏆";
+  else if (correct >= Math.floor(total*0.8)) verdictMsg = "🌟 OUTSTANDING! 🌟";
+  else if (correct >= Math.floor(total*0.6)) verdictMsg = "✅ GOOD! ✅";
+  else if (correct >= Math.floor(total*0.4)) verdictMsg = "📚 NEED REVISION 📚";
+  else verdictMsg = "💪 KEEP TRYING! 💪";
+
+  document.getElementById("verdictText").textContent = verdictMsg;
+  document.getElementById("scoreSummaryArea").innerHTML = `
     <div class="score-item"><div class="score-number">${correct}/${total}</div><div>Score</div></div>
-    <div class="score-item"><div class="score-number">${Math.round((correct/total)*100)}%</div><div>Accuracy</div></div>
+    <div class="score-item"><div class="score-number">${attemptedFinal}</div><div>Attempted</div></div>
+    <div class="score-item"><div class="score-number">${incorrectCount}</div><div>Wrong</div></div>
+    <div class="score-item"><div class="score-number">${percentage}%</div><div>Accuracy</div></div>
   `;
-  
+
+  // Mark set as completed
   if (activeSet && !activeSet.completed && total > 0) {
     activeSet.completed = true;
-    const next = allSets.find(s => s.id === activeSet.id + 1);
-    if (next && next.locked) next.locked = false;
+    let nextSet = allSets.find(s => s.id === activeSet.id + 1);
+    if (nextSet && nextSet.locked) nextSet.locked = false;
     saveProgress();
     renderSets();
   }
-  
-  document.getElementById('quizModal').style.display = 'none';
-  document.getElementById('resultModal').classList.add('active');
+
+  document.getElementById("quizModal").style.display = "none";
+  document.getElementById("resultModal").classList.add("active");
 }
 
 function closeQuiz() {
   stopTimer();
   quizActive = false;
-  document.getElementById('quizModal').style.display = 'none';
+  document.getElementById("quizModal").style.display = "none";
   renderSets();
 }
 
-document.getElementById('prevBtn').addEventListener('click', moveToPrev);
-document.getElementById('nextBtn').addEventListener('click', moveToNext);
-document.getElementById('saveNextBtn').addEventListener('click', saveAndNext);
-document.getElementById('markReviewBtn').addEventListener('click', markReviewAndNext);
-document.getElementById('clearBtn').addEventListener('click', clearResponse);
-document.getElementById('checkBtn').addEventListener('click', checkAnswer);
-document.getElementById('submitExamBtn').addEventListener('click', () => { if(confirm('Submit?')) generateResult(); });
-document.getElementById('closeQuizBtn').addEventListener('click', closeQuiz);
-document.getElementById('restartQuizBtn').addEventListener('click', () => {
-  document.getElementById('resultModal').classList.remove('active');
+// Event listeners
+document.getElementById("prevBtn").addEventListener("click", moveToPrev);
+document.getElementById("nextBtn").addEventListener("click", moveToNext);
+document.getElementById("saveNextBtn").addEventListener("click", saveAndNext);
+document.getElementById("markReviewBtn").addEventListener("click", markReviewAndNext);
+document.getElementById("clearBtn").addEventListener("click", clearResponse);
+document.getElementById("checkBtn").addEventListener("click", checkAnswer);
+document.getElementById("submitExamBtn").addEventListener("click", () => {
+  if (confirm("📢 Submit Exam? You'll get DETAILED ANSWER KEY.")) {
+    generateResult();
+  }
+});
+document.getElementById("closeQuizBtn").addEventListener("click", closeQuiz);
+document.getElementById("restartQuizBtn").addEventListener("click", () => {
+  document.getElementById("resultModal").classList.remove("active");
   if (activeSet) startQuiz(activeSet);
 });
 
+// ===== START =====
 loadAllSets();
 </script>
 </body>
