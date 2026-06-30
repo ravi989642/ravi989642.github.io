@@ -1,0 +1,3546 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Haryana CET 2025 - GK Marathon Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f97316;
+            --info: #06b6d4;
+            --dark: #1e1b4b;
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background: var(--light);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            -webkit-text-fill-color: #6366f1;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(118,75,162,0.1) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Controls Section */
+        .controls-section {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .controls-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .control-label i {
+            color: var(--primary);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--light);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        select, .btn {
+            padding: 0.875rem 1.25rem;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border);
+            background: var(--light);
+        }
+
+        select {
+            width: 100%;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+            padding-right: 3rem;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(99,102,241,0.4);
+        }
+
+        .btn-success {
+            background: var(--gradient-4);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(16,185,129,0.4);
+        }
+
+        .btn-warning {
+            background: var(--gradient-5);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--light);
+            padding: 0.5rem;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+        }
+
+        .mode-btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: 10px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mode-btn.active {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-top: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-stats {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .progress-bar-bg {
+            height: 12px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Questions Grid */
+        .questions-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .question-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .question-card.studied {
+            border-color: var(--success);
+            background: linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(56,249,215,0.05) 100%);
+        }
+
+        .question-card.studied::before {
+            background: var(--gradient-4);
+            transform: scaleX(1);
+        }
+
+        .question-card.studied .study-btn {
+            background: var(--success);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+        }
+
+        .question-card.studied .question-number {
+            background: var(--gradient-4);
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .icon-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .icon-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed var(--border);
+        }
+
+        .answer-section {
+            position: relative;
+        }
+
+        .answer-reveal {
+            background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(118,75,162,0.08) 100%);
+            border: 2px dashed var(--primary);
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .answer-reveal:hover {
+            background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(118,75,162,0.15) 100%);
+            transform: scale(1.02);
+        }
+
+        .answer-reveal.hidden {
+            filter: blur(8px);
+            user-select: none;
+        }
+
+        .answer-reveal.hidden .answer-text {
+            opacity: 0;
+        }
+
+        .answer-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .answer-text {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+            transition: opacity 0.3s ease;
+        }
+
+        .reveal-hint {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .answer-reveal.hidden .reveal-hint {
+            display: block;
+        }
+
+        .answer-reveal:not(.hidden) .reveal-hint {
+            display: none;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+        }
+
+        .badge-history { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+        .badge-geography { background: linear-gradient(135deg, #dbeafe, #93c5fd); color: #1e40af; }
+        .badge-polity { background: linear-gradient(135deg, #fce7f3, #f9a8d4); color: #9d174d; }
+        .badge-economy { background: linear-gradient(135deg, #d1fae5, #6ee7b7); color: #065f46; }
+        .badge-culture { background: linear-gradient(135deg, #ede9fe, #c4b5fd); color: #5b21b6; }
+        .badge-sports { background: linear-gradient(135deg, #ffedd5, #fdba74); color: #9a3412; }
+        .badge-science { background: linear-gradient(135deg, #cffafe, #67e8f9); color: #155e75; }
+        .badge-current { background: linear-gradient(135deg, #fee2e2, #fca5a5); color: #991b1b; }
+        .badge-general { background: linear-gradient(135deg, #f3f4f6, #d1d5db); color: #374151; }
+
+        /* Quiz Mode */
+        .quiz-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(99,102,241,0.03), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quiz-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .quiz-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        .quiz-dot.correct {
+            background: var(--success);
+        }
+
+        .quiz-dot.wrong {
+            background: var(--danger);
+        }
+
+        .quiz-question-number {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .quiz-question {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            padding: 1.25rem 1.5rem;
+            border: 3px solid var(--border);
+            border-radius: 18px;
+            background: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: rgba(99,102,241,0.05);
+            transform: translateX(8px);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: rgba(16,185,129,0.1);
+            color: var(--success);
+        }
+
+        .quiz-option.wrong {
+            border-color: var(--danger);
+            background: rgba(239,68,68,0.1);
+            color: var(--danger);
+        }
+
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .option-letter {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--gradient-1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.correct .option-letter {
+            background: var(--gradient-4);
+        }
+
+        .quiz-option.wrong .option-letter {
+            background: var(--gradient-2);
+        }
+
+        .quiz-feedback {
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 1rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+            animation: bounceIn 0.5s ease;
+        }
+
+        .quiz-feedback.correct {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
+        }
+
+        .quiz-feedback.wrong {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            color: #991b1b;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* Results */
+        .results-container {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .results-container.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .result-score {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-message {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(99,102,241,0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 35px rgba(99,102,241,0.5);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-bar {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .quiz-question {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 998;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* Loading Skeleton */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Haryana CET 2025</span>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalQuestions">402</span>
+                    <span class="stat-label">📚 Questions</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="studiedCount">0</span>
+                    <span class="stat-label">✅ Studied</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="progressPercent">0%</span>
+                    <span class="stat-label">📈 Progress</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Controls Section -->
+    <section class="controls-section">
+        <div class="controls-card">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label class="control-label"><i class="fas fa-search"></i> 🔍 Search Questions</label>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by keyword... (e.g. पानीपत, मुख्यमंत्री)" oninput="filterQuestions()">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><i class="fas fa-filter"></i> 🏷️ Filter by Category</label>
+                    <select id="categoryFilter" onchange="filterQuestions()">
+                        <option value="all">📋 All Categories</option>
+                        <option value="history">📜 History (इतिहास)</option>
+                        <option value="geography">🌍 Geography (भूगोल)</option>
+                        <option value="polity">🏛️ Polity (राजनीति)</option>
+                        <option value="economy">💰 Economy (अर्थव्यवस्था)</option>
+                        <option value="culture">🎭 Culture (संस्कृति)</option>
+                        <option value="sports">🏆 Sports (खेल)</option>
+                        <option value="science">🔬 Science (विज्ञान)</option>
+                        <option value="current">📰 Current Affairs</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><i class="fas fa-sort"></i> 📊 Sort By</label>
+                    <select id="sortBy" onchange="filterQuestions()">
+                        <option value="id">🔢 Question Number</option>
+                        <option value="studied">✅ Studied First</option>
+                        <option value="unstudied">❌ Unstudied First</option>
+                        <option value="random">🎲 Random</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div class="mode-toggle">
+                    <button class="mode-btn active" onclick="setMode('study')" id="modeStudy">
+                        <i class="fas fa-book-open"></i> 📖 Study Mode
+                    </button>
+                    <button class="mode-btn" onclick="setMode('quiz')" id="modeQuiz">
+                        <i class="fas fa-gamepad"></i> 🎮 Quiz Mode
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="markAllStudied()">
+                        <i class="fas fa-check-double"></i> ✅ Mark All Studied
+                    </button>
+                    <button class="btn btn-warning" onclick="resetProgress()">
+                        <i class="fas fa-undo"></i> 🔄 Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span class="progress-title"><i class="fas fa-chart-line"></i> 📊 Your Study Progress</span>
+                    <span class="progress-stats" id="progressText">0 / 402</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Mode Container -->
+    <div id="studyMode" class="questions-container">
+        <div class="questions-grid" id="questionsGrid">
+            <!-- Questions will be injected here -->
+        </div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>🔍 No questions found</h3>
+            <p>Try adjusting your search or filter criteria</p>
+        </div>
+    </div>
+
+    <!-- Quiz Mode Container -->
+    <div id="quizMode" class="quiz-container">
+        <div class="quiz-card">
+            <div class="quiz-progress" id="quizProgress"></div>
+            <div class="quiz-question-number" id="quizQuestionNum">Question 1 of 10</div>
+            <div class="quiz-question" id="quizQuestion">Loading...</div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-nav">
+                <button class="btn btn-primary" onclick="nextQuizQuestion()" id="nextBtn" style="display: none;">
+                    <i class="fas fa-arrow-right"></i> Next Question ➡️
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Container -->
+    <div id="resultsMode" class="quiz-container">
+        <div class="quiz-card results-container" id="resultsCard">
+            <div class="result-emoji" id="resultEmoji">🎉</div>
+            <div class="result-score" id="resultScore">8/10</div>
+            <div class="result-message" id="resultMessage">Great job! Keep practicing!</div>
+            <button class="btn btn-primary" onclick="restartQuiz()">
+                <i class="fas fa-redo"></i> 🔄 Try Again
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+
+        // Questions Data
+        const haryanaCETQuestions = [
+    {
+        id: 1,
+        question: "हरियाणा के किस जिले की बड़ौली को सब तहसील बनाया जाएगा?",
+        answer: "पलवल"
+    },
+    {
+        id: 2,
+        question: "हरियाणा के मुख्यमंत्री मनोहर लाल खट्टर ने 4 अगस्त, 2015 को चंडीगढ़ में कौन सी योजना शुरु की थी?",
+        answer: "थारी पेंशन थारे पास"
+    },
+    {
+        id: 3,
+        question: "गुरुग्राम में नया औद्योगिक नगर-क्षेत्र स्थापित करने के लिए हरियाणा सरकार ने किसके साथ MOU पर हस्ताक्षर किए हैं?",
+        answer: "चाइना फोर्च्यून लैण्ड डेवलपमेंट"
+    },
+    {
+        id: 4,
+        question: "हरियाणा के किस कवि ने सत्याग्रही प्रहलाद लिखी थी?",
+        answer: "तुलसीदार शर्मा दिनेश"
+    },
+    {
+        id: 5,
+        question: "समाज सुधारक पं. बस्तीराम का जन्म कहाँ हुआ था?",
+        answer: "खेड़ी सुल्तान, झज्जर"
+    },
+    {
+        id: 6,
+        question: "जैन काव्यधारा में हरियाणवी का प्रयोग करने वाले प्रमुख साहित्यकार कौन थे?",
+        answer: "श्रीधर अग्रवाल"
+    },
+    {
+        id: 7,
+        question: "पंजाब और हरियाणा उच्च न्यायालय के वर्तमान मुख्य न्यायाधीश है?",
+        answer: "माननीय न्यायमूर्ति श्री शील नागू"
+    },
+    {
+        id: 8,
+        question: "किस योजना के तहत राज्य सरकार द्वारा शुरू की गई है ताकि राज्य भर के परित्यक्त लोगों और छोड़े गए बच्चों का कल्याण किया जा सके?",
+        answer: "हरिहर योजना"
+    },
+    {
+        id: 9,
+        question: "हरियाणा के किस शहर में उत्तर भारत का सबसे बड़ा सेंटर फॉर साइबर ऑपरेशंस एंड सिक्योरिटी बनाया जाएगा??",
+        answer: "चंडीगढ़"
+    },
+    {
+        id: 10,
+        question: "हरियाणा में उत्तम रेफरी / अंपायर / निर्णायक हेतु वार्षिक पुरस्कार प्रतिवर्ष अवार्ड नाम से दिया जाता है।?",
+        answer: "विक्रमादित्य"
+    },
+    {
+        id: 11,
+        question: "हरियाणा में उत्तम रेफरी / अंपायर / निर्णायक हेतु वार्षिक पुरस्कार प्रतिवर्ष अवार्ड नाम से दिया जाता है।?",
+        answer: "सरछोटू राम"
+    },
+    {
+        id: 12,
+        question: "टोक्यो पैरालिंपिक 2020 के उद्घाटन समारोह के दौरान देश के दस्ता ध्वजवाहक कौन थे ?.?",
+        answer: "टेक चंद"
+    },
+    {
+        id: 13,
+        question: "यह हरियाणा में एक ओर से मृदा का बना उपकरण है जो 2 छोटी डंडियों से बजाया जाता है?",
+        answer: "ताशा"
+    },
+    {
+        id: 14,
+        question: "पूर्वी कृषि जलवायु अंचल का आँचलिक अनुसंधान केंद्र हरियाणा के में स्थित है।?",
+        answer: "करनाल"
+    },
+    {
+        id: 15,
+        question: "चौधरी देवी लाल हर्बल प्रकृति पार्क हरियाणा के वन में स्थित है।?",
+        answer: "यमुनानगर जिले में चुहरपुर गांव"
+    },
+    {
+        id: 16,
+        question: "किसे ‘पिंग पोंग’ भी कहा जाता है?",
+        answer: "टेबल टेनिस"
+    },
+    {
+        id: 17,
+        question: "हरियाणा सरकार ने यमुनानगर जिले में किस गाँव का नाम बदलकर सरस्वती नगर कर दिया है?",
+        answer: "मुस्तफाबाद"
+    },
+    {
+        id: 18,
+        question: "हरियणा के किस जिले में देश की पहली शहद मंडी बनाई जाएगी??",
+        answer: "कुरुक्षेत्र जिले के रामनगर"
+    },
+    {
+        id: 19,
+        question: "हरियाणा में कहां पर चालक प्रशिक्षण संस्थान स्थापित किया जाएगा??",
+        answer: "कलायत"
+    },
+    {
+        id: 20,
+        question: "हरियाणा के किस जिलें में राज्य का पहला ऐनीमल हास्टल बनाया जाएगा?",
+        answer: "अम्बाला के गांव उगाड़ा"
+    },
+    {
+        id: 21,
+        question: "हरियाणा के किस जिलें में राज्य का पहला काऊ हास्टल बनाया जाएगा?",
+        answer: "सिरसा मे लेकिन सोनीपत मे भी इसकी घोषणा हई थी"
+    },
+    {
+        id: 22,
+        question: "हरियाणा के किस जिलें में राज्य का पहला काऊ मसाज पार्लर बनाया जाएगा?",
+        answer: "हिसार"
+    },
+    {
+        id: 23,
+        question: "हरियाणा की पहली टीबी मुक्त पंचायत किसे घोषित किया गया है?",
+        answer: "थाने की सैर"
+    },
+    {
+        id: 24,
+        question: "हरियाणा में किस स्थान पर खुदाई में 5500 साल पुराना अग्नि कुंड मिला है?",
+        answer: "कुणाल गाँव"
+    },
+    {
+        id: 25,
+        question: "हरियाणा में कुल कितने साइबर क्राइम पुलिस स्टेशन हैं ??",
+        answer: "29"
+    },
+    {
+        id: 26,
+        question: "हरियाणा के किस जिले में ‘हरड़ा वाला’ नाम से प्रसिद्ध शिव मंदिर स्थित है?",
+        answer: "हरियाणा के महेंद्रगढ़ जिले"
+    },
+    {
+        id: 27,
+        question: "राष्ट्रीय अंडर-23 महिला क्रिकेट की मेजबानी किस राज्य को मिली है ??",
+        answer: "हरियाणा"
+    },
+    {
+        id: 28,
+        question: "2011 की जनगणना के अनुसार हरियाणा की साक्षरता दर कटनी है?",
+        answer: "76.64"
+    },
+    {
+        id: 29,
+        question: "किस वर्ष में, हरियाणा ग्रामीण क्षेत्र में 100% विद्युतीकरण हासिल करने वाला पहला राज्य बन गया?",
+        answer: "1970"
+    },
+    {
+        id: 30,
+        question: "सुल्तानपुर पक्षी अभयारण्य किस वर्ष राष्ट्रीय उद्यान बना?",
+        answer: "सुल्तानपुर पक्षी अभयारण्य 1991 में राष्ट्रीय उद्यान बना. इससे पहले इसे पक्षी अभयारण्य के रूप में जाना जाता था, जिसे 1972 में स्थापित किया गया था"
+    },
+    {
+        id: 31,
+        question: "चौधरी चरण सिंह हरियाणा कृषि विश्वविद्यालय की स्थापना वर्ष में हुई थी?",
+        answer: "26 फरवरी 16970 को"
+    },
+    {
+        id: 32,
+        question: "हरियाणा राज्य श्रम नीति अस्तित्व में आई?",
+        answer: "2006"
+    },
+    {
+        id: 33,
+        question: "हरियाणा में वन्यजीव अभयारण्यों की कुल संख्या है?",
+        answer: "8"
+    },
+    {
+        id: 34,
+        question: "राष्ट्रीय एवं अन्तर्राष्ट्रीय स्तर पर ख्याति प्राप्त संस्कृत साहित्यकार को कौन-सा सम्मान दिया जाता है?",
+        answer: "हरियाणा संस्कृत गौरव सम्मान"
+    },
+    {
+        id: 35,
+        question: "हरियाणा के सबसे लंबे समय तक सेवा करने वाले मुख्यमंत्री कौन हैं?",
+        answer: "भजन लाल"
+    },
+    {
+        id: 36,
+        question: "हरियाणवी रामायण की रचना किसने की?",
+        answer: "खुदाबखस अहमद थानेसरी"
+    },
+    {
+        id: 37,
+        question: "किस व्यक्ति ने हरियाणवी गीतांजलि लिखी है?",
+        answer: "प्रो हरी सिंह के द्वारा"
+    },
+    {
+        id: 38,
+        question: "किस व्यक्ति ने हरियाणवी महाभारत की रचना की है?",
+        answer: "सादुला मेवात से"
+    },
+    {
+        id: 39,
+        question: "हरियाणा के सबसे ज्यादा बार बनने वाले मुख्यमंत्री कौन हैं?",
+        answer: "ओम प्रकाश चौटाला"
+    },
+    {
+        id: 40,
+        question: "वर्ष 2016 में कौन सा जिला नवगठित हुआ है??",
+        answer: "चरखी दादरी"
+    },
+    {
+        id: 41,
+        question: "सिंधु घाटी स्थल हरियाणा में कहाँ स्थित है?",
+        answer: "राखी गढ़ी"
+    },
+    {
+        id: 42,
+        question: "किस वर्ष सुल्तानपुर पक्षी अभयारण्य को राष्ट्रीय उद्यान के रूप में मान्यता दी गई थी?",
+        answer: "1991"
+    },
+    {
+        id: 43,
+        question: "एशियाई संसदीय सभा में किस हरियाणवी सांसद ने भारत का प्रतिनिधित्व किया ??",
+        answer: "किरण चौधरी"
+    },
+    {
+        id: 44,
+        question: "आमतौर पर अगस्त और सितंबर के महीने में पूरे हरियाणा में कौन सा धार्मिक त्योहार मनाया जाता है और यह सर्प पूजा से संबंधित है??",
+        answer: "गुग्गा नवमी मेला"
+    },
+    {
+        id: 45,
+        question: "हरियाणा में नॉन-बायोडिग्रेडेबल गारबेज (कंट्रोल) एक्ट लागू किया गया था.?",
+        answer: "1998 मे"
+    },
+    {
+        id: 46,
+        question: "गुरुद्वारा नाडा साहिब हरियाणा के किस जिले में स्थित है?",
+        answer: "पंचकुला मे"
+    },
+    {
+        id: 47,
+        question: "मुगल काल में हरियाणा का कौन-सा क्षेत्र नील की खेती के लिए प्रसिद्ध था?",
+        answer: "फरीदाबाद"
+    },
+    {
+        id: 48,
+        question: "हरियाणा के कुरुक्षेत्र में महाभारत स्थलों के पुरातात्विक साक्ष्य पर प्रथ प्रथम प्रकाश डालने वाले कौन थे?",
+        answer: "बृज बसी लाल"
+    },
+    {
+        id: 49,
+        question: "रॉलेट एक्ट का विरोध करने के लिए महात्मा गाँधी किसके निवेदन से हरियाणा आए थे?",
+        answer: "स्वामी श्रद्धानंद"
+    },
+    {
+        id: 50,
+        question: "हरियाणा में कब ई-पंचायत संवाद सेवा शुरु की गई थीं?",
+        answer: "26 अप्रैल 2015 को रोहतक मे"
+    },
+    {
+        id: 51,
+        question: "हरियाणा विशेष आर्थिक क्षेत्र एक्ट कब से लागू हुआ?",
+        answer: "2006"
+    },
+    {
+        id: 52,
+        question: "क्षेत्रीय हिंदी समिति का अध्यक्ष किसे बनाया गया था?",
+        answer: "बलवंत तायल"
+    },
+    {
+        id: 53,
+        question: "महम के किस कवि ने ‘राम-माला’ काव्य की रचना की थी?",
+        answer: "सैयद गुलान हुसैन"
+    },
+    {
+        id: 54,
+        question: "हरियाणा के किस जिले में सुपर क्रिटिकल युनिट की स्थापना की जायेगी?",
+        answer: "यमुनानगर जिले के पंसारा गांव में दीन बंधु छोटू राम थर्मल पावर प्लांट"
+    },
+    {
+        id: 55,
+        question: "हरियाणा में कितनी पंचायत समितियाँ हैं?",
+        answer: "126"
+    },
+    {
+        id: 56,
+        question: "हरियाणा मे कितने प्रकार की पंचायत राज प्रणाली है?",
+        answer: "3, ग्राम पंचायत, पंचायत समिति व जिला स्तर"
+    },
+    {
+        id: 57,
+        question: "हरियाणा के किस स्थान पर चोर गुम्बद है?",
+        answer: "नारनौल"
+    },
+    {
+        id: 58,
+        question: "हरियाणा मे किस स्थान पर जल महल है?",
+        answer: "नारनौल मे इसे बीरबल की बगरी भी कहा जाता है"
+    },
+    {
+        id: 59,
+        question: "ब्रिटिश काल में, हरियाणा में पंजाब का भाग कब बना?",
+        answer: "1858, 1857 क्रांति के बाद"
+    },
+    {
+        id: 60,
+        question: "हरियाणा में ‘दहशाला प्रणाली’ राजस्व संग्रह और कृषि कर की व्यवस्था थी। इसे द्वारा पेशकिया गया था।?",
+        answer: "राजा टोडरमल"
+    },
+    {
+        id: 61,
+        question: "करनाल जिले में बागवानी परियोजना स्थापित करने के लिए हरियाणा सरकार के साथ किस देश ने भागीदारी की?",
+        answer: "इजराइल"
+    },
+    {
+        id: 62,
+        question: "हरियाणा के किस जिले में व्हीकल ट्रैकिंग सिस्टम पर आधारित ‘किलोमीटर योजना’ ‘शुरू की गई है?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 63,
+        question: "हरियाणा के किस जिले मे विश्व शांति केंद्र की स्थापना की गई गई?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 64,
+        question: "‘टूटा हुआ आदमी’ उपन्यास के रचयिता कौन है?",
+        answer: "मोहन चोपड़ा"
+    },
+    {
+        id: 65,
+        question: "हरियाणा उर्दू अकादमी की स्थापना निम्नलिखित में से किस सन में गई थी?",
+        answer: "22 दिसंबर 1985"
+    },
+    {
+        id: 66,
+        question: "हरियाणा का सबसे ऊंचा गाँव कौन सा है?",
+        answer: "तिपरा"
+    },
+    {
+        id: 67,
+        question: "हरियाणा का प्रथम सामुदायिक रिजर्व साइट कहाँ स्थित है?",
+        answer: "थाना गाँव कुरुक्षेत्र"
+    },
+    {
+        id: 68,
+        question: "हरियाणा मे उर्दू साहित्य पुरस्कारों मे सबसे बड़ा पुरुस्कार कौन सा है?",
+        answer: "हाली पुरस्कार, अल्ताफ हुसैन के नाम से शुरुआत हुई थी"
+    },
+    {
+        id: 69,
+        question: "हरियाणा के किस जिले में देश का एकमात्र ग्लोबल सेन्टर फॉर न्यूक्लियर एनर्जी पार्टनरशिप (GCNEP) स्थित है?",
+        answer: "झज्जर के जसोर खेड़ी"
+    },
+    {
+        id: 70,
+        question: "हरियाणा के सबसे लंबे एलिवेटिड सड़क पुल का निर्माण किस जिले में किया गया है?",
+        answer: "पानीपत"
+    },
+    {
+        id: 71,
+        question: "देश का पहला एलिवेटिड रेल ट्रैक कहाँ पर बनाया गया है?",
+        answer: "रोहतक मे मंगल सिंह के नाम पर"
+    },
+    {
+        id: 72,
+        question: "फिल्म सूरमा हरियाणा के किस व्यक्तित्व के जीवन पर आधारित है?",
+        answer: "संदीप सिंह , हॉकी के खिलाड़ी"
+    },
+    {
+        id: 73,
+        question: "सूरजकुंड अंतर्राष्ट्रीय शिल्प मेला पहली बार कब आयोजित किया गया था?",
+        answer: "1987 मे , इसे भारत का सबसे बड़ा शिल्प मेला माना जाता है सूरजकुंड अंतर्राष्ट्रीय शिल्प मेला 2025 में ओडिशा और मध्य प्रदेश को थीम राज्य के रूप में चुना गया है. यह मेला 7 से 23 फरवरी 2025 तक सूरजकुंड, फरीदाबाद, हरियाणा में आयोजित किया गया"
+    },
+    {
+        id: 74,
+        question: "हरियाणा में, एक नए रेल कोच नवीनीकरण कारखाने की स्थापना का प्रस्ताव है?",
+        answer: "सोनीपत के गनोर मे"
+    },
+    {
+        id: 75,
+        question: "सम्राट हर्ष ने निम्नलिखित में से किस भाषा में नाटक ‘रत्नावली’ लिखी थी?",
+        answer: "संस्कृत मे"
+    },
+    {
+        id: 76,
+        question: "हरियाणा सरकार द्वारा किस वर्ष हरियाणा साहित्य अकादमी का गठन किया गया था?",
+        answer: "9 जुलाई 1970"
+    },
+    {
+        id: 77,
+        question: "किस पुस्तक के लिए अशोक भाटिया को पहला हरियाणा साहित्य अकादमी पुरस्कार मिला था?",
+        answer: "समुन्द्र का संसार"
+    },
+    {
+        id: 78,
+        question: "हरियाणा संस्कृत अकादमी द्वारा प्रकाशित मासिक पत्रिका का निम्नलिखित में से क्या नाम है?",
+        answer: "हरी प्रभा"
+    },
+    {
+        id: 79,
+        question: "प्रदेश का एकमात्र प्राचीन शक्तिपीठ देवीकूप भद्रकाली का मंदिर किस जिले में स्थित है?",
+        answer: "कुरुक्षेत्र मे , (इससे तीर्थ नगरी, तीर्थराज भी कहते है )"
+    },
+    {
+        id: 80,
+        question: "भक्ति भारती’ हरियाणा मे किसकी एक काव्य रचना है।?",
+        answer: "तुलसीदास शर्मा की"
+    },
+    {
+        id: 81,
+        question: "पानीपत में पैदा हुए किस उर्दू कवि ने हरियाणा के पूर्व-स्वतंत्रता युग के दौरान अपनी छाप छोड़ी थी?",
+        answer: "अल्ताफ हुसैन हाली"
+    },
+    {
+        id: 82,
+        question: "2018 में हरियाणा ने में अपना पहला राष्ट्रीय औटिस्म अंतर्राष्ट्रीय अनुसंधान केंद्र शुरू किया?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 83,
+        question: "उत्तर भारत के पहले पिज्जा एटीएम की स्थापना कहाँ की गई है?",
+        answer: "चंडीगढ़ की सुखना झील पर"
+    },
+    {
+        id: 84,
+        question: "हरियाणा में यूरिया का उपयोग पिछले तीन वर्षों की औसत से कितना बढ़ गया है?",
+        answer: "18 %"
+    },
+    {
+        id: 85,
+        question: "हरियाणा को काल के दौरान बहुध्यानका के रूप में जाना जाता था।?",
+        answer: "यौधेय"
+    },
+    {
+        id: 86,
+        question: "हरियाणा को ग्लोबल टेलेंटमोबिलिटी इंडियाज डिकोड में हरियाणा को कौन सा स्थान मिला है?",
+        answer: "9 वा"
+    },
+    {
+        id: 87,
+        question: "हरियाणा का सबसे बड़ा नगर निगम है?",
+        answer: "फरीदाबाद"
+    },
+    {
+        id: 88,
+        question: "हरियाणा का सबसे छोटा नगर निगम है?",
+        answer: "पंचकुला"
+    },
+    {
+        id: 89,
+        question: "हरियाणा सरकार द्वारा ऐतिहासिक स्थलों, स्मारकों को नुकसान पहुँचाने वालों के लिए संशोधित जुर्माना और सजा का प्रावधान किया है?",
+        answer: "1 लाख , 2 साल की सजा"
+    },
+    {
+        id: 90,
+        question: "हरियाणा मे किस जिले को वन नगरी कहते है?",
+        answer: "सिरसा, एरिया अनुसार सबसे अधिक वन – पंचकुला, 2006 मे वन नीति की शुरुआत हुई थी"
+    },
+    {
+        id: 91,
+        question: "देश का पहला राज्य जिसने ऑनलाइन कस्टडी सर्टिफिकेट्स शुरू किये हैं?",
+        answer: "हरियाणा"
+    },
+    {
+        id: 92,
+        question: "अकबर के समय में हरियाणा के किस स्थान पर टकसाल थी, जहाँ जलाली सिक्का बनाया जाता था?",
+        answer: "नारनौल मे"
+    },
+    {
+        id: 93,
+        question: "हरियाणा की मानुषी छिल्लर द्वारा महिलाओं और लड़कियों के लिए कौन-सा अभियान प्रारंभ किया गया था?",
+        answer: "प्रोजेक्ट शक्ति"
+    },
+    {
+        id: 94,
+        question: "हरियाणा में ख्याति प्राप्त प्रबंधन विकास संस्थान (MDI) कहाँ स्थित है?",
+        answer: "गुड़गाँव"
+    },
+    {
+        id: 95,
+        question: "स्वतंत्रता पूर्व, हरियाणा और पंजाब उच्च न्यायालय किस में स्थित था।?",
+        answer: "लाहौर मे , 1955 मे इसे चंडीगढ़ मे स्थानांतरित हो गया"
+    },
+    {
+        id: 96,
+        question: "किस जिले मे हरियाणा का पहला सड़क विक्रेता (फेरीवाला) बाजार होगा?",
+        answer: "पंचकुला मे"
+    },
+    {
+        id: 97,
+        question: "वेदव्यास द्वारा महान ग्रन्थ महाभारत कहाँ लिखा था?",
+        answer: "कुरुक्षेत्र मे"
+    },
+    {
+        id: 98,
+        question: "कैथल की स्थापना कथित रूप से महाभारत के किस मिथकीय पात्र के द्वारा की गई थी?",
+        answer: "युधिष्ठर"
+    },
+    {
+        id: 99,
+        question: "हरियाणा के ब्राह्मण को कितने समूहों में बाँटा गया है?",
+        answer: "गौड़, सारस्वत, खंडेलवाल और धीमा में कुल चार भागों मे"
+    },
+    {
+        id: 100,
+        question: "गुमशुदा बच्चों की तलाश हेतु कौन-सा अभियान पुलिस ने चलाया गया था?",
+        answer: "ऑपरेशन मुस्कान"
+    },
+    {
+        id: 101,
+        question: "मजदूरी कर रहे बच्चों की तलाश हेतु कौन-सा अभियान पुलिस ने चलाया गया था?",
+        answer: "ऑपरेशन स्माइल"
+    },
+    {
+        id: 102,
+        question: "रॉबर्ट वाङ्गा लैंड डील की जाँच आयोग के अध्यक्ष कौन थे?",
+        answer: "जस्टिस स.एन. धींगरा"
+    },
+    {
+        id: 103,
+        question: "हरियाणा राज्य के पहले अनाज ए टी एम (अन्नपूर्ति) की स्थापना किस जिले में हुई?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 104,
+        question: "हरियाणा का कौन-सा जिला ‘सुराही’ (पतली गर्दन वाला घड़ा) के लिए प्रसिद्ध है?",
+        answer: "झज्जर"
+    },
+    {
+        id: 105,
+        question: "हरियाणा मे पंजीकृत अटल सेवा केन्द्रों की कुल संख्या कितनी है?",
+        answer: "2022-2023 के अनुसार 18552 है"
+    },
+    {
+        id: 106,
+        question: "हरियाणा में किस वर्ष को “बालिका शिशु वर्ष” घोषित किया गया?",
+        answer: "2006 मे"
+    },
+    {
+        id: 107,
+        question: "ठोस अपद्रव्य प्रबंध संयंत्र विकास हेतु हरियाणा ने JBM पर्यावरण प्रबंधन प्राइवेट लि. के साथ समझौता हस्ताक्षरित किया है।?",
+        answer: "मेवात क्लस्टर में"
+    },
+    {
+        id: 108,
+        question: "फ्लाइंग ट्रेनिंग सेंटर, “हरियाणा इंस्टिट्यूट ऑफ सिविल एविएशन” (HICA) स्थापना हरियाणा में किस स्थान पर हुई?",
+        answer: "पिंजौर"
+    },
+    {
+        id: 109,
+        question: "हरियाणा में राष्ट्रीय मधुमक्खी पालन एवं शहद मिशन (NBHM) योजना की शुरुआत किस वर्ष में हुई?",
+        answer: "अटर 2020 मे"
+    },
+    {
+        id: 110,
+        question: "हरियाणा में पहली स्थायी लोक अदालत की स्थापना कब हुई?",
+        answer: "अटर 7 अगस्त 1998"
+    },
+    {
+        id: 111,
+        question: "माना जाता है कि करनाल की स्थापना राजा……… द्वारा की गई थी।?",
+        answer: "कर्ण द्वारा"
+    },
+    {
+        id: 112,
+        question: "प्रथम विश्वयुद्ध में सैनिकों की सबसे अधिक भर्ती 22144 किस जिले से हुई?",
+        answer: "रोहतक मे"
+    },
+    {
+        id: 113,
+        question: "सबसे अधिक सैनिक व अधिकारी रेवाड़ी जिले के किस गाँव से हैं?",
+        answer: "जाटूसाना"
+    },
+    {
+        id: 114,
+        question: "हरियाणा के किस जिले में शौरी बाजार, एशिया का सबसे बड़ा थोक कपड़ों का बाजार है?",
+        answer: "रोहतक"
+    },
+    {
+        id: 115,
+        question: "ऐतिहासिक चौबीसी चबूतरा किस स्थान पर है?",
+        answer: "महम"
+    },
+    {
+        id: 116,
+        question: "हरियाणा में लोकसभा के लिए अनुसूचित वर्ग के लिए कितने क्षेत्र आरक्षित हैं?",
+        answer: "2, अंबाला व सिरसा"
+    },
+    {
+        id: 117,
+        question: "किस वर्ष में चंडीगढ़ शहर की आधारशिला रखी गई?",
+        answer: "1952"
+    },
+    {
+        id: 118,
+        question: "करनाल पाकिस्तान के पहले प्रधानमंत्री की जन्मस्थली होने के लिए प्रसिद्ध है। उनका नाम बतायें?",
+        answer: "लियाकत अली खान"
+    },
+    {
+        id: 119,
+        question: "हरियाणा कब “वृक्ष दिवस” मनाता है?",
+        answer: "15 जुलाई"
+    },
+    {
+        id: 120,
+        question: "हरियाणा राज्य को अप्रैल, 2019 में ठोस अपशिष्ट प्रबंधन के लिए कितने समूहों में विभाजित किया गया था?",
+        answer: "14"
+    },
+    {
+        id: 121,
+        question: "हरियाणा राज्य में निम्नलिखित में से किस चुनाव में पहली बार वीवीपीएटी का उपयोग किया गया था?",
+        answer: "विधानसभा चुनाव 2019"
+    },
+    {
+        id: 122,
+        question: "हरियाणा चुनाव से संबंधित सूचना प्रदान करने के लिए निम्नलिखित में से कौन-सा हेल्पलाइन नंबर प्रारंभ किया गया है?",
+        answer: "1950"
+    },
+    {
+        id: 123,
+        question: "हरियाणा राज्य का पुलिस मुख्यालय कहाँ स्थित है?",
+        answer: "पंचकुला के सेक्टर 6 मे"
+    },
+    {
+        id: 124,
+        question: "हरियाणा पुलिस ट्रैनिंग सेंटर कहाँ पर है?",
+        answer: "करनाल के मधुबन मे"
+    },
+    {
+        id: 125,
+        question: "हरियाणा ने अवैध खनन पर निगरानी रखने के लिए कौन-सी योजना शुरू की है?",
+        answer: "ई रवाना योजना"
+    },
+    {
+        id: 126,
+        question: "हरियाणा सशस्त्र पुलिस की बटालियन कहाँ पर है?",
+        answer: "अंबाला"
+    },
+    {
+        id: 127,
+        question: "21 वाँ राष्ट्रीय युवा समारोह हरियाणा के किस जिले में आयोजित किया गया?",
+        answer: "रोहतक"
+    },
+    {
+        id: 128,
+        question: "छछरौली को हरियाणा का क्या कहते हैं?",
+        answer: "चेरापुंजी"
+    },
+    {
+        id: 129,
+        question: "किस स्थान पर बढ़ते वायु प्रदूषण का सामना करने के लिए ‘प्रोजेक्ट एयर केयर’ आरंभ किया है?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 130,
+        question: "भारत की पहली इकोफ्रेंडली रैली हरियाणा के किस जिले में आयोजित की गई थी?",
+        answer: "रोहतक"
+    },
+    {
+        id: 131,
+        question: "कौन-सा राजवंश मूलतः हरियाणा से सम्बंधित था?",
+        answer: "भारत वंश"
+    },
+    {
+        id: 132,
+        question: "प्रसिद्ध कुरुक्षेत्र युद्ध (महाभारत) किसके सिंहासन के लिए लड़ा गया था।?",
+        answer: "हस्तिनापुर"
+    },
+    {
+        id: 133,
+        question: "हरियाणा सरकार ने मार्च 2017 में वरिष्ठ नागरिकों के लिए किस योजना की घोषणा की?",
+        answer: "तीर्थ दर्शन"
+    },
+    {
+        id: 134,
+        question: "हरियाणा सरकार ने शादी में ले जाने पर प्रतिबंध लगा दिया है।?",
+        answer: "हथियार"
+    },
+    {
+        id: 135,
+        question: "हरियाणा में विद्युत उपभोक्ताओं के बिलों के शिकायत निवारण हेतु कौन-सी योजना चालू की गई है?",
+        answer: "नो योर बिल"
+    },
+    {
+        id: 136,
+        question: "पंजोखरा साहिब गुरुद्वारा (अम्बाला) … की स्मृति को समर्पित है?",
+        answer: "गुरु हरकिशन शाहीब"
+    },
+    {
+        id: 137,
+        question: "साई (SAI)राष्ट्रीय बॉक्सिंग अकादमी (रोहतक) का शुभारंभ किस वर्ष हुआ?",
+        answer: "2017 मे शुरू हुआ था लेकिन 2015 मे बनकर तैयार हुआ था"
+    },
+    {
+        id: 138,
+        question: "हरियाणा में पहली स्थायी लोक अदालत की स्थापना कब हुई?",
+        answer: "7 अगस्त"
+    },
+    {
+        id: 139,
+        question: "हरियाणा में होम रूल आंदोलन के प्रचार का श्रेय जाता है?",
+        answer: "पंडित नेकिराम शर्मा"
+    },
+    {
+        id: 140,
+        question: "हरियाणा का गठन किस आंदोलन के कारण हुआ?",
+        answer: "पञ्जाबी सूबा आंदोलन"
+    },
+    {
+        id: 141,
+        question: "हरियाणा के किस खिलाड़ी ने इंडिया की तरफ से 400 विकेट लिए हैं?",
+        answer: "कपिल देव"
+    },
+    {
+        id: 142,
+        question: "हरियाणा में सरसों की पैदावार सबसे ज्यादा किस जिले में होती है?",
+        answer: "महेंद्रगढ़"
+    },
+    {
+        id: 143,
+        question: "हरियाणा का शेक्सपियर किस व्यक्ति को कहा कहा जाता है?",
+        answer: "पंडित लख्मीचंद"
+    },
+    {
+        id: 144,
+        question: "हरियाणा के गांधी किसे कहा जाता है?",
+        answer: "मूलचंद जैन"
+    },
+    {
+        id: 145,
+        question: "चंडीगढ़ में प्रसिद्ध रॉक गार्डन के शिल्पकार कौन है?",
+        answer: "नेक चंद शर्मा"
+    },
+    {
+        id: 146,
+        question: "एशिया का सबसे बड़ा थोक कपड़ों का बाजार किस जिले में है?",
+        answer: "रोहतक"
+    },
+    {
+        id: 147,
+        question: "अर्थशास्त्र किसने लिखा है?",
+        answer: "चाणक्य"
+    },
+    {
+        id: 148,
+        question: "Ignited Minds पुस्तक किसने लिखी?",
+        answer: "डॉ ए पी जे अब्दुल कलाम"
+    },
+    {
+        id: 149,
+        question: "एशिया की सबसे बड़ी एग्रीकल्चर यूनिवर्सिटी कहां पर स्थित है?",
+        answer: "हिसार चौधरी चरण सिंह कृषि विश्वविद्यालय"
+    },
+    {
+        id: 150,
+        question: "हरियाणा की सबसे ऊंची चोटी किस जिले में स्थित है?",
+        answer: "पंचकूला मोरनी हिल्स करोह चोटी जिसकी ऊंचाई 1514 मीटर है"
+    },
+    {
+        id: 151,
+        question: "एशिया का सबसे बड़ा कैक्टस गार्डन कहां पर स्थित है?",
+        answer: "पंचकूला"
+    },
+    {
+        id: 152,
+        question: "हरियाणा राज्य में किस फल का सबसे अधिक उत्पादन होता है?",
+        answer: "आम, अम्बाला मे"
+    },
+    {
+        id: 153,
+        question: "एशिया की सबसे बड़ी पेपर मिल उद्योग हरियाणा में कहां पर स्थित है?",
+        answer: "यमुनानगर"
+    },
+    {
+        id: 154,
+        question: "महाराजा हर्षवर्धन का जन्म किस स्थान पर हुआ था?",
+        answer: "थानेसर कुरुक्षेत्र"
+    },
+    {
+        id: 155,
+        question: "पानीपत का पहला, दूसरा व तीसरा युद्ध कब लड़ा गया था?",
+        answer: "1526 मे पहला इब्राहिम लोदी और बाबर के बीच लड़ा गया, 1556 मे दूसरा अकबर और सम्राट हेम चंद्र विक्रमादित्य के बीच, 1761 मे तीसरा मराठा एवं अहमदशाह अब्दाली के बीच मे"
+    },
+    {
+        id: 156,
+        question: "पनीपत की दूसरी लड़ाई हुई",
+        answer: "5 नवंबर, 1556"
+    },
+    {
+        id: 157,
+        question: "पनीपत की दूसरी लड़ाई में एक -दूसरे से किसने लड़ाई की?",
+        answer: "अकबर और हेमू"
+    },
+    {
+        id: 158,
+        question: "जहां पनीपत की तीसरी लड़ाई हुई थी",
+        answer: "14 जनवरी, 1761"
+    },
+    {
+        id: 159,
+        question: "पनीपत की तीसरी लड़ाई किस के बीच लड़ी गई थी।",
+        answer: "मराठा साम्राज्य और दुर्रानी साम्राज्य"
+    },
+    {
+        id: 160,
+        question: "पनीपत की पहली लड़ाई किसने जीती?",
+        answer: "बाबर"
+    },
+    {
+        id: 161,
+        question: "पनीपत की दूसरी लड़ाई किसने जीती?",
+        answer: "अकबर की सेना"
+    },
+    {
+        id: 162,
+        question: "पनीपत की तीसरी लड़ाई किसने जीती?",
+        answer: "दुर्रानी साम्राज्य"
+    },
+    {
+        id: 163,
+        question: "हेमू __________ में स्थित वर्तमान समय में रेवारी से संबंधित था।",
+        answer: "हरियाणा"
+    },
+    {
+        id: 164,
+        question: "मुग़ल सम्राट, हुमण्युन का 24 जनवरी, 1556 को दिल्ली में निधन हो गया, और उनके बेटे हुम्यनुन द्वितीय ने उन्हें __ सफल बना दिया।",
+        answer: "अकबर"
+    },
+    {
+        id: 165,
+        question: "पनीपत की तीसरी लड़ाई में कौन हार गया?",
+        answer: "मराठा साम्राज्य"
+    },
+    {
+        id: 166,
+        question: "भारत में अब्दली को किसने आमंत्रित किया?",
+        answer: "मुगल सम्राट"
+    },
+    {
+        id: 167,
+        question: "मराठा पणिपत की लड़ाई क्यों खो दिया?",
+        answer: "संसाधनों की कमी व आंतरिक विवाद"
+    },
+    {
+        id: 168,
+        question: "अब्दली कभी भारत क्यों नहीं लौटा?",
+        answer: "उन्होंने अपने उद्देश्यों को प्राप्त किया"
+    },
+    {
+        id: 169,
+        question: "सिखों ने पनीपत की लड़ाई में मराठों की मदद क्यों नहीं की?",
+        answer: "मराठों के साथ पिछले मतभेद, सिख सेनापतियों और सरदारों के साथ मराठों के खराब कूटनीतिक संबंध"
+    },
+    {
+        id: 170,
+        question: "पनीपत की लड़ाई के बाद अब्दली को क्या हुआ?",
+        answer: "वह अफगानिस्तान लौट आया"
+    },
+    {
+        id: 171,
+        question: "पनीपत की लड़ाई में मराठों की मदद किसने की?",
+        answer: "जाट"
+    },
+    {
+        id: 172,
+        question: "अब्दाली का सर्वोच्च एजेंट कौन था?",
+        answer: "नजीब-उद-धूला"
+    },
+    {
+        id: 173,
+        question: "औरंगजेब ने शिवाजी का इलाज कैसे किया?",
+        answer: "उसे कैद कर लिया"
+    },
+    {
+        id: 174,
+        question: "उत्तरी भारत के हिंदू राज्यों ने पैनीपत लड़ाई में अंततः समाप्त हो गया?",
+        answer: "पनीपत की तीसरी लड़ाई"
+    },
+    {
+        id: 175,
+        question: "पनीपत की पहली लड़ाई ने किस साम्राज्य को जन्म दिया?",
+        answer: "मुगल साम्राज्य"
+    },
+    {
+        id: 176,
+        question: "सबसे अधिक जनसंख्या वाला शहर कौन सा है?",
+        answer: "फरीदाबाद"
+    },
+    {
+        id: 177,
+        question: "एशिया का सबसे बड़ा पशु डेयरी फार्म कहां पर स्थित है?",
+        answer: "हरियाणा के हिसार जिले में"
+    },
+    {
+        id: 178,
+        question: "अस्सीगढ़ का किला कहां पर स्थित है?",
+        answer: "हांसी"
+    },
+    {
+        id: 179,
+        question: "हरियाणा के गठन के समय हरियाणा में कुल कितने जिले थे?",
+        answer: "7"
+    },
+    {
+        id: 180,
+        question: "क्षेत्रफल के अनुसार हरियाणा का सबसे बड़ा जिला कौन सा है?",
+        answer: "भिवानी"
+    },
+    {
+        id: 181,
+        question: "हरियाणा में किस सब्जी का उत्पादन सबसे अधिक होता है?",
+        answer: "आलू"
+    },
+    {
+        id: 182,
+        question: "हरियाणा में सबसे कम जनसंख्या घनत्व वाला जिला कौन सा है?",
+        answer: "सिरसा"
+    },
+    {
+        id: 183,
+        question: "हरियाणा में सबसे कम जनसंख्या वाला जिला कौन सा है?",
+        answer: "पंचकूला"
+    },
+    {
+        id: 184,
+        question: "किस जिले में मैगनीज पाया जाता है?",
+        answer: "महेंद्रगढ़"
+    },
+    {
+        id: 185,
+        question: "एशिया का सबसे बड़ा कैक्टस गार्डन किस जिले में स्थित है?",
+        answer: "पंचकूला"
+    },
+    {
+        id: 186,
+        question: "हरियाणा की सबसे अधिक सफल हरियाणवी फिल्म कौन सी है?",
+        answer: "चंद्रावल"
+    },
+    {
+        id: 187,
+        question: "हरियाणा राज्य में सबसे अधिक किस मसाले की खेती की जाती है?",
+        answer: "हल्दी"
+    },
+    {
+        id: 188,
+        question: "हरियाणा का पहला सांगी किसे कहा जाता है?",
+        answer: "किशन लाल भट्ट"
+    },
+    {
+        id: 189,
+        question: "हरियाणा के पहले जेल सत्याग्रह कौन थे?",
+        answer: "मुरलीधर"
+    },
+    {
+        id: 190,
+        question: "हरियाणा पंचायती राज अधिनियम कब लागू किया गया था?",
+        answer: "22 मई 1994"
+    },
+    {
+        id: 191,
+        question: "सूरजकुंड का अंतरराष्ट्रीय क्राफ्ट मेला किस जिले में और कब लगाया जाता है?",
+        answer: "फरीदाबाद= 1 फरवरी से 15 फरवरी के बीच मे"
+    },
+    {
+        id: 192,
+        question: "आकाशवाणी रोहतक की स्थापना कब की गई थी?",
+        answer: "8 मई 1976"
+    },
+    {
+        id: 193,
+        question: "हरियाणा में किस जिले को खनिजों की नगरी कहा जाता है?",
+        answer: "महेंद्रगढ़"
+    },
+    {
+        id: 194,
+        question: "अरावली की पहाड़ियां अधिकांश किस जिले में पाई जाती है?",
+        answer: "गुड़गांव"
+    },
+    {
+        id: 195,
+        question: "ढोसी की पहाड़ियां हरियाणा के किस जिले में पाई जाती है?",
+        answer: "महेंद्रगढ़"
+    },
+    {
+        id: 196,
+        question: "हरियाणा के किस जिले में सबसे कम वन क्षेत्र पाए जाते हैं?",
+        answer: "फतेहाबाद"
+    },
+    {
+        id: 197,
+        question: "जॉर्ज थॉमस के द्वारा हरियाणा के किस क्षेत्र को अपनी राजधानी बनाया था?",
+        answer: "हाँसी का किला"
+    },
+    {
+        id: 198,
+        question: "हरियाणा के बांगर क्षेत्र में होली त्यौहार पर कौन सा नृत्य किया जाता है?",
+        answer: "लूर नृत्य"
+    },
+    {
+        id: 199,
+        question: "प्रसिद्ध शीतला माता मेला हरियाणा में किस स्थान पर आयोजित किया जाता है?",
+        answer: "गुड़गांव"
+    },
+    {
+        id: 200,
+        question: "हरियाणा में भिवानी टेक्सटाइल मिल की स्थापना किस वर्ष की गई थी?",
+        answer: "1937"
+    },
+    {
+        id: 201,
+        question: "हरियाणा लोक सेवा आयोग के अध्यक्ष की नियुक्ति कौन करता है?",
+        answer: "राज्यपाल"
+    },
+    {
+        id: 202,
+        question: "हरियाणा में सबसे अधिक किस फूल की खेती की जाती है?",
+        answer: "ग्लेडियोलस"
+    },
+    {
+        id: 203,
+        question: "हरियाणा में प्रत्येक गांव में बिजली पहुंचाने का कार्य किस वर्ष पूर्ण किया गया था?",
+        answer: "29 नवंबर 1970"
+    },
+    {
+        id: 204,
+        question: "हरियाणा का पहला कॉलेज किस जिले में खुला था?",
+        answer: "रोहतक"
+    },
+    {
+        id: 205,
+        question: "हरियाणा के सबसे प्रसिद्ध हिंदी हास्य कवि कौन है?",
+        answer: "अल्हड़ बीकानेरी"
+    },
+    {
+        id: 206,
+        question: "महाभारत के दिनों में हरियाणा को किस नाम से जाना जाता था?",
+        answer: "बहुधना"
+    },
+    {
+        id: 207,
+        question: "पहली सीएनजी ट्रेन हरियाणा में कहां से कहां तक चलाई गई थी?",
+        answer: "रेवाड़ी से रोहतक"
+    },
+    {
+        id: 208,
+        question: "KMP क्या है? HSSC All Exam Most Important Question",
+        answer: "कुंडली मानेसर पलवल एक्सप्रेस वे"
+    },
+    {
+        id: 209,
+        question: "कुंडली मानेसर पलवल एक्सप्रेस वे की कुल लम्बाई कितनी है?",
+        answer: "136.65 किमी"
+    },
+    {
+        id: 210,
+        question: "एशिया का सबसे बड़ा टोल प्लाजा कहाँ पर स्थित है?",
+        answer: "गुरुग्राम में द्वारका से गुरुग्राम एक्सप्रेस वे पर"
+    },
+    {
+        id: 211,
+        question: "हरियाणा राज्य का क्षेत्रफल कितना है?",
+        answer: "44212 वर्ग किलोमीटर"
+    },
+    {
+        id: 212,
+        question: "कांग्रेश के दूसरे वर्ष 1888 के कोलकाता अधिवेशन में हरियाणा का प्रतिनिधित्व किसने किया था?",
+        answer: "पंडित दीनदयाल शर्मा, लाला मुरलीधर, बालमुकुंद गुप्त"
+    },
+    {
+        id: 213,
+        question: "क्रांति का बिगुल सबसे पहले हरियाणा में किस जिले में शुरू हुआ था?",
+        answer: "अंबाला छावनी"
+    },
+    {
+        id: 214,
+        question: "किस जिले को सैनिकों की नगरी कहा जाता है?",
+        answer: "रेवाड़ी"
+    },
+    {
+        id: 215,
+        question: "किस जिले को विज्ञान की नगरी कहा जाता है?",
+        answer: "अम्बाला"
+    },
+    {
+        id: 216,
+        question: "गन्ना उत्पादन में हरियाणा का कौन सा जिला पहले स्थान पर है?",
+        answer: "यमुनानगर"
+    },
+    {
+        id: 217,
+        question: "हरियाणा राज्य में गेहूं किस जिले में अधिक होता है?",
+        answer: "सिरसा"
+    },
+    {
+        id: 218,
+        question: "प्रसिद्ध शेख चिल्ली का मकबरा राज्य में किस जिले में स्थित है?",
+        answer: "थानेसर कुरुक्षेत्र"
+    },
+    {
+        id: 219,
+        question: "हरियाणा में गोपाल मोचन मेले का आयोजन किस जिले में किया जाता है?",
+        answer: "यमुनानगर"
+    },
+    {
+        id: 220,
+        question: "प्रसिद्ध मुंगीपा का मेला किस जिले में लगाया जाता है?",
+        answer: "भिवानी तोशाम"
+    },
+    {
+        id: 221,
+        question: "रत्नावली किसकी प्रसिद्ध रचना है?",
+        answer: "हर्षवर्धन"
+    },
+    {
+        id: 222,
+        question: "छोटी काशी के नाम से कौन सा जिला प्रसिद्ध है?",
+        answer: "भिवानी"
+    },
+    {
+        id: 223,
+        question: "हरियाणा राज्य का सर्वोच्च खेल पुरस्कार कौन सा है?",
+        answer: "भीम पुरस्कार"
+    },
+    {
+        id: 224,
+        question: "भीम पुरस्कार हर साल कितने खिलाड़ियों को प्रदान किया जाता है?",
+        answer: "5"
+    },
+    {
+        id: 225,
+        question: "भगवान श्री कृष्ण ने अर्जुन को गीता का उपदेश किस स्थान पर दिया गया था?",
+        answer: "ज्योतिसर बरगद के पेड़ के नीचे जो आज भी विद्यमान है"
+    },
+    {
+        id: 226,
+        question: "हरियाणा राज्य में कितने केंद्रीय विश्वविद्यालय हैं?",
+        answer: "एक महेंद्रगढ़ पाली"
+    },
+    {
+        id: 227,
+        question: "जन नायक चौधरी देवी लाल पुरस्कार किस क्षेत्र में दिया जाता है?",
+        answer: "कृषि में अधिकतम उत्पादन के लिए"
+    },
+    {
+        id: 228,
+        question: "हरियाणा की पहली यूनिवर्सिटी कहाँ पर स्थित है?",
+        answer: "कुरुक्षेत्र मे 1956 मे"
+    },
+    {
+        id: 229,
+        question: "हरियाणा में सर्वप्रथम जनगणना गंगा कब की गई?",
+        answer: "1971 में"
+    },
+    {
+        id: 230,
+        question: "हरियाणा के किस विभाग में सबसे पहले ई पेंशन स्कीम योजना शुरू की गई?",
+        answer: "उच्चतर शिक्षा विभाग हरियाणा"
+    },
+    {
+        id: 231,
+        question: "वह खनिज पदार्थ जो भारत में सिर्फ हरियाणा जिले में पाया जाता है?",
+        answer: "हिलना पत्थर या प्रकम्पी पत्थर चरखी दादरी के कल्यना गांव में"
+    },
+    {
+        id: 232,
+        question: "किस मुख्यमंत्री के नेतृत्व में हरियाणा राज्य के हर गांव में बिजली पहुंचाने का कार्यक्रम चलाया गया?",
+        answer: "भूतपूर्व मुख्यमंत्री स्वर्गीय श्री बंसी लाल जी"
+    },
+    {
+        id: 233,
+        question: "हरियाणा में किस जिले में सबसे अधिक स्टेट यूनिवर्सिटी स्थित है?",
+        answer: "हिसार 3"
+    },
+    {
+        id: 234,
+        question: "हरियाणा पर्यटन विभाग का नारा क्या है?",
+        answer: "Come Holiday With Us"
+    },
+    {
+        id: 235,
+        question: "मेवात जिले के किस गांव का नाम बदलकर ट्रंप गांव रखा गया?",
+        answer: "मरोरा"
+    },
+    {
+        id: 236,
+        question: "हरियाणा का ऐसा कौन सा जिला है जहां पर रेलवे लाइन नहीं है?",
+        answer: "मेवात"
+    },
+    {
+        id: 237,
+        question: "हरियाणा राज्य में सबसे अधिक किस मसाले की खेती की जाती है?",
+        answer: "हल्दी"
+    },
+    {
+        id: 238,
+        question: "प्रसिद्ध पुरात्वविद् रवींद्र सिंह बिष्ट ने कहाँ पर व किस सभ्यता पर काम किया।",
+        answer: "बनावली के सिंधु घाटी पर"
+    },
+    {
+        id: 239,
+        question: "सिंधु घाटी सभ्यता किस युग की सभ्यता है।",
+        answer: "कांस्य युग की"
+    },
+    {
+        id: 240,
+        question: "महाभारत के युग में सिरसा को जाना जाता था",
+        answer: "सेरिशका"
+    },
+    {
+        id: 241,
+        question: "वैदिक काल के अनुसार हरियाणा को पौराणिक किस वंश की मातृभूमि का इतिहास है।",
+        answer: "भरत"
+    },
+    {
+        id: 242,
+        question: "मानव जाति के जनक माने जाने वाले वैवस्वत ‘मनु’ को अवन्ति सुंदरी कथा नामक ग्रंथ में किस स्थान का निवासी माना गया है?",
+        answer: "शथानेश्वर"
+    },
+    {
+        id: 243,
+        question: "हरियाणा के किस जिले में भगवदगीता की जन्मस्थली है?",
+        answer: "कुरुक्षेत्र"
+    },
+    {
+        id: 244,
+        question: "बौद्धकाल के किन महाजनपदों में आधुनिक हरियाणा के क्षेत्र शामिल थे?",
+        answer: "कुरु और पांचाल"
+    },
+    {
+        id: 245,
+        question: "महाभारत में भीष्म का वास्तविक नाम क्या था?",
+        answer: "देवव्रत, भीष्म, राजा शांतनु और देवी गंगा के पुत्र थे।, उन्होंने अपने पिता की खुशी के लिए आजीवन ब्रह्मचर्य का व्रत लिया था, जिसके कारण उन्हें “भीष्म” नाम मिला।"
+    },
+    {
+        id: 246,
+        question: "कुषाणकालीन बौद्ध स्तूप के भग्नावशेष करनाल के किस स्थान पर हैं?",
+        answer: "असंध"
+    },
+    {
+        id: 247,
+        question: "हर्षवर्धन को किसने पराजित किया था?",
+        answer: "हर्षवर्धन को चालुक्य वंश के राजा पुलकेशिन द्वितीय ने पराजित किया था"
+    },
+    {
+        id: 248,
+        question: "महाभारत में हरियाणा को बहुधन कहा गया है। बहुधन का अर्थ है-",
+        answer: "अत्यधिक धन या समृद्धि की भूमि"
+    },
+    {
+        id: 249,
+        question: "तराइन की दूसरी लड़ाई किसने जीती?",
+        answer: "मोहमद गौरी"
+    },
+    {
+        id: 250,
+        question: "गुलाम वंश का अन्तिम शासक जिसने हरियाणा के जंगल कटवा दिये एवं अत्याचार किये, वह कौन था?",
+        answer: "बलबन"
+    },
+    {
+        id: 251,
+        question: "सच्चर फार्मूला कब लागू किया गया?",
+        answer: "1949 में"
+    },
+    {
+        id: 252,
+        question: "खेड़ा नृत्य किस स्तर पर किया जाता है?",
+        answer: "परिवार में बुजुर्ग की मृत्यु हो जाने पर"
+    },
+    {
+        id: 253,
+        question: "नाक में पहनने का एक आभूषण जिसे आमतौर पर छोटी नथ के नाम से भी जाना जाता है?",
+        answer: "बेसस"
+    },
+    {
+        id: 254,
+        question: "गलसरी कहां पर पहनने वाला आभूषण है?",
+        answer: "गले पर"
+    },
+    {
+        id: 255,
+        question: "हरियाणा का एडवेंचर रिसोर्ट कहां पर स्थित है?",
+        answer: "टिक्कर ताल पिंजौर 2003 में शुरू किया गया"
+    },
+    {
+        id: 256,
+        question: "पेरिस ऑफ हरियाणा किस जिले को कहा जाता है?",
+        answer: "करनाल"
+    },
+    {
+        id: 257,
+        question: "स्टील सिटी के नाम से कौन सा जिला प्रसिद्ध है?",
+        answer: "हिसार"
+    },
+    {
+        id: 258,
+        question: "हरियाणा में पीतल नगरी किस जिले को कहा जाता है?",
+        answer: "रेवाड़ी"
+    },
+    {
+        id: 259,
+        question: "हरियाणा के किस जिले में सबसे कम वर्षा होती है?",
+        answer: "सिरसा"
+    },
+    {
+        id: 260,
+        question: "हरियाणा का नाम हरना किसने रखा था?",
+        answer: "महाराज कृष्ण ने"
+    },
+    {
+        id: 261,
+        question: "हरियाणा का पहला वाईफाई हॉटस्पॉट गांव कौन सा है?",
+        answer: "गुमथला गढ़ पेहोवा"
+    },
+    {
+        id: 262,
+        question: "हरियाणा राज्य की सर्वाधिक महत्वपूर्ण नदी कौन सी है?",
+        answer: "यमुना नदी"
+    },
+    {
+        id: 263,
+        question: "विश्व क्षत्रिय हर्बल वन कहां स्थापित किया जा रहा है?",
+        answer: "मोर्नी हिल्स"
+    },
+    {
+        id: 264,
+        question: "देश का पहला पशु उपचार केंद्र कहां स्थापित किया गया है?",
+        answer: "नारनौल"
+    },
+    {
+        id: 265,
+        question: "बुलबुल रिजॉर्ट हरियाणा के किस जिले में स्थित है?",
+        answer: "जींद"
+    },
+    {
+        id: 266,
+        question: "दिल्ली के मुख्यमंत्री अरविंद केजरीवाल हरियाणा के किस जिले में संबंध रखते हैं?",
+        answer: "हिसार"
+    },
+    {
+        id: 267,
+        question: "वर्ल्ड यूनिवर्सिटी आफ डिजाइन द्वारा केंपस हरियाणा में कहां पर स्थित है?",
+        answer: "सोनीपत"
+    },
+    {
+        id: 268,
+        question: "एशिया की सबसे बड़ी मंडी कहां स्थापित की जा रही है?",
+        answer: "गन्नौर सोनीपत"
+    },
+    {
+        id: 269,
+        question: "किस राज्य में पहली बार वहीं खेल क्रिकेट का आयोजन किया गया?",
+        answer: "गुरुग्राम हरियाणा"
+    },
+    {
+        id: 270,
+        question: "हरियाणा का पहला डिजिटल पोस्ट ऑफिस कहां खोला गया?",
+        answer: "गुड़गांव"
+    },
+    {
+        id: 271,
+        question: "अंतर्राष्ट्रीय गीता महोत्सव का उद्घाटन किस वर्ष शुरू किया गया और किसके द्वारा किया गया?",
+        answer: "17 नवंबर से दिसंबर 2017 तक इसका उद्घाटन माननीय राष्ट्रपति रामनाथ कोविंद ने किया था"
+    },
+    {
+        id: 272,
+        question: "हरियाणा का सबसे बड़ा वन्य जीव अभ्यारण कौन सा है?",
+        answer: "अबूशहर वन्य जीव अभ्यारण जिला सिरसा"
+    },
+    {
+        id: 273,
+        question: "हरियाणा में सबसे पहले किस जिले में राष्ट्रीय उद्यान स्थापित किया गया था?",
+        answer: "सुल्तानपुर राष्ट्रीय उद्यान गुरुग्राम 1996"
+    },
+    {
+        id: 274,
+        question: "हरियाणा कृषि विश्वविद्यालय हिसार की मुख्य पत्रिका कौन सी है?",
+        answer: "हरियाणा खेती"
+    },
+    {
+        id: 275,
+        question: "हरियाणा का पहला हिंदी समाचार पत्र के संपादक व पत्रकार कौन है?",
+        answer: "जियालाल जैन 1995 में जैन प्रकाश पत्र निकाला था"
+    },
+    {
+        id: 276,
+        question: "हरियाणा का सबसे पुराना आकाशवाणी केंद्र कौन सा है?",
+        answer: "रोहतक 9 मई 1976 को स्थापित किया गया था"
+    },
+    {
+        id: 277,
+        question: "हरियाणा का सबसे बड़ा फ्लाईओवर किस जिले में स्थित है?",
+        answer: "पानीपत"
+    },
+    {
+        id: 278,
+        question: "राजीव गांधी थर्मल पावर प्लांट हरियाणा के किस जिले में स्थित है?",
+        answer: "हिसार खेदड़ गांव तहसील बरवाला"
+    },
+    {
+        id: 279,
+        question: "सोने की खान के नाम से हरियाणा में क्या प्रसिद्ध है?",
+        answer: "मुर्रा भैंस"
+    },
+    {
+        id: 280,
+        question: "हरियाणा में केला सबसे अधिक किस जिले में पाया जाता है?",
+        answer: "भुना फतेहबाद"
+    },
+    {
+        id: 281,
+        question: "राजीव गांधी एजुकेशन सिटी के नाम से कौन सा जिला प्रसिद्ध है?",
+        answer: "कुंडली सोनीपत"
+    },
+    {
+        id: 282,
+        question: "टिक्कर ताल किस जिले में स्थित है?",
+        answer: "पंचकूला"
+    },
+    {
+        id: 283,
+        question: "हरियाणा के कौन से मुख्यमंत्री जो उप प्रधानमंत्री बने हैं?",
+        answer: "चौधरी देवीलाल"
+    },
+    {
+        id: 284,
+        question: "हरियाणा में गिद्ध संरक्षण एवं प्रजनन केंद्र कहाँ स्थित है??",
+        answer: "पिंजौर, पंचकुला"
+    },
+    {
+        id: 285,
+        question: "हरियाणा में मोर और चिंकारा प्रजनन केंद्र कहाँ है??",
+        answer: "झाबुआ, रेवाड़ी"
+    },
+    {
+        id: 286,
+        question: "हरियाणा में इंडियन नेशनल डिफेन्स यूनिवर्सिटी कहाँ बन रही है??",
+        answer: "बिनोला, गुडगाँव"
+    },
+    {
+        id: 287,
+        question: "वह कौन सा प्रदेश है जिसके सभी पर्यटन स्थलों के नाम पक्षियों के नाम पर रखे गये हैं??",
+        answer: "हरियाणा"
+    },
+    {
+        id: 288,
+        question: "हरियाणा में कितने नए मंडल बनाये गए हैं?",
+        answer: "करनाल और फरीदाबाद"
+    },
+    {
+        id: 289,
+        question: "हरियाणा में परमाणु विद्युत केंद्र किस जिले में बनाया जा रहा है??",
+        answer: "गोरखपुर (फतेहाबाद)"
+    },
+    {
+        id: 290,
+        question: "ओलम्पिक की एकल स्पर्धा में पदक जीतने वाली पहली भारतीय महिला खिलाड़ी कौन थी??",
+        answer: "कर्णम मल्लेश्वरी"
+    },
+    {
+        id: 291,
+        question: "क्षेत्रफल की दृष्टि से हरियाणा का भारत में कौनसा स्थान है ??",
+        answer: "20वां"
+    },
+    {
+        id: 292,
+        question: "हरियाणा का लौह पुरुष कौन है?",
+        answer: "चौ. बंसीलाल"
+    },
+    {
+        id: 293,
+        question: "हरियाणा में पहली बार राष्ट्रपति शासन कब लगाया गया था?",
+        answer: "1967 में"
+    },
+    {
+        id: 294,
+        question: "हरियाणा का कौनसा शहर मिलिनियम सिटी के नाम से महशूर है?",
+        answer: "गुडगाँव"
+    },
+    {
+        id: 295,
+        question: "हिंदुस्तान मशीन टूल्स (HMT) किस जिले में स्थित है?",
+        answer: "पिंजौर, पंचकुला"
+    },
+    {
+        id: 296,
+        question: "देश की पहली CNG ट्रेन कहाँ से चली थी??",
+        answer: "रेवाड़ी"
+    },
+    {
+        id: 297,
+        question: "हरियाणा राज्य के गठन के समय विधानसभा की कितनी सीटें थीं?",
+        answer: "54"
+    },
+    {
+        id: 298,
+        question: "पानीपत के बाहौली में कौन सा कारखाना लगा है?",
+        answer: "भारतीय तेल निगम लिमिटेड तेल रिफनरी"
+    },
+    {
+        id: 299,
+        question: "हरियाणा विधानसभा में 90 सीटें किस वर्ष की गयी?",
+        answer: "1977"
+    },
+    {
+        id: 300,
+        question: "हरियाणा विधानसभा में अनुसूचित जाति के लिए कितनी सीटें आरक्षित हैं?",
+        answer: "17"
+    },
+    {
+        id: 301,
+        question: "हरियाणा में राजा अनगपाल तोमर ने क्या बनाया गया था?",
+        answer: "सूरजकुंड"
+    },
+    {
+        id: 302,
+        question: "हरियाणा का कौनसा जिला वैज्ञानिक उपकरण बनाने के लिए प्रसिद्ध है??",
+        answer: "अम्बाला"
+    },
+    {
+        id: 303,
+        question: "अरावली का गोल्फ मैदान हरियाणा के किस जिले में बना है?",
+        answer: "फरीदाबाद"
+    },
+    {
+        id: 304,
+        question: "हरियाणवी भाषा में लिखा गया पहला उपन्यास हैं?",
+        answer: "झाडूफिरी"
+    },
+    {
+        id: 305,
+        question: "हरियाणा के किस जिले की सीमा किसी भी राज्य की सीमा से नहीं लगती हैं?",
+        answer: "रोहतक"
+    },
+    {
+        id: 306,
+        question: "पंजाब-हरियाणा सीमा आयोग के अध्यक्ष कौन थे?",
+        answer: "जस्टिस जे सी शाह"
+    },
+    {
+        id: 307,
+        question: "हरियाणा में किस स्थान पर हर साल आम महोत्सव मनाया जाता है??",
+        answer: "यादवेन्द्र उद्यान पिंजौर"
+    },
+    {
+        id: 308,
+        question: "कौन सा जिला मिनी क्यूबाके नाम से प्रसिद्ध है?",
+        answer: "भिवानी"
+    },
+    {
+        id: 309,
+        question: "हरियाणा की पहली महिला राज्यपाल कौन बनी थी?",
+        answer: "चन्द्रावती"
+    },
+    {
+        id: 310,
+        question: "1886 में राष्ट्रीय आन्दोलन में जेल जाने वाले पहले हरियाणवी कौन थे?",
+        answer: "बाबू मुरलीधर"
+    },
+    {
+        id: 311,
+        question: "हरियाणा का सबसे लम्बे समय तक राज्यपाल कौन रहा है?",
+        answer: "श्री बीरेंद्र नारायण चक्रवर्ती"
+    },
+    {
+        id: 312,
+        question: "हरियाणा का पहला स्वप्रेरित आदर्श गाँव कौनसा घोषित किया गया है?",
+        answer: "सूई (जिला भिवानी)"
+    },
+    {
+        id: 313,
+        question: "हरियाणा संस्कृत अकादमी की मासिक पत्रिका का क्या नाम है ??",
+        answer: "हरिप्रभा"
+    },
+    {
+        id: 314,
+        question: "हरियाणा साहित्य अकादमी की मासिक पत्रिका का क्या नाम है??",
+        answer: "हरिगंधा"
+    },
+    {
+        id: 315,
+        question: "हरियाणा ग्रन्थ अकादमी की मासिक पत्रिका का क्या नाम है??",
+        answer: "कथा समय और सप्त सिंधु"
+    },
+    {
+        id: 316,
+        question: "हिंदी भाषा का प्रथम कवि किसे कहा जाता है ??",
+        answer: "जैन आचार्य श्रीधर"
+    },
+    {
+        id: 317,
+        question: "हरियाणा में महिला थाने कब से शुरू हुए?",
+        answer: "29 अगस्त 2015 (रक्षाबंधन के अवसर पर)"
+    },
+    {
+        id: 318,
+        question: "हरियाणा में हर्षवर्द्धन कालीन ताम्र मुदायें कहाँ से प्राप्त हुई?",
+        answer: "सोनीपत"
+    },
+    {
+        id: 319,
+        question: "हरियाणा में कौनसा क्षेत्र हरड़ उत्पादन के लिए प्रसिद्ध है?",
+        answer: "मोरनी की पहाड़ियाँ"
+    },
+    {
+        id: 320,
+        question: "हरियाणा के प्रथम गैर-कांग्रेसी मुख्यमंत्री कौन थे?",
+        answer: "राव बीरेंद्र सिंह"
+    },
+    {
+        id: 321,
+        question: "महात्मा गाँधी की भारत में प्रथम गिरफ्तारी कहाँ हुई थी ??",
+        answer: "10 अप्रैल 1919 को पलवल"
+    },
+    {
+        id: 322,
+        question: "हरियाणा का ताजमहल किसे कहते हैं ??",
+        answer: "शेख चिल्ली के मकबरे को, कुरुक्षेत्र"
+    },
+    {
+        id: 323,
+        question: "हरियाणवी रामायण किसने लिखी?",
+        answer: "खुदाबक्श अहमद"
+    },
+    {
+        id: 324,
+        question: "अधखिला फूल किसकी प्रसिध्द रचना है ??",
+        answer: "बालमुकुन्द गुप्त"
+    },
+    {
+        id: 325,
+        question: "हरियाणा के पंचकूला जिले में बनने वाले ऑक्सीवन का नाम किसके नाम पर रखा जाएगा?",
+        answer: "पंडित जसराज"
+    },
+    {
+        id: 326,
+        question: "राष्ट्रीय वन्य प्राणी कल्याण संस्थान कहाँ पर स्थित ह?",
+        answer: "बल्लभगढ़ फरीदाबाद 1983 में स्थापित"
+    },
+    {
+        id: 327,
+        question: "प्रसिद्ध उपन्यास माटी का मोल किसने लिखा?",
+        answer: "जयनारायण कौशिक"
+    },
+    {
+        id: 328,
+        question: "हरियाणा का सबसे बड़ा राष्ट्रीय राजमार्ग कौन सा है?",
+        answer: "NH 9 सिरसा से बहादुरगढ़"
+    },
+    {
+        id: 329,
+        question: "महाभारत काल में कौनसा नगर पांडुप्रस्थ कहलाता था??",
+        answer: "पानीपत"
+    },
+    {
+        id: 330,
+        question: "बुआ वाला तालाब कहाँ स्थित है ??",
+        answer: "झज्जर"
+    },
+    {
+        id: 331,
+        question: "हरियाणा का सबसे बड़ा गाँव कौन-सा है??",
+        answer: "सिसाय (हिसार)"
+    },
+    {
+        id: 332,
+        question: "गोहाना में किले का निर्माण किस राजा के द्वारा हुआ?",
+        answer: "पृथ्वीराज चौहान"
+    },
+    {
+        id: 333,
+        question: "रत्नावली किसकी प्रसिद्ध रचना है?",
+        answer: "हर्ष"
+    },
+    {
+        id: 334,
+        question: "सर छोटूराम ने कानून की शिक्षा कहाँ से प्राप्त की?",
+        answer: "आगरा कॉलेज"
+    },
+    {
+        id: 335,
+        question: "हरियाणा सरकार ने किस तारीख को पशुधन बीमा योजना शुरू की?",
+        answer: "29 जुलाई 2016"
+    },
+    {
+        id: 336,
+        question: "पश्चिमी यमुना नहर किस स्थान से यमुना नदी से निकाली गई है?",
+        answer: "ताजेवाला हथिनी कुंड"
+    },
+    {
+        id: 337,
+        question: "हरियाणा के किस जिले में ‘भू प्रशासन पर अंतर्राष्ट्रीय कार्यशाला’ का आयोजन किया गया?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 338,
+        question: "दिल्ली संग्रहालय हरियाणा के अनुसार धरती पर स्वर्ग की तिथि थी?",
+        answer: "1528"
+    },
+    {
+        id: 339,
+        question: "डॉ. जसवीर सिंह ने अपनी किस पुस्तक में हरियाणा को मुख्य रूप से आठ भागो में वर्गीकृत किया गया है?",
+        answer: "एन एग्रीकल्चर ज्योग्राफि ऑफ़ हरियाणा"
+    },
+    {
+        id: 340,
+        question: "हरियाणा का पहला विवाह-पूर्व परामर्श केंद्र किस जिले में शुरू किया?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 341,
+        question: "हरियाणा में किस जगह का पशु मेला अत्यंत प्रसिद्ध है?",
+        answer: "जहाजगढ़"
+    },
+    {
+        id: 342,
+        question: "वर्ष 1843 में किस अंग्रेज गवर्नर ने शिक्षा-विस्तार के लिए योजनाएँ बनाई?",
+        answer: "जेम्स थॉमस"
+    },
+    {
+        id: 343,
+        question: "हरियाणा शब्द किस कृति में प्राप्त हुआ है?",
+        answer: "पासणा हचरिउ व महापुरान"
+    },
+    {
+        id: 344,
+        question: "रानिया नगर किस जिले के अंतर्गत आता है?",
+        answer: "सिरसा"
+    },
+    {
+        id: 345,
+        question: "मेवात जिले का नया नाम क्या है और इसका क्षेत्रफल कितना है?",
+        answer: "नुहु, 1507 वर्ग किलोमीटर"
+    },
+    {
+        id: 346,
+        question: "प्रशासनिक उद्देश्य से राज्य को कितने संभागों में बाँटा गया है?",
+        answer: "4"
+    },
+    {
+        id: 347,
+        question: "फार्माना स्थित स्थल किस जिले में स्थित है?",
+        answer: "रोहतक"
+    },
+    {
+        id: 348,
+        question: "पुरातत्व स्थल ‘खोखरा-कोट’ किस जिले में है?",
+        answer: "रोहतक"
+    },
+    {
+        id: 349,
+        question: "पिल्लूखेड़ा किस जिले के अन्तर्गत है?",
+        answer: "जींद"
+    },
+    {
+        id: 350,
+        question: "हरियाणा में राजा जनमेजय का सम्बन्ध किस नगर से है?",
+        answer: "सफीदों"
+    },
+    {
+        id: 351,
+        question: "स्वामी श्रद्धानन्द द्वारा 1911 में हरियाणा के किस जिले में गुरुकुल की नींव रखी गई थी ?",
+        answer: "कुरक्षेत्र"
+    },
+    {
+        id: 352,
+        question: "डाकघर पासपोर्ट सेवा केन्द्र (पी.ओ.पी.एस.के.) वर्तमान में हरियाणा के दो जिलों में उपलब्ध है। उस तीसरे जिले का नाम क्या है जहाँ पी.ओ.एस.के. की स्थापना होने वाली है?",
+        answer: "फरीदाबाद"
+    },
+    {
+        id: 353,
+        question: "हरियाणा के किस गाँव का नाम सरस्वती नगर रखा गया है?",
+        answer: "यमुनानगर के मुस्तफाबाद"
+    },
+    {
+        id: 354,
+        question: "जनसंख्या की दृष्टि से हरियाणा का सबसे बड़ा जिला कौन सा है (जनगणना 2011)",
+        answer: "फरीदाबाद"
+    },
+    {
+        id: 355,
+        question: "जनसंख्या की दृष्टि से हरियाणा का सबसे बड़ा जिला कौन सा है (जनगणना 2011)",
+        answer: "पंचकुला"
+    },
+    {
+        id: 356,
+        question: "हरियाणा में किस धर्म को मानने वाले लोग सबसे ज्यादा हैं?",
+        answer: "हिन्दू"
+    },
+    {
+        id: 357,
+        question: "हरियाणा के किस जिले में जनगणना 2011 के अनुसार महिला साक्षरता दर न्यूनतम है?",
+        answer: "मेवात"
+    },
+    {
+        id: 358,
+        question: "2011 की जनगणना के अनुसार हरियाणा में साक्षरता प्रतिशत है",
+        answer: "75.55, सबसे ज्यादा साक्षरता वाला राज्य- केरल है जबकि हरियाणा का 22 वा स्थान है"
+    },
+    {
+        id: 359,
+        question: "जनगणना 2011 के अनुसार, लिंग अनुपात का राष्ट्रीय औसत कितना है?",
+        answer: "940"
+    },
+    {
+        id: 360,
+        question: "किस शहर को हरियाणा का मिलेनियम शहर कहा जाता है",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 361,
+        question: "वर्ष 2011 की जनगणना के अनुसार हरियाणा के किस शहर में महिलाओं की जनसंख्या सर्वाधिक है?",
+        answer: "गुरुग्राम"
+    },
+    {
+        id: 362,
+        question: "जनगणना 2011 के अनुसार, हरियाणा में जनसंख्या घनत्व है",
+        answer: "573 जन वर्ग किलो मी"
+    },
+    {
+        id: 363,
+        question: "हरियाणा के किस जिले में साक्षरता दर सबसे अधिक है?",
+        answer: "गुरुग्राम, 75.6 लगभग"
+    },
+    {
+        id: 364,
+        question: "किस ने कहा हरियाणा शब्द ‘आर्यन’ से उपजा है?",
+        answer: "डॉ एच आर गुप्ता"
+    },
+    {
+        id: 365,
+        question: "शेषशय्या पर लेटे हुए विष्णु की मूर्ति सोनीपत जिले में कहाँ से प्राप्त हुई है?",
+        answer: "फाजिलपुर"
+    },
+    {
+        id: 366,
+        question: "हरियाणा में इंडो-ग्रीक सिक्के किस स्थान से मिले थे",
+        answer: "खोंखराकोट, रोहतक"
+    },
+    {
+        id: 367,
+        question: "बनवाली किस जिले में स्थित है, जहां सिंधु घाटी सभ्यता के साक्ष्य पाए गए थे?",
+        answer: "फतेहाबाद"
+    },
+    {
+        id: 368,
+        question: "अकबर के समय रेवाड़ी का शासक कौन था?",
+        answer: "हेमचंद्र विक्रमादित्य (हेमू) था। वह एक कुशल योद्धा और रणनीतिकार था, जिसने 22 युद्ध जीते थे"
+    },
+    {
+        id: 369,
+        question: "हिमालय और हरियाणा के मैदानों के बीच एक कड़ी है।",
+        answer: "मोरनी की पहड़िया"
+    },
+    {
+        id: 370,
+        question: "मोरनी पहाड़ी का उच्चतम बिंदु कहलाता है",
+        answer: "करोह चोटी, जपकी पंचकुला जिले के अंतर्गत आती है"
+    },
+    {
+        id: 371,
+        question: "कहाँ पर शिवालिक की पहाड़ियों की तलहटी में स्थित है।",
+        answer: "सुखना झील"
+    },
+    {
+        id: 372,
+        question: "पश्चिम में गुजरात से लेकर उत्तर में दिल्ली तक फैली हुई पर्वत श्रेणी को कहते हैं",
+        answer: "अरावली, अरावली की पहड़िया गुरुग्राम जिले मे पाई जाती है"
+    },
+    {
+        id: 373,
+        question: "अरावली पहाड़ियों को स्थानीय रूप से इन नाम से भी जाना जाता है",
+        answer: "मेवात की पहड़िया"
+    },
+    {
+        id: 374,
+        question: "किन पहाड़ियों में मुख्य रूप से अंबाला, पंचकुला और यमुनानगर शामिल हैं?",
+        answer: "शिवालिक की पहाड़िया"
+    },
+    {
+        id: 375,
+        question: ".हरियाणा किन अक्षांशों के बीच स्थित है।",
+        answer: "27°37′ से 30°35′"
+    },
+    {
+        id: 376,
+        question: "हरियाणा का मैदानी भाग समुद्रतल से कितनी ऊँचाई पर स्थित है?",
+        answer: "700 से 900 फीट"
+    },
+    {
+        id: 377,
+        question: "चण्डीगढ़, हरियाणा का जाकिर हुसैन रोज गार्डन निम्न में से किस वर्ष निर्मित किया गया?",
+        answer: "1967"
+    },
+    {
+        id: 378,
+        question: "चंडीगढ़ को डिजाइन किया था?",
+        answer: "ली कोर्बुसियर, 1950 मे"
+    },
+    {
+        id: 379,
+        question: "प्रसिद्ध वास्तुकार, ली काबुसियर द्वारा चंडीगढ़ में बनायी गयी एक संरचना है",
+        answer: "खुला हस्त स्मारक"
+    },
+    {
+        id: 380,
+        question: "चण्डीगढ़ का वास्तुकार ली कार्बुसियर किस देश का निवासी था?",
+        answer: "फ्रांस"
+    },
+    {
+        id: 381,
+        question: "राजधानी सिटी चण्डीगढ़ का नाम व्युत्पन्न किया गया",
+        answer: "चंडी मदिर से"
+    },
+    {
+        id: 382,
+        question: "किस आधार पर पंजाब में से हरियाणा राज्य का निर्माण किया गया था।",
+        answer: "भाषा"
+    },
+    {
+        id: 383,
+        question: "हरियाणा की प्रसिद्ध खिलाड़ी गीता जुत्सी संबंधित हैं-",
+        answer: "एथेलेटिक्स"
+    },
+    {
+        id: 384,
+        question: "किस मुगल शासक के शासनकाल में हरियाणा पर अंग्रेजों का नियंत्रण स्थापित हुआ था?",
+        answer: "शाह आलं 1803 मे"
+    },
+    {
+        id: 385,
+        question: "प्रसिद्ध आयरिश जॉर्ज जिसने हरियाणा पर 1798 ई. में शासन किया, का आवास था-",
+        answer: "जहाज कोठी"
+    },
+    {
+        id: 386,
+        question: "18वीं शताब्दी में आयरिश साहसिक जार्ज थॉमस के द्वारा हरियाणा का कौन-सा जिला अधनीस्थ कर लिया गया था?",
+        answer: "हिसार"
+    },
+    {
+        id: 387,
+        question: "स्वामी दयानन्द सरस्वती ने हरियाणा के रेवाड़ी पहुँचने पर सर्वप्रथम क्या प्रारम्भ किया?",
+        answer: "गौशाला, इन्होंने आर्य समाज की स्थापना भी की है"
+    },
+    {
+        id: 388,
+        question: "अम्बाला में ब्रिटिश छावनी कब स्थापित की गई?",
+        answer: "1843 मे"
+    },
+    {
+        id: 389,
+        question: "सन् 1809-10 के दौरान समस्त हरियाणा किसके अधिकार में था?",
+        answer: "अंग्रेज"
+    },
+    {
+        id: 390,
+        question: "राव तुलाराम ने राव गोपाल देव और राव धन सिंह के साथ अहिरों को कहाँ एकत्रित किया और 1857 में अंग्रेजों के साथ युद्ध किया?",
+        answer: "नसीबपुर किला"
+    },
+    {
+        id: 391,
+        question: "हिसार में 1857 के विद्रोह का नेतृत्व किसने किया था?",
+        answer: "हिसार में 1857 के विद्रोह का नेतृत्व मोहम्मद अजीम और मौलवी रुकमुदीन ने किया था, 29 मई 1857 को हिसार के क्रांतिकारियों ने ब्रिटिश सेना पर हमला किया था"
+    },
+    {
+        id: 392,
+        question: "1857 के स्वधीनता संग्राम में राव तुलसीराम ने किस क्षेत्र में अंग्रेजों का मुकाबला किया",
+        answer: "1857 के स्वाधीनता संग्राम में राव तुलाराम ने अहीरवाल क्षेत्र में अंग्रेजों का मुकाबला किया था। मुख्य रूप से रेवाड़ी और नारनौल के आसपास के क्षेत्र में, जिसे अहीरवाल कहा जाता है, उन्होंने विद्रोह का नेतृत्व किया और अंग्रेजों से जमकर लोहा लिया"
+    },
+    {
+        id: 393,
+        question: "हरियाणा का कौन वीर सेनानी मेरठ क्रांति के समय मेरठ का ‘नायब कोतवाल’ था?",
+        answer: "राव कृशन गोपाल"
+    },
+    {
+        id: 394,
+        question: "हरियाणा के पलवल जिले से अंग्रेजों ने गाँधीजी को गिरफ्तार किया था",
+        answer: "10 अप्रैल 1919 को"
+    },
+    {
+        id: 395,
+        question: "भारत छोड़ो आंदोलन किस वाइसरॉय के शासनकाल में प्रारंभ हआ था?",
+        answer: "लॉर्ड लिनलिथगो"
+    },
+    {
+        id: 396,
+        question: "रौलेट एक्ट का विरोध 1919 में सर्वप्रथम कहाँ हुआ?",
+        answer: "अंबाला"
+    },
+    {
+        id: 397,
+        question: "हरियाणा में होम रूल आंदोलन के प्रचार का श्रेय किसे जाता है",
+        answer: "पंडित नेकी राम शर्मा"
+    },
+    {
+        id: 398,
+        question: "हरियाणा में यूनियनिस्ट पार्टी की पहुँच के विस्तार के लिए 1923 में फ़ज़ल-ए-हुसैन के साथ मिलकर किसने ‘ज़मींदार लीग’ की स्थापना की?",
+        answer: "सर छोटू राम शर्मा"
+    },
+    {
+        id: 399,
+        question: "24 मार्च, 1967 को हरियाणा के प्रथम गैर-कांग्रेसी मुख्यमंत्री का नाम था",
+        answer: "राव वीरेंद्र सिंह"
+    },
+    {
+        id: 400,
+        question: "हरियाणा में हर्षवर्द्धन कालीन ताम्र मुद्रायें कहां से प्राप्त हुईं?",
+        answer: "सोनीपत"
+    },
+    {
+        id: 401,
+        question: "वर्धन वंश का प्रथम राजा है",
+        answer: "प्रभाकरवर्धन"
+    },
+    {
+        id: 402,
+        question: "– बाबर कालीन राजपूत शासक मोहन सिंह मंडार की रियासत हरियाणा में कहाँ पर थी ?",
+        answer: "कैथल के परगने"
+    },
+];
+
+        // State Management
+        let studiedQuestions = new Set(JSON.parse(localStorage.getItem('studiedQuestions') || '[]'));
+        let bookmarkedQuestions = new Set(JSON.parse(localStorage.getItem('bookmarkedQuestions') || '[]'));
+        let currentMode = 'study';
+        let quizQuestions = [];
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let filteredQuestions = [...haryanaCETQuestions];
+
+        // Category Detection
+        function detectCategory(question, answer) {
+            const text = (question + ' ' + answer).toLowerCase();
+            const categories = {
+                'history': ['इतिहास', 'युद्ध', 'शासक', 'राजा', 'मुगल', 'अंग्रेज', 'स्वतंत्रता', '1857', 'महाभारत', 'वैदिक', 'सिंधु घाटी', 'हर्ष', 'अकबर', 'बाबर', 'पानीपत', 'तराइन', 'गौरी', 'खिलजी', 'तुगलक', 'लोदी', 'मराठा', 'अब्दाली', 'वंश', 'काल', 'विद्रोह', 'क्रांति', 'जनमेजय', 'पांडु', 'गांधी', 'नेहरू', 'पटेल', 'भगत', 'आजाद'],
+                'geography': ['जिले', 'नगर', 'शहर', 'नदी', 'पहाड़ी', 'पर्वत', 'क्षेत्रफल', 'घनत्व', 'जनसंख्या', 'तहसील', 'गांव', 'स्थान', 'मंदिर', 'झील', 'किला', 'मैदान', 'अरावली', 'शिवालिक', 'मोरनी', 'यमुना', 'सरस्वती', 'मार्ग', 'सड़क', 'पुल', 'एक्सप्रेस', 'रेलवे'],
+                'polity': ['मुख्यमंत्री', 'राज्यपाल', 'विधानसभा', 'लोकसभा', 'आयोग', 'न्यायालय', 'पंचायत', 'सरकार', 'मंत्री', 'मंत्रालय', 'अधिनियम', 'संविधान', 'चुनाव', 'आरक्षण', 'सीट', 'विधान', 'नगर', 'निगम', 'पालिका', 'कानून', 'अदालत', 'न्याय', 'जज', 'जस्टिस'],
+                'economy': ['खेती', 'उत्पादन', 'उद्योग', 'मिल', 'फार्म', 'बाजार', 'कारखाना', 'विद्युत', 'पावर', 'प्लांट', 'ऊर्जा', 'व्यापार', 'मंडी', 'डेयरी', 'पशु', 'अनाज', 'गेहूं', 'चावल', 'सरसों', 'गन्ना', 'आलू', 'फल', 'सब्जी', 'मसाला', 'खनिज', 'पेट्रोल', 'गैस', 'सीएनजी'],
+                'culture': ['मेला', 'नृत्य', 'गीत', 'कवि', 'साहित्य', 'फिल्म', 'भाषा', 'आभूषण', 'परंपरा', 'रिवाज', 'त्योहार', 'पूजा', 'मंदिर', 'गुरुद्वारा', 'मस्जिद', 'चर्च', 'धर्म', 'जाति', 'संस्कृति', 'कला', 'शिल्प', 'हस्तकला', 'लोक', 'कथा', 'कहानी', 'उपन्यास', 'काव्य', 'कविता'],
+                'sports': ['खिलाड़ी', 'ओलंपिक', 'क्रिकेट', 'हॉकी', 'पुरस्कार', 'खेल', 'मैच', 'टूर्नामेंट', 'चैम्पियन', 'मेडल', 'रजत', 'कांस्य', 'स्वर्ण', 'खेल', 'स्टेडियम', 'अकादमी', 'कोच', 'टीम', 'कप्तान', 'खिलाड़ी', 'खेल'],
+                'science': ['विश्वविद्यालय', 'अनुसंधान', 'संस्थान', 'परमाणु', 'साइबर', 'पर्यावरण', 'विज्ञान', 'तकनीक', 'तकनीकी', 'इंजीनियरिंग', 'मेडिकल', 'अस्पताल', 'चिकित्सा', 'रोग', 'टीका', 'उपग्रह', 'अंतरिक्ष', 'प्रयोगशाला', 'लैब', 'संयंत्र', 'प्लांट'],
+                'current': ['योजना', 'अभियान', 'पुरस्कार', 'स्थापना', 'घोषणा', 'शुरू', 'लॉन्च', 'उद्घाटन', 'आयोजित', 'निर्माण', 'बनाया', 'स्थापित', 'घोषित', 'जारी', 'जारी', '2020', '2021', '2022', '2023', '2024', '2025']
+            };
+
+            for (const [cat, keywords] of Object.entries(categories)) {
+                if (keywords.some(k => text.includes(k.toLowerCase()))) {
+                    return cat;
+                }
+            }
+            return 'general';
+        }
+
+        // Category Config
+        const categoryConfig = {
+            'history': { emoji: '📜', label: 'History', class: 'badge-history' },
+            'geography': { emoji: '🌍', label: 'Geography', class: 'badge-geography' },
+            'polity': { emoji: '🏛️', label: 'Polity', class: 'badge-polity' },
+            'economy': { emoji: '💰', label: 'Economy', class: 'badge-economy' },
+            'culture': { emoji: '🎭', label: 'Culture', class: 'badge-culture' },
+            'sports': { emoji: '🏆', label: 'Sports', class: 'badge-sports' },
+            'science': { emoji: '🔬', label: 'Science', class: 'badge-science' },
+            'current': { emoji: '📰', label: 'Current Affairs', class: 'badge-current' },
+            'general': { emoji: '📌', label: 'General', class: 'badge-general' }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            filterQuestions();
+            updateStats();
+
+            // Scroll to top button
+            window.addEventListener('scroll', () => {
+                const scrollTop = document.getElementById('scrollTop');
+                if (window.scrollY > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+            });
+        });
+
+        // Filter and Render Questions
+        function filterQuestions() {
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+            const category = document.getElementById('categoryFilter').value;
+            const sort = document.getElementById('sortBy').value;
+
+            filteredQuestions = haryanaCETQuestions.filter(q => {
+                const matchesSearch = !search || 
+                    q.question.toLowerCase().includes(search) || 
+                    q.answer.toLowerCase().includes(search);
+
+                const qCategory = detectCategory(q.question, q.answer);
+                const matchesCategory = category === 'all' || qCategory === category;
+
+                return matchesSearch && matchesCategory;
+            });
+
+            // Sort
+            if (sort === 'studied') {
+                filteredQuestions.sort((a, b) => {
+                    const aStudied = studiedQuestions.has(a.id) ? 1 : 0;
+                    const bStudied = studiedQuestions.has(b.id) ? 1 : 0;
+                    return bStudied - aStudied;
+                });
+            } else if (sort === 'unstudied') {
+                filteredQuestions.sort((a, b) => {
+                    const aStudied = studiedQuestions.has(a.id) ? 1 : 0;
+                    const bStudied = studiedQuestions.has(b.id) ? 1 : 0;
+                    return aStudied - bStudied;
+                });
+            } else if (sort === 'random') {
+                filteredQuestions.sort(() => Math.random() - 0.5);
+            }
+
+            renderQuestions();
+        }
+
+        // Render Questions Grid
+        function renderQuestions() {
+            const grid = document.getElementById('questionsGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            if (filteredQuestions.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+
+            grid.innerHTML = filteredQuestions.map(q => {
+                const isStudied = studiedQuestions.has(q.id);
+                const isBookmarked = bookmarkedQuestions.has(q.id);
+                const category = detectCategory(q.question, q.answer);
+                const catConfig = categoryConfig[category];
+
+                return `
+                    <div class="question-card ${isStudied ? 'studied' : ''}" data-id="${q.id}">
+                        <div class="card-header">
+                            <span class="question-number">${q.id}</span>
+                            <div class="card-actions">
+                                <button class="icon-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(event, ${q.id})" title="Bookmark">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="icon-btn study-btn ${isStudied ? 'active' : ''}" onclick="toggleStudied(event, ${q.id})" title="Mark as Studied">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="question-text">${q.question}</div>
+                        <div class="answer-section">
+                            <div class="answer-reveal hidden" onclick="toggleAnswer(this)">
+                                <div class="answer-label">
+                                    <i class="fas fa-lightbulb"></i> 💡 ANSWER
+                                </div>
+                                <div class="answer-text">${q.answer}</div>
+                                <div class="reveal-hint">
+                                    <i class="fas fa-hand-pointer"></i> 👆 Click to reveal answer
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+                            <span class="category-badge ${catConfig.class}">
+                                ${catConfig.emoji} ${catConfig.label}
+                            </span>
+                            ${isStudied ? '<span style="color: var(--success); font-weight: 700; font-size: 0.85rem;"><i class="fas fa-check-circle"></i> ✅ Done</span>' : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle Answer Visibility
+        function toggleAnswer(element) {
+            element.classList.toggle('hidden');
+            if (!element.classList.contains('hidden')) {
+                // Auto-mark as studied when answer is revealed
+                const card = element.closest('.question-card');
+                const id = parseInt(card.dataset.id);
+                if (!studiedQuestions.has(id)) {
+                    toggleStudied(null, id);
+                }
+            }
+        }
+
+        // Toggle Studied Status
+        function toggleStudied(event, id) {
+            if (event) event.stopPropagation();
+
+            if (studiedQuestions.has(id)) {
+                studiedQuestions.delete(id);
+                showToast('❌ Marked as not studied');
+            } else {
+                studiedQuestions.add(id);
+                showToast('✅ Great! Marked as studied');
+            }
+
+            localStorage.setItem('studiedQuestions', JSON.stringify([...studiedQuestions]));
+            updateStats();
+
+            // Re-render to update UI
+            const card = document.querySelector(`.question-card[data-id="${id}"]`);
+            if (card) {
+                const isStudied = studiedQuestions.has(id);
+                card.classList.toggle('studied', isStudied);
+                const btn = card.querySelector('.study-btn');
+                if (btn) btn.classList.toggle('active', isStudied);
+
+                // Update the done badge
+                const badgeContainer = card.querySelector('div[style*="justify-content: space-between"]');
+                if (badgeContainer) {
+                    const existingDone = badgeContainer.querySelector('span[style*="color: var(--success)"]');
+                    if (isStudied && !existingDone) {
+                        const doneSpan = document.createElement('span');
+                        doneSpan.style.cssText = 'color: var(--success); font-weight: 700; font-size: 0.85rem;';
+                        doneSpan.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Done';
+                        badgeContainer.appendChild(doneSpan);
+                    } else if (!isStudied && existingDone) {
+                        existingDone.remove();
+                    }
+                }
+            }
+        }
+
+        // Toggle Bookmark
+        function toggleBookmark(event, id) {
+            if (event) event.stopPropagation();
+
+            if (bookmarkedQuestions.has(id)) {
+                bookmarkedQuestions.delete(id);
+                showToast('🔖 Bookmark removed');
+            } else {
+                bookmarkedQuestions.add(id);
+                showToast('🔖 Bookmarked!');
+            }
+
+            localStorage.setItem('bookmarkedQuestions', JSON.stringify([...bookmarkedQuestions]));
+
+            const btn = event.target.closest('.icon-btn');
+            if (btn) btn.classList.toggle('active', bookmarkedQuestions.has(id));
+        }
+
+        // Mark All Studied
+        function markAllStudied() {
+            if (!confirm('🎯 Mark all visible questions as studied?')) return;
+
+            filteredQuestions.forEach(q => studiedQuestions.add(q.id));
+            localStorage.setItem('studiedQuestions', JSON.stringify([...studiedQuestions]));
+            updateStats();
+            renderQuestions();
+            showToast('🎉 All questions marked as studied!');
+        }
+
+        // Reset Progress
+        function resetProgress() {
+            if (!confirm('🔄 Reset all study progress? This cannot be undone!')) return;
+
+            studiedQuestions.clear();
+            bookmarkedQuestions.clear();
+            localStorage.removeItem('studiedQuestions');
+            localStorage.removeItem('bookmarkedQuestions');
+            updateStats();
+            renderQuestions();
+            showToast('🔄 Progress reset successfully!');
+        }
+
+        // Update Stats
+        function updateStats() {
+            const total = haryanaCETQuestions.length;
+            const studied = studiedQuestions.size;
+            const percent = Math.round((studied / total) * 100);
+
+            document.getElementById('totalQuestions').textContent = total;
+            document.getElementById('studiedCount').textContent = studied;
+            document.getElementById('progressPercent').textContent = percent + '%';
+            document.getElementById('progressText').textContent = `${studied} / ${total}`;
+            document.getElementById('progressBar').style.width = percent + '%';
+        }
+
+        // Show Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Set Mode (Study / Quiz)
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('mode' + mode.charAt(0).toUpperCase() + mode.slice(1)).classList.add('active');
+
+            if (mode === 'study') {
+                document.getElementById('studyMode').style.display = 'block';
+                document.getElementById('quizMode').classList.remove('active');
+                document.getElementById('resultsMode').classList.remove('active');
+                document.querySelector('.controls-section').style.display = 'block';
+            } else {
+                document.getElementById('studyMode').style.display = 'none';
+                document.querySelector('.controls-section').style.display = 'none';
+                startQuiz();
+            }
+        }
+
+        // Start Quiz
+        function startQuiz() {
+            // Get 10 random questions, prioritizing unstudied
+            const unstudied = haryanaCETQuestions.filter(q => !studiedQuestions.has(q.id));
+            const studied = haryanaCETQuestions.filter(q => studiedQuestions.has(q.id));
+
+            quizQuestions = [...unstudied.sort(() => Math.random() - 0.5).slice(0, 7),
+                            ...studied.sort(() => Math.random() - 0.5).slice(0, 3)];
+
+            if (quizQuestions.length < 5) {
+                quizQuestions = [...haryanaCETQuestions].sort(() => Math.random() - 0.5).slice(0, 10);
+            }
+
+            quizQuestions = quizQuestions.slice(0, 10);
+            currentQuizIndex = 0;
+            quizScore = 0;
+
+            document.getElementById('quizMode').classList.add('active');
+            document.getElementById('resultsMode').classList.remove('active');
+
+            renderQuizProgress();
+            showQuizQuestion();
+        }
+
+        // Render Quiz Progress Dots
+        function renderQuizProgress() {
+            const container = document.getElementById('quizProgress');
+            container.innerHTML = quizQuestions.map((_, i) => 
+                `<div class="quiz-dot ${i === 0 ? 'active' : ''}" id="dot-${i}"></div>`
+            ).join('');
+        }
+
+        // Show Quiz Question
+        function showQuizQuestion() {
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quizQuestionNum').textContent = 
+                `Question ${currentQuizIndex + 1} of ${quizQuestions.length}`;
+            document.getElementById('quizQuestion').textContent = q.question;
+            document.getElementById('quizFeedback').className = 'quiz-feedback';
+            document.getElementById('nextBtn').style.display = 'none';
+
+            // Generate options (1 correct + 3 wrong)
+            const wrongAnswers = haryanaCETQuestions
+                .filter(qa => qa.id !== q.id)
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3)
+                .map(qa => qa.answer);
+
+            const options = [q.answer, ...wrongAnswers].sort(() => Math.random() - 0.5);
+            const letters = ['A', 'B', 'C', 'D'];
+
+            document.getElementById('quizOptions').innerHTML = options.map((opt, i) => `
+                <button class="quiz-option" onclick="selectOption(this, '${opt.replace(/'/g, "\'")}', '${q.answer.replace(/'/g, "\'")}')">
+                    <span class="option-letter">${letters[i]}</span>
+                    <span>${opt}</span>
+                </button>
+            `).join('');
+
+            // Update active dot
+            document.querySelectorAll('.quiz-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentQuizIndex);
+            });
+        }
+
+        // Select Option
+        function selectOption(btn, selected, correct) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.add('disabled'));
+
+            const feedback = document.getElementById('quizFeedback');
+
+            if (selected === correct) {
+                btn.classList.add('correct');
+                feedback.textContent = '🎉 Correct! Well done! ✅';
+                feedback.className = 'quiz-feedback correct show';
+                quizScore++;
+                document.getElementById(`dot-${currentQuizIndex}`).classList.add('correct');
+
+                // Mark as studied
+                const q = quizQuestions[currentQuizIndex];
+                if (!studiedQuestions.has(q.id)) {
+                    studiedQuestions.add(q.id);
+                    localStorage.setItem('studiedQuestions', JSON.stringify([...studiedQuestions]));
+                    updateStats();
+                }
+            } else {
+                btn.classList.add('wrong');
+                feedback.textContent = `❌ Wrong! The correct answer is: ${correct}`;
+                feedback.className = 'quiz-feedback wrong show';
+                document.getElementById(`dot-${currentQuizIndex}`).classList.add('wrong');
+
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.textContent.includes(correct)) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+
+            document.getElementById('nextBtn').style.display = 'inline-flex';
+        }
+
+        // Next Quiz Question
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex >= quizQuestions.length) {
+                showResults();
+            } else {
+                showQuizQuestion();
+            }
+        }
+
+        // Show Results
+        function showResults() {
+            document.getElementById('quizMode').classList.remove('active');
+            document.getElementById('resultsMode').classList.add('active');
+
+            const score = quizScore;
+            const total = quizQuestions.length;
+            const percent = Math.round((score / total) * 100);
+
+            document.getElementById('resultScore').textContent = `${score}/${total}`;
+
+            let emoji, message;
+            if (percent >= 90) { emoji = '🏆'; message = 'Outstanding! You are a Haryana GK Master! 🌟'; }
+            else if (percent >= 70) { emoji = '🎉'; message = 'Great job! Keep up the good work! 👏'; }
+            else if (percent >= 50) { emoji = '👍'; message = 'Good effort! Practice more to improve! 💪'; }
+            else { emoji = '📚'; message = 'Keep studying! You will get better! 🎯'; }
+
+            document.getElementById('resultEmoji').textContent = emoji;
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        // Restart Quiz
+        function restartQuiz() {
+            startQuiz();
+        }
+    </script>
+</body>
+</html>
