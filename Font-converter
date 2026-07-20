@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृतिदेव-10 से यूनिकोड एवं यूनिकोड से कृतिदेव-10 में परावर्तन</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #4a7c7e;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .converter-box {
+            display: flex;
+            gap: 0;
+            border: 2px solid #c0392b;
+            background: white;
+        }
+        .panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
+        .panel-header {
+            background: #c0392b;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-header .actions {
+            display: flex;
+            gap: 8px;
+        }
+        .panel-header button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+        .panel-header button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        textarea {
+            flex: 1;
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 15px;
+            font-size: 18px;
+            resize: none;
+            font-family: 'Mangal', 'Arial Unicode MS', sans-serif;
+        }
+        #krutidevInput, #krutidevOutput {
+            font-family: 'Kruti Dev 010', 'KrutiDev010', monospace;
+        }
+        .divider {
+            width: 2px;
+            background: #c0392b;
+        }
+        .button-bar {
+            display: flex;
+            justify-content: space-around;
+            background: #c0392b;
+            padding: 10px;
+            gap: 20px;
+        }
+        .convert-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .convert-btn:hover {
+            background: #0056b3;
+        }
+        .convert-btn:active {
+            transform: translateY(1px);
+        }
+        @media (max-width: 768px) {
+            .converter-box {
+                flex-direction: column;
+            }
+            .divider {
+                width: 100%;
+                height: 2px;
+            }
+            .header {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">कृतिदेव-10 से यूनिकोड एवं यूनिकोड से कृतिदेव-10 में परावर्तन</div>
+    
+    <div class="container">
+        <div class="converter-box">
+            <!-- Krutidev Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span>कृतिदेव</span>
+                    <div class="actions">
+                        <button onclick="clearKrutidev()" title="Clear">🗑️</button>
+                        <button onclick="copyKrutidev()" title="Copy">📋</button>
+                    </div>
+                </div>
+                <textarea id="krutidevInput" placeholder="कृतिदेव में टाइप करें..."></textarea>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Unicode Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span>यूनिकोड</span>
+                    <div class="actions">
+                        <button onclick="clearUnicode()" title="Clear">🗑️</button>
+                        <button onclick="copyUnicode()" title="Copy">📋</button>
+                    </div>
+                </div>
+                <textarea id="unicodeInput" placeholder="यूनिकोड में टाइप करें..."></textarea>
+            </div>
+        </div>
+        
+        <div class="button-bar">
+            <button class="convert-btn" onclick="convertToUnicode()">Convert to Unicode</button>
+            <button class="convert-btn" onclick="convertToKrutidev()">Convert to Krutidev</button>
+        </div>
+    </div>
+
+    <script>
+        // ========== KRUTIDEV ↔ UNICODE CONVERSION TABLES ==========
+        
+        const krutiToUniArrayOne = [
+            "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+            "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+            "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",";+","j+","u+",
+            "Ùk","Ù","Dr","–","—","é","™","=kk","f=k",
+            "à","á","â","ã","ºz","º","í","{k","{","=","«",
+            "Nî","Vî","Bî","Mî","<î","|","K","}",
+            "J","Vª","Mª","<ªª","Nª","Ø","Ý","nzZ","æ","ç","Á","xz","#",":",
+            "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_",
+            "ô","d","Dk","D","[k","[","x","Xk","X","Ä","?k","?","³",
+            "pkS","p","Pk","P","N","t","Tk","T",">","÷","¥",
+            "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".",
+            "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U",
+            "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",
+            ";","¸","j","y","Yk","Y","G","o","Ok","O",
+            "'k","'","\"k","\"","l","Lk","L","g",
+            "È","z",
+            "Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü",
+            "‚","ks","kS","k","h","q","w","`","s","S",
+            "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः",
+            "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@"
+        ];
+
+        const krutiToUniArrayTwo = [
+            "॰","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'",
+            "०","१","२","३","४","५","६","७","८","९",
+            "फ़्","क़","ख़","ख़्","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
+            "त्त","त्त्","क्त","दृ","कृ","न्न","न्न्","=k","f=",
+            "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष","क्ष्","त्र","त्र्",
+            "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व",
+            "श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","र्द्र","द्र","प्र","प्र","ग्र","रु","रू",
+            "ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ",
+            "क्क","क","क","क्","ख","ख्","ग","ग","ग्","घ","घ","घ्","ङ",
+            "चै","च्","च","छ","ज्","ज","झ्","झ","ञ",
+            "ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्",
+            "ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै",
+            "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":",
+            "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/"
+        ];
+
+        const uniToKrutiArrayOne = [
+            "‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ",
+            "०","१","२","३","४","५","६","७","८","९","x",
+            "फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
+            "त्त्","त्त","क्त","दृ","कृ",
+            "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ",
+            "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व",
+            "श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू",
+            "्र",
+            "ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ",
+            "क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ",
+            "चै","च्","च","छ","ज्","ज","झ्","झ","ञ",
+            "ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्",
+            "ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै",
+            "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":",
+            "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/"
+        ];
+
+        const uniToKrutiArrayTwo = [
+            "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+            "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+            "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",";+","j+","u+",
+            "Ùk","Ù","Dr","–","—","é","™","=kk","f=k",
+            "à","á","â","ã","ºz","º","í","{k","{","=","«",
+            "Nî","Vî","Bî","Mî","<î","|","K","}",
+            "J","Vª","Mª","<ªª","Nª","Ø","Ý","nzZ","æ","ç","Á","xz","#",":",
+            "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_",
+            "ô","d","Dk","D","[k","[","x","Xk","X","Ä","?k","?","³",
+            "pkS","p","Pk","P","N","t","Tk","T",">","÷","¥",
+            "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".",
+            "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U",
+            "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",
+            ";","¸","j","y","Yk","Y","G","o","Ok","O",
+            "'k","'","\"k","\"","l","Lk","L","g",
+            "È","z",
+            "Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü",
+            "‚","ks","kS","k","h","q","w","`","s","S",
+            "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः",
+            "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@"
+        ];
+
+        // ========== CONVERSION FUNCTIONS ==========
+
+        function convertToUnicode() {
+            let text = document.getElementById('krutidevInput').value;
+            if (!text.trim()) return;
+            
+            let modified = text;
+            let len = krutiToUniArrayOne.length;
+            
+            // Handle "f" (ि) repositioning
+            modified = " " + modified + " ";
+            let pos = modified.lastIndexOf("f");
+            while (pos !== -1) {
+                modified = modified.substring(0, pos) + modified.charAt(pos + 1) + modified.charAt(pos) + modified.substring(pos + 2);
+                pos = modified.lastIndexOf("f", 0, pos - 1);
+            }
+            modified = modified.replace(/f/g, "ि");
+            modified = modified.trim();
+            
+            // Handle "Z" (्र / half R) repositioning
+            modified = " " + modified + " ";
+            let posR = modified.indexOf("Z");
+            let matras = ["‚", "ks", "kS", "k", "h", "q", "w", "`", "s", "S", "a", "¡", "%", "W", "·", "~ ", "~"];
+            while (posR !== -1) {
+                modified = modified.replace("Z", "", 1);
+                if (matras.includes(modified.charAt(posR - 1))) {
+                    modified = modified.substring(0, posR - 2) + "र्" + modified.substring(posR - 2);
+                } else {
+                    modified = modified.substring(0, posR - 1) + "र्" + modified.substring(posR - 1);
+                }
+                posR = modified.indexOf("Z");
+            }
+            modified = modified.trim();
+            
+            // Replace characters
+            for (let i = 0; i < len; i++) {
+                while (modified.indexOf(krutiToUniArrayOne[i]) !== -1) {
+                    modified = modified.replace(krutiToUniArrayOne[i], krutiToUniArrayTwo[i]);
+                }
+            }
+            
+            document.getElementById('unicodeInput').value = modified;
+        }
+
+        function convertToKrutidev() {
+            let text = document.getElementById('unicodeInput').value;
+            if (!text.trim()) return;
+            
+            let modified = text;
+            let len = uniToKrutiArrayOne.length;
+            
+            // Preserve nukta characters
+            let nuktaChars = {"क़":"क़","ख़":"ख़","ग़":"ग़","ज़":"ज़","ड़":"ड़","ढ़":"ढ़","ऩ":"ऩ","फ़":"फ़","य़":"य़","ऱ":"ऱ"};
+            for (let [k, v] of Object.entries(nuktaChars)) {
+                modified = modified.split(k).join(v);
+            }
+            
+            // Replace ि with f
+            modified = modified.replace(/ि/g, "f");
+            
+            // Replace Unicode with Krutidev
+            for (let i = 0; i < len; i++) {
+                while (modified.indexOf(uniToKrutiArrayOne[i]) !== -1) {
+                    modified = modified.replace(uniToKrutiArrayOne[i], uniToKrutiArrayTwo[i]);
+                }
+            }
+            
+            // Handle "f" repositioning
+            modified = " " + modified + " ";
+            let pos = modified.indexOf("f");
+            while (pos !== -1) {
+                modified = modified.substring(0, pos - 1) + modified.charAt(pos) + modified.charAt(pos - 1) + modified.substring(pos + 1);
+                pos = modified.indexOf("f", pos + 1);
+            }
+            modified = modified.trim();
+            
+            // Handle "j~" (half R) repositioning
+            modified = " " + modified + " ";
+            let posR = modified.indexOf("र्");
+            let matras = ["‚", "ks", "kS", "k", "h", "q", "w", "`", "s", "S", "a", "¡", "%", "W", "·", "~ ", "~"];
+            while (posR !== -1) {
+                modified = modified.replace("र्", "", 1);
+                if (matras.includes(modified.charAt(posR + 1))) {
+                    modified = modified.substring(0, posR + 2) + "Z" + modified.substring(posR + 2);
+                } else {
+                    modified = modified.substring(0, posR + 1) + "Z" + modified.substring(posR + 1);
+                }
+                posR = modified.indexOf("र्");
+            }
+            modified = modified.trim();
+            
+            document.getElementById('krutidevInput').value = modified;
+        }
+
+        // ========== UTILITY FUNCTIONS ==========
+
+        function clearKrutidev() {
+            document.getElementById('krutidevInput').value = '';
+        }
+
+        function clearUnicode() {
+            document.getElementById('unicodeInput').value = '';
+        }
+
+        function copyKrutidev() {
+            let el = document.getElementById('krutidevInput');
+            el.select();
+            document.execCommand('copy');
+        }
+
+        function copyUnicode() {
+            let el = document.getElementById('unicodeInput');
+            el.select();
+            document.execCommand('copy');
+        }
+    </script>
+</body>
+</html>
