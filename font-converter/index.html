@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>कृतिदेव-10 से यूनिकोड एवं यूनिकोड से कृतिदेव-10 में परावर्तन</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #4a7c7e;
@@ -24,10 +20,7 @@
             padding: 10px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1400px; margin: 0 auto; }
         .converter-box {
             display: flex;
             gap: 0;
@@ -50,10 +43,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        .panel-header .actions {
-            display: flex;
-            gap: 8px;
-        }
+        .panel-header .actions { display: flex; gap: 8px; }
         .panel-header button {
             background: none;
             border: none;
@@ -62,11 +52,8 @@
             font-size: 16px;
             padding: 2px 6px;
             border-radius: 3px;
-            transition: background 0.2s;
         }
-        .panel-header button:hover {
-            background: rgba(255,255,255,0.2);
-        }
+        .panel-header button:hover { background: rgba(255,255,255,0.2); }
         textarea {
             flex: 1;
             width: 100%;
@@ -77,13 +64,8 @@
             resize: none;
             font-family: 'Mangal', 'Arial Unicode MS', sans-serif;
         }
-        #krutidevInput, #krutidevOutput {
-            font-family: 'Kruti Dev 010', 'KrutiDev010', monospace;
-        }
-        .divider {
-            width: 2px;
-            background: #c0392b;
-        }
+        #krutidevInput { font-family: 'Kruti Dev 010', 'KrutiDev010', monospace; }
+        .divider { width: 2px; background: #c0392b; }
         .button-bar {
             display: flex;
             justify-content: space-around;
@@ -100,34 +82,19 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 500;
-            transition: background 0.2s;
         }
-        .convert-btn:hover {
-            background: #0056b3;
-        }
-        .convert-btn:active {
-            transform: translateY(1px);
-        }
+        .convert-btn:hover { background: #0056b3; }
         @media (max-width: 768px) {
-            .converter-box {
-                flex-direction: column;
-            }
-            .divider {
-                width: 100%;
-                height: 2px;
-            }
-            .header {
-                font-size: 16px;
-            }
+            .converter-box { flex-direction: column; }
+            .divider { width: 100%; height: 2px; }
+            .header { font-size: 16px; }
         }
     </style>
 </head>
 <body>
     <div class="header">कृतिदेव-10 से यूनिकोड एवं यूनिकोड से कृतिदेव-10 में परावर्तन</div>
-    
     <div class="container">
         <div class="converter-box">
-            <!-- Krutidev Panel -->
             <div class="panel">
                 <div class="panel-header">
                     <span>कृतिदेव</span>
@@ -138,10 +105,7 @@
                 </div>
                 <textarea id="krutidevInput" placeholder="कृतिदेव में टाइप करें..."></textarea>
             </div>
-            
             <div class="divider"></div>
-            
-            <!-- Unicode Panel -->
             <div class="panel">
                 <div class="panel-header">
                     <span>यूनिकोड</span>
@@ -153,194 +117,322 @@
                 <textarea id="unicodeInput" placeholder="यूनिकोड में टाइप करें..."></textarea>
             </div>
         </div>
-        
         <div class="button-bar">
             <button class="convert-btn" onclick="convertToUnicode()">Convert to Unicode</button>
             <button class="convert-btn" onclick="convertToKrutidev()">Convert to Krutidev</button>
         </div>
     </div>
 
-    <script>
-        // ========== KRUTIDEV → UNICODE MAPPING ==========
-        const krutiToUniMap = {
-            "ñ": "॰", "Q+Z": "QZ+", "sas": "sa", "aa": "a", ")Z": "र्द्ध", "ZZ": "Z",
-            "‘": "\"", "’": "\"", "“": "'", "”": "'", "å": "०", "ƒ": "१", "„": "२",
-            "…": "३", "†": "४", "‡": "५", "ˆ": "६", "‰": "७", "Š": "८", "‹": "९",
-            "¶+": "फ़्", "d+": "क़", "[+k": "ख़", "[+": "ख़्", "x+": "ग़", "T+": "ज़्",
-            "t+": "ज़", "M+": "ड़", "<+": "ढ़", "Q+": "फ़", ";+": "य़", "j+": "ऱ",
-            "u+": "ऩ", "Ùk": "त्त", "Ù": "त्त्", "Dr": "क्त", "–": "दृ", "—": "कृ",
-            "é": "न्न", "™": "न्न्", "=kk": "=k", "f=k": "f=", "à": "ह्न", "á": "ह्य",
-            "â": "हृ", "ã": "ह्म", "ºz": "ह्र", "º": "ह्", "í": "द्द", "{k": "क्ष",
-            "{": "क्ष्", "=": "त्र", "«": "त्र्", "Nî": "छ्य", "Vî": "ट्य", "Bî": "ठ्य",
-            "Mî": "ड्य", "<î": "ढ्य", "|": "द्य", "K": "ज्ञ", "}": "द्व", "J": "श्र",
-            "Vª": "ट्र", "Mª": "ड्र", "<ªª": "ढ्र", "Nª": "छ्र", "Ø": "क्र", "Ý": "फ्र",
-            "nzZ": "र्द्र", "æ": "द्र", "ç": "प्र", "Á": "प्र", "xz": "ग्र", "#": "रु",
-            ":": "रू", "v‚": "ऑ", "vks": "ओ", "vkS": "औ", "vk": "आ", "v": "अ",
-            "b±": "ईं", "Ã": "ई", "bZ": "ई", "b": "इ", "m": "उ", "Å": "ऊ",
-            ",s": "ऐ", ",": "ए", "_": "ऋ", "ô": "क्क", "d": "क", "Dk": "क", "D": "क्",
-            "[k": "ख", "[": "ख्", "x": "ग", "Xk": "ग", "X": "ग्", "Ä": "घ", "?k": "घ",
-            "?": "घ्", "³": "ङ", "pkS": "चै", "p": "च्", "Pk": "च", "P": "छ",
-            "N": "ज्", "t": "ज", "Tk": "झ्", "T": "झ", ">": "ञ", "÷": "ट्ट",
-            "¥": "ट्ठ", "ê": "ड्ड", "ë": "कृ", "V": "भ", "B": "्य", "ì": "ड्ढ",
-            "ï": "झ्", "M+": "क्र", "<+": "त्त्", "M": "श", "<": "श्", ".k": "ॉ",
-            ".": "ो", "r": "ौ", "Rk": "ा", "R": "ी", "Fk": "ु", "F": "ू", ")": "ृ",
-            "n": "े", "/k": "ै", "èk": "ं", "/": "ँ", "Ë": "ः", "è": "ॅ",
-            "u": "ऽ", "Uk": "ऽ", "U": "ऽ", "i": "ऽ", "Ik": "ऽ", "I": "ऽ",
-            "Q": "ऽ", "¶": "ऽ", "c": "ऽ", "Ck": "ऽ", "C": "ऽ", "Hk": "ऽ",
-            "H": "ऽ", "e": "ऽ", "Ek": "ऽ", "E": "ऽ", ";": "ऽ", "¸": "ऽ",
-            "j": "ऽ", "y": "ऽ", "Yk": "ऽ", "Y": "ऽ", "G": "ऽ", "o": "ऽ",
-            "Ok": "ऽ", "O": "ऽ", "'k": "ऽ", "'": "ऽ", "\"k": "ऽ", "\"": "ऽ",
-            "l": "ऽ", "Lk": "ऽ", "L": "ऽ", "g": "ऽ", "È": "ऽ", "z": "ऽ",
-            "Ì": "ऽ", "Í": "ऽ", "Î": "ऽ", "Ï": "ऽ", "Ñ": "ऽ", "Ò": "ऽ",
-            "Ó": "ऽ", "Ô": "ऽ", "Ö": "ऽ", "Ø": "ऽ", "Ù": "ऽ", "Ük": "ऽ",
-            "Ü": "ऽ", "‚": "ऽ", "ks": "ऽ", "kS": "ऽ", "k": "ऽ", "h": "ऽ",
-            "q": "ऽ", "w": "ऽ", "`": "ऽ", "s": "ऽ", "S": "ऽ", "a": "ऽ",
-            "¡": "ऽ", "%": "ऽ", "W": "ऽ", "•": "ऽ", "·": "ऽ", "∙": "ऽ",
-            "~j": "ऽ", "~": "ऽ", "\\": "ऽ", "+": "ऽ", " ः": "ऽ", "^": "ऽ",
-            "*": "ऽ", "Þ": "ऽ", "ß": "ऽ", "(": "ऽ", "¼": "ऽ", "½": "ऽ",
-            "¿": "ऽ", "À": "ऽ", "¾": "ऽ", "A": "ऽ", "-": "ऽ", "&": "ऽ",
-            "Œ": "ऽ", "]": "ऽ", "~ ": "ऽ", "@": "ऽ"
-        };
+<script>
+// ==================== KRUTIDEV → UNICODE ====================
 
-        // ========== UNICODE → KRUTIDEV MAPPING ==========
-        const uniToKrutiMap = {
-            "॰": "ñ", "QZ+": "Q+Z", "sa": "sas", "a": "aa", "र्द्ध": ")Z", "Z": "ZZ",
-            "\"": "‘", "'": "“", "०": "å", "१": "ƒ", "२": "„", "३": "…", "४": "†",
-            "५": "‡", "६": "ˆ", "७": "‰", "८": "Š", "९": "‹", "फ़्": "¶+", "क़": "d+",
-            "ख़": "[+k", "ख़्": "[+", "ग़": "x+", "ज़्": "T+", "ज़": "t+", "ड़": "M+",
-            "ढ़": "<+", "फ़": "Q+", "य़": ";+", "ऱ": "j+", "ऩ": "u+", "त्त": "Ùk",
-            "त्त्": "Ù", "क्त": "Dr", "दृ": "–", "कृ": "—", "न्न": "é", "न्न्": "™",
-            "=k": "=kk", "f=": "f=", "ह्न": "à", "ह्य": "á", "हृ": "â", "ह्म": "ã",
-            "ह्र": "ºz", "ह्": "º", "द्द": "í", "क्ष": "{k", "क्ष्": "{", "त्र": "=",
-            "त्र्": "«", "छ्य": "Nî", "ट्य": "Vî", "ठ्य": "Bî", "ड्य": "Mî", "ढ्य": "<î",
-            "द्य": "|", "ज्ञ": "K", "द्व": "}", "श्र": "J", "ट्र": "Vª", "ड्र": "Mª",
-            "ढ्र": "<ªª", "छ्र": "Nª", "क्र": "Ø", "फ्र": "Ý", "र्द्र": "nzZ", "द्र": "æ",
-            "प्र": "ç", "ग्र": "xz", "रु": "#", "रू": ":", "ऑ": "v‚", "ओ": "vks",
-            "औ": "vkS", "आ": "vk", "अ": "v", "ईं": "b±", "ई": "Ã", "इ": "b", "उ": "m",
-            "ऊ": "Å", "ऐ": ",s", "ए": ",", "ऋ": "_", "क्क": "ô", "क": "d", "क्": "D",
-            "ख": "[k", "ख्": "[", "ग": "x", "ग्": "X", "घ": "Ä", "घ्": "?k", "ङ": "³",
-            "चै": "pkS", "च्": "p", "च": "Pk", "छ": "P", "ज्": "N", "ज": "t", "झ्": "Tk",
-            "झ": "T", "ञ": ">", "ट्ट": "÷", "ट्ठ": "¥", "ड्ड": "ê", "कृ": "ë", "भ": "V",
-            "्य": "B", "ड्ढ": "ì", "झ्": "ï", "श": "M", "श्": "<", "ॉ": ".k", "ो": ".",
-            "ौ": "r", "ा": "Rk", "ी": "R", "ु": "Fk", "ू": "F", "ृ": ")", "े": "n",
-            "ै": "/k", "ं": "èk", "ँ": "/", "ः": "Ë", "ॅ": "è", "ऽ": "u", "्र": "z",
-            "़": "È"
-        };
+const array_one = [
+    "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+    "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+    "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",";+","j+","u+",
+    "Ùk","Ù","ä","–","—","é","™","=kk","f=k",
+    "à","á","â","ã","ºz","º","í","{k","{","=","«",
+    "Nî","Vî","Bî","Mî","<î","|","K","}",
+    "J","Vª","Mª","<ªª","Nª","Ø","Ý","nzZ","æ","ç","Á","xz","#",":",
+    "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_",
+    "ô","d","Dk","D","[k","[","x","Xk","X","Ä","?k","?","³",
+    "pkS","p","Pk","P","N","t","Tk","T",">","÷","¥",
+    "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".",
+    "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U",
+    "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",
+    ";","¸","j","y","Yk","Y","G","o","Ok","O",
+    "'k","'","\"k","\"","l","Lk","L","g",
+    "È","z",
+    "Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü",
+    "‚","ks","kS","k","h","q","w","`","s","S",
+    "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः",
+    "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@"
+];
 
-        // ========== CONVERSION: KRUTIDEV → UNICODE ==========
-        function convertToUnicode() {
-            let text = document.getElementById('krutidevInput').value;
-            if (!text.trim()) return;
-            
-            let modified = text;
-            
-            // Step 1: Handle "f" (ि) - reposition before the consonant
-            // In Krutidev, 'f' comes AFTER the consonant it modifies (e.g., "kf" = कि)
-            // In Unicode, 'ि' comes BEFORE the consonant
-            modified = " " + modified + " ";
-            let pos = modified.lastIndexOf("f");
-            while (pos !== -1 && pos > 0) {
-                // Swap f with the character before it
-                modified = modified.substring(0, pos - 1) + "f" + modified.charAt(pos - 1) + modified.substring(pos + 1);
-                pos = modified.lastIndexOf("f", pos - 2);
-            }
-            modified = modified.replace(/f/g, "ि");
-            modified = modified.trim();
-            
-            // Step 2: Handle "Z" (्र) - half R
-            // In Krutidev, 'Z' comes after the consonant cluster
-            // In Unicode, '्र' comes after the consonant
-            modified = " " + modified + " ";
-            let posR = modified.indexOf("Z");
-            let matras = ["‚", "ks", "kS", "k", "h", "q", "w", "`", "s", "S", "a", "¡", "%", "W", "·", "~ ", "~"];
-            while (posR !== -1) {
-                modified = modified.substring(0, posR) + modified.substring(posR + 1);
-                let beforeChar = modified.charAt(posR - 1);
-                if (matras.includes(beforeChar)) {
-                    modified = modified.substring(0, posR - 2) + "र्" + modified.substring(posR - 2);
-                } else {
-                    modified = modified.substring(0, posR - 1) + "र्" + modified.substring(posR - 1);
-                }
-                posR = modified.indexOf("Z");
-            }
-            modified = modified.trim();
-            
-            // Step 3: Replace Krutidev characters with Unicode (longest first)
-            let keys = Object.keys(krutiToUniMap).sort((a, b) => b.length - a.length);
-            for (let key of keys) {
-                let regex = new RegExp(escapeRegex(key), "g");
-                modified = modified.replace(regex, krutiToUniMap[key]);
-            }
-            
-            document.getElementById('unicodeInput').value = modified;
+const array_two = [
+    "॰","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'",
+    "०","१","२","३","४","५","६","७","८","९",
+    "फ़्","क़","ख़","ख़्","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
+    "त्त","त्त्","क्त","दृ","कृ","न्न","न्न्","=k","f=",
+    "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष","क्ष्","त्र","त्र्",
+    "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व",
+    "श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","र्द्र","द्र","प्र","प्र","ग्र","रु","रू",
+    "ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ",
+    "क्क","क","क","क्","ख","ख्","ग","ग","ग्","घ","घ","घ्","ङ",
+    "चै","च","च","च्","छ","ज","ज","ज्","झ","झ्","ञ",
+    "ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड़","ढ़","ड","ढ","ण","ण्",
+    "त","त","त्","थ","थ्","द्ध","द","ध","ध","ध्","ध्","ध्","न","न","न्",
+    "प","प","प्","फ","फ्","ब","ब","ब्","भ","भ्","म","म","म्",
+    "य","य्","र","ल","ल","ल्","ळ","व","व","व्",
+    "श","श्","ष","ष्","स","स","स्","ह",
+    "ीं","्र",
+    "द्द","ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्",
+    "ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै",
+    "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":",
+    "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/"
+];
+
+function convertToUnicode() {
+    let modified_substring = document.getElementById("krutidevInput").value;
+    if (!modified_substring.trim()) return;
+
+    let text_size = modified_substring.length;
+    let processed_text = "";
+    let sthiti1 = 0, sthiti2 = 0, chale_chalo = 1;
+    let max_text_size = 6000;
+
+    while (chale_chalo == 1) {
+        sthiti1 = sthiti2;
+        if (sthiti2 < (text_size - max_text_size)) {
+            sthiti2 += max_text_size;
+            while (modified_substring.charAt(sthiti2) != ' ') { sthiti2--; }
+        } else {
+            sthiti2 = text_size;
+            chale_chalo = 0;
         }
 
-        // ========== CONVERSION: UNICODE → KRUTIDEV ==========
-        function convertToKrutidev() {
-            let text = document.getElementById('unicodeInput').value;
-            if (!text.trim()) return;
-            
-            let modified = text;
-            
-            // Step 1: Replace Unicode with Krutidev (longest first)
-            let keys = Object.keys(uniToKrutiMap).sort((a, b) => b.length - a.length);
-            for (let key of keys) {
-                let regex = new RegExp(escapeRegex(key), "g");
-                modified = modified.replace(regex, uniToKrutiMap[key]);
-            }
-            
-            // Step 2: Handle "ि" (f) - reposition after the consonant
-            // In Unicode, 'ि' comes BEFORE the consonant
-            // In Krutidev, 'f' comes AFTER the consonant
-            modified = " " + modified + " ";
-            let pos = modified.indexOf("f");
-            while (pos !== -1) {
-                // f should be after the character that follows it
-                modified = modified.substring(0, pos) + modified.charAt(pos + 1) + "f" + modified.substring(pos + 2);
-                pos = modified.indexOf("f", pos + 2);
-            }
-            modified = modified.trim();
-            
-            // Step 3: Handle "र्" (Z) - half R
-            modified = " " + modified + " ";
-            let posR = modified.indexOf("र्");
-            let matras = ["‚", "ks", "kS", "k", "h", "q", "w", "`", "s", "S", "a", "¡", "%", "W", "·", "~ ", "~"];
-            while (posR !== -1) {
-                modified = modified.substring(0, posR) + modified.substring(posR + 2);
-                let afterChar = modified.charAt(posR);
-                if (matras.includes(afterChar)) {
-                    modified = modified.substring(0, posR + 2) + "Z" + modified.substring(posR + 2);
-                } else {
-                    modified = modified.substring(0, posR + 1) + "Z" + modified.substring(posR + 1);
-                }
-                posR = modified.indexOf("र्");
-            }
-            modified = modified.trim();
-            
-            document.getElementById('krutidevInput').value = modified;
+        let substr = modified_substring.substring(sthiti1, sthiti2);
+        processed_text += convertKrutiToUnicodeChunk(substr);
+    }
+
+    document.getElementById("unicodeInput").value = processed_text;
+}
+
+function convertKrutiToUnicodeChunk(modified_substring) {
+    if (modified_substring.trim() === "") return "";
+
+    // Replace symbols
+    let array_one_length = array_one.length;
+    for (let input_symbol_idx = 0; input_symbol_idx < array_one_length; input_symbol_idx++) {
+        let idx = 0;
+        while (idx != -1) {
+            modified_substring = modified_substring.replace(array_one[input_symbol_idx], array_two[input_symbol_idx]);
+            idx = modified_substring.indexOf(array_one[input_symbol_idx]);
+        }
+    }
+
+    // Special glyph: ± (reph + anusvar)
+    modified_substring = modified_substring.replace(/±/g, "Zं");
+
+    // Special glyph: Æ
+    modified_substring = modified_substring.replace(/Æ/g, "र्f");
+
+    // Handle "f" (ि matra) - move it after the next character
+    let position_of_i = modified_substring.indexOf("f");
+    while (position_of_i != -1) {
+        let charecter_next_to_i = modified_substring.charAt(position_of_i + 1);
+        let charecter_to_be_replaced = "f" + charecter_next_to_i;
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, charecter_next_to_i + "ि");
+        position_of_i = modified_substring.indexOf("f", position_of_i + 1);
+    }
+
+    // Special glyphs: Ç and É
+    modified_substring = modified_substring.replace(/Ç/g, "fa");
+    modified_substring = modified_substring.replace(/É/g, "र्fa");
+
+    // Handle "fa" (िं matra) - move it 2 positions forward
+    position_of_i = modified_substring.indexOf("fa");
+    while (position_of_i != -1) {
+        let charecter_next_to_ip2 = modified_substring.charAt(position_of_i + 2);
+        let charecter_to_be_replaced = "fa" + charecter_next_to_ip2;
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, charecter_next_to_ip2 + "िं");
+        position_of_i = modified_substring.indexOf("fa", position_of_i + 2);
+    }
+
+    // Special glyph: Ê
+    modified_substring = modified_substring.replace(/Ê/g, "ीZ");
+
+    // Fix wrong ee (ि्) on half-letters
+    let position_of_wrong_ee = modified_substring.indexOf("ि्");
+    while (position_of_wrong_ee != -1) {
+        let consonent_next_to_wrong_ee = modified_substring.charAt(position_of_wrong_ee + 2);
+        let charecter_to_be_replaced = "ि्" + consonent_next_to_wrong_ee;
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, "्" + consonent_next_to_wrong_ee + "ि");
+        position_of_wrong_ee = modified_substring.indexOf("ि्", position_of_wrong_ee + 2);
+    }
+
+    // Handle "Z" (half R / reph)
+    let set_of_matras = "अ आ इ ई उ ऊ ए ऐ ओ औ ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ";
+    let position_of_R = modified_substring.indexOf("Z");
+    while (position_of_R > 0) {
+        let probable_position_of_half_r = position_of_R - 1;
+        let charecter_at_probable_position_of_half_r = modified_substring.charAt(probable_position_of_half_r);
+
+        while (set_of_matras.indexOf(charecter_at_probable_position_of_half_r) >= 0) {
+            probable_position_of_half_r = probable_position_of_half_r - 1;
+            charecter_at_probable_position_of_half_r = modified_substring.charAt(probable_position_of_half_r);
         }
 
-        function escapeRegex(string) {
-            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        let charecter_to_be_replaced = modified_substring.substring(probable_position_of_half_r, position_of_R + 1);
+        let new_replacement_string = "र्" + modified_substring.substring(probable_position_of_half_r, position_of_R);
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, new_replacement_string);
+        position_of_R = modified_substring.indexOf("Z");
+    }
+
+    return modified_substring;
+}
+
+
+// ==================== UNICODE → KRUTIDEV ====================
+
+const uni_array_one = [
+    "‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ",
+    "०","१","२","३","४","५","६","७","८","९","x",
+    "फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
+    "त्त्","त्त","क्त","दृ","कृ",
+    "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ",
+    "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व",
+    "श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","र्द्र","द्र","प्र","ग्र","रु","रू",
+    "्र",
+    "ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ",
+    "क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ",
+    "चै","च्","च","छ","ज्","ज","झ्","झ","ञ",
+    "ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्",
+    "ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै",
+    "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":",
+    "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/"
+];
+
+const uni_array_two = [
+    "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+    "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+    "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",";+","j+","u+",
+    "Ùk","Ù","ä","–","—","é","™","=kk","f=k",
+    "à","á","â","ã","ºz","º","í","{k","{","=","«",
+    "Nî","Vî","Bî","Mî","<î","|","K","}",
+    "J","Vª","Mª","<ªª","Nª","Ø","Ý","nzZ","æ","ç","Á","xz","#",":",
+    "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_",
+    "ô","d","Dk","D","[k","[","x","Xk","X","Ä","?k","?","³",
+    "pkS","p","Pk","P","N","t","Tk","T",">","÷","¥",
+    "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".",
+    "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U",
+    "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",
+    ";","¸","j","y","Yk","Y","G","o","Ok","O",
+    "'k","'","\"k","\"","l","Lk","L","g",
+    "È","z",
+    "Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü",
+    "‚","ks","kS","k","h","q","w","`","s","S",
+    "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः",
+    "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@"
+];
+
+function convertToKrutidev() {
+    let modified_substring = document.getElementById("unicodeInput").value;
+    if (!modified_substring.trim()) return;
+
+    let text_size = modified_substring.length;
+    let processed_text = "";
+    let sthiti1 = 0, sthiti2 = 0, chale_chalo = 1;
+    let max_text_size = 6000;
+
+    while (chale_chalo == 1) {
+        sthiti1 = sthiti2;
+        if (sthiti2 < (text_size - max_text_size)) {
+            sthiti2 += max_text_size;
+            while (modified_substring.charAt(sthiti2) != ' ') { sthiti2--; }
+        } else {
+            sthiti2 = text_size;
+            chale_chalo = 0;
         }
 
-        // ========== UTILITY FUNCTIONS ==========
-        function clearKrutidev() {
-            document.getElementById('krutidevInput').value = '';
+        let substr = modified_substring.substring(sthiti1, sthiti2);
+        processed_text += convertUnicodeToKrutiChunk(substr);
+    }
+
+    document.getElementById("krutidevInput").value = processed_text;
+}
+
+function convertUnicodeToKrutiChunk(modified_substring) {
+    if (modified_substring.trim() === "") return "";
+
+    // First replace two-byte nukta varNa with one-byte nukta varNas
+    modified_substring = modified_substring.replace(/फ़्/g, "¶+");
+    modified_substring = modified_substring.replace(/क़/g, "d+");
+    modified_substring = modified_substring.replace(/ख़/g, "[+k");
+    modified_substring = modified_substring.replace(/ख़्/g, "[+");
+    modified_substring = modified_substring.replace(/ग़/g, "x+");
+    modified_substring = modified_substring.replace(/ज़्/g, "T+");
+    modified_substring = modified_substring.replace(/ज़/g, "t+");
+    modified_substring = modified_substring.replace(/ड़/g, "M+");
+    modified_substring = modified_substring.replace(/ढ़/g, "<+");
+    modified_substring = modified_substring.replace(/फ़/g, "Q+");
+    modified_substring = modified_substring.replace(/य़/g, ";+");
+    modified_substring = modified_substring.replace(/ऱ/g, "j+");
+    modified_substring = modified_substring.replace(/ऩ/g, "u+");
+
+    // Replace symbols
+    let array_one_length = uni_array_one.length;
+    for (let input_symbol_idx = 0; input_symbol_idx < array_one_length; input_symbol_idx++) {
+        let idx = 0;
+        while (idx != -1) {
+            modified_substring = modified_substring.replace(uni_array_one[input_symbol_idx], uni_array_two[input_symbol_idx]);
+            idx = modified_substring.indexOf(uni_array_one[input_symbol_idx]);
         }
-        function clearUnicode() {
-            document.getElementById('unicodeInput').value = '';
+    }
+
+    // Handle "ि" (chhotee ee ki matra) - replace with "f" and correct position
+    let position_of_f = modified_substring.indexOf("ि");
+    while (position_of_f != -1) {
+        let character_left_to_f = modified_substring.charAt(position_of_f - 1);
+        modified_substring = modified_substring.replace(character_left_to_f + "ि", "f" + character_left_to_f);
+        position_of_f = position_of_f - 1;
+        while ((modified_substring.charAt(position_of_f - 1) == "्") && (position_of_f != 0)) {
+            let charecter_left_to_half = modified_substring.charAt(position_of_f - 2);
+            modified_substring = modified_substring.replace(charecter_left_to_half + "्f", "f" + charecter_left_to_half + "्");
+            position_of_f = position_of_f - 2;
         }
-        function copyKrutidev() {
-            let el = document.getElementById('krutidevInput');
-            el.select();
-            document.execCommand('copy');
+        position_of_f = modified_substring.indexOf("ि", position_of_f + 1);
+    }
+
+    // Handle "िं" (badi ee ki matra)
+    modified_substring = modified_substring.replace(/Ç/g, "fa");
+    modified_substring = modified_substring.replace(/É/g, "र्fa");
+
+    let position_of_ee = modified_substring.indexOf("िं");
+    while (position_of_ee != -1) {
+        let charecter_next_to_ee = modified_substring.charAt(position_of_ee + 2);
+        let charecter_to_be_replaced = "िं" + charecter_next_to_ee;
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, charecter_next_to_ee + "fa");
+        position_of_ee = modified_substring.indexOf("िं", position_of_ee + 2);
+    }
+
+    // Handle "र्" (half R / reph) - replace with "Z"
+    let set_of_matras = "ािीुूृेैोौंःँॅ";
+    let position_of_R = modified_substring.indexOf("र्");
+    while (position_of_R > 0) {
+        let probable_position_of_half_r = position_of_R - 1;
+        let charecter_at_probable_position_of_half_r = modified_substring.charAt(probable_position_of_half_r);
+
+        while (set_of_matras.indexOf(charecter_at_probable_position_of_half_r) >= 0) {
+            probable_position_of_half_r = probable_position_of_half_r - 1;
+            charecter_at_probable_position_of_half_r = modified_substring.charAt(probable_position_of_half_r);
         }
-        function copyUnicode() {
-            let el = document.getElementById('unicodeInput');
-            el.select();
-            document.execCommand('copy');
-        }
-    </script>
+
+        let charecter_to_be_replaced = modified_substring.substring(probable_position_of_half_r, position_of_R + 2);
+        let new_replacement_string = modified_substring.substring(probable_position_of_half_r, position_of_R) + "Z";
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, new_replacement_string);
+        position_of_R = modified_substring.indexOf("र्");
+    }
+
+    // Fix "f" position for half letters
+    let position_of_wrong_f = modified_substring.indexOf("f्");
+    while (position_of_wrong_f != -1) {
+        let consonent_next_to_wrong_f = modified_substring.charAt(position_of_wrong_f + 2);
+        let charecter_to_be_replaced = "f्" + consonent_next_to_wrong_f;
+        modified_substring = modified_substring.replace(charecter_to_be_replaced, "्" + consonent_next_to_wrong_f + "f");
+        position_of_wrong_f = modified_substring.indexOf("f्", position_of_wrong_f + 2);
+    }
+
+    return modified_substring;
+}
+
+
+// ==================== UTILITY FUNCTIONS ====================
+
+function clearKrutidev() { document.getElementById('krutidevInput').value = ''; }
+function clearUnicode() { document.getElementById('unicodeInput').value = ''; }
+function copyKrutidev() { let el = document.getElementById('krutidevInput'); el.select(); document.execCommand('copy'); }
+function copyUnicode() { let el = document.getElementById('unicodeInput'); el.select(); document.execCommand('copy'); }
+</script>
 </body>
 </html>
