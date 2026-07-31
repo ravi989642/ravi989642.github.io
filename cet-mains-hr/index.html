@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 हरियाणा का नामकरण & ऐतिहासिक युद्ध | CET GK Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --dark: #1e1b4b;
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+            --gradient-1: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            --gradient-2: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            --gradient-3: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --gradient-4: linear-gradient(135deg, #10b981 0%, #22c55e 100%);
+            --gradient-5: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            --gradient-6: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background: var(--light);
+            color: #334155;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .bg-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bg-shapes .shape { position: absolute; border-radius: 50%; opacity: 0.04; animation: float 20s infinite ease-in-out; }
+        .shape-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; }
+        .shape-2 { width: 300px; height: 300px; background: var(--secondary); top: 50%; right: -50px; animation-delay: 5s; }
+        .shape-3 { width: 200px; height: 200px; background: var(--success); bottom: -50px; left: 30%; animation-delay: 10s; }
+        .shape-4 { width: 350px; height: 350px; background: var(--danger); top: 20%; left: 60%; animation-delay: 15s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        header {
+            background: var(--gradient-1);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        header h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        header .subtitle { font-size: 1.1rem; opacity: 0.95; font-weight: 400; }
+        header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .nav-container {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0;
+        }
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+        .nav-tab {
+            flex: 1;
+            min-width: 160px;
+            padding: 1rem 1rem;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+        .nav-tab:hover { color: var(--primary); background: #f1f5f9; }
+        .nav-tab.active { color: var(--primary); }
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            width: 60%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title i { font-size: 1.5rem; }
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-box {
+            background: white;
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        .stat-box:hover { transform: scale(1.05); }
+        .stat-box .icon {
+            width: 50px; height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            font-size: 1.5rem;
+        }
+        .stat-box .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+        .stat-box .stat-label { font-size: 0.8rem; color: #64748b; margin-top: 0.25rem; }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: var(--gradient-1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .card-number {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 32px; height: 32px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .card-question {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            padding-right: 2.5rem;
+            line-height: 1.5;
+        }
+        .card-answer {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--info);
+            padding: 0.75rem 1rem;
+            border-radius: 0 10px 10px 0;
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 0.75rem;
+        }
+        .card-extra {
+            font-size: 0.85rem;
+            color: #64748b;
+            padding-top: 0.5rem;
+            border-top: 1px dashed #cbd5e1;
+        }
+        .card-extra i { color: var(--secondary); margin-right: 0.3rem; }
+        .trick-card {
+            background: var(--gradient-6);
+            color: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .trick-card::after {
+            content: '💡';
+            position: absolute;
+            top: -10px; right: -10px;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+        .trick-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .trick-card p { opacity: 0.95; font-size: 0.95rem; }
+        .battle-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .battle-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-5);
+        }
+        .battle-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .battle-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+        .battle-table th {
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px 8px 0 0;
+        }
+        .battle-table td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+        }
+        .battle-table tr:last-child td { border-bottom: none; }
+        .battle-table tr:hover { background: #fafafa; }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.8rem;
+            top: 1.2rem;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(124,58,237,0.2);
+        }
+        .timeline-year {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-title { font-weight: 700; color: var(--dark); font-size: 1rem; }
+        .timeline-desc { font-size: 0.9rem; color: #64748b; margin-top: 0.3rem; }
+        .tricks-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        .tricks-table thead {
+            background: var(--gradient-1);
+            color: white;
+        }
+        .tricks-table th, .tricks-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+        }
+        .tricks-table th { font-weight: 600; font-size: 0.95rem; }
+        .tricks-table tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.2s; }
+        .tricks-table tbody tr:hover { background: #f8fafc; }
+        .tricks-table tbody tr:last-child { border-bottom: none; }
+        .trick-hindi { font-weight: 600; color: var(--primary-dark); font-size: 1.05rem; }
+        .trick-meaning { color: #475569; }
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .name-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+        .name-card:hover { transform: translateX(5px); }
+        .name-card .scholar { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+        .name-card .meaning { font-size: 0.95rem; color: #334155; margin-top: 0.3rem; }
+        .name-card .trick { font-size: 0.8rem; color: var(--secondary); margin-top: 0.5rem; font-style: italic; }
+        .city-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+        .city-card:hover { transform: scale(1.02); }
+        .city-card .arrow { font-size: 1.5rem; color: var(--primary); }
+        .city-card .current { font-weight: 700; color: var(--dark); }
+        .city-card .ancient { color: #64748b; font-size: 0.9rem; }
+        .revolt-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--danger);
+            transition: all 0.3s;
+        }
+        .revolt-card:hover { transform: translateY(-3px); }
+        .revolt-place { font-weight: 700; color: var(--danger); font-size: 1rem; }
+        .revolt-leader { font-size: 0.95rem; color: #334155; margin-top: 0.3rem; }
+        .revolt-extra { font-size: 0.8rem; color: #64748b; margin-top: 0.3rem; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 50px; height: 50px;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(124,58,237,0.4);
+            transition: all 0.3s;
+            display: none;
+            z-index: 99;
+        }
+        .scroll-top:hover { transform: translateY(-3px); }
+        .scroll-top.show { display: block; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6rem; }
+            .nav-tab { min-width: 130px; padding: 0.75rem 0.5rem; font-size: 0.8rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <h1>🏛️ हरियाणा का नामकरण & ऐतिहासिक युद्ध</h1>
+            <p class="subtitle">CET Group D 2025 — Complete GK Revision</p>
+            <span class="badge">🎬 Job Target (Mohit Punia) + Sandeep Sivad Classes</span>
+        </div>
+    </header>
+
+    <nav class="nav-container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('namkaran')">
+                <i class="fas fa-signature"></i> नामकरण
+            </button>
+            <button class="nav-tab" onclick="showTab('purana')">
+                <i class="fas fa-book-open"></i> पुराण & ग्रंथ
+            </button>
+            <button class="nav-tab" onclick="showTab('yudh')">
+                <i class="fas fa-chess-knight"></i> युद्ध
+            </button>
+            <button class="nav-tab" onclick="showTab('kranti')">
+                <i class="fas fa-fist-raised"></i> 1857 क्रांति
+            </button>
+            <button class="nav-tab" onclick="showTab('tricks')">
+                <i class="fas fa-magic"></i> Tricks
+            </button>
+            <button class="nav-tab" onclick="showTab('quick')">
+                <i class="fas fa-bolt"></i> Quick
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- NAMKARAN TAB -->
+        <div id="namkaran" class="tab-content active">
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <div class="icon" style="background: linear-gradient(135deg, #ede9fe, #ddd6fe);">📖</div>
+                    <div class="stat-value">30+</div>
+                    <div class="stat-label">Total Questions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">👨‍🏫</div>
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Scholars</div>
+                </div>
+                <div class="stat-box">
+                    <div class="icon" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0);">🏙️</div>
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Ancient Cities</div>
+                </div>
+                <div class="stat-box">
+                    <div class="icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">⚔️</div>
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Battles</div>
+                </div>
+            </div>
+
+            <h2 class="section-title"><i class="fas fa-signature" style="color: var(--primary);"></i> हरियाणा शब्द की उत्पत्ति (Origin)</h2>
+
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-number">1</div>
+                <div class="card-question">ऋग्वेद में "रज हरियाण" किस मंडल में मिलता है?</div>
+                <div class="card-answer">8वें मंडल, सूक्त 25, ऋचा 22</div>
+                <div class="card-extra"><i class="fas fa-lightbulb"></i> G.C. Avasthi "वेद धरातल" में प्रमाणित | "रज" = राजा या धूल/मिट्टी</div>
+            </div>
+
+            <div class="trick-card" style="background: var(--gradient-3);">
+                <h3><i class="fas fa-brain"></i> विद्वानों के मत — याद रखने की ट्रिक्स</h3>
+                <p>नीचे दिए गए सभी विद्वान और उनके मत याद करें:</p>
+            </div>
+
+            <div class="two-col">
+                <div class="name-card">
+                    <div class="scholar">👨‍🏫 डॉ. एच.आर. गुप्ता</div>
+                    <div class="meaning">हरियाणा = <strong>आर्यन</strong> (आर्यों का निवास स्थान)</div>
+                    <div class="trick">💡 HR → हर → हारेगा जो आयरन (लोहा) लेगा → आर्यन</div>
+                </div>
+                <div class="name-card">
+                    <div class="scholar">👑 महाराज कृष्ण</div>
+                    <div class="meaning">हरियाणा = <strong>हरना</strong> (लूटपाट का क्षेत्र)</div>
+                    <div class="trick">💡 कृष्ण के होते हुए हरियाणा "हार" नहीं सकता → हरना</div>
+                </div>
+                <div class="name-card">
+                    <div class="scholar">🧭 राहुल सांकृत्यायन</div>
+                    <div class="meaning">हरियाणा = <strong>हरि धानक</strong> (अनाज रूपी धन से संपन्न)</div>
+                    <div class="trick">💡 राहु-केतु को खरीद लेगा जिसके पास धन हो → हरि धानक</div>
+                </div>
+                <div class="name-card">
+                    <div class="scholar">📚 डॉ. बुद्ध प्रकाश</div>
+                    <div class="meaning">हरियाणा = <strong>अभीरायाना</strong> (अहीर जाति के कारण)</div>
+                    <div class="trick">💡 बुद्धू थे → बोले अभीरायाना (अहीर नहीं पहचाने)</div>
+                </div>
+                <div class="name-card">
+                    <div class="scholar">🙏 पंडित नानक चंद शर्मा</div>
+                    <div class="meaning">हरियाणा = <strong>आयनिक</strong></div>
+                    <div class="trick">💡 नाना जी बोलते हैं "आओ बेटा आओ" → आयनिक</div>
+                </div>
+                <div class="name-card">
+                    <div class="scholar">🌿 सर यदुनाथ सरकार</div>
+                    <div class="meaning">हरियाणा = <strong>हरियल</strong> (हरियाली/ग्रीनरी)</div>
+                    <div class="trick">💡 यदुनाथ = भगवान कृष्ण → उनके समय हरियाली → हरियल</div>
+                </div>
+                <div class="name-card">
+                    <div class="scholar">📖 लोक कथा</div>
+                    <div class="meaning">हरियाणा = <strong>हर राय राणा</strong> (चौहान वंश का राजा)</div>
+                    <div class="trick">💡 लोक कथा के अनुसार चौहान राजा हर राय राणा के नाम पर</div>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 2rem;"><i class="fas fa-landmark" style="color: var(--secondary);"></i> प्राचीन नाम (Ancient Names)</h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-number">2</div>
+                    <div class="card-question">हरियाणा का सबसे प्राचीन नाम क्या है?</div>
+                    <div class="card-answer">ब्रह्मवर्त (Brahmavart)</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> मनुस्मृति: सरस्वती और दृषद्वती नदियों के मध्य = ब्रह्मवर्त</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">3</div>
+                    <div class="card-question">ब्रह्मा की उत्तरवेदी किसे कहा गया?</div>
+                    <div class="card-answer">कुरुक्षेत्र को</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> ब्रह्मा के यज्ञों के कारण</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">4</div>
+                    <div class="card-question">देवताओं की "क्रीड़ा स्थली" किसे कहा गया?</div>
+                    <div class="card-answer">देवभूमि (कुरुक्षेत्र)</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> देवताओं की खेल भूमि</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">5</div>
+                    <div class="card-question">बाणभट्ट की हर्षचरित में हरियाणा को क्या कहा?</div>
+                    <div class="card-answer">श्रीकंठ जनपद</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> बाणभट्ट = हर्षवर्धन के दरबारी कवि</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">6</div>
+                    <div class="card-question">कुरु वंश की उत्पत्ति किन कबीलों से हुई?</div>
+                    <div class="card-answer">भरत + पुरु कबीले</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> दोनों कबीलों के एकीकरण से कुरु वंश</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">7</div>
+                    <div class="card-question">भारत देश का नाम किस वंश पर पड़ा?</div>
+                    <div class="card-answer">भरतवंश</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> भरतवंश = भारत का नामकरण</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">8</div>
+                    <div class="card-question">दशराग युद्ध में विजेता राजा सुदास किस वंश से थे?</div>
+                    <div class="card-answer">भरतवंश</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> 10 राजाओं का युद्ध = दशराग युद्ध</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">9</div>
+                    <div class="card-question">संपूर्ण विश्व और हरियाणा का प्राचीनतम महान ग्रंथ?</div>
+                    <div class="card-answer">ऋग्वेद</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> सबसे पुराना ग्रंथ</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">10</div>
+                    <div class="card-question">महर्षि वेदव्यास ने महाभारत की रचना कहाँ की?</div>
+                    <div class="card-answer">कुरुक्षेत्र में सरस्वती नदी के तट पर व्यास आश्रम</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> सरस्वती नदी के किनारे</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">11</div>
+                    <div class="card-question">सरस्वती नदी हरियाणा में कहाँ से प्रवेश करती है?</div>
+                    <div class="card-answer">आदि बद्री (यमुनानगर)</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> ऋग्वेद की सर्वाधिक पवित्र नदी</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">12</div>
+                    <div class="card-question">दृषद्वती = आधुनिक कौन सी नदी?</div>
+                    <div class="card-answer">चौतंग / चेतांग नदी</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> मनुस्मृति में सरस्वती-दृषद्वती के मध्य = ब्रह्मवर्त</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">13</div>
+                    <div class="card-question">हर्षवर्धन के तीन नाटक?</div>
+                    <div class="card-answer">नागानंद, प्रियदर्शिका, रत्नावली</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> हर्षवर्धन = पुष्यभूति/वर्धन वंश | राजधानी: थानेसर</div>
+                </div>
+                <div class="card">
+                    <div class="card-number">14</div>
+                    <div class="card-question">बाणभट्ट की दो प्रमुख रचनाएं?</div>
+                    <div class="card-answer">हर्षचरित, कादंबरी</div>
+                    <div class="card-extra"><i class="fas fa-lightbulb"></i> हर्षवर्धन के दरबारी कवि</div>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 2rem;"><i class="fas fa-city" style="color: var(--info);"></i> प्राचीन शहरों के नाम</h2>
+            <div class="two-col" style="margin-bottom: 2rem;">
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">थानेसर</div>
+                        <div class="ancient">→ स्थानेश्वर / थूना</div>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">रोहतक</div>
+                        <div class="ancient">→ रोहिताशगढ़</div>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">जगाधरी (यमुनानगर)</div>
+                        <div class="ancient">→ युगांदर</div>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">अग्रोहा</div>
+                        <div class="ancient">→ अग्रोदक</div>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">कैथल</div>
+                        <div class="ancient">→ कपिस्थल</div>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">हिसार</div>
+                        <div class="ancient">→ एसुकारी / इसुकार</div>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <div class="arrow">🏛️</div>
+                    <div>
+                        <div class="current">कुरुक्षेत्र</div>
+                        <div class="ancient">→ कुरु</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PURANA TAB -->
+        <div id="purana" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-book-open" style="color: var(--primary);"></i> पुराणों और ग्रंथों में हरियाणा</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 ऋग्वेद</span>
+                    <div class="timeline-title">"रज हरियाण" — 8वां मंडल, सूक्त 25, ऋचा 22</div>
+                    <div class="timeline-desc">G.C. Avasthi "वेद धरातल" में प्रमाणित | "रज" = राजा या धूल | संपूर्ण विश्व साहित्य में हरियाणा का प्राचीनतम लिखित साक्ष्य</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 शतपथ ब्राह्मण</span>
+                    <div class="timeline-title">"मानव कबीले की देव यजन"</div>
+                    <div class="timeline-desc">कुरुक्षेत्र = देवताओं की यज्ञ भूमि / ईश्वरीय वेदी</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 मनुस्मृति</span>
+                    <div class="timeline-title">"ब्रह्मवर्त" — सरस्वती-दृषद्वती के मध्य</div>
+                    <div class="timeline-desc">सबसे प्राचीन आधिकारिक प्रादेशिक नाम | दोआब = प्रागैतिहासिक काल का सबसे विकसित क्षेत्र</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 अष्टाध्यायी (पाणिनि)</span>
+                    <div class="timeline-title">कुरु, कपिस्थल (कैथल), एसुकारी (हिसार)</div>
+                    <div class="timeline-desc">पाणिनि की अष्टाध्यायी में इन शहरों का उल्लेख</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 महाभारत (सभा पर्व)</span>
+                    <div class="timeline-title">"बहुधान्यक" — नकुल दिग्विजय खंड</div>
+                    <div class="timeline-desc">कुरुक्षेत्र और रोहतक = बहुधान्यक (अत्यधिक समृद्ध, अनाज उत्पादन) | कुरु राजाओं द्वारा बसाई गई = "कुरु जंगल"</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 स्कंद पुराण (कुमारिका खंड)</span>
+                    <div class="timeline-title">"हरि क्षेत्र" — कुरुक्षेत्र को</div>
+                    <div class="timeline-desc">❌ "हरि भीती" नहीं कहा गया | संपूर्ण हरियाणा = "हरियाला/हरियाली" | काम्यक वन और द्वैत वन का उल्लेख</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 वामन पुराण</span>
+                    <div class="timeline-title">9 पवित्र नदियाँ, 7 पवित्र वन</div>
+                    <div class="timeline-desc">कुरुक्षेत्र के आसपास | थानेस्वर और कुरुक्षेत्र का प्रमाणिक विवरण</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 दिव्यावदान</span>
+                    <div class="timeline-title">अग्रोहा, हिसार, रोहतक = बौद्ध केंद्र</div>
+                    <div class="timeline-desc">बौद्ध धर्म और व्यापार केंद्र</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 महामायूरी</span>
+                    <div class="timeline-title">अग्रोहा = "अग्रोदक"</div>
+                    <div class="timeline-desc">अग्रोहा का प्राचीन नाम अग्रोदक</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 विनय पिटक</span>
+                    <div class="timeline-title">थानेसर = "थूना"</div>
+                    <div class="timeline-desc">थानेसर का प्राचीन नाम थूना (रोहतक = थूना ❌ गलत)</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 हर्षचरित (बाणभट्ट)</span>
+                    <div class="timeline-title">श्रीकंठ जनपद</div>
+                    <div class="timeline-desc">वर्तमान हरियाणा को श्रीकंठ जनपद कहा</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 महापुराण (पुष्पदंत)</span>
+                    <div class="timeline-title">"हरियाणाऊ"</div>
+                    <div class="timeline-desc">अपभ्रंश कवि पुष्पदंत ने "हरियाणाऊ" शब्द का प्रयोग किया</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 पाषाणाऊ चरित्र (विभु श्रीधर, 1189 ई.)</span>
+                    <div class="timeline-title">"हरियाणा ए"</div>
+                    <div class="timeline-desc">विभु श्रीधर ने "हरियाणा ए" शब्द का प्रयोग किया</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">📜 अखंड प्रकाश (धरणीधर)</span>
+                    <div class="timeline-title">"हरि बाणक / हरि बंका"</div>
+                    <div class="timeline-desc">धरणीधर की रचना अखंड प्रकाश में हरि बाणक शब्द</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- YUDH TAB -->
+        <div id="yudh" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-chess-knight" style="color: var(--danger);"></i> हरियाणा में लड़े गए ऐतिहासिक युद्ध</h2>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ महाभारत युद्ध</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>अवधि</td><td>18 दिन</td></tr>
+                    <tr><td>योद्धा</td><td>कौरव vs पांडव</td></tr>
+                    <tr><td>परिणाम</td><td>पांडवों की जीत / धर्म की जीत</td></tr>
+                    <tr><td>युग</td><td>द्वापर युग और कलयुग की कड़ी</td></tr>
+                    <tr><td>कलयुग प्रारंभ</td><td>राजा परीक्षित (अभिमन्यु के बेटे) के समय</td></tr>
+                    <tr><td>HSSC अनुसार</td><td>900 BC</td></tr>
+                    <tr><td>नियम टूटे</td><td>13वें दिन (अभिमन्यु को मारा गया)</td></tr>
+                    <tr><td>हस्तिनापुर गद्दी</td><td>परीक्षित</td></tr>
+                </table>
+            </div>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ हासी का युद्ध (1037 ई.)</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>योद्धा</td><td>मसूद vs कुमारपाल देव (तोमर)</td></tr>
+                    <tr><td>परिणाम</td><td>मसूद की जीत</td></tr>
+                    <tr><td>कुमारपाल देव</td><td>थानेसर भागे</td></tr>
+                    <tr><td>अंटी तालाब</td><td>कुमारपाल की बेटी अंटी देवी ने कूदकर जान दी</td></tr>
+                </table>
+            </div>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ थानेसर की लड़ाई (1043 ई.)</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>योद्धा</td><td>मदूर vs कुमारपाल देव</td></tr>
+                    <tr><td>परिणाम</td><td>कुमारपाल देव की जीत</td></tr>
+                </table>
+            </div>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ तराइन के युद्ध</div>
+                <table class="battle-table">
+                    <tr><th>युद्ध</th><th>समय</th><th>योद्धा</th><th>परिणाम</th></tr>
+                    <tr><td>प्रथम तराइन</td><td>1191 ई.</td><td>मोहम्मद गौरी vs पृथ्वीराज चौहान</td><td>पृथ्वीराज की जीत (गोविंद राय हासी ने साथ दिया)</td></tr>
+                    <tr><td>द्वितीय तराइन</td><td>1192 ई.</td><td>मोहम्मद गौरी vs पृथ्वीराज चौहान</td><td>मोहम्मद गौरी की जीत (गोविंद राय की वीरगति, जयचंद्र = गद्दार)</td></tr>
+                    <tr><td>तृतीय तराइन</td><td>1215 ई.</td><td>इल्तुतमिश vs यलदोज</td><td>इल्तुतमिश की जीत</td></tr>
+                </table>
+                <div class="card-extra" style="border-top:none; margin-top:0.75rem; color:var(--danger); font-weight:600;">
+                    <i class="fas fa-exclamation-triangle"></i> महत्वपूर्ण: जयचंद्र की गद्दारी से भारत में पहली बार मुस्लिम सत्ता आई
+                </div>
+                <div class="card-extra" style="border-top:none;">
+                    <i class="fas fa-lightbulb"></i> तराइन के अन्य नाम: तरावड़ी, आजमाबाद (औरंगजेब ने अपने पुत्र आजम के नाम पर)
+                </div>
+            </div>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ प्रथम पानीपत (21 अप्रैल 1526)</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>योद्धा</td><td>बाबर vs इब्राहिम लोदी</td></tr>
+                    <tr><td>परिणाम</td><td>बाबर की जीत</td></tr>
+                    <tr><td>पहली बार</td><td>तोपखाने का प्रयोग</td></tr>
+                    <tr><td>युद्ध नीति</td><td>तुगल युद्ध नीति (लूमा युद्ध नीति)</td></tr>
+                    <tr><td>बाबर की तरफ से मारा गया</td><td>संगधार</td></tr>
+                    <tr><td>इब्राहिम लोदी</td><td>मध्यकालीन भारत का पहला शासक जो युद्ध में मारा गया</td></tr>
+                    <tr><td>काबुली बाग मस्जिद</td><td>बाबर ने अपनी पत्नी के नाम पर बनवाई</td></tr>
+                    <tr><td>इब्राहिम लोदी का मकबरा</td><td>बाबर ने बनवाया</td></tr>
+                </table>
+            </div>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ द्वितीय पानीपत (5 नवंबर 1556)</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>योद्धा</td><td>अकबर (13 वर्ष) vs हेमू</td></tr>
+                    <tr><td>संरक्षक/सेनापति</td><td>बैरम खान</td></tr>
+                    <tr><td>हेमू की गिरफ्तारी</td><td>साकली खान ने की</td></tr>
+                    <tr><td>अकबर का शिविर</td><td>सैदापुर/सौदापुर गांव (पानीपत)</td></tr>
+                    <tr><td>हेमू की हत्या</td><td>बैरम खान ने की</td></tr>
+                    <tr><td>हेमू की समाधि</td><td>सैदापुर गांव, पानीपत</td></tr>
+                    <tr><td>साकली खान को इनाम</td><td>नारनोल का क्षेत्र</td></tr>
+                </table>
+            </div>
+
+            <div class="battle-card">
+                <div class="battle-title">⚔️ तृतीय पानीपत (14 जनवरी 1761)</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>योद्धा</td><td>अफगान (अहमद शाह अब्दाली) vs मराठे</td></tr>
+                    <tr><td>मराठा कमांडर</td><td>सदाशिवराव भाऊ, विश्वासराव</td></tr>
+                    <tr><td>परिणाम</td><td>अफगानों की जीत</td></tr>
+                    <tr><td>मराठों की हार का कारण</td><td>हरियाणा की कड़ाके की ठंड (जनवरी)</td></tr>
+                    <tr><td>काला अंब</td><td>मराठों के खून से आम का पेड़ काला पड़ गया</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 1857 KRANTI TAB -->
+        <div id="kranti" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-fist-raised" style="color: var(--danger);"></i> 1857 की क्रांति (Haryana)</h2>
+
+            <div class="battle-card">
+                <div class="battle-title">📅 शुरुआत</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>तारीख</td><td>10 मई 1857</td></tr>
+                    <tr><td>स्थान</td><td>अंबाला छावनी</td></tr>
+                    <tr><td>अंबाला छावनी स्थापना</td><td>1843 (करनाल से मलेरिया के कारण)</td></tr>
+                    <tr><td>अंबाला के डिप्टी कलेक्टर</td><td>टी.डी. फोर्सिथ</td></tr>
+                    <tr><td>गद्दार</td><td>श्याम सिंह</td></tr>
+                    <tr><td>पहली फांसी (उत्तर भारत)</td><td>मोहर सिंह सिख</td></tr>
+                    <tr><td>सफल शुरुआत</td><td>13 मई 1857, गुरुग्राम</td></tr>
+                    <tr><td>गुरुग्राम के डिप्टी कलेक्टर</td><td>विलियम फोर्ड</td></tr>
+                    <tr><td>विलियम फोर्ड की सेना</td><td>बिजवासन गांव में उतारी</td></tr>
+                </table>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 2rem;"><i class="fas fa-users" style="color: var(--primary);"></i> हरियाणा के केंद्र और नेतृत्वकर्ता</h2>
+
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ बहादुरगढ़</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>बहादुर जंग खां</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ सापला</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>साबर खां</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ खरखोदा</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>बशारत अली</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ पानीपत</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>इमाम अली कलंदर</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ रोहतक</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>पूरा समाज (राजपूत, जाट, मुसलमान)</strong></div>
+                <div class="revolt-extra">थानेदार भूरे खां जलाए गए | क्रांति दबाने आया: हडसन (अंग्रेज)</div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ जज्जर</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>अब्दुल रहमान खां (नवाब)</strong></div>
+                <div class="revolt-extra">सबसे बड़ी रियासत (1230 वर्ग मील) | फांसी: 23 दिसंबर 1857, लाल किले के सामने चांदनी चौक</div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ फर्रुखनगर</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>अहमद अली</strong> | नेता: अकबर अली</div>
+                <div class="revolt-extra">फांसी: 23 जनवरी 1858</div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ गुरुग्राम-मेवात</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>सदरुद्दीन</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ फरीदाबाद</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>धानु सिंह</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ बल्लभगढ़</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>राजा नाहर सिंह</strong> — "Iron Gate of Delhi"</div>
+                <div class="revolt-extra">फांसी: 9 जनवरी 1858, लाल किला</div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ अहीरवाल क्षेत्र</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>राव तुलाराम, राव कृष्ण गोपाल</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ लोहारू</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>अमीनुद्दीन</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ हासी</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>हुकुमचंद जैन, मुनीर बेग</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ रोहनात गांव (भिवानी)</div>
+                <div class="revolt-leader">शहीदों का गांव</div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ हिसार</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>शहजादा मोहम्मद आजम</strong></div>
+            </div>
+            <div class="revolt-card">
+                <div class="revolt-place">🏛️ रानिया</div>
+                <div class="revolt-leader">नेतृत्वकर्ता: <strong>नूर मोहम्मद खां</strong></div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 2rem;"><i class="fas fa-user-secret" style="color: var(--danger);"></i> गद्दार (Traitors)</h2>
+            <div class="cards-grid">
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <div class="card-question" style="color:var(--danger);">🦊 स्वरूप सिंह — जींद</div>
+                    <div class="card-answer" style="background:#fef2f2; border-color:var(--danger); color:#991b1b;">जींद के राजा, क्रांति का साथ नहीं दिया</div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <div class="card-question" style="color:var(--danger);">🦊 अहमद खां — करनाल</div>
+                    <div class="card-answer" style="background:#fef2f2; border-color:var(--danger); color:#991b1b;">गद्दार</div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <div class="card-question" style="color:var(--danger);">🦊 इलाही बक्स — सापला</div>
+                    <div class="card-answer" style="background:#fef2f2; border-color:var(--danger); color:#991b1b;">बहादुर शाह जफर का ससुर, जफर को गिरफ्तार करवाया</div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <div class="card-question" style="color:var(--danger);">🦊 शोभा सिंह — छछरौली (यमुनानगर)</div>
+                    <div class="card-answer" style="background:#fef2f2; border-color:var(--danger); color:#991b1b;">गद्दार</div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <div class="card-question" style="color:var(--danger);">🦊 डंडे खां — दुजाना (जज्जर)</div>
+                    <div class="card-answer" style="background:#fef2f2; border-color:var(--danger); color:#991b1b;">गद्दार</div>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 2rem;"><i class="fas fa-skull-crossbones" style="color: var(--danger);"></i> अंतिम लड़ाई — नसीबपुर (16 नवंबर 1857)</h2>
+            <div class="battle-card">
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>उत्तर</th></tr>
+                    <tr><td>स्थान</td><td>नसीबपुर गांव (नारनोल के समीप)</td></tr>
+                    <tr><td>क्रांतिकारी</td><td>राव तुलाराम, राव कृष्ण गोपाल, शहजादा मोहम्मद आजम</td></tr>
+                    <tr><td>अंग्रेज अधिकारी (मारे गए)</td><td>कर्नल गिरार्ड, कर्नल विलास</td></tr>
+                    <tr><td>वीरगति</td><td>शहजादा मोहम्मद आजम, राव कृष्ण गोपाल</td></tr>
+                    <tr><td>राव तुलाराम</td><td>बच निकले, झांसी की रानी के पास गए</td></tr>
+                    <tr><td>राव तुलाराम की मृत्यु</td><td>23 सितंबर 1863, अफगानिस्तान (पानी की कमी)</td></tr>
+                    <tr><td>हरियाणा वीर शहीदी दिवस</td><td>23 सितंबर</td></tr>
+                </table>
+            </div>
+
+            <div class="trick-card" style="background: var(--gradient-5); margin-top: 2rem;">
+                <h3><i class="fas fa-exclamation-circle"></i> 1857 क्रांति के हार के कारण</h3>
+                <p>1️⃣ क्रांति एक साथ शुरू नहीं हो पाई</p>
+                <p>2️⃣ आधुनिक हथियारों की कमी</p>
+                <p>3️⃣ नेतृत्व की कमी</p>
+                <p>4️⃣ <strong>सबसे बड़ा कारण: गद्दारी</strong></p>
+            </div>
+
+            <div class="battle-card" style="margin-top: 1.5rem;">
+                <div class="battle-title">📊 तुलना: जींद vs जज्जर</div>
+                <table class="battle-table">
+                    <tr><th>विवरण</th><th>जींद</th><th>जज्जर</th></tr>
+                    <tr><td>सबसे बड़ी रियासत</td><td>❌</td><td>✅ (1230 वर्ग मील)</td></tr>
+                    <tr><td>सबसे ताकतवर</td><td>✅</td><td>❌</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- TRICKS TAB -->
+        <div id="tricks" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-magic" style="color: var(--secondary);"></i> याद रखने की ट्रिक्स (Memory Tricks)</h2>
+
+            <div class="trick-card" style="background: var(--gradient-3);">
+                <h3><i class="fas fa-brain"></i> विद्वानों के मत — ट्रिक्स</h3>
+            </div>
+
+            <table class="tricks-table">
+                <thead>
+                    <tr>
+                        <th style="width:30%">👨‍🏫 विद्वान</th>
+                        <th style="width:25%">नाम</th>
+                        <th style="width:45%">🔥 ट्रिक</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="trick-hindi">जी.सी. अवस्थी</td>
+                        <td class="trick-meaning">रज हरियाण (8वां मंडल)</td>
+                        <td class="trick-meaning">💡 गिरी = पहाड़ → पहाड़ पर राजा बैठता है → रज हरियाण</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">डॉ. एच.आर. गुप्ता</td>
+                        <td class="trick-meaning">आर्यन</td>
+                        <td class="trick-meaning">💡 HR → हर → हारेगा जो आयरन (लोहा) लेगा → आर्यन</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">महाराज कृष्ण</td>
+                        <td class="trick-meaning">हरना</td>
+                        <td class="trick-meaning">💡 कृष्ण के होते हुए हरियाणा "हार" नहीं सकता → हरना</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">राहुल सांकृत्यायन</td>
+                        <td class="trick-meaning">हरि धानक</td>
+                        <td class="trick-meaning">💡 राहु-केतु को खरीद लेगा जिसके पास धन हो → हरि धानक</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">डॉ. बुद्ध प्रकाश</td>
+                        <td class="trick-meaning">अभीरायाना</td>
+                        <td class="trick-meaning">💡 बुद्धू थे → बोले अभीरायाना (अहीर नहीं पहचाने)</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">पंडित नानक चंद शर्मा</td>
+                        <td class="trick-meaning">आयनिक</td>
+                        <td class="trick-meaning">💡 नाना जी बोलते हैं "आओ बेटा आओ" → आयनिक</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">सर यदुनाथ सरकार</td>
+                        <td class="trick-meaning">हरियल</td>
+                        <td class="trick-meaning">💡 यदुनाथ = भगवान कृष्ण → उनके समय हरियाली → हरियल</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">लोक कथा</td>
+                        <td class="trick-meaning">हर राय राणा</td>
+                        <td class="trick-meaning">💡 चौहान वंश के राजा हर राय राणा के नाम पर</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="trick-card" style="background: var(--gradient-4);">
+                <h3><i class="fas fa-book"></i> ग्रंथ और उनके नाम — ट्रिक्स</h3>
+            </div>
+
+            <table class="tricks-table">
+                <thead>
+                    <tr>
+                        <th style="width:30%">📖 ग्रंथ/विद्वान</th>
+                        <th style="width:25%">नाम</th>
+                        <th style="width:45%">🔥 ट्रिक</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="trick-hindi">स्कंद पुराण</td>
+                        <td class="trick-meaning">हरि क्षेत्र, हरियाला</td>
+                        <td class="trick-meaning">💡 स्कंद = कांद = दीवार → दीवार पर कुमारी बिठाई → कुमारिका खंड → कुरुक्षेत्र</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">पुष्पदंत</td>
+                        <td class="trick-meaning">हरियाणाऊ</td>
+                        <td class="trick-meaning">💡 पु = पुष्प = पुराण → महापुराण → हरियाणाऊ</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">विभु श्रीधर</td>
+                        <td class="trick-meaning">हरियाणा ए</td>
+                        <td class="trick-meaning">💡 पाषाणाऊ चरित्र → हरियाणा ए (ए लगा दिया)</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">धरणीधर</td>
+                        <td class="trick-meaning">हरि बाणक</td>
+                        <td class="trick-meaning">💡 धरनी = धरती → धर तेरा बाण → हरि बाणक</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">बाणभट्ट</td>
+                        <td class="trick-meaning">श्रीकंठ जनपद</td>
+                        <td class="trick-meaning">💡 बाण = तीर → तीर कंठ पर लगा → श्रीकंठ जनपद</td>
+                    </tr>
+                    <tr>
+                        <td class="trick-hindi">मनुस्मृति</td>
+                        <td class="trick-meaning">ब्रह्मवर्त</td>
+                        <td class="trick-meaning">💡 मनु = ब्रह्मा → ब्रह्मा + वर्त (घूमना) → ब्रह्मवर्त</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="trick-card" style="background: var(--gradient-2);">
+                <h3><i class="fas fa-landmark"></i> युद्ध याद रखने की ट्रिक्स</h3>
+                <p>⚔️ <strong>तराइन:</strong> 1191 → 1192 → 1215 (11-91, 11-92, 12-15) — एक-एक साल बढ़ता जा रहा</p>
+                <p>⚔️ <strong>पानीपत:</strong> 1526 → 1556 → 1761 (30 साल, फिर 200 साल) — बाबर, अकबर, अब्दाली</p>
+                <p>⚔️ <strong>1857:</strong> 10 मई अंबाला → 13 मई गुरुग्राम → 16 नवंबर नसीबपुर</p>
+                <p>⚔️ <strong>महाभारत:</strong> 18 दिन, 13वें दिन नियम टूटे, HSSC = 900 BC</p>
+            </div>
+
+            <div class="trick-card" style="background: var(--gradient-5);">
+                <h3><i class="fas fa-map-marker-alt"></i> प्राचीन शहर याद रखने की ट्रिक्स</h3>
+                <p>🏛️ <strong>थानेसर</strong> = स्थानेश्वर = थूना (थाना → थूना)</p>
+                <p>🏛️ <strong>रोहतक</strong> = रोहिताशगढ़ (रोहित = रोहत)</p>
+                <p>🏛️ <strong>जगाधरी</strong> = युगांदर (जग = युग)</p>
+                <p>🏛️ <strong>अग्रोहा</strong> = अग्रोदक (अग्र = अग्रो)</p>
+                <p>🏛️ <strong>कैथल</strong> = कपिस्थल (कैथ = कपि)</p>
+                <p>🏛️ <strong>हिसार</strong> = एसुकारी (हिस = एसु)</p>
+            </div>
+        </div>
+
+        <!-- QUICK REVISE TAB -->
+        <div id="quick" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-bolt" style="color: var(--success);"></i> ⚡ Quick Revision (One-Liners)</h2>
+
+            <div class="cards-grid">
+                <div class="card" style="border-left: 5px solid var(--primary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 ऋग्वेद में "रज हरियाण"</div>
+                    <div class="card-answer" style="font-size:1rem;">8वां मंडल, सूक्त 25, ऋचा 22</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--danger);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 हरियाणा का सबसे प्राचीन नाम</div>
+                    <div class="card-answer" style="font-size:1.1rem;">ब्रह्मवर्त</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--info);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 ब्रह्मा की उत्तरवेदी</div>
+                    <div class="card-answer" style="font-size:1.1rem;">कुरुक्षेत्र</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--success);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 देवताओं की क्रीड़ा स्थली</div>
+                    <div class="card-answer" style="font-size:1.1rem;">देवभूमि</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--secondary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 बाणभट्ट की हर्षचरित में</div>
+                    <div class="card-answer" style="font-size:1.1rem;">श्रीकंठ जनपद</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--primary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 कुरु वंश की उत्पत्ति</div>
+                    <div class="card-answer" style="font-size:1rem;">भरत + पुरु कबीले</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--danger);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 भारत देश का नाम</div>
+                    <div class="card-answer" style="font-size:1.1rem;">भरतवंश</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--info);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 दशराग युद्ध विजेता</div>
+                    <div class="card-answer" style="font-size:1rem;">राजा सुदास (भरतवंश)</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--success);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 महाभारत रचना स्थल</div>
+                    <div class="card-answer" style="font-size:1rem;">कुरुक्षेत्र, सरस्वती तट, व्यास आश्रम</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--secondary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 सरस्वती नदी प्रवेश</div>
+                    <div class="card-answer" style="font-size:1.1rem;">आदि बद्री (यमुनानगर)</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--primary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 दृषद्वती = आधुनिक</div>
+                    <div class="card-answer" style="font-size:1.1rem;">चौतंग / चेतांग नदी</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--danger);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 हर्षवर्धन के नाटक</div>
+                    <div class="card-answer" style="font-size:1rem;">नागानंद, प्रियदर्शिका, रत्नावली</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--info);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 बाणभट्ट की रचनाएं</div>
+                    <div class="card-answer" style="font-size:1.1rem;">हर्षचरित, कादंबरी</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--success);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 महाभारत युद्ध अवधि</div>
+                    <div class="card-answer" style="font-size:1.1rem;">18 दिन | HSSC: 900 BC</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--secondary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 तराइन युद्ध</div>
+                    <div class="card-answer" style="font-size:1rem;">1191, 1192, 1215</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--primary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 पानीपत युद्ध</div>
+                    <div class="card-answer" style="font-size:1rem;">1526, 1556, 1761</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--danger);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 1857 क्रांति शुरुआत</div>
+                    <div class="card-answer" style="font-size:1rem;">10 मई 1857, अंबाला छावनी</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--info);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 अंबाला छावनी स्थापना</div>
+                    <div class="card-answer" style="font-size:1rem;">1843 (करनाल से मलेरिया)</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--success);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 बल्लभगढ़ का उपनाम</div>
+                    <div class="card-answer" style="font-size:1.1rem;">"Iron Gate of Delhi"</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--secondary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 हरियाणा वीर शहीदी दिवस</div>
+                    <div class="card-answer" style="font-size:1.1rem;">23 सितंबर</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--primary);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 जज्जर = सबसे बड़ी रियासत</div>
+                    <div class="card-answer" style="font-size:1.1rem;">1230 वर्ग मील</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--danger);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 जयचंद्र = गद्दार</div>
+                    <div class="card-answer" style="font-size:1rem;">द्वितीय तराइन 1192 ई.</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--info);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 काला अंब</div>
+                    <div class="card-answer" style="font-size:1rem;">तृतीय पानीपत — मराठों के खून से</div>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--success);">
+                    <div class="card-question" style="font-size:0.9rem;">📍 अंटी तालाब</div>
+                    <div class="card-answer" style="font-size:1rem;">हासी युद्ध 1037 — कुमारपाल की बेटी</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with ❤️ for CET Group D 2025 Aspirants</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem;">Content Source: Job Target (Mohit Punia) + Sandeep Sivad | Haryana GK Classes</p>
+    </footer>
+
+    <button class="scroll-top" onclick="scrollToTop()" id="scrollBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.closest('.nav-tab').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onscroll = function() {
+            const btn = document.getElementById('scrollBtn');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
