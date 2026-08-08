@@ -1,1 +1,817 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haryana Police & CET Complete Study Notes</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --text: #111827;
+      --text-secondary: #4b5563;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --red: #dc2626;
+      --red-soft: #fee2e2;
+      --green: #059669;
+      --green-soft: #d1fae5;
+      --purple: #7c3aed;
+      --purple-soft: #ede9fe;
+      --orange: #ea580c;
+      --orange-soft: #ffedd5;
+      --yellow: #ca8a04;
+      --yellow-soft: #fef9c3;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
 
+    [data-theme="dark"] {
+      --bg: #0f1115;
+      --surface: #181b21;
+      --text: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border: #2a2e36;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96,165,250,0.15);
+      --red: #f87171;
+      --red-soft: rgba(248,113,113,0.15);
+      --green: #34d399;
+      --green-soft: rgba(52,211,153,0.15);
+      --purple: #a78bfa;
+      --purple-soft: rgba(167,139,250,0.15);
+      --orange: #fb923c;
+      --orange-soft: rgba(251,146,60,0.15);
+      --yellow: #facc15;
+      --yellow-soft: rgba(250,204,21,0.15);
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .brand p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .theme-toggle:hover { transform: scale(1.08); }
+
+    /* Search */
+    .search-box {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-title .sec-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .card-body {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* Highlights */
+    .hl {
+      background: var(--accent-soft);
+      color: var(--text);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hl-red {
+      background: var(--red-soft);
+      color: var(--red);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hl-green {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hl-purple {
+      background: var(--purple-soft);
+      color: var(--purple);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hl-orange {
+      background: var(--orange-soft);
+      color: var(--orange);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hl-yellow {
+      background: var(--yellow-soft);
+      color: var(--yellow);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Key Fact Box */
+    .key-fact {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+    }
+
+    .key-fact svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .key-fact p {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .key-fact.red { background: var(--red-soft); border-left-color: var(--red); }
+    .key-fact.red svg { color: var(--red); }
+
+    .key-fact.green { background: var(--green-soft); border-left-color: var(--green); }
+    .key-fact.green svg { color: var(--green); }
+
+    .key-fact.purple { background: var(--purple-soft); border-left-color: var(--purple); }
+    .key-fact.purple svg { color: var(--purple); }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--accent-soft);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    tr:hover td {
+      background: color-mix(in srgb, var(--accent-soft) 30%, transparent);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .card { padding: 14px 16px; }
+      .card-title { font-size: 15px; }
+      .card-body { font-size: 14px; }
+      .brand h1 { font-size: 18px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px; }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <div class="logo">📚</div>
+        <div>
+          <h1>Haryana Police & CET Complete Notes</h1>
+          <p>All PYQs + Concepts — Haryana GK, History, Geography, Economics</p>
+        </div>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </div>
+
+    <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search any topic, question, or keyword..." onkeyup="filterCards()" />
+
+    <!-- ==================== HARYANA GK ==================== -->
+    <div class="section" data-section="haryana">
+      <div class="section-title">
+        <span class="sec-dot" style="background:#2563eb"></span>
+        Haryana GK (हरियाणा सामान्य ज्ञान)
+      </div>
+
+      <div class="card" data-keywords="budget nsdp tertiary sector service economy">
+        <div class="card-header">
+          <span class="dot" style="background:#2563eb"></span>
+          <div class="card-title">Haryana Budget & NSDP</div>
+        </div>
+        <div class="card-body">
+          According to the <span class="hl">Haryana Budget Structure</span> and Fiscal Responsibility Act, the <span class="hl-red">Tertiary Sector (Service Sector)</span> contributes the most to Haryana's Net State Domestic Product (NSDP). This includes banking, government jobs, private jobs, and teaching services.
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Tertiary Sector > Primary > Secondary in current Haryana NSDP</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="per capita income national average gurgaon faridabad">
+        <div class="card-header">
+          <span class="dot" style="background:#dc2626"></span>
+          <div class="card-title">Per Capita Income of Haryana</div>
+        </div>
+        <div class="card-body">
+          Haryana's <span class="hl">Per Capita Income</span> is <span class="hl-green">HIGHER</span> than the national average. Reason: Smaller area + high tax revenue from <span class="hl">Gurgaon & Faridabad</span> companies. <span class="hl-purple">Don't confuse:</span> High per capita income does NOT mean every person is rich — it is a statistical average.
+        </div>
+        <div class="key-fact red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Haryana's per capita income > National Average (asked in CET Group D)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="aravali biodiversity park oecm gurugram iucn">
+        <div class="card-header">
+          <span class="dot" style="background:#7c3aed"></span>
+          <div class="card-title">Aravali Biodiversity Park, Gurugram</div>
+        </div>
+        <div class="card-body">
+          Located in <span class="hl">Gurugram</span>. India's <span class="hl-red">FIRST OECM</span> site (Other Effective Area-based Conservation Measure) by IUCN. <span class="hl-green">NOT</span> on Sahibi River basin — it's in the <span class="hl">urban area</span> of Gurugram.
+        </div>
+        <div class="key-fact purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>OECM = protects biodiversity without being a formal national park</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="dosi ki pahadi aravali highest peak 652 chavan rishi">
+        <div class="card-header">
+          <span class="dot" style="background:#059669"></span>
+          <div class="card-title">Aravali Peaks & Highest Points</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Aravali's Highest Peak:</span> <span class="hl-red">Dosi ki Pahadi</span> (652m) — located in <span class="hl">Kultajpur village, Mahendragarh</span>. It is the <span class="hl-purple">tapobhumi of Chavan Rishi</span>.<br><br>
+          <span class="hl">Haryana's Highest Peak:</span> <span class="hl-green">Karo Choti</span> (1514m per HSSC) in Shivalik range.
+        </div>
+        <div class="key-fact green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Dosi ki Pahadi = 652m (Aravali) | Karo Choti = 1514m (Shivalik)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="canal jawaharlal nehru lift irrigation mahendragarh rewari bhiwani devi lal 1976">
+        <div class="card-header">
+          <span class="dot" style="background:#ea580c"></span>
+          <div class="card-title">Jawaharlal Nehru Canal (Lift Irrigation)</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Jawaharlal Nehru Canal</span> is a <span class="hl-red">LIFT irrigation</span> system from Western Yamuna Canal. It serves <span class="hl">Mahendragarh, Rewari, and Bhiwani</span>. Started in <span class="hl-purple">1976</span> during drought, expanded by <span class="hl">Chaudhary Devi Lal</span>. Called "Lift" because Aravalli hills are higher — water must be lifted up.
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Lift Irrigation = water lifted to higher Aravalli terrain</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="western yamuna canal oldest biggest firoz shah tughlaq 1355 hathnikund tajewala">
+        <div class="card-header">
+          <span class="dot" style="background:#ca8a04"></span>
+          <div class="card-title">Western Yamuna Canal (Oldest & Biggest)</div>
+        </div>
+        <div class="card-body">
+          Haryana's <span class="hl">oldest & biggest canal</span>. Taken from <span class="hl-red">Yamuna River</span> at <span class="hl">Hathnikund Barrage / Tajewala</span> (Yamunanagar). Construction started in <span class="hl-purple">1355</span> by <span class="hl">Firoz Shah Tughlaq</span>. Called "Father of Canals in Haryana." Later maintained by Akbar and British.
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Firoz Shah Tughlaq = Father of Canals in Haryana (1355)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="bhakra canal nangal dam sutlej fatehabad tohana city of rivers">
+        <div class="card-header">
+          <span class="dot" style="background:#2563eb"></span>
+          <div class="card-title">Bhakra Canal</div>
+        </div>
+        <div class="card-body">
+          From <span class="hl">Nangal Dam</span> on <span class="hl-red">Sutlej River</span> (Punjab). Enters Haryana at <span class="hl">Tohana, Fatehabad</span>. Serves Hisar, Fatehabad, Sirsa area. <span class="hl-purple">Tohana</span> is called <span class="hl">"City of Rivers"</span>.
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Tohana = City of Rivers | Bhakra = Nangal Dam, Sutlej River</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="gurugram canal okhla barrage delhi faridabad">
+        <div class="card-header">
+          <span class="dot" style="background:#059669"></span>
+          <div class="card-title">Gurugram Canal</div>
+        </div>
+        <div class="card-body">
+          Taken from <span class="hl">Yamuna River</span> at <span class="hl-red">Okhla Barrage, Delhi</span>. Serves <span class="hl">Gurugram and Faridabad</span> districts.
+        </div>
+        <div class="key-fact green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Okhla Barrage (Delhi) → Gurugram Canal → Gurugram + Faridabad</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="jui canal bhiwani lift irrigation indira gandhi loharu charkhi dadri">
+        <div class="card-header">
+          <span class="dot" style="background:#7c3aed"></span>
+          <div class="card-title">Other Lift Canals</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Jui Canal:</span> Bhiwani — Lift Irrigation<br>
+          <span class="hl-red">Indira Gandhi Canal / Loharu Lift Canal:</span> Bhiwani & Charkhi Dadri<br>
+          <span class="hl-green">Rule:</span> Wherever you see "Lift" in South Haryana canals = Aravalli hills area (higher terrain).
+        </div>
+        <div class="key-fact purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>"Lift" = South Haryana (Mahendragarh, Rewari, Bhiwani)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="sheikh chilli tomb tajmahal thanesar kurukshetra davis ross dara shikoh">
+        <div class="card-header">
+          <span class="dot" style="background:#dc2626"></span>
+          <div class="card-title">Haryana's Taj Mahal — Sheikh Chilli's Tomb</div>
+        </div>
+        <div class="card-body">
+          Located in <span class="hl">Thanesar, Kurukshetra</span>. Called <span class="hl-red">"Haryana's Taj Mahal"</span> by British officer <span class="hl">Davis Ross</span>. <span class="hl-purple">Sheikh Chilli</span> was the <span class="hl">guru of Dara Shikoh</span> (Mughal era).
+        </div>
+        <div class="key-fact red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Thanesar = Thane + Sar (Police station) → Remember: Belt padne pe chillana = Chilli!</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="kazi ki masjid qutub minar dujana jhajjar">
+        <div class="card-header">
+          <span class="dot" style="background:#7c3aed"></span>
+          <div class="card-title">Haryana's Qutub Minar — Kazi ki Masjid</div>
+        </div>
+        <div class="card-body">
+          Located in <span class="hl">Dujana village, Jhajjar</span>. Design similar to Qutub Minar. Called <span class="hl-red">"Haryana's Qutub Minar"</span>.
+        </div>
+        <div class="key-fact purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Dujana = Jhajjar | Jhajjar = Kharaab haalat → haath dhujenge = Dujana</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="sheesh mahal lal kila farrukhnagar gurugram faujdar khan 1732">
+        <div class="card-header">
+          <span class="dot" style="background:#ea580c"></span>
+          <div class="card-title">Haryana's Lal Kila — Sheesh Mahal</div>
+        </div>
+        <div class="card-body">
+          Located in <span class="hl">Farrukhnagar, Gurugram</span>. Built in <span class="hl-red">1732</span> by <span class="hl">Faujdar Khan</span>. Called <span class="hl-purple">"Haryana's Lal Kila"</span> because built with same red stones as Delhi's Lal Kila.
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Sheesh = Glass (rough nature) → Farrukhnagar = Rukha (rough)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="karn ka tila karnal thanesar kurukshetra mahabharata">
+        <div class="card-header">
+          <span class="dot" style="background:#ca8a04"></span>
+          <div class="card-title">Karn ka Tila, Gaurav ka Talab, Karn Jheel</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Karn ka Tila:</span> <span class="hl-red">Thanesar, Kurukshetra</span> (where Karn died in Mahabharat)<br>
+          <span class="hl">Gaurav ka Talab:</span> <span class="hl-green">Rohtak</span> (Gau = cow, cow crying = Rohtak)<br>
+          <span class="hl">Karn Jheel:</span> <span class="hl-purple">Karnal</span> (Karn + Jheel = Karnal)
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Karn ka Tila = Kurukshetra | Gaurav Talab = Rohtak | Karn Jheel = Karnal</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== HISTORY ==================== -->
+    <div class="section" data-section="history">
+      <div class="section-title">
+        <span class="sec-dot" style="background:#dc2626"></span>
+        History — Satavahana Dynasty & Revolutions
+      </div>
+
+      <div class="card" data-keywords="satavahana founder simuka capital pratishthan paithan amaravati prakrit brahmi">
+        <div class="card-header">
+          <span class="dot" style="background:#dc2626"></span>
+          <div class="card-title">Satavahana Dynasty — Basics</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Founder:</span> <span class="hl-red">Simuka</span><br>
+          <span class="hl">Capital:</span> <span class="hl-red">Pratishthan / Paithan</span> (present Aurangabad, Maharashtra)<br>
+          <span class="hl">Early Capital:</span> <span class="hl-purple">Amaravati</span> (Andhra Pradesh)<br>
+          <span class="hl">Language:</span> <span class="hl-green">Prakrit</span> | <span class="hl">Script:</span> <span class="hl-green">Brahmi</span> (Brahma → Prakriti)<br>
+          <span class="hl">Special:</span> Matriarchal society, Land donation practice, <span class="hl-orange">Lead coins</span> issued.
+        </div>
+        <div class="key-fact red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Lead (Shisha) coins = Only Satavahana dynasty issued them!</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="satakarni first powerful king dakshinapthapati apratihat chakra ashvamedh naganika nanaghat">
+        <div class="card-header">
+          <span class="dot" style="background:#2563eb"></span>
+          <div class="card-title">Satakarni I (First Powerful King)</div>
+        </div>
+        <div class="card-body">
+          First powerful king of Satavahanas. Titles: <span class="hl">Dakshinapthapati</span> (Lord of the South) & <span class="hl-red">Apratihat Chakra</span>. Performed <span class="hl-green">2 Ashwamedh Yagyas</span> and <span class="hl-purple">1 Rajasuya Yagya</span>. Wife: <span class="hl-orange">Naganika</span> — information from <span class="hl">Nanaghat Inscription</span>.
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Nanaghat Inscription → Naganika (wife of Satakarni I)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="hala gatha saptashati love poems">
+        <div class="card-header">
+          <span class="dot" style="background:#7c3aed"></span>
+          <div class="card-title">King Hala — Gatha Saptashati</div>
+        </div>
+        <div class="card-body">
+          Wrote <span class="hl">Gatha Saptashati</span> — a collection of <span class="hl-red">700 love poems</span> in Prakrit language.
+        </div>
+        <div class="key-fact purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Hala = 17th king, wrote Gatha Saptashati (love poetry collection)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="gautamiputra satakarni most powerful 23rd nahapana eka brahmana vedashram nasik prashasti">
+        <div class="card-header">
+          <span class="dot" style="background:#059669"></span>
+          <div class="card-title">Gautamiputra Satakarni (Most Powerful)</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">23rd king</span>, most powerful Satavahana ruler. Defeated <span class="hl-red">Shak king Nahapana</span>. Titles: <span class="hl">Eka-Brahmana</span> (Unique Brahmin) & <span class="hl-purple">Vedashram</span>. His mother <span class="hl-green">Gautami</span> wrote <span class="hl-orange">Nasik Prashasti</span> about him. <span class="hl-red">First to use mother's name before his own</span> (matrilineal tradition).
+        </div>
+        <div class="key-fact green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Nasik Prashasti = Written by mother Gautami | Defeated Nahapana (Shak)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="green revolution ms swaminathan norman borlaug william gaud white revolution verghese kurien operation flood">
+        <div class="card-header">
+          <span class="dot" style="background:#059669"></span>
+          <div class="card-title">Green Revolution & White Revolution</div>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><th>Revolution</th><th>India's Father</th><th>World's Father</th><th>Related Term</th></tr>
+            <tr><td><span class="hl-green">Green</span> (Agriculture)</td><td><span class="hl">M.S. Swaminathan</span></td><td><span class="hl-red">Norman Borlaug</span></td><td>Term by <span class="hl-purple">William Gaud</span></td></tr>
+            <tr><td><span class="hl">White</span> (Milk)</td><td><span class="hl">Verghese Kurien</span></td><td>—</td><td><span class="hl-orange">Operation Flood</span></td></tr>
+          </table>
+        </div>
+        <div class="key-fact green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Green = 1965-75 (Wheat/Rice) | White = Milk (Operation Flood)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== GEOGRAPHY ==================== -->
+    <div class="section" data-section="geography">
+      <div class="section-title">
+        <span class="sec-dot" style="background:#059669"></span>
+        Geography — Earth's Interior & Discontinuities
+      </div>
+
+      <div class="card" data-keywords="crust sial sima silicon aluminium magnesium depth ocean continent">
+        <div class="card-header">
+          <span class="dot" style="background:#059669"></span>
+          <div class="card-title">Earth's Crust (Bhuparpati)</div>
+        </div>
+        <div class="card-body">
+          Outermost thin solid layer. Depth: <span class="hl">Ocean = 5 km</span>, <span class="hl-red">Continent = 30-70 km</span>. Made of two parts:<br>
+          <span class="hl">SIAL</span> = <span class="hl-green">Si</span> (Silicon) + <span class="hl-green">Al</span> (Aluminium) — Upper Crust<br>
+          <span class="hl-red">SIMA</span> = <span class="hl-purple">Si</span> (Silicon) + <span class="hl-purple">Mg</span> (Magnesium) — Lower Crust
+        </div>
+        <div class="key-fact green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>SIAL = Si + Al (Upper) | SIMA = Si + Mg (Lower)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="mantle sima 84 percent 2900km asthenosphere upper lower repetti">
+        <div class="card-header">
+          <span class="dot" style="background:#2563eb"></span>
+          <div class="card-title">Mantle</div>
+        </div>
+        <div class="card-body">
+          Below crust. Covers <span class="hl-red">84% of Earth's volume</span>. Depth: <span class="hl">2900 km</span>. Made of only <span class="hl-green">SIMA</span>. <span class="hl-purple">Asthenosphere</span> = Upper Mantle's semi-fluid part (source of lava/volcanoes).
+        </div>
+        <div class="key-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Mantle = 84% of Earth | Asthenosphere = Semi-fluid lava source</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="core nife nickel iron outer liquid inner solid magnetic field 6371">
+        <div class="card-header">
+          <span class="dot" style="background:#dc2626"></span>
+          <div class="card-title">Core (Center of Earth)</div>
+        </div>
+        <div class="card-body">
+          Deepest layer. Total Earth radius = <span class="hl">6371 km</span>. Made of <span class="hl-red">NIFE</span> = <span class="hl">Ni</span> (Nickel) + <span class="hl">Fe</span> (Iron).<br>
+          <span class="hl-green">Outer Core = Liquid</span> (source of Earth's magnetic field)<br>
+          <span class="hl-purple">Inner Core = Solid</span> (due to extreme pressure)
+        </div>
+        <div class="key-fact red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>NIFE = Ni + Fe | Outer = Liquid (Magnetic field) | Inner = Solid</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="discontinuity conrad mohorovicic repetti gutenberg lehman">
+        <div class="card-header">
+          <span class="dot" style="background:#7c3aed"></span>
+          <div class="card-title">Discontinuities (Asantata) — Very Important</div>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><th>Discontinuity</th><th>Between Layers</th><th>Mnemonic</th></tr>
+            <tr><td><span class="hl">Conrad</span></td><td>Upper Crust ↔ Lower Crust</td><td><span class="hl-purple">"Kono Road"</span> nahi banega</td></tr>
+            <tr><td><span class="hl-red">Mohorovicic</span></td><td>Crust ↔ Mantle</td><td><span class="hl-purple">"Moh"</span> toot gaya</td></tr>
+            <tr><td><span class="hl-green">Repetti</span></td><td>Upper Mantle ↔ Lower Mantle</td><td>—</td></tr>
+            <tr><td><span class="hl-orange">Gutenberg</span></td><td>Mantle ↔ Core</td><td><span class="hl-purple">"Guten"</span>berg = dam ghutna</td></tr>
+            <tr><td><span class="hl">Lehman</span></td><td>Outer Core ↔ Inner Core</td><td>—</td></tr>
+          </table>
+        </div>
+        <div class="key-fact purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Conrad → Moho → Repetti → Gutenberg → Lehman (Top to Bottom)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== ECONOMICS ==================== -->
+    <div class="section" data-section="economics">
+      <div class="section-title">
+        <span class="sec-dot" style="background:#7c3aed"></span>
+        Economics — Cost Concepts
+      </div>
+
+      <div class="card" data-keywords="marginal cost additional unit change total cost u shaped graph">
+        <div class="card-header">
+          <span class="dot" style="background:#7c3aed"></span>
+          <div class="card-title">Marginal Cost (Seemant Laagat)</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Marginal Cost</span> = Change in total cost when <span class="hl-red">ONE additional unit</span> is produced.<br><br>
+          <span class="hl-green">Example:</span> 100 pens cost ₹200, 110 pens cost ₹220 → Marginal cost for 10 extra pens = <span class="hl">₹20</span>.<br><br>
+          <span class="hl-purple">Graph:</span> Marginal Cost curve is <span class="hl-red">U-SHAPED</span>.
+        </div>
+        <div class="key-fact purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>MC = Change in Total Cost / Change in Quantity | U-Shaped Graph</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="total cost fixed cost variable cost rent raw material">
+        <div class="card-header">
+          <span class="dot" style="background:#dc2626"></span>
+          <div class="card-title">Total Cost = Fixed + Variable</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Total Cost</span> = <span class="hl-green">Fixed Cost</span> + <span class="hl-red">Variable Cost</span><br><br>
+          <span class="hl-green">Fixed Cost:</span> Rent, permanent salaries, factory lease — does NOT change with production.<br><br>
+          <span class="hl-red">Variable Cost:</span> Raw material, electricity bill, temporary expenses — changes with production level.
+        </div>
+        <div class="key-fact red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Fixed = Permanent (Rent, Salary) | Variable = Changes (Raw material, Electricity)</p>
+        </div>
+      </div>
+
+      <div class="card" data-keywords="average cost total cost divided by units">
+        <div class="card-header">
+          <span class="dot" style="background:#059669"></span>
+          <div class="card-title">Average Cost</div>
+        </div>
+        <div class="card-body">
+          <span class="hl">Average Cost</span> = <span class="hl-red">Total Cost ÷ Total Units Produced</span><br><br>
+          Example: ₹200 for 100 pens → Average Cost = <span class="hl-green">₹2 per pen</span>.
+        </div>
+        <div class="key-fact green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>Average Cost = Total Cost / Number of Units</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center; padding: 24px; color: var(--text-secondary); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px;">
+      📚 Complete Study Notes for Haryana Police Constable & CET Group D<br>
+      Made with ❤️ for easy learning | Search any topic above
+    </div>
+  </div>
+
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeBtn');
+      if (root.getAttribute('data-theme') === 'dark') {
+        root.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        btn.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('themeBtn').textContent = '☀️';
+    }
+
+    // Search Filter
+    function filterCards() {
+      const query = document.getElementById('searchBox').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      const sections = document.querySelectorAll('.section');
+
+      cards.forEach(card => {
+        const keywords = card.getAttribute('data-keywords') || '';
+        const text = card.innerText.toLowerCase();
+        const match = keywords.includes(query) || text.includes(query);
+        card.style.display = match ? 'block' : 'none';
+      });
+
+      sections.forEach(sec => {
+        const visibleCards = sec.querySelectorAll('.card[style*="display: block"], .card:not([style*="display: none"])');
+        sec.style.display = visibleCards.length > 0 ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
